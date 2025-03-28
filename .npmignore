@@ -1,0 +1,12 @@
+node_modules
+src
+tests
+.github
+/*.json
+/*.js
+/*.ts
+/*.tgz
+coverage
+.editorconfig
+.nvmrc
+CONTRIBUTING.md

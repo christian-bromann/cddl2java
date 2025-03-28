@@ -1,0 +1,52 @@
+{
+  "name": "cddl2java",
+  "version": "0.0.0",
+  "description": "A Node.js package that can generates Java classes based on a CDDL file",
+  "author": "Christian Bromann <mail@bromann.dev>",
+  "license": "MIT",
+  "homepage": "https://github.com/christian-bromann/cddl2java#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/christian-bromann/cddl2java.git"
+  },
+  "keywords": [
+    "cddl"
+  ],
+  "bugs": {
+    "url": "https://github.com/christian-bromann/cddl2java/issues"
+  },
+  "type": "module",
+  "exports": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "bin": {
+    "cddl2java": "./bin/cddl2java.js"
+  },
+  "scripts": {
+    "build": "run-s clean compile",
+    "clean": "rm -rf ./build ./coverage",
+    "compile": "tsc -p ./tsconfig.json",
+    "release": "release-it --github.release",
+    "release:ci": "npm run release -- --ci --npm.skipChecks --no-git.requireCleanWorkingDir",
+    "release:patch": "npm run release -- patch",
+    "release:minor": "npm run release -- minor",
+    "release:major": "npm run release -- major",
+    "test": "vitest",
+    "watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.13.14",
+    "@vitest/coverage-v8": "^3.0.9",
+    "npm-run-all": "^4.1.5",
+    "release-it": "^18.1.2",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.27.0",
+    "camelcase": "^8.0.0",
+    "cddl": "^0.8.5",
+    "recast": "^0.23.11",
+    "yargs": "^17.7.2"
+  }
+}
