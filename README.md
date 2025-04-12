@@ -45,6 +45,7 @@ nvm use
 The following commands are set up to work with the project:
 
 - `npm run build`: build the project so you can update the test fixtures, e.g. via `./bin/cddl2java.js tests/bidi.cddl ./tests/__fixtures__/`
+- `npm run watch`: auto-compile TypeScript files for development
 - `npm run test`: run the tests
 
 ### Testing
