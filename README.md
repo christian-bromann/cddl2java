@@ -24,41 +24,32 @@ This package exposes a CLI as well as a programmatic interface for transforming 
 ### CLI
 
 ```sh
-npx cddl2java ./path/to/interface.cddl &> ./outputDir
+npx cddl2java ./path/to/interface.cddl ./outputDir
 ```
 
-### Programmatic Interface
+## Development
 
-The module exports a `transform` method that takes an CDDL AST object and returns a TypeScript definition as `string`, e.g.:
+To work on this project you have to have Node.js installed. It is recommend to use [`nvm`](https://github.com/nvm-sh/nvm) to install the right version via:
 
-```js
-import { parse } from 'cddl'
-import { transform } from 'cddl2java'
-
-/**
- * spec.cddl:
- *
- * session.CapabilityRequest = {
- *   ?acceptInsecureCerts: bool,
- *   ?browserName: text,
- *   ?browserVersion: text,
- *   ?platformName: text,
- * };
- */
-const ast = parse('./spec.cddl')
-const ts = transform(ast)
-console.log(ts)
-/**
- * outputs:
- *
- * interface SessionCapabilityRequest {
- *   acceptInsecureCerts?: boolean,
- *   browserName?: string,
- *   browserVersion?: string,
- *   platformName?: string,
- * }
- */
+```sh
+# install nvm.sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
 ```
+
+Then switch to the appropiate Node.js versio:
+
+```sh
+nvm use
+```
+
+The following commands are set up to work with the project:
+
+- `npm run build`: build the project so you can update the test fixtures, e.g. via `./bin/cddl2java.js tests/bidi.cddl ./tests/__fixtures__/`
+- `npm run test`: run the tests
+
+### Testing
+
+You can find a current working WebDriver Bidi file in [`tests/bidi.cddl`](./tests/bidi.cddl) that we are using to verify the output. The current output for given file is located in [`tests/__fixtures__`](./tests/__fixtures__). Check above command to run the test.
 
 ---
 
