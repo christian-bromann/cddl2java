@@ -108,3 +108,5 @@ build
 
 # local test files
 /test.js
+
+tests/__output__

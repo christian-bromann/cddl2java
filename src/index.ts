@@ -8,10 +8,15 @@ import { parse as parseCDDL, type PropertyReference, type Property, type Group, 
 
 import { CDDL_PARSE_ERROR_MESSAGE } from './constants.js'
 
+type Scope = string
+type FileName = string
+type MapKey = [Scope, FileName]
+
 function parseCDDLFile (filePath: string) {
     let ast
 
     try {
+        console.log('!!!', filePath)
         ast = parseCDDL(filePath)
     } catch (err) {
         console.log(util.format(CDDL_PARSE_ERROR_MESSAGE, `Failed to parse ${filePath}: ${(err as Error).stack}`))
@@ -25,12 +30,16 @@ function parseCDDLFile (filePath: string) {
      *
      * - remove CommandData and Extensible from Command group
      */
-    (ast[0] as Group).Properties = [(ast[0] as Group).Properties[0]]
+    const commandGroup = ast.findIndex((a) => a.Name === 'Command')
+    if (commandGroup !== -1) {
+        (ast[commandGroup] as Group).Properties = [(ast[commandGroup] as Group).Properties[0]]
+    }
 
     /**
      * have groups with method property extend from Command group
      */
-    const commandGroups = ast.filter((a: Group) => (
+    const commandGroups = ast.filter((a) => (
+        a.Type === 'group' &&
         a.Properties &&
         a.Properties[0] &&
         (a.Properties[0] as Property).Name === 'method'
@@ -50,7 +59,7 @@ function parseCDDLFile (filePath: string) {
 }
 
 async function createModules (assignments: Assignment[]) {
-    const javaFiles = new Map<string, string>()
+    const javaFiles = new Map<MapKey, string>()
     for (const assignment of assignments) {
         /**
          * only create methods for groups that have a method property and therefor are commands that
@@ -60,7 +69,7 @@ async function createModules (assignments: Assignment[]) {
             continue
         }
 
-        const responseType = astLocal.find((a) => camelcase(a.Name) === `${camelcase(assignment.Name)}Result`)
+        const responseType = assignments.find((a) => camelcase(a.Name) === `${camelcase(assignment.Name)}Result`)
         const methodId = (((assignment.Properties[0] as Property).Type as PropertyReference[])[0]).Value as string
         const paramName = (((assignment.Properties[1] as Property).Type as PropertyReference[])[0]).Value as string
         const paramType = `remote.${camelcase(paramName, { pascalCase: true })}`
@@ -78,41 +87,40 @@ async function createModules (assignments: Assignment[]) {
             ' *'
         ]
         const [scope, command] = assignment.Name.split('.')
-        const filename = (scope[0].toUpperCase() + scope.slice(1)) as string
+        const moduleScope = (scope[0].toUpperCase() + scope.slice(1)) as string
 
-        if (!javaFiles.has(filename)) {
-            javaFiles.set(filename, `package org.openqa.selenium.bidirectional.${scope.toLowerCase()};
+        const mapKey: MapKey = [moduleScope, `${moduleScope}Module`]
+        if (!javaFiles.has(mapKey)) {
+            javaFiles.set(mapKey, `package org.openqa.selenium.bidirectional.${scope.toLowerCase()};
 
-    import org.openqa.selenium.bidi.Command;
+import org.openqa.selenium.bidi.Command;
 
-    /**
-     * Auto generated class for running Bidi commands in Java
-     */
-    public class ${filename}Module {
-    `)
+/**
+ * Auto generated class for running Bidi commands in Java
+ */
+public class ${moduleScope}Module {
+`)
         }
 
-        let code = javaFiles.get(filename) as string
+        let code = javaFiles.get(mapKey) as string
         const resultTypeJavaEmbed = responseType ? resultTypeJava.slice(scope.length) : 'EmptyResult'
         code += `
-        /*${c.join('\n    ')}/
-        public Command<${resultTypeJavaEmbed}> ${command} (${(paramName.slice(scope.length).split('.').join(''))} parameters) {
-            return new Command<>(
-                    "${methodId}",
-                    parameters.asMap(),
-                    ${resultTypeJavaEmbed}.class);
-        }`
-        javaFiles.set(filename, code)
+    /*${c.join('\n    ')}/
+    public Command<${resultTypeJavaEmbed}> ${command} (${(paramName.slice(scope.length).split('.').join(''))} parameters) {
+        return new Command<>(
+            "${methodId}",
+            parameters.asMap(),
+            ${resultTypeJavaEmbed}.class
+        );
+    }`
+        javaFiles.set(mapKey, code)
     }
 
-    for (const [filename, code] of javaFiles.entries()) {
-        await fs.mkdirSync(`./java/${filename}/`, { recursive: true })
-        await fs.writeFileSync(`./java/${filename}/${filename}Module.java`, code + '\n}')
-    }
+    return javaFiles
 }
 
 async function createPropertyClasses (assignments: Assignment[]) {
-    const javaPropFiles = new Map<[string, string], string>()
+    const javaPropFiles = new Map<MapKey, string>()
     for (const assignment of assignments) {
         /**
          * only create methods for groups that have a method property and therefor are commands that
@@ -133,7 +141,7 @@ async function createPropertyClasses (assignments: Assignment[]) {
         if ('Properties' in assignment) {
             const prop = assignment.Name.split('.')[1]
             const propClassName = prop[0].toUpperCase() + prop.slice(1)
-            const mapKey = [scopeCamelCase, propClassName] as [string, string]
+            const mapKey: MapKey = [scopeCamelCase, propClassName]
 
             const props = new Map<string, { type: string, isLiteral: boolean }>()
             for (const property of assignment.Properties) {
@@ -143,7 +151,7 @@ async function createPropertyClasses (assignments: Assignment[]) {
 
                 const { type, isLiteral } = parseType(property.Type)
                 if (type === 'Unknown') {
-                    console.log(JSON.stringify(property, null, 2))
+                    console.log(`Unknown property type: please adjust "parseType" function to handle ${JSON.stringify(property, null, 2)}`)
                 }
 
                 props.set(property.Name, { type, isLiteral })
@@ -152,26 +160,26 @@ async function createPropertyClasses (assignments: Assignment[]) {
             if (props.size > 0) {
                 let code = ''
                 if (!javaPropFiles.has(mapKey)) {
-                    code += `package org.openqa.selenium.bidirectional.${scopeCamelCase.toLowerCase()};\n\n
-    public class ${propClassName} {\n`
+                    code += `package org.openqa.selenium.bidirectional.${scopeCamelCase};\n\n
+public class ${propClassName} {\n`
                 }
 
                 const assignableProps = Array.from(props.entries()).filter(([_, { isLiteral }]) => !isLiteral)
                 const literalProps = Array.from(props.entries()).filter(([_, { isLiteral }]) => isLiteral)
                 code += `
-        public ${propClassName}(${assignableProps.map(([prop, { type }]) => `${type} ${prop}`).join(', ')}) {
-            ${assignableProps.map(([prop, { type }]) => `this.${prop} = ${type};`).join(`
-            `)}
-            ${literalProps.map(([prop, { type }]) => `this.${prop} = "${type}";`).join(`
-            `)}
-        }\n`
+    public ${propClassName}(${assignableProps.map(([prop, { type }]) => `${type} ${prop}`).join(', ')}) {
+        ${assignableProps.map(([prop, { type }]) => `this.${prop} = ${type};`).join(`
+        `)}
+        ${literalProps.map(([prop, { type }]) => `this.${prop} = "${type}";`).join(`
+        `)}
+    }\n`
                 for (const [prop, { type }] of props.entries()) {
                     const propNameCamelCase = prop[0].toUpperCase() + prop.slice(1)
                     code += `
-        private final ${type} ${prop};
-        public get${propNameCamelCase}(${type} ${prop}) {
-            this.${prop} = ${prop};
-        }\n`
+    private final ${type} ${prop};
+    public get${propNameCamelCase}(${type} ${prop}) {
+        this.${prop} = ${prop};
+    }\n`
                 }
 
                 javaPropFiles.set(mapKey, code)
@@ -179,11 +187,7 @@ async function createPropertyClasses (assignments: Assignment[]) {
         }
     }
 
-    for (const [[scope, prop], code] of javaPropFiles.entries()) {
-        await fs.mkdirSync(`./java/${scope}/`, { recursive: true })
-        await fs.writeFileSync(`./java/${scope}/${prop}.java`, code + '\n}')
-    }
-
+    return javaPropFiles
 }
 
 function parseType (specType: any) {
@@ -202,6 +206,8 @@ function parseType (specType: any) {
         type = 'float'
     } else if ((specType[0] === 'string' || specType[0] === 'text')) {
         type = 'String'
+    } else if (specType[0].Type === 'group' && specType[0].Value === 'js-int') {
+        type = 'int'
     } else if (specType[0].Type === 'group' && specType[0].Value === 'js-uint') {
         type = 'long'
     } else if (specType[0].Type === 'group' && typeof specType[0].Value === 'string') {
@@ -219,6 +225,25 @@ function parseType (specType: any) {
     return { type, isLiteral }
 }
 
-export function transform (assignment: Assignment[]) {
-    // implement me
+async function createJavaFiles (javaFiles: Map<MapKey, string>, outputDir: string) {
+    for (const [[moduleScope, moduleName], code] of javaFiles.entries()) {
+        const rootDir = path.join(outputDir, moduleScope)
+
+        await fs.mkdirSync(rootDir, { recursive: true })
+        await fs.writeFileSync(path.resolve(rootDir, `${moduleName}.java`), code + '\n}')
+    }
+}
+
+export async function transform (cddlFilePath: string, outputDir: string) {
+    const ast = parseCDDLFile(cddlFilePath)
+    const [moduleCode, propertyCode] = await Promise.all([
+        createModules(ast),
+        createPropertyClasses(ast)
+    ])
+
+    await fs.mkdirSync(outputDir, { recursive: true })
+    await Promise.all([
+        createJavaFiles(moduleCode, outputDir),
+        createJavaFiles(propertyCode, outputDir)
+    ])
 }

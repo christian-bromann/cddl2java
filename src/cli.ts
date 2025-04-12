@@ -1,8 +1,6 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
-import { parse } from 'cddl'
-
 import { transform } from './index.js'
 import { pkg } from './constants.js'
 
@@ -11,7 +9,7 @@ ${pkg.name}
 ${pkg.description}
 
 Usage:
-runme2java ./path/to/spec.cddl &> ./path/to/interface.ts
+runme2java ./path/to/spec.cddl &> ./outputDir
 
 v${pkg.version}
 Copyright ${(new Date()).getFullYear()} ${pkg.author}
@@ -27,13 +25,18 @@ export default async function cli (args = process.argv.slice(2)) {
         return process.exit(0)
     }
 
-    const absoluteFilePath = path.resolve(process.cwd(), args[0])
-    const hasAccess = await fs.access(absoluteFilePath).then(() => true, () => false)
+    const cddlFilePath = path.isAbsolute(args[0]) ? args[0] : path.resolve(process.cwd(), args[0])
+    const hasAccess = await fs.access(cddlFilePath).then(() => true, () => false)
     if (!hasAccess) {
-        console.error(`Couldn't find or access source CDDL file at "${absoluteFilePath}"`)
+        console.error(`Couldn't find or access source CDDL file at "${cddlFilePath}"`)
         return process.exit(1)
     }
 
-    const ast = parse(absoluteFilePath)
-    console.log(transform(ast))
+    const outputDir = path.isAbsolute(args[1]) ? args[1] : path.resolve(process.cwd(), args[1])
+    const hasAccessOutputDir = await fs.access(outputDir).then(() => true, () => false)
+    if (!hasAccessOutputDir) {
+        await fs.mkdir(outputDir, { recursive: true })
+    }
+
+    return transform(cddlFilePath, outputDir)
 }
