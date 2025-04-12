@@ -1,11 +1,11 @@
 import fs from 'node:fs'
-import url from 'node:url'
 import path from 'node:path'
 import util from 'node:util'
 
 import camelcase from 'camelcase'
 import { parse as parseCDDL, type PropertyReference, type Property, type Group, type Assignment } from 'cddl'
 
+import { writeFile } from './utils.js'
 import { CDDL_PARSE_ERROR_MESSAGE } from './constants.js'
 
 type Scope = string
@@ -230,7 +230,7 @@ async function createJavaFiles (javaFiles: Map<MapKey, string>, outputDir: strin
         const rootDir = path.join(outputDir, moduleScope)
 
         await fs.mkdirSync(rootDir, { recursive: true })
-        await fs.writeFileSync(path.resolve(rootDir, `${moduleName}.java`), code + '\n}')
+        await writeFile(path.resolve(rootDir, `${moduleName}.java`), code + '\n}')
     }
 }
 

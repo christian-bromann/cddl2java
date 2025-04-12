@@ -4,14 +4,20 @@ import { defineConfig } from 'vite'
 export default defineConfig({
     test: {
         include: ['tests/**/*.test.ts'],
-        exclude: [],
         coverage: {
             enabled: true,
+            exclude: [
+                'build/**',
+                'dist/**',
+                'node_modules/**',
+                'bin/**',
+                '*.ts'
+            ],
             thresholds: {
-                lines: 92,
-                functions: 88,
-                branches: 86,
-                statements: 92
+                lines: 94,
+                functions: 90,
+                branches: 91,
+                statements: 94
             }
         }
     }
