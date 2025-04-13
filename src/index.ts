@@ -621,12 +621,13 @@ async function createEmptyResultClass(outputDir: string) {
     await writeFile(path.resolve(outputDir, 'EmptyResult.java'), emptyResultTemplate);
 }
 
-async function createHelperClasses(assignments: Assignment[], outputDir: string) {
+async function createHelperClasses( outputDir: string) {
     // Create directories and write files
     await fs.mkdirSync(path.join(outputDir, 'Input'), { recursive: true });
     await writeFile(path.resolve(outputDir, 'Input/PointerType.java'), pointerTypeTemplate);
     await writeFile(path.resolve(outputDir, 'Input/Origin.java'), originTemplate);
-    await writeFile(path.resolve(outputDir, 'Input/ScriptLocalValue.java'), scriptLocalValue);
+    await fs.mkdirSync(path.join(outputDir, 'Script'), { recursive: true });
+    await writeFile(path.resolve(outputDir, 'Script/ScriptLocalValue.java'), scriptLocalValue);
     await writeFile(path.resolve(outputDir, 'ContextValue.java'), contextValueTemplate);
     await writeFile(path.resolve(outputDir, 'AccessibilityValue.java'), accessibilityValueTemplate);
 
@@ -649,6 +650,6 @@ export async function transform (cddlFilePath: string, outputDir: string) {
         createJavaFiles(propertyCode, outputDir),
         createJavaFiles(resultCode, outputDir),
         createEmptyResultClass(outputDir),
-        createHelperClasses(ast, outputDir)
+        createHelperClasses(outputDir)
     ])
 }
