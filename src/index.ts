@@ -90,6 +90,16 @@ const keySourceActions = [
     'KeyDownAction',
     'KeyUpAction'
 ]
+const pointerSourceActions = [
+    'PointerMoveAction',
+    'PointerDownAction',
+    'PointerUpAction',
+    'PointerCancelAction'
+]
+const wheelSourceActions = [
+    'PauseAction',
+    'WheelScrollAction'
+]
 
 const stringTypes = [
     'script.InternalId',
@@ -211,6 +221,25 @@ function resultName(name: string): string {
     return resultName[0].toUpperCase() + resultName.slice(1);
 }
 
+function getImplementsExtension(propClassName: string): string {
+    if (scriptLocalValueClasses.includes(propClassName)) {
+        return ' implements ScriptLocalValue'
+    }
+    if (inputSourceActions.includes(propClassName)) {
+        return ' implements SourceActions'
+    }
+    if (keySourceActions.includes(propClassName)) {
+        return ' implements KeySourceAction'
+    }
+    if (pointerSourceActions.includes(propClassName)) {
+        return ' implements PointerSourceAction'
+    }
+    if (wheelSourceActions.includes(propClassName)) {
+        return ' implements WheelSourceAction'
+    }
+    return ''
+}
+
 async function createPropertyClasses (assignments: Assignment[]) {
     const javaPropFiles = new Map<MapKey, string>()
     for (const assignment of assignments) {
@@ -321,13 +350,7 @@ async function createPropertyClasses (assignments: Assignment[]) {
             if (props.size > 0) {
                 let code = ''
                 if (!javaPropFiles.has(mapKey)) {
-                    const implementsExtension = scriptLocalValueClasses.includes(propClassName)
-                        ? ' implements ScriptLocalValue'
-                        : inputSourceActions.includes(propClassName)
-                            ? ' implements SourceActions'
-                            : keySourceActions.includes(propClassName)
-                                ? ' implements KeySourceAction'
-                                : ''
+                    const implementsExtension = getImplementsExtension(propClassName)
                     code += `package org.openqa.selenium.bidirectional.${scopeCamelCase.toLowerCase()};
 
 import java.util.Map;

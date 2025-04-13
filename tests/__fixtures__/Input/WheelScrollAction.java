@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for input.WheelScrollAction command
  */
-public class WheelScrollAction {
+public class WheelScrollAction implements WheelSourceAction {
 
     /**
      * Creates a new WheelScrollAction instance

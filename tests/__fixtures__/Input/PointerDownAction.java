@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for input.PointerDownAction command
  */
-public class PointerDownAction {
+public class PointerDownAction implements PointerSourceAction {
 
     /**
      * Creates a new PointerDownAction instance

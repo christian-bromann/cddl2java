@@ -15,3 +15,11 @@ public class SourceActions {
 public class KeySourceAction {
 
 }
+
+public class PointerSourceAction {
+
+}
+
+public class WheelSourceAction {
+
+}

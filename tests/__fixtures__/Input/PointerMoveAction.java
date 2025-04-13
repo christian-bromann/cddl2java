@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for input.PointerMoveAction command
  */
-public class PointerMoveAction {
+public class PointerMoveAction implements PointerSourceAction {
 
     /**
      * Creates a new PointerMoveAction instance
