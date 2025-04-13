@@ -10,7 +10,7 @@
  * Represents UserPromptType in WebDriver BiDi protocol
  * as enum of "alert" / "beforeunload" / "confirm" / "prompt"
  */
-public class UserPromptType {
+public enum UserPromptType {
     ALERT("alert");
     BEFOREUNLOAD("beforeunload");
     CONFIRM("confirm");

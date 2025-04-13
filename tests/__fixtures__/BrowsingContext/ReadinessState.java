@@ -10,7 +10,7 @@
  * Represents ReadinessState in WebDriver BiDi protocol
  * as enum of "none" / "interactive" / "complete"
  */
-public class ReadinessState {
+public enum ReadinessState {
     NONE("none");
     INTERACTIVE("interactive");
     COMPLETE("complete");

@@ -10,7 +10,7 @@
  * Represents InterceptPhase in WebDriver BiDi protocol
  * as enum of "beforeRequestSent" / "responseStarted" / "authRequired"
  */
-public class InterceptPhase {
+public enum InterceptPhase {
     BEFOREREQUESTSENT("beforeRequestSent");
     RESPONSESTARTED("responseStarted");
     AUTHREQUIRED("authRequired");

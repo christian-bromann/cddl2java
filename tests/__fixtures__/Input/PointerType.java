@@ -10,7 +10,7 @@
  * Represents PointerType in WebDriver BiDi protocol
  * as enum of "mouse" / "pen" / "touch"
  */
-public class PointerType {
+public enum PointerType {
     MOUSE("mouse");
     PEN("pen");
     TOUCH("touch");

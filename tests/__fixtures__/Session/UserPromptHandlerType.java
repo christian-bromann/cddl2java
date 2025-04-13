@@ -10,7 +10,7 @@
  * Represents UserPromptHandlerType in WebDriver BiDi protocol
  * as enum of "accept" / "dismiss" / "ignore"
  */
-public class UserPromptHandlerType {
+public enum UserPromptHandlerType {
     ACCEPT("accept");
     DISMISS("dismiss");
     IGNORE("ignore");

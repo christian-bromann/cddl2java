@@ -10,7 +10,7 @@
  * Represents SameSite in WebDriver BiDi protocol
  * as enum of "strict" / "lax" / "none"
  */
-public class SameSite {
+public enum SameSite {
     STRICT("strict");
     LAX("lax");
     NONE("none");

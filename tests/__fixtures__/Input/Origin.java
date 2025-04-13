@@ -8,12 +8,12 @@
 
 /**
  * Represents Origin in WebDriver BiDi protocol
- * as enum of "viewport" / "pointer" / "element"
+ * as enum of "viewport" / "pointer" / "Input.ElementOrigin"
  */
-public class Origin {
+public enum Origin {
     VIEWPORT("viewport");
     POINTER("pointer");
-    ELEMENT("element");
+    ELEMENTORIGIN(ElementOrigin.class);
 
     private final String value;
 

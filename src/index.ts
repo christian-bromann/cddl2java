@@ -432,6 +432,10 @@ public class ${propClassName}${implementsExtension} {
             }
         } else if (assignment.Type === 'variable') {
             const propType = assignment.PropertyType as PropertyType[]
+
+            if (propType.every((p) => (p as PropertyReference).Type === 'group')) {
+                // todo
+            } else
             /**
              * handle enums like
              * {
@@ -446,11 +450,17 @@ public class ${propClassName}${implementsExtension} {
              *   Comments: []
              * }
              */
-            if (propType.every((p) => (p as PropertyReference).Type === 'literal')) {
+            if (propType.every((p) => (p as PropertyReference).Type === 'literal' || (p as PropertyReference).Type === 'group')) {
                 const [module, prop] = assignment.Name.split('.')
-                const enumValues = propType.map((p) => (p as PropertyReference).Value) as string[]
+                const enumValues = propType.map((p) => {
+                    if ((p as PropertyReference).Type === 'group') {
+                        const [mod, prop] = ((p as PropertyReference).Value as string).split('.')
+                        return `${mod.slice(0, 1).toUpperCase() + mod.slice(1)}.${prop}`
+                    }
+                    return (p as PropertyReference).Value
+                }) as string[]
                 const code = getEnumTemplate(prop, enumValues)
-                console.log(12, code)
+                console.log(propType)
                 javaPropFiles.set([module, prop], code)
             }
         }

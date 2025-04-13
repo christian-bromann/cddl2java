@@ -10,7 +10,7 @@
  * Represents RealmType in WebDriver BiDi protocol
  * as enum of "window" / "dedicated-worker" / "shared-worker" / "service-worker" / "worker" / "paint-worklet" / "audio-worklet" / "worklet"
  */
-public class RealmType {
+public enum RealmType {
     WINDOW("window");
     DEDICATED-WORKER("dedicated-worker");
     SHARED-WORKER("shared-worker");

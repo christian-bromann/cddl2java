@@ -10,7 +10,7 @@
  * Represents Level in WebDriver BiDi protocol
  * as enum of "debug" / "info" / "warn" / "error"
  */
-public class Level {
+public enum Level {
     DEBUG("debug");
     INFO("info");
     WARN("warn");

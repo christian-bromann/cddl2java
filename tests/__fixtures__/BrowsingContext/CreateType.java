@@ -10,7 +10,7 @@
  * Represents CreateType in WebDriver BiDi protocol
  * as enum of "tab" / "window"
  */
-public class CreateType {
+public enum CreateType {
     TAB("tab");
     WINDOW("window");
 

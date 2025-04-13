@@ -134,8 +134,12 @@ export const getEnumTemplate = (name: string, enums: string[]) => {
  * Represents ${name} in WebDriver BiDi protocol
  * as enum of "${enums.join('" / "')}"
  */
-public class ${name} {
+public enum ${name} {
     ${enums.map((e) => {
+        if (e.includes('.')) {
+            const [, prop] = e.split('.')
+            return `${prop.toUpperCase()}(${prop}.class);`
+        }
         if (e.startsWith('-')) {
             return `NEGATIVE_${e.slice(1).toUpperCase()}("${e}");`
         }

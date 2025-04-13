@@ -10,7 +10,7 @@
  * Represents SpecialNumber in WebDriver BiDi protocol
  * as enum of "NaN" / "-0" / "Infinity" / "-Infinity"
  */
-public class SpecialNumber {
+public enum SpecialNumber {
     NAN("NaN");
     NEGATIVE_0("-0");
     INFINITY("Infinity");

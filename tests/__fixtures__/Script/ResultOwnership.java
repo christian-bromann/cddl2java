@@ -10,7 +10,7 @@
  * Represents ResultOwnership in WebDriver BiDi protocol
  * as enum of "root" / "none"
  */
-public class ResultOwnership {
+public enum ResultOwnership {
     ROOT("root");
     NONE("none");
 
