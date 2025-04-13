@@ -26,7 +26,6 @@ public class ContextTarget {
     public ContextTarget(String context, String sandbox) {
         this.context = context;
         this.sandbox = sandbox;
-        
     }
 
     private final String context;

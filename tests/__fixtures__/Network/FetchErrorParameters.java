@@ -25,7 +25,6 @@ public class FetchErrorParameters {
      */
     public FetchErrorParameters(String errorText) {
         this.errorText = errorText;
-        
     }
 
     private final String errorText;

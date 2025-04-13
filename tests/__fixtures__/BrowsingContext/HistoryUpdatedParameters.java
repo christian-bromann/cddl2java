@@ -26,7 +26,6 @@ public class HistoryUpdatedParameters {
     public HistoryUpdatedParameters(String context, String url) {
         this.context = context;
         this.url = url;
-        
     }
 
     private final String context;

@@ -25,7 +25,6 @@ public class RemoveUserContextParameters {
      */
     public RemoveUserContextParameters(String userContext) {
         this.userContext = userContext;
-        
     }
 
     private final String userContext;

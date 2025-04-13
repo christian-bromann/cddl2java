@@ -25,7 +25,6 @@ public class ContinueWithAuthParameters {
      */
     public ContinueWithAuthParameters(Network.Request request) {
         this.request = request;
-        
     }
 
     private final Network.Request request;

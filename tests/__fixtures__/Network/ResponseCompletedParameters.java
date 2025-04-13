@@ -25,7 +25,6 @@ public class ResponseCompletedParameters {
      */
     public ResponseCompletedParameters(Network.ResponseData response) {
         this.response = response;
-        
     }
 
     private final Network.ResponseData response;

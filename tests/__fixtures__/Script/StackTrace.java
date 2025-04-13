@@ -25,7 +25,6 @@ public class StackTrace {
      */
     public StackTrace(List<Object> callFrames) {
         this.callFrames = callFrames;
-        
     }
 
     private final List<Object> callFrames;

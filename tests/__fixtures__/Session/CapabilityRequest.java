@@ -30,7 +30,6 @@ public class CapabilityRequest {
         this.platformName = platformName;
         this.proxy = proxy;
         this.unhandledPromptBehavior = unhandledPromptBehavior;
-        
     }
 
     private final Boolean acceptInsecureCerts;

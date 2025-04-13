@@ -26,7 +26,6 @@ public class NavigateResult {
     public NavigateResult(Object navigation, String url) {
         this.navigation = navigation;
         this.url = url;
-        
     }
 
     private final Object navigation;

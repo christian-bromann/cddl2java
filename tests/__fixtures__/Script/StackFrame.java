@@ -28,7 +28,6 @@ public class StackFrame {
         this.functionName = functionName;
         this.lineNumber = lineNumber;
         this.url = url;
-        
     }
 
     private final Long columnNumber;

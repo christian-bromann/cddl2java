@@ -31,7 +31,6 @@ public class GeolocationCoordinates {
         this.altitudeAccuracy = altitudeAccuracy;
         this.heading = heading;
         this.speed = speed;
-        
     }
 
     private final Float latitude;

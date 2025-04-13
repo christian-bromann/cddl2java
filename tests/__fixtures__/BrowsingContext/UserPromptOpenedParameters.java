@@ -29,7 +29,6 @@ public class UserPromptOpenedParameters {
         this.message = message;
         this.type = type;
         this.defaultValue = defaultValue;
-        
     }
 
     private final String context;

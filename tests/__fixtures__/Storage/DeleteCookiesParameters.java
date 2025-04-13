@@ -26,7 +26,6 @@ public class DeleteCookiesParameters {
     public DeleteCookiesParameters(Storage.CookieFilter filter, Storage.PartitionDescriptor partition) {
         this.filter = filter;
         this.partition = partition;
-        
     }
 
     private final Storage.CookieFilter filter;

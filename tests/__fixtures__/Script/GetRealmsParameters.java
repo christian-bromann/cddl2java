@@ -26,7 +26,6 @@ public class GetRealmsParameters {
     public GetRealmsParameters(String context, Script.RealmType type) {
         this.context = context;
         this.type = type;
-        
     }
 
     private final String context;

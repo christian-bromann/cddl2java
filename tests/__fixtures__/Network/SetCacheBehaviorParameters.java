@@ -26,7 +26,6 @@ public class SetCacheBehaviorParameters {
     public SetCacheBehaviorParameters(Object cacheBehavior, List<Object> contexts) {
         this.cacheBehavior = cacheBehavior;
         this.contexts = contexts;
-        
     }
 
     private final Object cacheBehavior;

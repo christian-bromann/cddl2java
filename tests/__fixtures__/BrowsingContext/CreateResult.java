@@ -25,7 +25,6 @@ public class CreateResult {
      */
     public CreateResult(String context) {
         this.context = context;
-        
     }
 
     private final String context;

@@ -31,7 +31,6 @@ public class PointerCommonProperties {
         this.twist = twist;
         this.altitudeAngle = altitudeAngle;
         this.azimuthAngle = azimuthAngle;
-        
     }
 
     private final Long width;

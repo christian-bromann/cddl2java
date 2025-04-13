@@ -37,7 +37,6 @@ public class FetchTimingInfo {
         this.requestStart = requestStart;
         this.responseStart = responseStart;
         this.responseEnd = responseEnd;
-        
     }
 
     private final Float timeOrigin;

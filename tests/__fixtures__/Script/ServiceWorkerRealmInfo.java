@@ -24,7 +24,6 @@ public class ServiceWorkerRealmInfo {
      * Creates a new ServiceWorkerRealmInfo instance
      */
     public ServiceWorkerRealmInfo() {
-        
         this.type = "service-worker";
     }
 

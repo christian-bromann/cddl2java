@@ -25,7 +25,6 @@ public class CaptureScreenshotResult {
      */
     public CaptureScreenshotResult(String data) {
         this.data = data;
-        
     }
 
     private final String data;

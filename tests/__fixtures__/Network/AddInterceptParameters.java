@@ -27,7 +27,6 @@ public class AddInterceptParameters {
         this.phases = phases;
         this.contexts = contexts;
         this.urlPatterns = urlPatterns;
-        
     }
 
     private final List<Object> phases;

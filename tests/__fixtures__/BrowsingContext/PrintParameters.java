@@ -32,7 +32,6 @@ public class PrintParameters {
         this.pageRanges = pageRanges;
         this.scale = scale;
         this.shrinkToFit = shrinkToFit;
-        
     }
 
     private final String context;

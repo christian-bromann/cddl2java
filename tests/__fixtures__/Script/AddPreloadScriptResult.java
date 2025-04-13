@@ -25,7 +25,6 @@ public class AddPreloadScriptResult {
      */
     public AddPreloadScriptResult(Script.PreloadScript script) {
         this.script = script;
-        
     }
 
     private final Script.PreloadScript script;

@@ -25,7 +25,6 @@ public class NewParameters {
      */
     public NewParameters(Session.CapabilitiesRequest capabilities) {
         this.capabilities = capabilities;
-        
     }
 
     private final Session.CapabilitiesRequest capabilities;

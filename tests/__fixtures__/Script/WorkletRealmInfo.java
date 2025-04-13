@@ -24,7 +24,6 @@ public class WorkletRealmInfo {
      * Creates a new WorkletRealmInfo instance
      */
     public WorkletRealmInfo() {
-        
         this.type = "worklet";
     }
 

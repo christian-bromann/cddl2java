@@ -32,7 +32,6 @@ public class CallFunctionParameters {
         this.serializationOptions = serializationOptions;
         this.this = this;
         this.userActivation = userActivation;
-        
     }
 
     private final String functionDeclaration;

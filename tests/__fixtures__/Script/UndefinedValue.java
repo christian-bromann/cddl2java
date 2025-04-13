@@ -24,7 +24,6 @@ public class UndefinedValue {
      * Creates a new UndefinedValue instance
      */
     public UndefinedValue() {
-        
         this.type = "undefined";
     }
 

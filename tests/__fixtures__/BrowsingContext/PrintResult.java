@@ -25,7 +25,6 @@ public class PrintResult {
      */
     public PrintResult(String data) {
         this.data = data;
-        
     }
 
     private final String data;

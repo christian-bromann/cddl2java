@@ -25,7 +25,6 @@ public class GetTreeResult {
      */
     public GetTreeResult(BrowsingContext.InfoList contexts) {
         this.contexts = contexts;
-        
     }
 
     private final BrowsingContext.InfoList contexts;

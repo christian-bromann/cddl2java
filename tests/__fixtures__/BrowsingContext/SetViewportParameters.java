@@ -28,7 +28,6 @@ public class SetViewportParameters {
         this.viewport = viewport;
         this.devicePixelRatio = devicePixelRatio;
         this.userContexts = userContexts;
-        
     }
 
     private final String context;

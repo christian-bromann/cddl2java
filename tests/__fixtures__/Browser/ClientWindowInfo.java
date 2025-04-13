@@ -31,7 +31,6 @@ public class ClientWindowInfo {
         this.width = width;
         this.x = x;
         this.y = y;
-        
     }
 
     private final Boolean active;

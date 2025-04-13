@@ -24,7 +24,6 @@ public class PaintWorkletRealmInfo {
      * Creates a new PaintWorkletRealmInfo instance
      */
     public PaintWorkletRealmInfo() {
-        
         this.type = "paint-worklet";
     }
 

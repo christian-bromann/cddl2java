@@ -25,7 +25,6 @@ public class RealmTarget {
      */
     public RealmTarget(Script.Realm realm) {
         this.realm = realm;
-        
     }
 
     private final Script.Realm realm;

@@ -26,7 +26,6 @@ public class CapabilitiesRequest {
     public CapabilitiesRequest(Session.CapabilityRequest alwaysMatch, List<Object> firstMatch) {
         this.alwaysMatch = alwaysMatch;
         this.firstMatch = firstMatch;
-        
     }
 
     private final Session.CapabilityRequest alwaysMatch;

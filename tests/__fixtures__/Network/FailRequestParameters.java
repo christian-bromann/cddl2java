@@ -25,7 +25,6 @@ public class FailRequestParameters {
      */
     public FailRequestParameters(Network.Request request) {
         this.request = request;
-        
     }
 
     private final Network.Request request;

@@ -29,7 +29,6 @@ public class ExceptionDetails {
         this.lineNumber = lineNumber;
         this.stackTrace = stackTrace;
         this.text = text;
-        
     }
 
     private final Long columnNumber;

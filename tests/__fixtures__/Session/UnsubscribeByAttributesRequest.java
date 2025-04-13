@@ -26,7 +26,6 @@ public class UnsubscribeByAttributesRequest {
     public UnsubscribeByAttributesRequest(List<Object> events, List<Object> contexts) {
         this.events = events;
         this.contexts = contexts;
-        
     }
 
     private final List<Object> events;

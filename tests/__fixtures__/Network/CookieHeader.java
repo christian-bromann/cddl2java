@@ -26,7 +26,6 @@ public class CookieHeader {
     public CookieHeader(String name, Network.BytesValue value) {
         this.name = name;
         this.value = value;
-        
     }
 
     private final String name;

@@ -25,7 +25,6 @@ public class UserContextInfo {
      */
     public UserContextInfo(String userContext) {
         this.userContext = userContext;
-        
     }
 
     private final String userContext;

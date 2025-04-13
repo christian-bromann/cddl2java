@@ -25,7 +25,6 @@ public class UninstallParameters {
      */
     public UninstallParameters(WebExtension.Extension extension) {
         this.extension = extension;
-        
     }
 
     private final WebExtension.Extension extension;

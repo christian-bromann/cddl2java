@@ -25,7 +25,6 @@ public class DeleteCookiesResult {
      */
     public DeleteCookiesResult(Storage.PartitionKey partitionKey) {
         this.partitionKey = partitionKey;
-        
     }
 
     private final Storage.PartitionKey partitionKey;

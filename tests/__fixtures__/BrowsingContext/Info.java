@@ -31,7 +31,6 @@ public class Info {
         this.url = url;
         this.userContext = userContext;
         this.parent = parent;
-        
     }
 
     private final Object children;

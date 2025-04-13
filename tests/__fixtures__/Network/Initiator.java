@@ -29,7 +29,6 @@ public class Initiator {
         this.request = request;
         this.stackTrace = stackTrace;
         this.type = type;
-        
     }
 
     private final Long columnNumber;

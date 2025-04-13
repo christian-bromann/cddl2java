@@ -29,7 +29,6 @@ public class LocateNodesParameters {
         this.maxNodeCount = maxNodeCount;
         this.serializationOptions = serializationOptions;
         this.startNodes = startNodes;
-        
     }
 
     private final String context;

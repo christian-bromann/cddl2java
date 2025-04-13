@@ -32,7 +32,6 @@ public class PartialCookie {
         this.secure = secure;
         this.sameSite = sameSite;
         this.expiry = expiry;
-        
     }
 
     private final String name;

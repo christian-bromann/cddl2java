@@ -33,7 +33,6 @@ public class NodeProperties {
         this.namespaceURI = namespaceURI;
         this.nodeValue = nodeValue;
         this.shadowRoot = shadowRoot;
-        
     }
 
     private final Long nodeType;

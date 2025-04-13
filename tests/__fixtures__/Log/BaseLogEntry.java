@@ -29,7 +29,6 @@ public class BaseLogEntry {
         this.text = text;
         this.timestamp = timestamp;
         this.stackTrace = stackTrace;
-        
     }
 
     private final Log.Level level;

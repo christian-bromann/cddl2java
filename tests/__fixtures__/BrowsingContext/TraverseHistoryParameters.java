@@ -26,7 +26,6 @@ public class TraverseHistoryParameters {
     public TraverseHistoryParameters(String context, Integer delta) {
         this.context = context;
         this.delta = delta;
-        
     }
 
     private final String context;

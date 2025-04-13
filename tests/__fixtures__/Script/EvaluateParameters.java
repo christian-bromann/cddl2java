@@ -30,7 +30,6 @@ public class EvaluateParameters {
         this.resultOwnership = resultOwnership;
         this.serializationOptions = serializationOptions;
         this.userActivation = userActivation;
-        
     }
 
     private final String expression;

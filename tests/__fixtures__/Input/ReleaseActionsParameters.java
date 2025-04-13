@@ -25,7 +25,6 @@ public class ReleaseActionsParameters {
      */
     public ReleaseActionsParameters(String context) {
         this.context = context;
-        
     }
 
     private final String context;

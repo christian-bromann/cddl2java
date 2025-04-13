@@ -26,7 +26,6 @@ public class RegExpValue {
     public RegExpValue(String pattern, String flags) {
         this.pattern = pattern;
         this.flags = flags;
-        
     }
 
     private final String pattern;

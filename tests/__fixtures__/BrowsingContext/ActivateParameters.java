@@ -25,7 +25,6 @@ public class ActivateParameters {
      */
     public ActivateParameters(String context) {
         this.context = context;
-        
     }
 
     private final String context;

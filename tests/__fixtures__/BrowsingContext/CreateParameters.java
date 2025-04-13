@@ -28,7 +28,6 @@ public class CreateParameters {
         this.referenceContext = referenceContext;
         this.background = background;
         this.userContext = userContext;
-        
     }
 
     private final BrowsingContext.CreateType type;

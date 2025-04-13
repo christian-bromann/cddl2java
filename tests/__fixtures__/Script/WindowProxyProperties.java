@@ -25,7 +25,6 @@ public class WindowProxyProperties {
      */
     public WindowProxyProperties(String context) {
         this.context = context;
-        
     }
 
     private final String context;

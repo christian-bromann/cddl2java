@@ -25,7 +25,6 @@ public class DownloadWillBeginParams {
      */
     public DownloadWillBeginParams(String suggestedFilename) {
         this.suggestedFilename = suggestedFilename;
-        
     }
 
     private final String suggestedFilename;

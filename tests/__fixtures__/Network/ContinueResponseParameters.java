@@ -23,14 +23,13 @@ public class ContinueResponseParameters {
     /**
      * Creates a new ContinueResponseParameters instance
      */
-    public ContinueResponseParameters(Network.Request request, List<Object> cookies, Network.AuthCredentials credentials, List<Object> headers, String reasonPhrase, Long statusCode) {
+    public ContinueResponseParameters(Network.Request request, List<Network.SetCookieHeader> cookies, Network.AuthCredentials credentials, List<Object> headers, String reasonPhrase, Long statusCode) {
         this.request = request;
         this.cookies = cookies;
         this.credentials = credentials;
         this.headers = headers;
         this.reasonPhrase = reasonPhrase;
         this.statusCode = statusCode;
-        
     }
 
     private final Network.Request request;
@@ -43,13 +42,13 @@ public class ContinueResponseParameters {
         return this.request;
     }
 
-    private final List<Object> cookies;
+    private final List<Network.SetCookieHeader> cookies;
 
     /**
      * Gets the cookies property
-     * @return List<Object> value
+     * @return List<Network.SetCookieHeader> value
      */
-    public List<Object> getCookies() {
+    public List<Network.SetCookieHeader> getCookies() {
         return this.cookies;
     }
 

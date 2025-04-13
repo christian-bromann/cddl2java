@@ -25,7 +25,6 @@ public class UnsubscribeByIDRequest {
      */
     public UnsubscribeByIDRequest(List<Object> subscriptions) {
         this.subscriptions = subscriptions;
-        
     }
 
     private final List<Object> subscriptions;

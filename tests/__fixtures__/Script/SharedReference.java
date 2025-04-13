@@ -26,7 +26,6 @@ public class SharedReference {
     public SharedReference(Script.SharedId sharedId, Script.Handle handle) {
         this.sharedId = sharedId;
         this.handle = handle;
-        
     }
 
     private final Script.SharedId sharedId;

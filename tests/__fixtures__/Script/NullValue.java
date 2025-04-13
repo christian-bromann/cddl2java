@@ -25,7 +25,6 @@ public class NullValue {
      */
     public NullValue(Object type) {
         this.type = type;
-        
     }
 
     private final Object type;

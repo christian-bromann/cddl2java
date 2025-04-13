@@ -24,7 +24,6 @@ public class JavascriptLogEntry {
      * Creates a new JavascriptLogEntry instance
      */
     public JavascriptLogEntry() {
-        
         this.type = "javascript";
     }
 

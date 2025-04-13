@@ -25,7 +25,6 @@ public class RemoveInterceptParameters {
      */
     public RemoveInterceptParameters(Network.Intercept intercept) {
         this.intercept = intercept;
-        
     }
 
     private final Network.Intercept intercept;

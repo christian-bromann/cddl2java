@@ -33,7 +33,6 @@ public class CookieFilter {
         this.secure = secure;
         this.sameSite = sameSite;
         this.expiry = expiry;
-        
     }
 
     private final String name;

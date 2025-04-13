@@ -26,7 +26,6 @@ public class AuthChallenge {
     public AuthChallenge(String scheme, String realm) {
         this.scheme = scheme;
         this.realm = realm;
-        
     }
 
     private final String scheme;

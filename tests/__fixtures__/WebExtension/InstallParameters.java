@@ -25,7 +25,6 @@ public class InstallParameters {
      */
     public InstallParameters(WebExtension.ExtensionData extensionData) {
         this.extensionData = extensionData;
-        
     }
 
     private final WebExtension.ExtensionData extensionData;

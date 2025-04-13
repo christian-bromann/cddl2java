@@ -27,7 +27,6 @@ public class ChannelProperties {
         this.channel = channel;
         this.serializationOptions = serializationOptions;
         this.ownership = ownership;
-        
     }
 
     private final Script.Channel channel;

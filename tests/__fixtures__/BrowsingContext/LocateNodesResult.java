@@ -25,7 +25,6 @@ public class LocateNodesResult {
      */
     public LocateNodesResult(List<Object> nodes) {
         this.nodes = nodes;
-        
     }
 
     private final List<Object> nodes;

@@ -24,7 +24,6 @@ public class WorkerRealmInfo {
      * Creates a new WorkerRealmInfo instance
      */
     public WorkerRealmInfo() {
-        
         this.type = "worker";
     }
 

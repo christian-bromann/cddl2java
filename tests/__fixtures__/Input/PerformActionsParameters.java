@@ -26,7 +26,6 @@ public class PerformActionsParameters {
     public PerformActionsParameters(String context, List<Object> actions) {
         this.context = context;
         this.actions = actions;
-        
     }
 
     private final String context;

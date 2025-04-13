@@ -27,7 +27,6 @@ public class ReloadParameters {
         this.context = context;
         this.ignoreCache = ignoreCache;
         this.wait = wait;
-        
     }
 
     private final String context;

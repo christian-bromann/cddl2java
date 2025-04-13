@@ -26,7 +26,6 @@ public class SetCookieParameters {
     public SetCookieParameters(Storage.PartialCookie cookie, Storage.PartitionDescriptor partition) {
         this.cookie = cookie;
         this.partition = partition;
-        
     }
 
     private final Storage.PartialCookie cookie;

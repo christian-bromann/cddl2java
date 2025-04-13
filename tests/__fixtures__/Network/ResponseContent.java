@@ -25,7 +25,6 @@ public class ResponseContent {
      */
     public ResponseContent(Long size) {
         this.size = size;
-        
     }
 
     private final Long size;

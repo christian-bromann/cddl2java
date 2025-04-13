@@ -27,7 +27,6 @@ public class FileDialogInfo {
         this.context = context;
         this.element = element;
         this.multiple = multiple;
-        
     }
 
     private final String context;

@@ -26,7 +26,6 @@ public class GetTreeParameters {
     public GetTreeParameters(Long maxDepth, String root) {
         this.maxDepth = maxDepth;
         this.root = root;
-        
     }
 
     private final Long maxDepth;

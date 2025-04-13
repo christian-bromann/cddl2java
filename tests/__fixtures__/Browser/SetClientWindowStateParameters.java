@@ -25,7 +25,6 @@ public class SetClientWindowStateParameters {
      */
     public SetClientWindowStateParameters(String clientWindow) {
         this.clientWindow = clientWindow;
-        
     }
 
     private final String clientWindow;

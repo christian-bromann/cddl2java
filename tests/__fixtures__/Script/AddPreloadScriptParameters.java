@@ -29,7 +29,6 @@ public class AddPreloadScriptParameters {
         this.contexts = contexts;
         this.userContexts = userContexts;
         this.sandbox = sandbox;
-        
     }
 
     private final String functionDeclaration;

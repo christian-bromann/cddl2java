@@ -27,7 +27,6 @@ public class NavigateParameters {
         this.context = context;
         this.url = url;
         this.wait = wait;
-        
     }
 
     private final String context;

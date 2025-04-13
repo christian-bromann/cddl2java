@@ -27,7 +27,6 @@ public class HandleUserPromptParameters {
         this.context = context;
         this.accept = accept;
         this.userText = userText;
-        
     }
 
     private final String context;

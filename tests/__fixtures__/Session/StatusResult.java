@@ -26,7 +26,6 @@ public class StatusResult {
     public StatusResult(Boolean ready, String message) {
         this.ready = ready;
         this.message = message;
-        
     }
 
     private final Boolean ready;

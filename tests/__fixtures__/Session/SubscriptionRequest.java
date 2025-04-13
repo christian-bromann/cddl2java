@@ -27,7 +27,6 @@ public class SubscriptionRequest {
         this.events = events;
         this.contexts = contexts;
         this.userContexts = userContexts;
-        
     }
 
     private final List<Object> events;

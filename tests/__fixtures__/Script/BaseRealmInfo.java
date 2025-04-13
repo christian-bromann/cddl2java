@@ -26,7 +26,6 @@ public class BaseRealmInfo {
     public BaseRealmInfo(Script.Realm realm, String origin) {
         this.realm = realm;
         this.origin = origin;
-        
     }
 
     private final Script.Realm realm;

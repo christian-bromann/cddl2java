@@ -26,7 +26,6 @@ public class NewResult {
     public NewResult(String sessionId, Capabilities capabilities) {
         this.sessionId = sessionId;
         this.capabilities = capabilities;
-        
     }
 
     private final String sessionId;

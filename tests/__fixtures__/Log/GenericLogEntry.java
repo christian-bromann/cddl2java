@@ -25,7 +25,6 @@ public class GenericLogEntry {
      */
     public GenericLogEntry(String type) {
         this.type = type;
-        
     }
 
     private final String type;

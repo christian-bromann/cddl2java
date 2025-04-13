@@ -27,7 +27,6 @@ public class MessageParameters {
         this.channel = channel;
         this.data = data;
         this.source = source;
-        
     }
 
     private final Script.Channel channel;

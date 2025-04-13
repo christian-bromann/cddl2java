@@ -30,7 +30,6 @@ public class UserPromptHandler {
         this.default = default;
         this.file = file;
         this.prompt = prompt;
-        
     }
 
     private final Session.UserPromptHandlerType alert;

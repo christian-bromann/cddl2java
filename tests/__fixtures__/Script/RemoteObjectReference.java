@@ -26,7 +26,6 @@ public class RemoteObjectReference {
     public RemoteObjectReference(Script.Handle handle, Script.SharedId sharedId) {
         this.handle = handle;
         this.sharedId = sharedId;
-        
     }
 
     private final Script.Handle handle;

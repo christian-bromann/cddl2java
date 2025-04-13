@@ -24,7 +24,6 @@ public class SharedWorkerRealmInfo {
      * Creates a new SharedWorkerRealmInfo instance
      */
     public SharedWorkerRealmInfo() {
-        
         this.type = "shared-worker";
     }
 

@@ -25,7 +25,6 @@ public class AuthRequiredParameters {
      */
     public AuthRequiredParameters(Network.ResponseData response) {
         this.response = response;
-        
     }
 
     private final Network.ResponseData response;

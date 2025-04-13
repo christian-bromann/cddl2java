@@ -25,7 +25,6 @@ public class GetUserContextsResult {
      */
     public GetUserContextsResult(List<Object> userContexts) {
         this.userContexts = userContexts;
-        
     }
 
     private final List<Object> userContexts;

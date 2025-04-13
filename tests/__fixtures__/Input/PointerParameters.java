@@ -25,7 +25,6 @@ public class PointerParameters {
      */
     public PointerParameters(Input.PointerType pointerType) {
         this.pointerType = pointerType;
-        
     }
 
     private final Input.PointerType pointerType;

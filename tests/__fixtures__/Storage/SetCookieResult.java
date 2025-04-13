@@ -25,7 +25,6 @@ public class SetCookieResult {
      */
     public SetCookieResult(Storage.PartitionKey partitionKey) {
         this.partitionKey = partitionKey;
-        
     }
 
     private final Storage.PartitionKey partitionKey;

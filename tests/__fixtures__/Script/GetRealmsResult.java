@@ -25,7 +25,6 @@ public class GetRealmsResult {
      */
     public GetRealmsResult(List<Object> realms) {
         this.realms = realms;
-        
     }
 
     private final List<Object> realms;

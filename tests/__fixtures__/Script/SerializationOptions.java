@@ -27,7 +27,6 @@ public class SerializationOptions {
         this.maxDomDepth = maxDomDepth;
         this.maxObjectDepth = maxObjectDepth;
         this.includeShadowTree = includeShadowTree;
-        
     }
 
     private final Object maxDomDepth;

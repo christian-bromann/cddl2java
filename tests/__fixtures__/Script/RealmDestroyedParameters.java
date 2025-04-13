@@ -25,7 +25,6 @@ public class RealmDestroyedParameters {
      */
     public RealmDestroyedParameters(Script.Realm realm) {
         this.realm = realm;
-        
     }
 
     private final Script.Realm realm;

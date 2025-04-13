@@ -25,7 +25,6 @@ public class ContinueWithAuthNoCredentials {
      */
     public ContinueWithAuthNoCredentials(Object action) {
         this.action = action;
-        
     }
 
     private final Object action;

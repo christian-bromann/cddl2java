@@ -25,7 +25,6 @@ public class SubscribeResult {
      */
     public SubscribeResult(String subscription) {
         this.subscription = subscription;
-        
     }
 
     private final String subscription;

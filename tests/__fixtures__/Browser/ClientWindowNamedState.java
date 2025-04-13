@@ -25,7 +25,6 @@ public class ClientWindowNamedState {
      */
     public ClientWindowNamedState(Object state) {
         this.state = state;
-        
     }
 
     private final Object state;

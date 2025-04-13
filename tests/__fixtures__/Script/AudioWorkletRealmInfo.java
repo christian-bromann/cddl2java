@@ -24,7 +24,6 @@ public class AudioWorkletRealmInfo {
      * Creates a new AudioWorkletRealmInfo instance
      */
     public AudioWorkletRealmInfo() {
-        
         this.type = "audio-worklet";
     }
 

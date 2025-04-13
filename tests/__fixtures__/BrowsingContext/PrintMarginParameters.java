@@ -28,7 +28,6 @@ public class PrintMarginParameters {
         this.left = left;
         this.right = right;
         this.top = top;
-        
     }
 
     private final Float bottom;

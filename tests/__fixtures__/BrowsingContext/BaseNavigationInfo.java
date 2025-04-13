@@ -28,7 +28,6 @@ public class BaseNavigationInfo {
         this.navigation = navigation;
         this.timestamp = timestamp;
         this.url = url;
-        
     }
 
     private final String context;

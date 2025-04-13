@@ -31,7 +31,6 @@ public class BaseParameters {
         this.request = request;
         this.timestamp = timestamp;
         this.intercepts = intercepts;
-        
     }
 
     private final Object context;

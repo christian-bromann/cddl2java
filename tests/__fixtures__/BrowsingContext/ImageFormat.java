@@ -26,7 +26,6 @@ public class ImageFormat {
     public ImageFormat(String type, Integer quality) {
         this.type = type;
         this.quality = quality;
-        
     }
 
     private final String type;

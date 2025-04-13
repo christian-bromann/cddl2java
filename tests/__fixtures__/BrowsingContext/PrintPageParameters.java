@@ -26,7 +26,6 @@ public class PrintPageParameters {
     public PrintPageParameters(Float height, Float width) {
         this.height = height;
         this.width = width;
-        
     }
 
     private final Float height;

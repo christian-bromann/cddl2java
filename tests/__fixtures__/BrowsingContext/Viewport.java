@@ -26,7 +26,6 @@ public class Viewport {
     public Viewport(Long width, Long height) {
         this.width = width;
         this.height = height;
-        
     }
 
     private final Long width;

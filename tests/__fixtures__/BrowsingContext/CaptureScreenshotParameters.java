@@ -28,7 +28,6 @@ public class CaptureScreenshotParameters {
         this.origin = origin;
         this.format = format;
         this.clip = clip;
-        
     }
 
     private final String context;

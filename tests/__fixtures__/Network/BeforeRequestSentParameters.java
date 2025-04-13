@@ -25,7 +25,6 @@ public class BeforeRequestSentParameters {
      */
     public BeforeRequestSentParameters(Network.Initiator initiator) {
         this.initiator = initiator;
-        
     }
 
     private final Network.Initiator initiator;

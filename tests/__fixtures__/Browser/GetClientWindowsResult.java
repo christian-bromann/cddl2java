@@ -25,7 +25,6 @@ public class GetClientWindowsResult {
      */
     public GetClientWindowsResult(List<Object> clientWindows) {
         this.clientWindows = clientWindows;
-        
     }
 
     private final List<Object> clientWindows;

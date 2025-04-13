@@ -33,7 +33,6 @@ public class SetCookieHeader {
         this.path = path;
         this.sameSite = sameSite;
         this.secure = secure;
-        
     }
 
     private final String name;

@@ -26,7 +26,6 @@ public class PartitionKey {
     public PartitionKey(String userContext, String sourceOrigin) {
         this.userContext = userContext;
         this.sourceOrigin = sourceOrigin;
-        
     }
 
     private final String userContext;

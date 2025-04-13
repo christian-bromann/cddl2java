@@ -26,7 +26,6 @@ public class CloseParameters {
     public CloseParameters(String context, Boolean promptUnload) {
         this.context = context;
         this.promptUnload = promptUnload;
-        
     }
 
     private final String context;

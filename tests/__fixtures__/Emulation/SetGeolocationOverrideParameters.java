@@ -27,7 +27,6 @@ public class SetGeolocationOverrideParameters {
         this.coordinates = coordinates;
         this.contexts = contexts;
         this.userContexts = userContexts;
-        
     }
 
     private final Object coordinates;

@@ -26,7 +26,6 @@ public class Source {
     public Source(Script.Realm realm, String context) {
         this.realm = realm;
         this.context = context;
-        
     }
 
     private final Script.Realm realm;

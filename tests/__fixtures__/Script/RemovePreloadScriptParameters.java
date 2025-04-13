@@ -25,7 +25,6 @@ public class RemovePreloadScriptParameters {
      */
     public RemovePreloadScriptParameters(Script.PreloadScript script) {
         this.script = script;
-        
     }
 
     private final Script.PreloadScript script;

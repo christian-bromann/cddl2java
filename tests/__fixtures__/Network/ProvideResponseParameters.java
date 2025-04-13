@@ -23,14 +23,13 @@ public class ProvideResponseParameters {
     /**
      * Creates a new ProvideResponseParameters instance
      */
-    public ProvideResponseParameters(Network.Request request, Network.BytesValue body, List<Object> cookies, List<Object> headers, String reasonPhrase, Long statusCode) {
+    public ProvideResponseParameters(Network.Request request, Network.BytesValue body, List<Network.SetCookieHeader> cookies, List<Object> headers, String reasonPhrase, Long statusCode) {
         this.request = request;
         this.body = body;
         this.cookies = cookies;
         this.headers = headers;
         this.reasonPhrase = reasonPhrase;
         this.statusCode = statusCode;
-        
     }
 
     private final Network.Request request;
@@ -53,13 +52,13 @@ public class ProvideResponseParameters {
         return this.body;
     }
 
-    private final List<Object> cookies;
+    private final List<Network.SetCookieHeader> cookies;
 
     /**
      * Gets the cookies property
-     * @return List<Object> value
+     * @return List<Network.SetCookieHeader> value
      */
-    public List<Object> getCookies() {
+    public List<Network.SetCookieHeader> getCookies() {
         return this.cookies;
     }
 

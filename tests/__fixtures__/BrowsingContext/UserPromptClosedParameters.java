@@ -28,7 +28,6 @@ public class UserPromptClosedParameters {
         this.accepted = accepted;
         this.type = type;
         this.userText = userText;
-        
     }
 
     private final String context;

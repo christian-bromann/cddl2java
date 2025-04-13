@@ -36,7 +36,6 @@ public class ResponseData {
         this.bodySize = bodySize;
         this.content = content;
         this.authChallenges = authChallenges;
-        
     }
 
     private final String url;

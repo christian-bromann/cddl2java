@@ -26,7 +26,6 @@ public class DisownParameters {
     public DisownParameters(List<Object> handles, Script.Target target) {
         this.handles = handles;
         this.target = target;
-        
     }
 
     private final List<Object> handles;

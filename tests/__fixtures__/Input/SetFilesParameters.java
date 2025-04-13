@@ -27,7 +27,6 @@ public class SetFilesParameters {
         this.context = context;
         this.element = element;
         this.files = files;
-        
     }
 
     private final String context;

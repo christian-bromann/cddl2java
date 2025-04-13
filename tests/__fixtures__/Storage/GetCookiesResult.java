@@ -23,19 +23,18 @@ public class GetCookiesResult {
     /**
      * Creates a new GetCookiesResult instance
      */
-    public GetCookiesResult(List<Object> cookies, Storage.PartitionKey partitionKey) {
+    public GetCookiesResult(List<Network.Cookie> cookies, Storage.PartitionKey partitionKey) {
         this.cookies = cookies;
         this.partitionKey = partitionKey;
-        
     }
 
-    private final List<Object> cookies;
+    private final List<Network.Cookie> cookies;
 
     /**
      * Gets the cookies property
-     * @return List<Object> value
+     * @return List<Network.Cookie> value
      */
-    public List<Object> getCookies() {
+    public List<Network.Cookie> getCookies() {
         return this.cookies;
     }
 

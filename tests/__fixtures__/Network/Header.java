@@ -26,7 +26,6 @@ public class Header {
     public Header(String name, Network.BytesValue value) {
         this.name = name;
         this.value = value;
-        
     }
 
     private final String name;
