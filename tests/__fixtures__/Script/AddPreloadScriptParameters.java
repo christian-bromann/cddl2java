@@ -23,7 +23,7 @@ public class AddPreloadScriptParameters {
     /**
      * Creates a new AddPreloadScriptParameters instance
      */
-    public AddPreloadScriptParameters(String functionDeclaration, List<Object> arguments, List<Object> contexts, List<Object> userContexts, String sandbox) {
+    public AddPreloadScriptParameters(String functionDeclaration, List<Script.ChannelValue> arguments, List<String> contexts, List<String> userContexts, String sandbox) {
         this.functionDeclaration = functionDeclaration;
         this.arguments = arguments;
         this.contexts = contexts;
@@ -41,33 +41,33 @@ public class AddPreloadScriptParameters {
         return this.functionDeclaration;
     }
 
-    private final List<Object> arguments;
+    private final List<Script.ChannelValue> arguments;
 
     /**
      * Gets the arguments property
-     * @return List<Object> value
+     * @return List<Script.ChannelValue> value
      */
-    public List<Object> getArguments() {
+    public List<Script.ChannelValue> getArguments() {
         return this.arguments;
     }
 
-    private final List<Object> contexts;
+    private final List<String> contexts;
 
     /**
      * Gets the contexts property
-     * @return List<Object> value
+     * @return List<String> value
      */
-    public List<Object> getContexts() {
+    public List<String> getContexts() {
         return this.contexts;
     }
 
-    private final List<Object> userContexts;
+    private final List<String> userContexts;
 
     /**
      * Gets the userContexts property
-     * @return List<Object> value
+     * @return List<String> value
      */
-    public List<Object> getUserContexts() {
+    public List<String> getUserContexts() {
         return this.userContexts;
     }
 

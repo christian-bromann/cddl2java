@@ -23,17 +23,17 @@ public class GetClientWindowsResult {
     /**
      * Creates a new GetClientWindowsResult instance
      */
-    public GetClientWindowsResult(List<Object> clientWindows) {
+    public GetClientWindowsResult(List<Browser.ClientWindowInfo> clientWindows) {
         this.clientWindows = clientWindows;
     }
 
-    private final List<Object> clientWindows;
+    private final List<Browser.ClientWindowInfo> clientWindows;
 
     /**
      * Gets the clientWindows property
-     * @return List<Object> value
+     * @return List<Browser.ClientWindowInfo> value
      */
-    public List<Object> getClientWindows() {
+    public List<Browser.ClientWindowInfo> getClientWindows() {
         return this.clientWindows;
     }
 

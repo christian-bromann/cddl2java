@@ -23,7 +23,7 @@ public class SetViewportParameters {
     /**
      * Creates a new SetViewportParameters instance
      */
-    public SetViewportParameters(String context, Object viewport, Object devicePixelRatio, List<Object> userContexts) {
+    public SetViewportParameters(String context, Object viewport, Object devicePixelRatio, List<String> userContexts) {
         this.context = context;
         this.viewport = viewport;
         this.devicePixelRatio = devicePixelRatio;
@@ -60,13 +60,13 @@ public class SetViewportParameters {
         return this.devicePixelRatio;
     }
 
-    private final List<Object> userContexts;
+    private final List<String> userContexts;
 
     /**
      * Gets the userContexts property
-     * @return List<Object> value
+     * @return List<String> value
      */
-    public List<Object> getUserContexts() {
+    public List<String> getUserContexts() {
         return this.userContexts;
     }
 

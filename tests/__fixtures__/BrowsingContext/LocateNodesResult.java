@@ -23,17 +23,17 @@ public class LocateNodesResult {
     /**
      * Creates a new LocateNodesResult instance
      */
-    public LocateNodesResult(List<Object> nodes) {
+    public LocateNodesResult(List<Script.NodeRemoteValue> nodes) {
         this.nodes = nodes;
     }
 
-    private final List<Object> nodes;
+    private final List<Script.NodeRemoteValue> nodes;
 
     /**
      * Gets the nodes property
-     * @return List<Object> value
+     * @return List<Script.NodeRemoteValue> value
      */
-    public List<Object> getNodes() {
+    public List<Script.NodeRemoteValue> getNodes() {
         return this.nodes;
     }
 

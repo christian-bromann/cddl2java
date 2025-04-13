@@ -23,17 +23,17 @@ public class StackTrace {
     /**
      * Creates a new StackTrace instance
      */
-    public StackTrace(List<Object> callFrames) {
+    public StackTrace(List<Script.StackFrame> callFrames) {
         this.callFrames = callFrames;
     }
 
-    private final List<Object> callFrames;
+    private final List<Script.StackFrame> callFrames;
 
     /**
      * Gets the callFrames property
-     * @return List<Object> value
+     * @return List<Script.StackFrame> value
      */
-    public List<Object> getCallFrames() {
+    public List<Script.StackFrame> getCallFrames() {
         return this.callFrames;
     }
 

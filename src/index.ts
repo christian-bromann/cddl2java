@@ -3,7 +3,7 @@ import path from 'node:path'
 import util from 'node:util'
 
 import camelcase from 'camelcase'
-import { parse as parseCDDL, type PropertyReference, type Property, type Group, type Assignment } from 'cddl'
+import { parse as parseCDDL, type PropertyReference, type Property, type Group, type Array, type Assignment, type PropertyType } from 'cddl'
 
 import { writeFile } from './utils.js'
 import { CDDL_PARSE_ERROR_MESSAGE } from './constants.js'
@@ -166,48 +166,9 @@ function resultName(name: string): string {
     return resultName[0].toUpperCase() + resultName.slice(1);
 }
 
-/**
- * Gets the correct cookie type for a given class
- * @param assignmentName The name of the assignment (e.g., 'network.ContinueRequest')
- * @param propertyName The name of the property (e.g., 'cookies')
- * @returns The correct type for the property in that class
- */
-function getCookieType(assignmentName: string, propertyName: string): string | null {
-    // Only apply special handling to the cookies property
-    if (propertyName !== 'cookies') {
-        return null
-    }
-
-    console.log(`Checking cookie type for ${assignmentName}`)
-
-    // Map specific assignment names to their exact required cookie types
-    // These mappings are derived from the expected fixture files
-    if (assignmentName === 'network.ContinueRequest' || assignmentName === 'network.ContinueRequestParameters') {
-        console.log(`Returning List<Network.CookieHeader> for ${assignmentName}`)
-        return 'List<Network.CookieHeader>'
-    }
-
-    if (assignmentName === 'network.ContinueResponse' || assignmentName === 'network.ContinueResponseParameters' ||
-        assignmentName === 'network.ProvideResponse' || assignmentName === 'network.ProvideResponseParameters') {
-        console.log(`Returning List<Network.SetCookieHeader> for ${assignmentName}`)
-        return 'List<Network.SetCookieHeader>'
-    }
-
-    if (assignmentName === 'network.RequestData' ||
-        assignmentName === 'storage.GetCookiesResult') {
-        console.log(`Returning List<Network.Cookie> for ${assignmentName}`)
-        return 'List<Network.Cookie>'
-    }
-
-    console.log(`No special cookie handling for ${assignmentName}`)
-    return null
-}
-
 async function createPropertyClasses (assignments: Assignment[]) {
     const javaPropFiles = new Map<MapKey, string>()
     for (const assignment of assignments) {
-        console.log(`Processing assignment: ${assignment.Name}`)
-
         /**
          * only create methods for groups that have a method property and therefor are commands that
          * receive a certain result
@@ -235,25 +196,66 @@ async function createPropertyClasses (assignments: Assignment[]) {
                     continue
                 }
 
-                // Set assignment name for context in parseType
-                if (typeof property.Type === 'object') {
-                    (property.Type as any).AssignmentName = assignment.Name
-                }
-
-                console.log(`Processing property ${property.Name} in assignment ${assignment.Name}`)
                 let { type, isLiteral } = parseType(property.Type)
-                console.log(`Property ${property.Name} in ${assignment.Name} parsed as type: ${type}`)
-
-                // Check for special cookie type handling
-                const cookieType = getCookieType(assignment.Name, property.Name);
-                if (cookieType) {
-                    type = cookieType;
-                    console.log(`Applied cookie type override for ${property.Name} in ${assignment.Name}: ${type}`);
-                }
 
                 // Override specific unknown types with known implementations
                 let finalType = type;
+
+                // Check for array of types
+                // {
+                //     "HasCut": true,
+                //     "Occurrence": {
+                //       "n": 0,
+                //       "m": null
+                //     },
+                //     "Name": "cookies",
+                //     "Type": [
+                //       {
+                //         "Type": "array",
+                //         "Name": "",
+                //         "Values": [
+                //           {
+                //             "HasCut": false,
+                //             "Occurrence": {
+                //               "n": 0,
+                //               "m": null
+                //             },
+                //             "Name": "",
+                //             "Type": [
+                //               {
+                //                 "Type": "group",
+                //                 "Value": "network.SetCookieHeader",
+                //                 "Unwrapped": false
+                //               }
+                //             ],
+                //             "Comments": []
+                //           }
+                //         ],
+                //         "Comments": []
+                //       }
+                //     ],
+                //     "Comments": []
+                //   }
+                if (
+                    Array.isArray(property.Type) &&
+                    property.Type.length > 0 &&
+                    property.Type[0] &&
+                    (property.Type[0] as Array).Type === 'array'
+                ) {
+                    const prop = property.Type[0] as Array
+                    if (prop.Values && prop.Values.length > 0 && prop.Values[0] && Array.isArray((prop.Values[0] as Property).Type)) {
+                        const propType = (prop.Values[0] as Property).Type as PropertyReference[]
+                        if (typeof propType[0].Value === 'string') {
+                            finalType = `List<${parseType(propType[0]).type}>`
+                        }
+                    }
+                }
+
+                /**
+                 * special cases for which we don't have proper type handling yet
+                 */
                 if (type === 'Unknown') {
+                    console.log(11, JSON.stringify(property, null, 2))
                     // Apply special case overrides for common property names
                     if (property.Name === 'capabilities') {
                         finalType = 'Capabilities';
@@ -358,58 +360,17 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
     let type = 'Unknown'
     let isLiteral = false
 
-    // Debug log
-    console.log(`parseType called with:`, JSON.stringify(specType, null, 2))
-
     // Handle null or undefined type
     if (!specType) {
-        console.log('parseType: returning Object for null/undefined type')
         return { type: 'Object', isLiteral }
     }
 
     // Handle common property patterns
     if (typeof specType === 'object' && !Array.isArray(specType) && 'Name' in specType) {
         const propName = specType.Name;
-        console.log(`parseType: handling named property: ${propName}, in assignment: ${specType.AssignmentName || 'unknown'}`)
-
-        // Handle cookies property specifically with assignment context
-        if (propName === 'cookies') {
-            console.log(`Found cookies property with assignment context: ${JSON.stringify(specType.AssignmentName)}`)
-
-            if (specType.AssignmentName && typeof specType.AssignmentName === 'string') {
-                // Special handling for specific assignment contexts
-                if (specType.AssignmentName.includes('ContinueRequest')) {
-                    console.log(`Returning cookie type for ContinueRequest: List<Network.CookieHeader>`)
-                    return { type: 'List<Network.CookieHeader>', isLiteral: false }
-                }
-
-                if (specType.AssignmentName.includes('ContinueResponse')) {
-                    console.log(`Returning cookie type for ContinueResponse: List<Network.SetCookieHeader>`)
-                    return { type: 'List<Network.SetCookieHeader>', isLiteral: false }
-                }
-
-                if (specType.AssignmentName.includes('RequestData')) {
-                    console.log(`Returning cookie type for RequestData: List<Network.CookieHeader>`)
-                    return { type: 'List<Network.CookieHeader>', isLiteral: false }
-                }
-
-                if (specType.AssignmentName.includes('GetCookiesResult')) {
-                    console.log(`Returning cookie type for GetCookiesResult: List<Network.Cookie>`)
-                    return { type: 'List<Network.Cookie>', isLiteral: false }
-                }
-
-                if (specType.AssignmentName.includes('ProvideResponse')) {
-                    console.log(`Returning cookie type for ProvideResponse: List<Network.SetCookieHeader>`)
-                    return { type: 'List<Network.SetCookieHeader>', isLiteral: false }
-                }
-
-                console.log(`No special cookie handling matched for ${specType.AssignmentName}, default to List<Object>`)
-            }
-        }
 
         // Handle specific property names
         if (propName === 'capabilities' && 'Type' in specType && Array.isArray(specType.Type)) {
-            console.log('parseType: returning Capabilities type')
             return { type: 'Capabilities', isLiteral: false };
         }
 

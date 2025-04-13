@@ -23,7 +23,7 @@ public class PointerSourceActions {
     /**
      * Creates a new PointerSourceActions instance
      */
-    public PointerSourceActions(String id, Input.PointerParameters parameters, List<Object> actions) {
+    public PointerSourceActions(String id, Input.PointerParameters parameters, List<Input.PointerSourceAction> actions) {
         this.id = id;
         this.parameters = parameters;
         this.actions = actions;
@@ -60,13 +60,13 @@ public class PointerSourceActions {
         return this.parameters;
     }
 
-    private final List<Object> actions;
+    private final List<Input.PointerSourceAction> actions;
 
     /**
      * Gets the actions property
-     * @return List<Object> value
+     * @return List<Input.PointerSourceAction> value
      */
-    public List<Object> getActions() {
+    public List<Input.PointerSourceAction> getActions() {
         return this.actions;
     }
 

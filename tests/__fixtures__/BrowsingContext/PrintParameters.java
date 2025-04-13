@@ -23,7 +23,7 @@ public class PrintParameters {
     /**
      * Creates a new PrintParameters instance
      */
-    public PrintParameters(String context, Boolean background, BrowsingContext.PrintMarginParameters margin, Object orientation, BrowsingContext.PrintPageParameters page, List<Object> pageRanges, Float scale, Boolean shrinkToFit) {
+    public PrintParameters(String context, Boolean background, BrowsingContext.PrintMarginParameters margin, Object orientation, BrowsingContext.PrintPageParameters page, List<Long> pageRanges, Float scale, Boolean shrinkToFit) {
         this.context = context;
         this.background = background;
         this.margin = margin;
@@ -84,13 +84,13 @@ public class PrintParameters {
         return this.page;
     }
 
-    private final List<Object> pageRanges;
+    private final List<Long> pageRanges;
 
     /**
      * Gets the pageRanges property
-     * @return List<Object> value
+     * @return List<Long> value
      */
-    public List<Object> getPageRanges() {
+    public List<Long> getPageRanges() {
         return this.pageRanges;
     }
 

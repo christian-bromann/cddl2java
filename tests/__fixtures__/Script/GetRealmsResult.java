@@ -23,17 +23,17 @@ public class GetRealmsResult {
     /**
      * Creates a new GetRealmsResult instance
      */
-    public GetRealmsResult(List<Object> realms) {
+    public GetRealmsResult(List<Script.RealmInfo> realms) {
         this.realms = realms;
     }
 
-    private final List<Object> realms;
+    private final List<Script.RealmInfo> realms;
 
     /**
      * Gets the realms property
-     * @return List<Object> value
+     * @return List<Script.RealmInfo> value
      */
-    public List<Object> getRealms() {
+    public List<Script.RealmInfo> getRealms() {
         return this.realms;
     }
 

@@ -23,7 +23,7 @@ public class ContinueRequestParameters {
     /**
      * Creates a new ContinueRequestParameters instance
      */
-    public ContinueRequestParameters(Network.Request request, Network.BytesValue body, List<Network.CookieHeader> cookies, List<Object> headers, String method, String url) {
+    public ContinueRequestParameters(Network.Request request, Network.BytesValue body, List<Network.CookieHeader> cookies, List<Network.Header> headers, String method, String url) {
         this.request = request;
         this.body = body;
         this.cookies = cookies;
@@ -62,13 +62,13 @@ public class ContinueRequestParameters {
         return this.cookies;
     }
 
-    private final List<Object> headers;
+    private final List<Network.Header> headers;
 
     /**
      * Gets the headers property
-     * @return List<Object> value
+     * @return List<Network.Header> value
      */
-    public List<Object> getHeaders() {
+    public List<Network.Header> getHeaders() {
         return this.headers;
     }
 

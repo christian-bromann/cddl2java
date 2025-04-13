@@ -23,7 +23,7 @@ public class SetGeolocationOverrideParameters {
     /**
      * Creates a new SetGeolocationOverrideParameters instance
      */
-    public SetGeolocationOverrideParameters(Object coordinates, List<Object> contexts, List<Object> userContexts) {
+    public SetGeolocationOverrideParameters(Object coordinates, List<String> contexts, List<String> userContexts) {
         this.coordinates = coordinates;
         this.contexts = contexts;
         this.userContexts = userContexts;
@@ -39,23 +39,23 @@ public class SetGeolocationOverrideParameters {
         return this.coordinates;
     }
 
-    private final List<Object> contexts;
+    private final List<String> contexts;
 
     /**
      * Gets the contexts property
-     * @return List<Object> value
+     * @return List<String> value
      */
-    public List<Object> getContexts() {
+    public List<String> getContexts() {
         return this.contexts;
     }
 
-    private final List<Object> userContexts;
+    private final List<String> userContexts;
 
     /**
      * Gets the userContexts property
-     * @return List<Object> value
+     * @return List<String> value
      */
-    public List<Object> getUserContexts() {
+    public List<String> getUserContexts() {
         return this.userContexts;
     }
 

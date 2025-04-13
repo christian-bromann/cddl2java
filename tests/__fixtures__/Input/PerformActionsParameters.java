@@ -23,7 +23,7 @@ public class PerformActionsParameters {
     /**
      * Creates a new PerformActionsParameters instance
      */
-    public PerformActionsParameters(String context, List<Object> actions) {
+    public PerformActionsParameters(String context, List<Input.SourceActions> actions) {
         this.context = context;
         this.actions = actions;
     }
@@ -38,13 +38,13 @@ public class PerformActionsParameters {
         return this.context;
     }
 
-    private final List<Object> actions;
+    private final List<Input.SourceActions> actions;
 
     /**
      * Gets the actions property
-     * @return List<Object> value
+     * @return List<Input.SourceActions> value
      */
-    public List<Object> getActions() {
+    public List<Input.SourceActions> getActions() {
         return this.actions;
     }
 

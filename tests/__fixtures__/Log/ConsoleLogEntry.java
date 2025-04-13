@@ -23,7 +23,7 @@ public class ConsoleLogEntry {
     /**
      * Creates a new ConsoleLogEntry instance
      */
-    public ConsoleLogEntry(String method, List<Object> args) {
+    public ConsoleLogEntry(String method, List<Script.RemoteValue> args) {
         this.method = method;
         this.args = args;
         this.type = "console";
@@ -49,13 +49,13 @@ public class ConsoleLogEntry {
         return this.method;
     }
 
-    private final List<Object> args;
+    private final List<Script.RemoteValue> args;
 
     /**
      * Gets the args property
-     * @return List<Object> value
+     * @return List<Script.RemoteValue> value
      */
-    public List<Object> getArgs() {
+    public List<Script.RemoteValue> getArgs() {
         return this.args;
     }
 

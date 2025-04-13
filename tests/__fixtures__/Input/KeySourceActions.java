@@ -23,7 +23,7 @@ public class KeySourceActions {
     /**
      * Creates a new KeySourceActions instance
      */
-    public KeySourceActions(String id, List<Object> actions) {
+    public KeySourceActions(String id, List<Input.KeySourceAction> actions) {
         this.id = id;
         this.actions = actions;
         this.type = "key";
@@ -49,13 +49,13 @@ public class KeySourceActions {
         return this.id;
     }
 
-    private final List<Object> actions;
+    private final List<Input.KeySourceAction> actions;
 
     /**
      * Gets the actions property
-     * @return List<Object> value
+     * @return List<Input.KeySourceAction> value
      */
-    public List<Object> getActions() {
+    public List<Input.KeySourceAction> getActions() {
         return this.actions;
     }
 

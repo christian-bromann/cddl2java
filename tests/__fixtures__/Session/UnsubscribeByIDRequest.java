@@ -23,17 +23,17 @@ public class UnsubscribeByIDRequest {
     /**
      * Creates a new UnsubscribeByIDRequest instance
      */
-    public UnsubscribeByIDRequest(List<Object> subscriptions) {
+    public UnsubscribeByIDRequest(List<String> subscriptions) {
         this.subscriptions = subscriptions;
     }
 
-    private final List<Object> subscriptions;
+    private final List<String> subscriptions;
 
     /**
      * Gets the subscriptions property
-     * @return List<Object> value
+     * @return List<String> value
      */
-    public List<Object> getSubscriptions() {
+    public List<String> getSubscriptions() {
         return this.subscriptions;
     }
 

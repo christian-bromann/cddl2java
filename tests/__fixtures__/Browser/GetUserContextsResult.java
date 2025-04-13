@@ -23,17 +23,17 @@ public class GetUserContextsResult {
     /**
      * Creates a new GetUserContextsResult instance
      */
-    public GetUserContextsResult(List<Object> userContexts) {
+    public GetUserContextsResult(List<Browser.UserContextInfo> userContexts) {
         this.userContexts = userContexts;
     }
 
-    private final List<Object> userContexts;
+    private final List<Browser.UserContextInfo> userContexts;
 
     /**
      * Gets the userContexts property
-     * @return List<Object> value
+     * @return List<Browser.UserContextInfo> value
      */
-    public List<Object> getUserContexts() {
+    public List<Browser.UserContextInfo> getUserContexts() {
         return this.userContexts;
     }
 

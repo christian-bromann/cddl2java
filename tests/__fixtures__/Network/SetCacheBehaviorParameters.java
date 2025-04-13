@@ -23,7 +23,7 @@ public class SetCacheBehaviorParameters {
     /**
      * Creates a new SetCacheBehaviorParameters instance
      */
-    public SetCacheBehaviorParameters(Object cacheBehavior, List<Object> contexts) {
+    public SetCacheBehaviorParameters(Object cacheBehavior, List<String> contexts) {
         this.cacheBehavior = cacheBehavior;
         this.contexts = contexts;
     }
@@ -38,13 +38,13 @@ public class SetCacheBehaviorParameters {
         return this.cacheBehavior;
     }
 
-    private final List<Object> contexts;
+    private final List<String> contexts;
 
     /**
      * Gets the contexts property
-     * @return List<Object> value
+     * @return List<String> value
      */
-    public List<Object> getContexts() {
+    public List<String> getContexts() {
         return this.contexts;
     }
 

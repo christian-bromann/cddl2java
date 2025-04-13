@@ -23,7 +23,7 @@ public class WheelSourceActions {
     /**
      * Creates a new WheelSourceActions instance
      */
-    public WheelSourceActions(String id, List<Object> actions) {
+    public WheelSourceActions(String id, List<Input.WheelSourceAction> actions) {
         this.id = id;
         this.actions = actions;
         this.type = "wheel";
@@ -49,13 +49,13 @@ public class WheelSourceActions {
         return this.id;
     }
 
-    private final List<Object> actions;
+    private final List<Input.WheelSourceAction> actions;
 
     /**
      * Gets the actions property
-     * @return List<Object> value
+     * @return List<Input.WheelSourceAction> value
      */
-    public List<Object> getActions() {
+    public List<Input.WheelSourceAction> getActions() {
         return this.actions;
     }
 

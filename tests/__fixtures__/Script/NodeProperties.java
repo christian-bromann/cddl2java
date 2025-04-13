@@ -23,7 +23,7 @@ public class NodeProperties {
     /**
      * Creates a new NodeProperties instance
      */
-    public NodeProperties(Long nodeType, Long childNodeCount, Map<String, String> attributes, List<Object> children, String localName, Object mode, String namespaceURI, String nodeValue, Object shadowRoot) {
+    public NodeProperties(Long nodeType, Long childNodeCount, Map<String, String> attributes, List<Script.NodeRemoteValue> children, String localName, Object mode, String namespaceURI, String nodeValue, Object shadowRoot) {
         this.nodeType = nodeType;
         this.childNodeCount = childNodeCount;
         this.attributes = attributes;
@@ -65,13 +65,13 @@ public class NodeProperties {
         return this.attributes;
     }
 
-    private final List<Object> children;
+    private final List<Script.NodeRemoteValue> children;
 
     /**
      * Gets the children property
-     * @return List<Object> value
+     * @return List<Script.NodeRemoteValue> value
      */
-    public List<Object> getChildren() {
+    public List<Script.NodeRemoteValue> getChildren() {
         return this.children;
     }
 

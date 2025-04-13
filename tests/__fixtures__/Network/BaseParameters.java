@@ -23,7 +23,7 @@ public class BaseParameters {
     /**
      * Creates a new BaseParameters instance
      */
-    public BaseParameters(Object context, Boolean isBlocked, Object navigation, Long redirectCount, Network.RequestData request, Long timestamp, List<Object> intercepts) {
+    public BaseParameters(Object context, Boolean isBlocked, Object navigation, Long redirectCount, Network.RequestData request, Long timestamp, List<Network.Intercept> intercepts) {
         this.context = context;
         this.isBlocked = isBlocked;
         this.navigation = navigation;
@@ -93,13 +93,13 @@ public class BaseParameters {
         return this.timestamp;
     }
 
-    private final List<Object> intercepts;
+    private final List<Network.Intercept> intercepts;
 
     /**
      * Gets the intercepts property
-     * @return List<Object> value
+     * @return List<Network.Intercept> value
      */
-    public List<Object> getIntercepts() {
+    public List<Network.Intercept> getIntercepts() {
         return this.intercepts;
     }
 
