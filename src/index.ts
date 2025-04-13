@@ -28,8 +28,8 @@ function parseCDDLFile (filePath: string) {
     try {
         ast = parseCDDL(filePath)
     } catch (err) {
-        console.log(util.format(CDDL_PARSE_ERROR_MESSAGE, `Failed to parse ${filePath}: ${(err as Error).stack}`))
-        process.exit(0)
+        /* c8 ignore next */ console.log(util.format(CDDL_PARSE_ERROR_MESSAGE, `Failed to parse ${filePath}: ${(err as Error).stack}`))
+        /* c8 ignore next */ process.exit(0)
     }
 
     /**
@@ -158,10 +158,6 @@ public class ${moduleScope}Module {
 
 // Helper function to get correct class name for result types
 function resultName(name: string): string {
-    if (!name.includes('.')) {
-        return name[0].toUpperCase() + name.slice(1);
-    }
-
     const [scope, resultName] = name.split('.');
     return resultName[0].toUpperCase() + resultName.slice(1);
 }
@@ -255,7 +251,6 @@ async function createPropertyClasses (assignments: Assignment[]) {
                  * special cases for which we don't have proper type handling yet
                  */
                 if (type === 'Unknown') {
-                    console.log(11, JSON.stringify(property, null, 2))
                     // Apply special case overrides for common property names
                     if (property.Name === 'capabilities') {
                         finalType = 'Capabilities';
@@ -267,7 +262,7 @@ async function createPropertyClasses (assignments: Assignment[]) {
                     } else if (property.Name === 'attributes') {
                         finalType = 'Map<String, String>';
                     } else {
-                        finalType = 'Object'; // Default fallback
+                        /* c8 ignore next */ throw new Error(`Unknown property: ${property.Name}`)
                     }
                 }
 
@@ -360,69 +355,9 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
     let type = 'Unknown'
     let isLiteral = false
 
-    // Handle null or undefined type
-    if (!specType) {
-        return { type: 'Object', isLiteral }
-    }
-
-    // Handle common property patterns
-    if (typeof specType === 'object' && !Array.isArray(specType) && 'Name' in specType) {
-        const propName = specType.Name;
-
-        // Handle specific property names
-        if (propName === 'capabilities' && 'Type' in specType && Array.isArray(specType.Type)) {
-            return { type: 'Capabilities', isLiteral: false };
-        }
-
-        // Handle attributes
-        if (propName === 'attributes') {
-            return { type: 'Map<String, String>', isLiteral: false };
-        }
-
-        // Handle value property with context
-        if (propName === 'value' && 'Type' in specType && Array.isArray(specType.Type) &&
-            specType.Type.length > 0 && typeof specType.Type[0] === 'object' &&
-            specType.Type[0].Type === 'group' && 'Properties' in specType.Type[0]) {
-
-            const properties = specType.Type[0].Properties;
-            if (Array.isArray(properties)) {
-                // Check property names to determine specific type
-                const hasNameProp = properties.some((p: any) => !Array.isArray(p) && p.Name === 'name');
-                const hasRoleProp = properties.some((p: any) => !Array.isArray(p) && p.Name === 'role');
-                const hasContextProp = properties.some((p: any) => !Array.isArray(p) && p.Name === 'context');
-
-                if (hasContextProp) {
-                    return { type: 'ContextValue', isLiteral: false };
-                }
-
-                if (hasNameProp || hasRoleProp) {
-                    return { type: 'AccessibilityValue', isLiteral: false };
-                }
-            }
-
-            // Default for value objects
-            return { type: 'Map<String, Object>', isLiteral: false };
-        }
-    }
-
     // Handle complex single object with Type field (not in an array)
     if (!Array.isArray(specType) && typeof specType === 'object' && 'Type' in specType) {
-        // Handle nested group with properties
-        if (specType.Type === 'group' && 'Properties' in specType) {
-            return { type: 'Map<String, Object>', isLiteral: false }
-        }
-
-        // Convert to array format for unified processing
         specType = [specType]
-    }
-
-    if (!Array.isArray(specType)) {
-        return { type: 'Object', isLiteral }
-    }
-
-    // Handle empty arrays
-    if (specType.length === 0) {
-        return { type: 'Object', isLiteral }
     }
 
     // Handle single value types
@@ -430,8 +365,6 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
         // Handle primitive types
         if (specType[0] === 'bool') {
             return { type: 'Boolean', isLiteral: false };
-        } else if (specType[0] === 'int') {
-            return { type: 'Integer', isLiteral: false };
         } else if (specType[0] === 'float') {
             return { type: 'Float', isLiteral: false };
         } else if ((specType[0] === 'string' || specType[0] === 'text')) {
@@ -444,16 +377,7 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
                 const objType = specType[0].Type
 
                 if (objType === 'group') {
-                    if ('Name' in specType[0] && specType[0].Name && 'Properties' in specType[0]) {
-                        // Group with properties - map to a custom class or Map
-                        if (specType[0].Properties && Array.isArray(specType[0].Properties) &&
-                            specType[0].Properties.length > 0 &&
-                            specType[0].Properties.some((p: any) => p.Name === 'text')) {
-                            // Special case for text attributes
-                            return { type: 'Map<String, String>', isLiteral: false };
-                        }
-                        return { type: 'Map<String, Object>', isLiteral: false };
-                    } else if ('Value' in specType[0] && typeof specType[0].Value === 'string') {
+                    if ('Value' in specType[0] && typeof specType[0].Value === 'string') {
                         // Special types
                         const value = specType[0].Value;
 
@@ -462,13 +386,11 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
                             return { type: 'Integer', isLiteral: false };
                         } else if (value === 'js-uint') {
                             return { type: 'Long', isLiteral: false };
-                        } else if (value === 'Extensible') {
-                            return { type: 'Map<String, Object>', isLiteral: false };
                         }
 
                         // Special case known types
                         const knownTypes: Record<string, string> = {
-                            'session.Capabilities': 'Capabilities',
+                            'session.Capabilities': 'Session.Capabilities',
                             'Capabilities': 'Capabilities',
                             'session.Subscription': 'String',
                             'browsingContext.BrowsingContext': 'String',
@@ -480,11 +402,6 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
                             return { type: knownTypes[value], isLiteral: false };
                         }
 
-                        // Events are strings
-                        if (value.endsWith('Event')) {
-                            return { type: 'String', isLiteral: false };
-                        }
-
                         // Reference to another type - keep proper casing
                         const parts = value.split('.');
                         if (parts.length > 1) {
@@ -493,9 +410,7 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
                             const typeName = parts[1][0].toUpperCase() + parts[1].slice(1);
                             return { type: `${scope}.${typeName}`, isLiteral: false };
                         }
-
-                        // Simple type
-                        return { type: value[0].toUpperCase() + value.slice(1), isLiteral: false };
+                        /* c8 ignore next */throw new Error(`Unknown type: ${value}`)
                     }
                 } else if (objType === 'float') {
                     return { type: 'Float', isLiteral: false };
@@ -506,37 +421,17 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
                         const minVal = specType[0].Value.Min.Value;
                         return { type: Number.isInteger(minVal) ? 'Integer' : 'Float', isLiteral: false };
                     }
-                    return { type: 'Float', isLiteral: false }; // Default for ranges
+                    /* c8 ignore next */ throw new Error(`Unknown type: ${JSON.stringify(specType[0].Value)}`)
                 } else if (objType === 'literal' && 'Value' in specType[0] && specType[0].Value !== undefined) {
-                    isLiteral = true;
-                    type = typeof specType[0].Value === 'string' ?
-                           specType[0].Value :
-                           String(specType[0].Value);
-                    return { type, isLiteral };
-                } else if (objType === 'array' && 'Values' in specType[0]) {
-                    // Handle array types
-                    const valueType = parseType(specType[0].Values).type;
-
-                    // Special handling for arrays of strings
-                    if (valueType === 'Unknown' && Array.isArray(specType[0].Values) && specType[0].Values.length > 0) {
-                        const firstValue = specType[0].Values[0];
-                        if (typeof firstValue === 'object' && firstValue.Type === 'group' && 'Value' in firstValue) {
-                            const referencedType = firstValue.Value;
-                            if (typeof referencedType === 'string') {
-                                if (referencedType === 'session.Subscription' ||
-                                    referencedType === 'browsingContext.BrowsingContext' ||
-                                    referencedType === 'browser.UserContext' ||
-                                    referencedType.endsWith('Event')) {
-                                    return { type: 'List<String>', isLiteral: false };
-                                }
-                            }
-                        }
-                        return { type: 'List<Object>', isLiteral: false };
+                    return { type: specType[0].Value, isLiteral: true };
+                } else if (Array.isArray(specType[0].Values)) {
+                    const propType = specType[0].Values[0] as Property
+                    if (propType.Type && Array.isArray(propType.Type) && propType.Type.length === 1) {
+                        const subType = parseType(propType.Type[0])
+                        return { type: `List<${subType.type}>`, isLiteral: false }
                     }
 
-                    return { type: valueType === 'Unknown' ? 'List<Object>' : `List<${valueType}>`, isLiteral: false };
-                } else if (objType === 'map') {
-                    return { type: 'Map<String, Object>', isLiteral: false };
+                    return { type: 'List<String>', isLiteral: false }
                 }
             }
 
@@ -565,12 +460,7 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
                         }
                     }
                 }
-
-                // Generic fallback for types with operators
-                const baseType = typeof specType[0].Type === 'string'
-                    ? specType[0].Type === 'bool' ? 'Boolean' : 'Object'
-                    : parseType([{ Type: specType[0].Type.Type, Value: specType[0].Type.Value }]).type;
-                return { type: baseType, isLiteral };
+            /* c8 ignore next */ throw new Error(`Unknown operator: ${JSON.stringify(specType[0].Operator)}`)
             }
         }
     } else {
@@ -625,41 +515,12 @@ async function createResultClasses (assignments: Assignment[]) {
             continue;
         }
 
-        // Special case for Capabilities - skip and handle separately
-        if (assignment.Name === 'Capabilities') {
-            javaResultFiles.set(mapKey, capabilitiesClassTemplate);
-            continue;
-        }
-
         const props = new Map<string, { type: string, isLiteral: boolean }>()
 
         if ('Properties' in assignment && assignment.Properties) {
-            for (const property of assignment.Properties) {
-                if (Array.isArray(property) || !property.Name) {
-                    continue
-                }
-
+            for (const property of assignment.Properties as Property[]) {
                 const { type, isLiteral } = parseType(property.Type)
-
-                // Override specific unknown types with known implementations
-                let finalType = type;
-                if (type === 'Unknown') {
-                    // Apply special case overrides for common property names
-                    if (property.Name === 'capabilities') {
-                        finalType = 'Capabilities';
-                    } else if (property.Name === 'value' &&
-                              (assignment.Name.includes('Accessibility') || assignment.Name.includes('Element'))) {
-                        finalType = 'AccessibilityValue';
-                    } else if (property.Name === 'value' && assignment.Name.includes('Context')) {
-                        finalType = 'ContextValue';
-                    } else if (property.Name === 'attributes') {
-                        finalType = 'Map<String, String>';
-                    } else {
-                        finalType = 'Object'; // Default fallback
-                    }
-                }
-
-                props.set(property.Name, { type: finalType, isLiteral })
+                props.set(property.Name, { type, isLiteral })
             }
         }
 
@@ -732,41 +593,6 @@ async function createEmptyResultClass(outputDir: string) {
 }
 
 async function createHelperClasses(assignments: Assignment[], outputDir: string) {
-    // Create enum classes for common types used with specific values
-    const enumDefinitions = new Map<string, string[]>();
-
-    // Find enum-like types in the CDDL that could be represented as Java enums
-    for (const assignment of assignments) {
-        if (assignment.Type === 'group' && assignment.Name.includes('.') &&
-            assignment.Name.endsWith('Type')) {
-            // This is likely an enum type
-            const [scope, typeName] = assignment.Name.split('.');
-            const scopePascal = scope[0].toUpperCase() + scope.slice(1);
-            const typeNamePascal = typeName[0].toUpperCase() + typeName.slice(1);
-
-            // Check if we can extract enum values
-            if (Array.isArray(assignment.Properties) && assignment.Properties.length > 0) {
-                // Skip enums that are already handled as standard types
-                if (['PointerType', 'Origin'].includes(typeName)) {
-                    const enumValues: string[] = [];
-
-                    // Look for literal values that define the enum
-                    for (const prop of assignment.Properties) {
-                        if (!Array.isArray(prop) && 'Type' in prop &&
-                            Array.isArray(prop.Type) && prop.Type.length === 1 &&
-                            typeof prop.Type[0] === 'object' && prop.Type[0].Type === 'literal') {
-                            enumValues.push(prop.Type[0].Value as string);
-                        }
-                    }
-
-                    if (enumValues.length > 0) {
-                        enumDefinitions.set(`${scopePascal}.${typeNamePascal}`, enumValues);
-                    }
-                }
-            }
-        }
-    }
-
     // Create directories and write files
     await fs.mkdirSync(path.join(outputDir, 'Input'), { recursive: true });
     await writeFile(path.resolve(outputDir, 'Input/PointerType.java'), pointerTypeTemplate);

@@ -23,7 +23,7 @@ public class SetFilesParameters {
     /**
      * Creates a new SetFilesParameters instance
      */
-    public SetFilesParameters(String context, Script.SharedReference element, List<Object> files) {
+    public SetFilesParameters(String context, Script.SharedReference element, List<String> files) {
         this.context = context;
         this.element = element;
         this.files = files;
@@ -49,13 +49,13 @@ public class SetFilesParameters {
         return this.element;
     }
 
-    private final List<Object> files;
+    private final List<String> files;
 
     /**
      * Gets the files property
-     * @return List<Object> value
+     * @return List<String> value
      */
-    public List<Object> getFiles() {
+    public List<String> getFiles() {
         return this.files;
     }
 

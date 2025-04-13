@@ -23,18 +23,18 @@ public class UnsubscribeByAttributesRequest {
     /**
      * Creates a new UnsubscribeByAttributesRequest instance
      */
-    public UnsubscribeByAttributesRequest(List<Object> events, List<String> contexts) {
+    public UnsubscribeByAttributesRequest(List<String> events, List<String> contexts) {
         this.events = events;
         this.contexts = contexts;
     }
 
-    private final List<Object> events;
+    private final List<String> events;
 
     /**
      * Gets the events property
-     * @return List<Object> value
+     * @return List<String> value
      */
-    public List<Object> getEvents() {
+    public List<String> getEvents() {
         return this.events;
     }
 
