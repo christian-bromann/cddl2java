@@ -6,14 +6,13 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.input;
-
 /**
- * Represents coordinate origin in WebDriver BiDi protocol
+ * Represents Origin in WebDriver BiDi protocol
+ * as enum of "viewport" / "pointer" / "element"
  */
-public enum Origin {
-    VIEWPORT("viewport"),
-    POINTER("pointer"),
+public class Origin {
+    VIEWPORT("viewport");
+    POINTER("pointer");
     ELEMENT("element");
 
     private final String value;

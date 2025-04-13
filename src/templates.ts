@@ -129,19 +129,17 @@ public class AccessibilityValue {
     }
 }`;
 
-export const pointerTypeTemplate: string = `package org.openqa.selenium.bidirectional.input;
-
-/**
- * Represents pointer types in WebDriver BiDi protocol
+export const getEnumTemplate = (name: string, enums: string[], module: string) => {
+    return `/**
+ * Represents ${name} in WebDriver BiDi protocol
+ * as enum of "${enums.join('" / "')}"
  */
-public enum PointerType {
-    MOUSE("mouse"),
-    PEN("pen"),
-    TOUCH("touch");
+public class ${name} {
+    ${enums.map((e) => `${e.toUpperCase()}("${e}");`).join('\n    ')}
 
     private final String value;
 
-    PointerType(String value) {
+    ${name}(String value) {
         this.value = value;
     }
 
@@ -149,45 +147,16 @@ public enum PointerType {
         return value;
     }
 
-    public static PointerType fromString(String text) {
-        for (PointerType type : PointerType.values()) {
-            if (type.value.equalsIgnoreCase(text)) {
-                return type;
+    public static ${name} fromString(String text) {
+        for (${name} ${name.toLowerCase()} : ${name}.values()) {
+            if (${name.toLowerCase()}.value.equalsIgnoreCase(text)) {
+                return ${name.toLowerCase()};
             }
         }
-        throw new IllegalArgumentException("No PointerType with value: " + text);
+        throw new IllegalArgumentException("No ${name} with value: " + text);
     }
-}`;
-
-export const originTemplate: string = `package org.openqa.selenium.bidirectional.input;
-
-/**
- * Represents coordinate origin in WebDriver BiDi protocol
- */
-public enum Origin {
-    VIEWPORT("viewport"),
-    POINTER("pointer"),
-    ELEMENT("element");
-
-    private final String value;
-
-    Origin(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public static Origin fromString(String text) {
-        for (Origin origin : Origin.values()) {
-            if (origin.value.equalsIgnoreCase(text)) {
-                return origin;
-            }
-        }
-        throw new IllegalArgumentException("No Origin with value: " + text);
-    }
-}`;
+}`
+}
 
 export const capabilitiesTemplate: string = `package org.openqa.selenium.bidirectional.session;
 

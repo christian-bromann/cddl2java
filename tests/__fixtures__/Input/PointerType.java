@@ -6,14 +6,13 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.input;
-
 /**
- * Represents pointer types in WebDriver BiDi protocol
+ * Represents PointerType in WebDriver BiDi protocol
+ * as enum of "mouse" / "pen" / "touch"
  */
-public enum PointerType {
-    MOUSE("mouse"),
-    PEN("pen"),
+public class PointerType {
+    MOUSE("mouse");
+    PEN("pen");
     TOUCH("touch");
 
     private final String value;
@@ -27,9 +26,9 @@ public enum PointerType {
     }
 
     public static PointerType fromString(String text) {
-        for (PointerType type : PointerType.values()) {
-            if (type.value.equalsIgnoreCase(text)) {
-                return type;
+        for (PointerType pointertype : PointerType.values()) {
+            if (pointertype.value.equalsIgnoreCase(text)) {
+                return pointertype;
             }
         }
         throw new IllegalArgumentException("No PointerType with value: " + text);
