@@ -6,55 +6,118 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Input;
+package org.openqa.selenium.bidirectional.input;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for input.PointerCommonProperties command
+ */
 public class PointerCommonProperties {
 
-    public PointerCommonProperties(Unknown width, Unknown height, float pressure, float tangentialPressure, Unknown twist, Unknown altitudeAngle, Unknown azimuthAngle) {
-        this.width = Unknown;
-        this.height = Unknown;
-        this.pressure = float;
-        this.tangentialPressure = float;
-        this.twist = Unknown;
-        this.altitudeAngle = Unknown;
-        this.azimuthAngle = Unknown;
+    /**
+     * Creates a new PointerCommonProperties instance
+     */
+    public PointerCommonProperties(Unknown width, Unknown height, Float pressure, Float tangentialPressure, Unknown twist, Unknown altitudeAngle, Unknown azimuthAngle) {
+        this.width = width;
+        this.height = height;
+        this.pressure = pressure;
+        this.tangentialPressure = tangentialPressure;
+        this.twist = twist;
+        this.altitudeAngle = altitudeAngle;
+        this.azimuthAngle = azimuthAngle;
         
     }
 
     private final Unknown width;
-    public getWidth(Unknown width) {
-        this.width = width;
+
+    /**
+     * Gets the width property
+     * @return Unknown value
+     */
+    public Unknown getWidth() {
+        return this.width;
     }
 
     private final Unknown height;
-    public getHeight(Unknown height) {
-        this.height = height;
+
+    /**
+     * Gets the height property
+     * @return Unknown value
+     */
+    public Unknown getHeight() {
+        return this.height;
     }
 
-    private final float pressure;
-    public getPressure(float pressure) {
-        this.pressure = pressure;
+    private final Float pressure;
+
+    /**
+     * Gets the pressure property
+     * @return Float value
+     */
+    public Float getPressure() {
+        return this.pressure;
     }
 
-    private final float tangentialPressure;
-    public getTangentialPressure(float tangentialPressure) {
-        this.tangentialPressure = tangentialPressure;
+    private final Float tangentialPressure;
+
+    /**
+     * Gets the tangentialPressure property
+     * @return Float value
+     */
+    public Float getTangentialPressure() {
+        return this.tangentialPressure;
     }
 
     private final Unknown twist;
-    public getTwist(Unknown twist) {
-        this.twist = twist;
+
+    /**
+     * Gets the twist property
+     * @return Unknown value
+     */
+    public Unknown getTwist() {
+        return this.twist;
     }
 
     private final Unknown altitudeAngle;
-    public getAltitudeAngle(Unknown altitudeAngle) {
-        this.altitudeAngle = altitudeAngle;
+
+    /**
+     * Gets the altitudeAngle property
+     * @return Unknown value
+     */
+    public Unknown getAltitudeAngle() {
+        return this.altitudeAngle;
     }
 
     private final Unknown azimuthAngle;
-    public getAzimuthAngle(Unknown azimuthAngle) {
-        this.azimuthAngle = azimuthAngle;
+
+    /**
+     * Gets the azimuthAngle property
+     * @return Unknown value
+     */
+    public Unknown getAzimuthAngle() {
+        return this.azimuthAngle;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("width", this.width);
+        toReturn.put("height", this.height);
+        toReturn.put("pressure", this.pressure);
+        toReturn.put("tangentialPressure", this.tangentialPressure);
+        toReturn.put("twist", this.twist);
+        toReturn.put("altitudeAngle", this.altitudeAngle);
+        toReturn.put("azimuthAngle", this.azimuthAngle);
+        return toReturn;
     }
 
 }

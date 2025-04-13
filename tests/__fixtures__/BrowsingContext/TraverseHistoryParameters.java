@@ -6,25 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.TraverseHistoryParameters command
+ */
 public class TraverseHistoryParameters {
 
-    public TraverseHistoryParameters(BrowsingContext.BrowsingContext context, int delta) {
-        this.context = BrowsingContext.BrowsingContext;
-        this.delta = int;
+    /**
+     * Creates a new TraverseHistoryParameters instance
+     */
+    public TraverseHistoryParameters(BrowsingContext.BrowsingContext context, Integer delta) {
+        this.context = context;
+        this.delta = delta;
         
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
     }
 
-    private final int delta;
-    public getDelta(int delta) {
-        this.delta = delta;
+    private final Integer delta;
+
+    /**
+     * Gets the delta property
+     * @return Integer value
+     */
+    public Integer getDelta() {
+        return this.delta;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("context", this.context);
+        toReturn.put("delta", this.delta);
+        return toReturn;
     }
 
 }

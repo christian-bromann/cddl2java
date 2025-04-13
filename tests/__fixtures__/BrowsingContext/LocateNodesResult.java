@@ -6,19 +6,46 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.LocateNodesResult command
+ */
 public class LocateNodesResult {
 
-    public LocateNodesResult() {
+    /**
+     * Creates a new LocateNodesResult instance
+     */
+    public LocateNodesResult(List<Unknown> nodes) {
+        this.nodes = nodes;
         
-        this.nodes = "Unknown[]";
     }
 
-    private final Unknown[] nodes;
-    public getNodes(Unknown[] nodes) {
-        this.nodes = nodes;
+    private final List<Unknown> nodes;
+
+    /**
+     * Gets the nodes property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getNodes() {
+        return this.nodes;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("nodes", this.nodes);
+        return toReturn;
     }
 
 }

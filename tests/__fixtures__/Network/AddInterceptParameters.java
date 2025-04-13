@@ -6,31 +6,70 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Network;
+package org.openqa.selenium.bidirectional.network;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for network.AddInterceptParameters command
+ */
 public class AddInterceptParameters {
 
-    public AddInterceptParameters() {
-        
-        this.phases = "Unknown[]";
-        this.contexts = "Unknown[]";
-        this.urlPatterns = "Unknown[]";
-    }
-
-    private final Unknown[] phases;
-    public getPhases(Unknown[] phases) {
+    /**
+     * Creates a new AddInterceptParameters instance
+     */
+    public AddInterceptParameters(List<Unknown> phases, List<Unknown> contexts, List<Unknown> urlPatterns) {
         this.phases = phases;
-    }
-
-    private final Unknown[] contexts;
-    public getContexts(Unknown[] contexts) {
         this.contexts = contexts;
+        this.urlPatterns = urlPatterns;
+        
     }
 
-    private final Unknown[] urlPatterns;
-    public getUrlPatterns(Unknown[] urlPatterns) {
-        this.urlPatterns = urlPatterns;
+    private final List<Unknown> phases;
+
+    /**
+     * Gets the phases property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getPhases() {
+        return this.phases;
+    }
+
+    private final List<Unknown> contexts;
+
+    /**
+     * Gets the contexts property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getContexts() {
+        return this.contexts;
+    }
+
+    private final List<Unknown> urlPatterns;
+
+    /**
+     * Gets the urlPatterns property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getUrlPatterns() {
+        return this.urlPatterns;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("phases", this.phases);
+        toReturn.put("contexts", this.contexts);
+        toReturn.put("urlPatterns", this.urlPatterns);
+        return toReturn;
     }
 
 }

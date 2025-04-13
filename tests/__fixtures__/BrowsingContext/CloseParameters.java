@@ -6,25 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.CloseParameters command
+ */
 public class CloseParameters {
 
+    /**
+     * Creates a new CloseParameters instance
+     */
     public CloseParameters(BrowsingContext.BrowsingContext context, Unknown promptUnload) {
-        this.context = BrowsingContext.BrowsingContext;
-        this.promptUnload = Unknown;
+        this.context = context;
+        this.promptUnload = promptUnload;
         
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
     }
 
     private final Unknown promptUnload;
-    public getPromptUnload(Unknown promptUnload) {
-        this.promptUnload = promptUnload;
+
+    /**
+     * Gets the promptUnload property
+     * @return Unknown value
+     */
+    public Unknown getPromptUnload() {
+        return this.promptUnload;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("context", this.context);
+        toReturn.put("promptUnload", this.promptUnload);
+        return toReturn;
     }
 
 }

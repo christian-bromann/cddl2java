@@ -6,42 +6,93 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Browser;
+package org.openqa.selenium.bidirectional.browser;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browser.ClientWindowRectState command
+ */
 public class ClientWindowRectState {
 
-    public ClientWindowRectState(long width, long height, int x, int y) {
-        this.width = long;
-        this.height = long;
-        this.x = int;
-        this.y = int;
+    /**
+     * Creates a new ClientWindowRectState instance
+     */
+    public ClientWindowRectState(Long width, Long height, Integer x, Integer y) {
+        this.width = width;
+        this.height = height;
+        this.x = x;
+        this.y = y;
         this.state = "normal";
     }
 
     private final normal state;
-    public getState(normal state) {
-        this.state = state;
+
+    /**
+     * Gets the state property
+     * @return normal value
+     */
+    public normal getState() {
+        return this.state;
     }
 
-    private final long width;
-    public getWidth(long width) {
-        this.width = width;
+    private final Long width;
+
+    /**
+     * Gets the width property
+     * @return Long value
+     */
+    public Long getWidth() {
+        return this.width;
     }
 
-    private final long height;
-    public getHeight(long height) {
-        this.height = height;
+    private final Long height;
+
+    /**
+     * Gets the height property
+     * @return Long value
+     */
+    public Long getHeight() {
+        return this.height;
     }
 
-    private final int x;
-    public getX(int x) {
-        this.x = x;
+    private final Integer x;
+
+    /**
+     * Gets the x property
+     * @return Integer value
+     */
+    public Integer getX() {
+        return this.x;
     }
 
-    private final int y;
-    public getY(int y) {
-        this.y = y;
+    private final Integer y;
+
+    /**
+     * Gets the y property
+     * @return Integer value
+     */
+    public Integer getY() {
+        return this.y;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("state", this.state);
+        toReturn.put("width", this.width);
+        toReturn.put("height", this.height);
+        toReturn.put("x", this.x);
+        toReturn.put("y", this.y);
+        return toReturn;
     }
 
 }

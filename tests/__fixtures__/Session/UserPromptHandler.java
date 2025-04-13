@@ -6,49 +6,106 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Session;
+package org.openqa.selenium.bidirectional.session;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for session.UserPromptHandler command
+ */
 public class UserPromptHandler {
 
+    /**
+     * Creates a new UserPromptHandler instance
+     */
     public UserPromptHandler(Session.UserPromptHandlerType alert, Session.UserPromptHandlerType beforeUnload, Session.UserPromptHandlerType confirm, Session.UserPromptHandlerType default, Session.UserPromptHandlerType file, Session.UserPromptHandlerType prompt) {
-        this.alert = Session.UserPromptHandlerType;
-        this.beforeUnload = Session.UserPromptHandlerType;
-        this.confirm = Session.UserPromptHandlerType;
-        this.default = Session.UserPromptHandlerType;
-        this.file = Session.UserPromptHandlerType;
-        this.prompt = Session.UserPromptHandlerType;
+        this.alert = alert;
+        this.beforeUnload = beforeUnload;
+        this.confirm = confirm;
+        this.default = default;
+        this.file = file;
+        this.prompt = prompt;
         
     }
 
     private final Session.UserPromptHandlerType alert;
-    public getAlert(Session.UserPromptHandlerType alert) {
-        this.alert = alert;
+
+    /**
+     * Gets the alert property
+     * @return Session.UserPromptHandlerType value
+     */
+    public Session.UserPromptHandlerType getAlert() {
+        return this.alert;
     }
 
     private final Session.UserPromptHandlerType beforeUnload;
-    public getBeforeUnload(Session.UserPromptHandlerType beforeUnload) {
-        this.beforeUnload = beforeUnload;
+
+    /**
+     * Gets the beforeUnload property
+     * @return Session.UserPromptHandlerType value
+     */
+    public Session.UserPromptHandlerType getBeforeUnload() {
+        return this.beforeUnload;
     }
 
     private final Session.UserPromptHandlerType confirm;
-    public getConfirm(Session.UserPromptHandlerType confirm) {
-        this.confirm = confirm;
+
+    /**
+     * Gets the confirm property
+     * @return Session.UserPromptHandlerType value
+     */
+    public Session.UserPromptHandlerType getConfirm() {
+        return this.confirm;
     }
 
     private final Session.UserPromptHandlerType default;
-    public getDefault(Session.UserPromptHandlerType default) {
-        this.default = default;
+
+    /**
+     * Gets the default property
+     * @return Session.UserPromptHandlerType value
+     */
+    public Session.UserPromptHandlerType getDefault() {
+        return this.default;
     }
 
     private final Session.UserPromptHandlerType file;
-    public getFile(Session.UserPromptHandlerType file) {
-        this.file = file;
+
+    /**
+     * Gets the file property
+     * @return Session.UserPromptHandlerType value
+     */
+    public Session.UserPromptHandlerType getFile() {
+        return this.file;
     }
 
     private final Session.UserPromptHandlerType prompt;
-    public getPrompt(Session.UserPromptHandlerType prompt) {
-        this.prompt = prompt;
+
+    /**
+     * Gets the prompt property
+     * @return Session.UserPromptHandlerType value
+     */
+    public Session.UserPromptHandlerType getPrompt() {
+        return this.prompt;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("alert", this.alert);
+        toReturn.put("beforeUnload", this.beforeUnload);
+        toReturn.put("confirm", this.confirm);
+        toReturn.put("default", this.default);
+        toReturn.put("file", this.file);
+        toReturn.put("prompt", this.prompt);
+        return toReturn;
     }
 
 }

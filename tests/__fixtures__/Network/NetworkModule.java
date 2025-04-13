@@ -8,23 +8,27 @@
 
 package org.openqa.selenium.bidirectional.network;
 
+import java.util.Map;
+import java.util.HashMap;
 import org.openqa.selenium.bidi.Command;
+import org.openqa.selenium.bidirectional.EmptyResult;
 
 /**
- * Auto generated class for running Bidi commands in Java
+ * Auto generated class for running WebDriver BiDi network commands in Java
  */
 public class NetworkModule {
 
     /**
      * WebDriver Bidi command to send command method "network.setCacheBehavior" with parameters.
      * @url https://w3c.github.io/webdriver-bidi/#command-network-setCacheBehavior
-     * @param params `NetworkSetCacheBehaviorParameters` {@link https://w3c.github.io/webdriver-bidi/#command-network-setCacheBehavior | command parameter}
+     * @param parameters `SetCacheBehaviorParameters` {@link https://w3c.github.io/webdriver-bidi/#command-network-setCacheBehavior | command parameter}
+     * @return Command object with result type for network.setCacheBehavior
      */
-    public Command<EmptyResult> SetCacheBehavior (SetCacheBehaviorParameters parameters) {
+    public Command<org.openqa.selenium.bidirectional.EmptyResult> SetCacheBehavior (SetCacheBehaviorParameters parameters) {
         return new Command<>(
             "network.setCacheBehavior",
             parameters.asMap(),
-            EmptyResult.class
+            org.openqa.selenium.bidirectional.EmptyResult.class
         );
     }
 }

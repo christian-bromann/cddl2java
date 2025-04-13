@@ -8,23 +8,27 @@
 
 package org.openqa.selenium.bidirectional.input;
 
+import java.util.Map;
+import java.util.HashMap;
 import org.openqa.selenium.bidi.Command;
+import org.openqa.selenium.bidirectional.EmptyResult;
 
 /**
- * Auto generated class for running Bidi commands in Java
+ * Auto generated class for running WebDriver BiDi input commands in Java
  */
 public class InputModule {
 
     /**
      * WebDriver Bidi command to send command method "input.fileDialogOpened" with parameters.
      * @url https://w3c.github.io/webdriver-bidi/#command-input-fileDialogOpened
-     * @param params `InputFileDialogInfo` {@link https://w3c.github.io/webdriver-bidi/#command-input-fileDialogOpened | command parameter}
+     * @param parameters `FileDialogInfo` {@link https://w3c.github.io/webdriver-bidi/#command-input-fileDialogOpened | command parameter}
+     * @return Command object with result type for input.fileDialogOpened
      */
-    public Command<EmptyResult> FileDialogOpened (FileDialogInfo parameters) {
+    public Command<org.openqa.selenium.bidirectional.EmptyResult> FileDialogOpened (FileDialogInfo parameters) {
         return new Command<>(
             "input.fileDialogOpened",
             parameters.asMap(),
-            EmptyResult.class
+            org.openqa.selenium.bidirectional.EmptyResult.class
         );
     }
 }

@@ -6,42 +6,93 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.InnerTextLocator command
+ */
 public class InnerTextLocator {
 
-    public InnerTextLocator(String value, boolean ignoreCase, Unknown matchType, long maxDepth) {
-        this.value = String;
-        this.ignoreCase = boolean;
-        this.matchType = Unknown;
-        this.maxDepth = long;
+    /**
+     * Creates a new InnerTextLocator instance
+     */
+    public InnerTextLocator(String value, Boolean ignoreCase, Object matchType, Long maxDepth) {
+        this.value = value;
+        this.ignoreCase = ignoreCase;
+        this.matchType = matchType;
+        this.maxDepth = maxDepth;
         this.type = "innerText";
     }
 
     private final innerText type;
-    public getType(innerText type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return innerText value
+     */
+    public innerText getType() {
+        return this.type;
     }
 
     private final String value;
-    public getValue(String value) {
-        this.value = value;
+
+    /**
+     * Gets the value property
+     * @return String value
+     */
+    public String getValue() {
+        return this.value;
     }
 
-    private final boolean ignoreCase;
-    public getIgnoreCase(boolean ignoreCase) {
-        this.ignoreCase = ignoreCase;
+    private final Boolean ignoreCase;
+
+    /**
+     * Gets the ignoreCase property
+     * @return Boolean value
+     */
+    public Boolean getIgnoreCase() {
+        return this.ignoreCase;
     }
 
-    private final Unknown matchType;
-    public getMatchType(Unknown matchType) {
-        this.matchType = matchType;
+    private final Object matchType;
+
+    /**
+     * Gets the matchType property
+     * @return Object value
+     */
+    public Object getMatchType() {
+        return this.matchType;
     }
 
-    private final long maxDepth;
-    public getMaxDepth(long maxDepth) {
-        this.maxDepth = maxDepth;
+    private final Long maxDepth;
+
+    /**
+     * Gets the maxDepth property
+     * @return Long value
+     */
+    public Long getMaxDepth() {
+        return this.maxDepth;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("value", this.value);
+        toReturn.put("ignoreCase", this.ignoreCase);
+        toReturn.put("matchType", this.matchType);
+        toReturn.put("maxDepth", this.maxDepth);
+        return toReturn;
     }
 
 }

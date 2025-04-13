@@ -6,19 +6,46 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Session;
+package org.openqa.selenium.bidirectional.session;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for session.SubscribeResult command
+ */
 public class SubscribeResult {
 
+    /**
+     * Creates a new SubscribeResult instance
+     */
     public SubscribeResult(Session.Subscription subscription) {
-        this.subscription = Session.Subscription;
+        this.subscription = subscription;
         
     }
 
     private final Session.Subscription subscription;
-    public getSubscription(Session.Subscription subscription) {
-        this.subscription = subscription;
+
+    /**
+     * Gets the subscription property
+     * @return Session.Subscription value
+     */
+    public Session.Subscription getSubscription() {
+        return this.subscription;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("subscription", this.subscription);
+        return toReturn;
     }
 
 }

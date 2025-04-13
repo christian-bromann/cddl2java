@@ -6,19 +6,46 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.CreateResult command
+ */
 public class CreateResult {
 
+    /**
+     * Creates a new CreateResult instance
+     */
     public CreateResult(BrowsingContext.BrowsingContext context) {
-        this.context = BrowsingContext.BrowsingContext;
+        this.context = context;
         
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("context", this.context);
+        return toReturn;
     }
 
 }

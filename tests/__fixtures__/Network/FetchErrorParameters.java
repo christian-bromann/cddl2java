@@ -6,19 +6,46 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Network;
+package org.openqa.selenium.bidirectional.network;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for network.FetchErrorParameters command
+ */
 public class FetchErrorParameters {
 
+    /**
+     * Creates a new FetchErrorParameters instance
+     */
     public FetchErrorParameters(String errorText) {
-        this.errorText = String;
+        this.errorText = errorText;
         
     }
 
     private final String errorText;
-    public getErrorText(String errorText) {
-        this.errorText = errorText;
+
+    /**
+     * Gets the errorText property
+     * @return String value
+     */
+    public String getErrorText() {
+        return this.errorText;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("errorText", this.errorText);
+        return toReturn;
     }
 
 }

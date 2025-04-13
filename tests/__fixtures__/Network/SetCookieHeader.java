@@ -6,67 +6,142 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Network;
+package org.openqa.selenium.bidirectional.network;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for network.SetCookieHeader command
+ */
 public class SetCookieHeader {
 
-    public SetCookieHeader(String name, Network.BytesValue value, String domain, boolean httpOnly, String expiry, int maxAge, String path, Network.SameSite sameSite, boolean secure) {
-        this.name = String;
-        this.value = Network.BytesValue;
-        this.domain = String;
-        this.httpOnly = boolean;
-        this.expiry = String;
-        this.maxAge = int;
-        this.path = String;
-        this.sameSite = Network.SameSite;
-        this.secure = boolean;
+    /**
+     * Creates a new SetCookieHeader instance
+     */
+    public SetCookieHeader(String name, Network.BytesValue value, String domain, Boolean httpOnly, String expiry, Integer maxAge, String path, Network.SameSite sameSite, Boolean secure) {
+        this.name = name;
+        this.value = value;
+        this.domain = domain;
+        this.httpOnly = httpOnly;
+        this.expiry = expiry;
+        this.maxAge = maxAge;
+        this.path = path;
+        this.sameSite = sameSite;
+        this.secure = secure;
         
     }
 
     private final String name;
-    public getName(String name) {
-        this.name = name;
+
+    /**
+     * Gets the name property
+     * @return String value
+     */
+    public String getName() {
+        return this.name;
     }
 
     private final Network.BytesValue value;
-    public getValue(Network.BytesValue value) {
-        this.value = value;
+
+    /**
+     * Gets the value property
+     * @return Network.BytesValue value
+     */
+    public Network.BytesValue getValue() {
+        return this.value;
     }
 
     private final String domain;
-    public getDomain(String domain) {
-        this.domain = domain;
+
+    /**
+     * Gets the domain property
+     * @return String value
+     */
+    public String getDomain() {
+        return this.domain;
     }
 
-    private final boolean httpOnly;
-    public getHttpOnly(boolean httpOnly) {
-        this.httpOnly = httpOnly;
+    private final Boolean httpOnly;
+
+    /**
+     * Gets the httpOnly property
+     * @return Boolean value
+     */
+    public Boolean getHttpOnly() {
+        return this.httpOnly;
     }
 
     private final String expiry;
-    public getExpiry(String expiry) {
-        this.expiry = expiry;
+
+    /**
+     * Gets the expiry property
+     * @return String value
+     */
+    public String getExpiry() {
+        return this.expiry;
     }
 
-    private final int maxAge;
-    public getMaxAge(int maxAge) {
-        this.maxAge = maxAge;
+    private final Integer maxAge;
+
+    /**
+     * Gets the maxAge property
+     * @return Integer value
+     */
+    public Integer getMaxAge() {
+        return this.maxAge;
     }
 
     private final String path;
-    public getPath(String path) {
-        this.path = path;
+
+    /**
+     * Gets the path property
+     * @return String value
+     */
+    public String getPath() {
+        return this.path;
     }
 
     private final Network.SameSite sameSite;
-    public getSameSite(Network.SameSite sameSite) {
-        this.sameSite = sameSite;
+
+    /**
+     * Gets the sameSite property
+     * @return Network.SameSite value
+     */
+    public Network.SameSite getSameSite() {
+        return this.sameSite;
     }
 
-    private final boolean secure;
-    public getSecure(boolean secure) {
-        this.secure = secure;
+    private final Boolean secure;
+
+    /**
+     * Gets the secure property
+     * @return Boolean value
+     */
+    public Boolean getSecure() {
+        return this.secure;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("name", this.name);
+        toReturn.put("value", this.value);
+        toReturn.put("domain", this.domain);
+        toReturn.put("httpOnly", this.httpOnly);
+        toReturn.put("expiry", this.expiry);
+        toReturn.put("maxAge", this.maxAge);
+        toReturn.put("path", this.path);
+        toReturn.put("sameSite", this.sameSite);
+        toReturn.put("secure", this.secure);
+        return toReturn;
     }
 
 }

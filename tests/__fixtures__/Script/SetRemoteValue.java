@@ -6,36 +6,81 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.SetRemoteValue command
+ */
 public class SetRemoteValue {
 
+    /**
+     * Creates a new SetRemoteValue instance
+     */
     public SetRemoteValue(Script.Handle handle, Script.InternalId internalId, Script.ListRemoteValue value) {
-        this.handle = Script.Handle;
-        this.internalId = Script.InternalId;
-        this.value = Script.ListRemoteValue;
+        this.handle = handle;
+        this.internalId = internalId;
+        this.value = value;
         this.type = "set";
     }
 
     private final set type;
-    public getType(set type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return set value
+     */
+    public set getType() {
+        return this.type;
     }
 
     private final Script.Handle handle;
-    public getHandle(Script.Handle handle) {
-        this.handle = handle;
+
+    /**
+     * Gets the handle property
+     * @return Script.Handle value
+     */
+    public Script.Handle getHandle() {
+        return this.handle;
     }
 
     private final Script.InternalId internalId;
-    public getInternalId(Script.InternalId internalId) {
-        this.internalId = internalId;
+
+    /**
+     * Gets the internalId property
+     * @return Script.InternalId value
+     */
+    public Script.InternalId getInternalId() {
+        return this.internalId;
     }
 
     private final Script.ListRemoteValue value;
-    public getValue(Script.ListRemoteValue value) {
-        this.value = value;
+
+    /**
+     * Gets the value property
+     * @return Script.ListRemoteValue value
+     */
+    public Script.ListRemoteValue getValue() {
+        return this.value;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("handle", this.handle);
+        toReturn.put("internalId", this.internalId);
+        toReturn.put("value", this.value);
+        return toReturn;
     }
 
 }

@@ -8,23 +8,27 @@
 
 package org.openqa.selenium.bidirectional.webextension;
 
+import java.util.Map;
+import java.util.HashMap;
 import org.openqa.selenium.bidi.Command;
+import org.openqa.selenium.bidirectional.EmptyResult;
 
 /**
- * Auto generated class for running Bidi commands in Java
+ * Auto generated class for running WebDriver BiDi webextension commands in Java
  */
 public class WebExtensionModule {
 
     /**
      * WebDriver Bidi command to send command method "webExtension.uninstall" with parameters.
      * @url https://w3c.github.io/webdriver-bidi/#command-webExtension-uninstall
-     * @param params `WebExtensionUninstallParameters` {@link https://w3c.github.io/webdriver-bidi/#command-webExtension-uninstall | command parameter}
+     * @param parameters `UninstallParameters` {@link https://w3c.github.io/webdriver-bidi/#command-webExtension-uninstall | command parameter}
+     * @return Command object with result type for webExtension.uninstall
      */
-    public Command<EmptyResult> Uninstall (UninstallParameters parameters) {
+    public Command<org.openqa.selenium.bidirectional.EmptyResult> Uninstall (UninstallParameters parameters) {
         return new Command<>(
             "webExtension.uninstall",
             parameters.asMap(),
-            EmptyResult.class
+            org.openqa.selenium.bidirectional.EmptyResult.class
         );
     }
 }

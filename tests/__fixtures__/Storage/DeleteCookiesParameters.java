@@ -6,25 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Storage;
+package org.openqa.selenium.bidirectional.storage;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for storage.DeleteCookiesParameters command
+ */
 public class DeleteCookiesParameters {
 
+    /**
+     * Creates a new DeleteCookiesParameters instance
+     */
     public DeleteCookiesParameters(Storage.CookieFilter filter, Storage.PartitionDescriptor partition) {
-        this.filter = Storage.CookieFilter;
-        this.partition = Storage.PartitionDescriptor;
+        this.filter = filter;
+        this.partition = partition;
         
     }
 
     private final Storage.CookieFilter filter;
-    public getFilter(Storage.CookieFilter filter) {
-        this.filter = filter;
+
+    /**
+     * Gets the filter property
+     * @return Storage.CookieFilter value
+     */
+    public Storage.CookieFilter getFilter() {
+        return this.filter;
     }
 
     private final Storage.PartitionDescriptor partition;
-    public getPartition(Storage.PartitionDescriptor partition) {
-        this.partition = partition;
+
+    /**
+     * Gets the partition property
+     * @return Storage.PartitionDescriptor value
+     */
+    public Storage.PartitionDescriptor getPartition() {
+        return this.partition;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("filter", this.filter);
+        toReturn.put("partition", this.partition);
+        return toReturn;
     }
 
 }

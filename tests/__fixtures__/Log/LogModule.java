@@ -8,23 +8,27 @@
 
 package org.openqa.selenium.bidirectional.log;
 
+import java.util.Map;
+import java.util.HashMap;
 import org.openqa.selenium.bidi.Command;
+import org.openqa.selenium.bidirectional.EmptyResult;
 
 /**
- * Auto generated class for running Bidi commands in Java
+ * Auto generated class for running WebDriver BiDi log commands in Java
  */
 public class LogModule {
 
     /**
      * WebDriver Bidi command to send command method "log.entryAdded" with parameters.
      * @url https://w3c.github.io/webdriver-bidi/#command-log-entryAdded
-     * @param params `LogEntry` {@link https://w3c.github.io/webdriver-bidi/#command-log-entryAdded | command parameter}
+     * @param parameters `Entry` {@link https://w3c.github.io/webdriver-bidi/#command-log-entryAdded | command parameter}
+     * @return Command object with result type for log.entryAdded
      */
-    public Command<EmptyResult> EntryAdded (Entry parameters) {
+    public Command<org.openqa.selenium.bidirectional.EmptyResult> EntryAdded (Entry parameters) {
         return new Command<>(
             "log.entryAdded",
             parameters.asMap(),
-            EmptyResult.class
+            org.openqa.selenium.bidirectional.EmptyResult.class
         );
     }
 }

@@ -6,30 +6,69 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.EvaluateResultException command
+ */
 public class EvaluateResultException {
 
+    /**
+     * Creates a new EvaluateResultException instance
+     */
     public EvaluateResultException(Script.ExceptionDetails exceptionDetails, Script.Realm realm) {
-        this.exceptionDetails = Script.ExceptionDetails;
-        this.realm = Script.Realm;
+        this.exceptionDetails = exceptionDetails;
+        this.realm = realm;
         this.type = "exception";
     }
 
     private final exception type;
-    public getType(exception type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return exception value
+     */
+    public exception getType() {
+        return this.type;
     }
 
     private final Script.ExceptionDetails exceptionDetails;
-    public getExceptionDetails(Script.ExceptionDetails exceptionDetails) {
-        this.exceptionDetails = exceptionDetails;
+
+    /**
+     * Gets the exceptionDetails property
+     * @return Script.ExceptionDetails value
+     */
+    public Script.ExceptionDetails getExceptionDetails() {
+        return this.exceptionDetails;
     }
 
     private final Script.Realm realm;
-    public getRealm(Script.Realm realm) {
-        this.realm = realm;
+
+    /**
+     * Gets the realm property
+     * @return Script.Realm value
+     */
+    public Script.Realm getRealm() {
+        return this.realm;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("exceptionDetails", this.exceptionDetails);
+        toReturn.put("realm", this.realm);
+        return toReturn;
     }
 
 }

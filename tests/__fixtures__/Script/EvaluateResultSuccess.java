@@ -6,30 +6,69 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.EvaluateResultSuccess command
+ */
 public class EvaluateResultSuccess {
 
+    /**
+     * Creates a new EvaluateResultSuccess instance
+     */
     public EvaluateResultSuccess(Script.RemoteValue result, Script.Realm realm) {
-        this.result = Script.RemoteValue;
-        this.realm = Script.Realm;
+        this.result = result;
+        this.realm = realm;
         this.type = "success";
     }
 
     private final success type;
-    public getType(success type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return success value
+     */
+    public success getType() {
+        return this.type;
     }
 
     private final Script.RemoteValue result;
-    public getResult(Script.RemoteValue result) {
-        this.result = result;
+
+    /**
+     * Gets the result property
+     * @return Script.RemoteValue value
+     */
+    public Script.RemoteValue getResult() {
+        return this.result;
     }
 
     private final Script.Realm realm;
-    public getRealm(Script.Realm realm) {
-        this.realm = realm;
+
+    /**
+     * Gets the realm property
+     * @return Script.Realm value
+     */
+    public Script.Realm getRealm() {
+        return this.realm;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("result", this.result);
+        toReturn.put("realm", this.realm);
+        return toReturn;
     }
 
 }

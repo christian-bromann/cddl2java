@@ -6,54 +6,118 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Network;
+package org.openqa.selenium.bidirectional.network;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for network.BaseParameters command
+ */
 public class BaseParameters {
 
-    public BaseParameters(Unknown context, boolean isBlocked, Unknown navigation, long redirectCount, Network.RequestData request, long timestamp) {
-        this.context = Unknown;
-        this.isBlocked = boolean;
-        this.navigation = Unknown;
-        this.redirectCount = long;
-        this.request = Network.RequestData;
-        this.timestamp = long;
-        this.intercepts = "Unknown[]";
-    }
-
-    private final Unknown context;
-    public getContext(Unknown context) {
+    /**
+     * Creates a new BaseParameters instance
+     */
+    public BaseParameters(Object context, Boolean isBlocked, Object navigation, Long redirectCount, Network.RequestData request, Long timestamp, List<Unknown> intercepts) {
         this.context = context;
-    }
-
-    private final boolean isBlocked;
-    public getIsBlocked(boolean isBlocked) {
         this.isBlocked = isBlocked;
-    }
-
-    private final Unknown navigation;
-    public getNavigation(Unknown navigation) {
         this.navigation = navigation;
+        this.redirectCount = redirectCount;
+        this.request = request;
+        this.timestamp = timestamp;
+        this.intercepts = intercepts;
+        
     }
 
-    private final long redirectCount;
-    public getRedirectCount(long redirectCount) {
-        this.redirectCount = redirectCount;
+    private final Object context;
+
+    /**
+     * Gets the context property
+     * @return Object value
+     */
+    public Object getContext() {
+        return this.context;
+    }
+
+    private final Boolean isBlocked;
+
+    /**
+     * Gets the isBlocked property
+     * @return Boolean value
+     */
+    public Boolean getIsBlocked() {
+        return this.isBlocked;
+    }
+
+    private final Object navigation;
+
+    /**
+     * Gets the navigation property
+     * @return Object value
+     */
+    public Object getNavigation() {
+        return this.navigation;
+    }
+
+    private final Long redirectCount;
+
+    /**
+     * Gets the redirectCount property
+     * @return Long value
+     */
+    public Long getRedirectCount() {
+        return this.redirectCount;
     }
 
     private final Network.RequestData request;
-    public getRequest(Network.RequestData request) {
-        this.request = request;
+
+    /**
+     * Gets the request property
+     * @return Network.RequestData value
+     */
+    public Network.RequestData getRequest() {
+        return this.request;
     }
 
-    private final long timestamp;
-    public getTimestamp(long timestamp) {
-        this.timestamp = timestamp;
+    private final Long timestamp;
+
+    /**
+     * Gets the timestamp property
+     * @return Long value
+     */
+    public Long getTimestamp() {
+        return this.timestamp;
     }
 
-    private final Unknown[] intercepts;
-    public getIntercepts(Unknown[] intercepts) {
-        this.intercepts = intercepts;
+    private final List<Unknown> intercepts;
+
+    /**
+     * Gets the intercepts property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getIntercepts() {
+        return this.intercepts;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("context", this.context);
+        toReturn.put("isBlocked", this.isBlocked);
+        toReturn.put("navigation", this.navigation);
+        toReturn.put("redirectCount", this.redirectCount);
+        toReturn.put("request", this.request);
+        toReturn.put("timestamp", this.timestamp);
+        toReturn.put("intercepts", this.intercepts);
+        return toReturn;
     }
 
 }

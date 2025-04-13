@@ -6,36 +6,81 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Input;
+package org.openqa.selenium.bidirectional.input;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for input.PointerSourceActions command
+ */
 public class PointerSourceActions {
 
-    public PointerSourceActions(String id, Input.PointerParameters parameters) {
-        this.id = String;
-        this.parameters = Input.PointerParameters;
+    /**
+     * Creates a new PointerSourceActions instance
+     */
+    public PointerSourceActions(String id, Input.PointerParameters parameters, List<Unknown> actions) {
+        this.id = id;
+        this.parameters = parameters;
+        this.actions = actions;
         this.type = "pointer";
-        this.actions = "Unknown[]";
     }
 
     private final pointer type;
-    public getType(pointer type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return pointer value
+     */
+    public pointer getType() {
+        return this.type;
     }
 
     private final String id;
-    public getId(String id) {
-        this.id = id;
+
+    /**
+     * Gets the id property
+     * @return String value
+     */
+    public String getId() {
+        return this.id;
     }
 
     private final Input.PointerParameters parameters;
-    public getParameters(Input.PointerParameters parameters) {
-        this.parameters = parameters;
+
+    /**
+     * Gets the parameters property
+     * @return Input.PointerParameters value
+     */
+    public Input.PointerParameters getParameters() {
+        return this.parameters;
     }
 
-    private final Unknown[] actions;
-    public getActions(Unknown[] actions) {
-        this.actions = actions;
+    private final List<Unknown> actions;
+
+    /**
+     * Gets the actions property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getActions() {
+        return this.actions;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("id", this.id);
+        toReturn.put("parameters", this.parameters);
+        toReturn.put("actions", this.actions);
+        return toReturn;
     }
 
 }

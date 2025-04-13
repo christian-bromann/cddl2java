@@ -6,48 +6,106 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Network;
+package org.openqa.selenium.bidirectional.network;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for network.ProvideResponseParameters command
+ */
 public class ProvideResponseParameters {
 
-    public ProvideResponseParameters(Network.Request request, Network.BytesValue body, String reasonPhrase, long statusCode) {
-        this.request = Network.Request;
-        this.body = Network.BytesValue;
-        this.reasonPhrase = String;
-        this.statusCode = long;
-        this.cookies = "Unknown[]";
-        this.headers = "Unknown[]";
+    /**
+     * Creates a new ProvideResponseParameters instance
+     */
+    public ProvideResponseParameters(Network.Request request, Network.BytesValue body, List<Unknown> cookies, List<Unknown> headers, String reasonPhrase, Long statusCode) {
+        this.request = request;
+        this.body = body;
+        this.cookies = cookies;
+        this.headers = headers;
+        this.reasonPhrase = reasonPhrase;
+        this.statusCode = statusCode;
+        
     }
 
     private final Network.Request request;
-    public getRequest(Network.Request request) {
-        this.request = request;
+
+    /**
+     * Gets the request property
+     * @return Network.Request value
+     */
+    public Network.Request getRequest() {
+        return this.request;
     }
 
     private final Network.BytesValue body;
-    public getBody(Network.BytesValue body) {
-        this.body = body;
+
+    /**
+     * Gets the body property
+     * @return Network.BytesValue value
+     */
+    public Network.BytesValue getBody() {
+        return this.body;
     }
 
-    private final Unknown[] cookies;
-    public getCookies(Unknown[] cookies) {
-        this.cookies = cookies;
+    private final List<Unknown> cookies;
+
+    /**
+     * Gets the cookies property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getCookies() {
+        return this.cookies;
     }
 
-    private final Unknown[] headers;
-    public getHeaders(Unknown[] headers) {
-        this.headers = headers;
+    private final List<Unknown> headers;
+
+    /**
+     * Gets the headers property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getHeaders() {
+        return this.headers;
     }
 
     private final String reasonPhrase;
-    public getReasonPhrase(String reasonPhrase) {
-        this.reasonPhrase = reasonPhrase;
+
+    /**
+     * Gets the reasonPhrase property
+     * @return String value
+     */
+    public String getReasonPhrase() {
+        return this.reasonPhrase;
     }
 
-    private final long statusCode;
-    public getStatusCode(long statusCode) {
-        this.statusCode = statusCode;
+    private final Long statusCode;
+
+    /**
+     * Gets the statusCode property
+     * @return Long value
+     */
+    public Long getStatusCode() {
+        return this.statusCode;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("request", this.request);
+        toReturn.put("body", this.body);
+        toReturn.put("cookies", this.cookies);
+        toReturn.put("headers", this.headers);
+        toReturn.put("reasonPhrase", this.reasonPhrase);
+        toReturn.put("statusCode", this.statusCode);
+        return toReturn;
     }
 
 }

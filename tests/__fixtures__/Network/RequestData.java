@@ -6,72 +6,154 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Network;
+package org.openqa.selenium.bidirectional.network;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for network.RequestData command
+ */
 public class RequestData {
 
-    public RequestData(Network.Request request, String url, String method, long headersSize, Unknown bodySize, String destination, Unknown initiatorType, Network.FetchTimingInfo timings) {
-        this.request = Network.Request;
-        this.url = String;
-        this.method = String;
-        this.headersSize = long;
-        this.bodySize = Unknown;
-        this.destination = String;
-        this.initiatorType = Unknown;
-        this.timings = Network.FetchTimingInfo;
-        this.headers = "Unknown[]";
-        this.cookies = "Unknown[]";
+    /**
+     * Creates a new RequestData instance
+     */
+    public RequestData(Network.Request request, String url, String method, List<Unknown> headers, List<Unknown> cookies, Long headersSize, Object bodySize, String destination, Object initiatorType, Network.FetchTimingInfo timings) {
+        this.request = request;
+        this.url = url;
+        this.method = method;
+        this.headers = headers;
+        this.cookies = cookies;
+        this.headersSize = headersSize;
+        this.bodySize = bodySize;
+        this.destination = destination;
+        this.initiatorType = initiatorType;
+        this.timings = timings;
+        
     }
 
     private final Network.Request request;
-    public getRequest(Network.Request request) {
-        this.request = request;
+
+    /**
+     * Gets the request property
+     * @return Network.Request value
+     */
+    public Network.Request getRequest() {
+        return this.request;
     }
 
     private final String url;
-    public getUrl(String url) {
-        this.url = url;
+
+    /**
+     * Gets the url property
+     * @return String value
+     */
+    public String getUrl() {
+        return this.url;
     }
 
     private final String method;
-    public getMethod(String method) {
-        this.method = method;
+
+    /**
+     * Gets the method property
+     * @return String value
+     */
+    public String getMethod() {
+        return this.method;
     }
 
-    private final Unknown[] headers;
-    public getHeaders(Unknown[] headers) {
-        this.headers = headers;
+    private final List<Unknown> headers;
+
+    /**
+     * Gets the headers property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getHeaders() {
+        return this.headers;
     }
 
-    private final Unknown[] cookies;
-    public getCookies(Unknown[] cookies) {
-        this.cookies = cookies;
+    private final List<Unknown> cookies;
+
+    /**
+     * Gets the cookies property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getCookies() {
+        return this.cookies;
     }
 
-    private final long headersSize;
-    public getHeadersSize(long headersSize) {
-        this.headersSize = headersSize;
+    private final Long headersSize;
+
+    /**
+     * Gets the headersSize property
+     * @return Long value
+     */
+    public Long getHeadersSize() {
+        return this.headersSize;
     }
 
-    private final Unknown bodySize;
-    public getBodySize(Unknown bodySize) {
-        this.bodySize = bodySize;
+    private final Object bodySize;
+
+    /**
+     * Gets the bodySize property
+     * @return Object value
+     */
+    public Object getBodySize() {
+        return this.bodySize;
     }
 
     private final String destination;
-    public getDestination(String destination) {
-        this.destination = destination;
+
+    /**
+     * Gets the destination property
+     * @return String value
+     */
+    public String getDestination() {
+        return this.destination;
     }
 
-    private final Unknown initiatorType;
-    public getInitiatorType(Unknown initiatorType) {
-        this.initiatorType = initiatorType;
+    private final Object initiatorType;
+
+    /**
+     * Gets the initiatorType property
+     * @return Object value
+     */
+    public Object getInitiatorType() {
+        return this.initiatorType;
     }
 
     private final Network.FetchTimingInfo timings;
-    public getTimings(Network.FetchTimingInfo timings) {
-        this.timings = timings;
+
+    /**
+     * Gets the timings property
+     * @return Network.FetchTimingInfo value
+     */
+    public Network.FetchTimingInfo getTimings() {
+        return this.timings;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("request", this.request);
+        toReturn.put("url", this.url);
+        toReturn.put("method", this.method);
+        toReturn.put("headers", this.headers);
+        toReturn.put("cookies", this.cookies);
+        toReturn.put("headersSize", this.headersSize);
+        toReturn.put("bodySize", this.bodySize);
+        toReturn.put("destination", this.destination);
+        toReturn.put("initiatorType", this.initiatorType);
+        toReturn.put("timings", this.timings);
+        return toReturn;
     }
 
 }

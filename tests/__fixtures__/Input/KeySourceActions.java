@@ -6,30 +6,69 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Input;
+package org.openqa.selenium.bidirectional.input;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for input.KeySourceActions command
+ */
 public class KeySourceActions {
 
-    public KeySourceActions(String id) {
-        this.id = String;
+    /**
+     * Creates a new KeySourceActions instance
+     */
+    public KeySourceActions(String id, List<Unknown> actions) {
+        this.id = id;
+        this.actions = actions;
         this.type = "key";
-        this.actions = "Unknown[]";
     }
 
     private final key type;
-    public getType(key type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return key value
+     */
+    public key getType() {
+        return this.type;
     }
 
     private final String id;
-    public getId(String id) {
-        this.id = id;
+
+    /**
+     * Gets the id property
+     * @return String value
+     */
+    public String getId() {
+        return this.id;
     }
 
-    private final Unknown[] actions;
-    public getActions(Unknown[] actions) {
-        this.actions = actions;
+    private final List<Unknown> actions;
+
+    /**
+     * Gets the actions property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getActions() {
+        return this.actions;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("id", this.id);
+        toReturn.put("actions", this.actions);
+        return toReturn;
     }
 
 }

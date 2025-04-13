@@ -6,19 +6,46 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Input;
+package org.openqa.selenium.bidirectional.input;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for input.PointerParameters command
+ */
 public class PointerParameters {
 
+    /**
+     * Creates a new PointerParameters instance
+     */
     public PointerParameters(Unknown pointerType) {
-        this.pointerType = Unknown;
+        this.pointerType = pointerType;
         
     }
 
     private final Unknown pointerType;
-    public getPointerType(Unknown pointerType) {
-        this.pointerType = pointerType;
+
+    /**
+     * Gets the pointerType property
+     * @return Unknown value
+     */
+    public Unknown getPointerType() {
+        return this.pointerType;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("pointerType", this.pointerType);
+        return toReturn;
     }
 
 }

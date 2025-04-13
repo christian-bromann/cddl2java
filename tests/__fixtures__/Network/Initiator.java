@@ -6,43 +6,94 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Network;
+package org.openqa.selenium.bidirectional.network;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for network.Initiator command
+ */
 public class Initiator {
 
-    public Initiator(long columnNumber, long lineNumber, Network.Request request, Script.StackTrace stackTrace, Unknown type) {
-        this.columnNumber = long;
-        this.lineNumber = long;
-        this.request = Network.Request;
-        this.stackTrace = Script.StackTrace;
-        this.type = Unknown;
+    /**
+     * Creates a new Initiator instance
+     */
+    public Initiator(Long columnNumber, Long lineNumber, Network.Request request, Script.StackTrace stackTrace, Object type) {
+        this.columnNumber = columnNumber;
+        this.lineNumber = lineNumber;
+        this.request = request;
+        this.stackTrace = stackTrace;
+        this.type = type;
         
     }
 
-    private final long columnNumber;
-    public getColumnNumber(long columnNumber) {
-        this.columnNumber = columnNumber;
+    private final Long columnNumber;
+
+    /**
+     * Gets the columnNumber property
+     * @return Long value
+     */
+    public Long getColumnNumber() {
+        return this.columnNumber;
     }
 
-    private final long lineNumber;
-    public getLineNumber(long lineNumber) {
-        this.lineNumber = lineNumber;
+    private final Long lineNumber;
+
+    /**
+     * Gets the lineNumber property
+     * @return Long value
+     */
+    public Long getLineNumber() {
+        return this.lineNumber;
     }
 
     private final Network.Request request;
-    public getRequest(Network.Request request) {
-        this.request = request;
+
+    /**
+     * Gets the request property
+     * @return Network.Request value
+     */
+    public Network.Request getRequest() {
+        return this.request;
     }
 
     private final Script.StackTrace stackTrace;
-    public getStackTrace(Script.StackTrace stackTrace) {
-        this.stackTrace = stackTrace;
+
+    /**
+     * Gets the stackTrace property
+     * @return Script.StackTrace value
+     */
+    public Script.StackTrace getStackTrace() {
+        return this.stackTrace;
     }
 
-    private final Unknown type;
-    public getType(Unknown type) {
-        this.type = type;
+    private final Object type;
+
+    /**
+     * Gets the type property
+     * @return Object value
+     */
+    public Object getType() {
+        return this.type;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("columnNumber", this.columnNumber);
+        toReturn.put("lineNumber", this.lineNumber);
+        toReturn.put("request", this.request);
+        toReturn.put("stackTrace", this.stackTrace);
+        toReturn.put("type", this.type);
+        return toReturn;
     }
 
 }

@@ -6,66 +6,142 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.NodeProperties command
+ */
 public class NodeProperties {
 
-    public NodeProperties(long nodeType, long childNodeCount, Unknown attributes, String localName, Unknown mode, String namespaceURI, String nodeValue, Unknown shadowRoot) {
-        this.nodeType = long;
-        this.childNodeCount = long;
-        this.attributes = Unknown;
-        this.localName = String;
-        this.mode = Unknown;
-        this.namespaceURI = String;
-        this.nodeValue = String;
-        this.shadowRoot = Unknown;
-        this.children = "Unknown[]";
-    }
-
-    private final long nodeType;
-    public getNodeType(long nodeType) {
+    /**
+     * Creates a new NodeProperties instance
+     */
+    public NodeProperties(Long nodeType, Long childNodeCount, Unknown attributes, List<Unknown> children, String localName, Object mode, String namespaceURI, String nodeValue, Object shadowRoot) {
         this.nodeType = nodeType;
+        this.childNodeCount = childNodeCount;
+        this.attributes = attributes;
+        this.children = children;
+        this.localName = localName;
+        this.mode = mode;
+        this.namespaceURI = namespaceURI;
+        this.nodeValue = nodeValue;
+        this.shadowRoot = shadowRoot;
+        
     }
 
-    private final long childNodeCount;
-    public getChildNodeCount(long childNodeCount) {
-        this.childNodeCount = childNodeCount;
+    private final Long nodeType;
+
+    /**
+     * Gets the nodeType property
+     * @return Long value
+     */
+    public Long getNodeType() {
+        return this.nodeType;
+    }
+
+    private final Long childNodeCount;
+
+    /**
+     * Gets the childNodeCount property
+     * @return Long value
+     */
+    public Long getChildNodeCount() {
+        return this.childNodeCount;
     }
 
     private final Unknown attributes;
-    public getAttributes(Unknown attributes) {
-        this.attributes = attributes;
+
+    /**
+     * Gets the attributes property
+     * @return Unknown value
+     */
+    public Unknown getAttributes() {
+        return this.attributes;
     }
 
-    private final Unknown[] children;
-    public getChildren(Unknown[] children) {
-        this.children = children;
+    private final List<Unknown> children;
+
+    /**
+     * Gets the children property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getChildren() {
+        return this.children;
     }
 
     private final String localName;
-    public getLocalName(String localName) {
-        this.localName = localName;
+
+    /**
+     * Gets the localName property
+     * @return String value
+     */
+    public String getLocalName() {
+        return this.localName;
     }
 
-    private final Unknown mode;
-    public getMode(Unknown mode) {
-        this.mode = mode;
+    private final Object mode;
+
+    /**
+     * Gets the mode property
+     * @return Object value
+     */
+    public Object getMode() {
+        return this.mode;
     }
 
     private final String namespaceURI;
-    public getNamespaceURI(String namespaceURI) {
-        this.namespaceURI = namespaceURI;
+
+    /**
+     * Gets the namespaceURI property
+     * @return String value
+     */
+    public String getNamespaceURI() {
+        return this.namespaceURI;
     }
 
     private final String nodeValue;
-    public getNodeValue(String nodeValue) {
-        this.nodeValue = nodeValue;
+
+    /**
+     * Gets the nodeValue property
+     * @return String value
+     */
+    public String getNodeValue() {
+        return this.nodeValue;
     }
 
-    private final Unknown shadowRoot;
-    public getShadowRoot(Unknown shadowRoot) {
-        this.shadowRoot = shadowRoot;
+    private final Object shadowRoot;
+
+    /**
+     * Gets the shadowRoot property
+     * @return Object value
+     */
+    public Object getShadowRoot() {
+        return this.shadowRoot;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("nodeType", this.nodeType);
+        toReturn.put("childNodeCount", this.childNodeCount);
+        toReturn.put("attributes", this.attributes);
+        toReturn.put("children", this.children);
+        toReturn.put("localName", this.localName);
+        toReturn.put("mode", this.mode);
+        toReturn.put("namespaceURI", this.namespaceURI);
+        toReturn.put("nodeValue", this.nodeValue);
+        toReturn.put("shadowRoot", this.shadowRoot);
+        return toReturn;
     }
 
 }

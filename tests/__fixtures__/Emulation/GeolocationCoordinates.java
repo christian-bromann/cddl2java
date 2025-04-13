@@ -6,55 +6,118 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Emulation;
+package org.openqa.selenium.bidirectional.emulation;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for emulation.GeolocationCoordinates command
+ */
 public class GeolocationCoordinates {
 
-    public GeolocationCoordinates(float latitude, float longitude, float accuracy, Unknown altitude, Unknown altitudeAccuracy, Unknown heading, Unknown speed) {
-        this.latitude = float;
-        this.longitude = float;
-        this.accuracy = float;
-        this.altitude = Unknown;
-        this.altitudeAccuracy = Unknown;
-        this.heading = Unknown;
-        this.speed = Unknown;
+    /**
+     * Creates a new GeolocationCoordinates instance
+     */
+    public GeolocationCoordinates(Float latitude, Float longitude, Float accuracy, Object altitude, Object altitudeAccuracy, Object heading, Object speed) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.accuracy = accuracy;
+        this.altitude = altitude;
+        this.altitudeAccuracy = altitudeAccuracy;
+        this.heading = heading;
+        this.speed = speed;
         
     }
 
-    private final float latitude;
-    public getLatitude(float latitude) {
-        this.latitude = latitude;
+    private final Float latitude;
+
+    /**
+     * Gets the latitude property
+     * @return Float value
+     */
+    public Float getLatitude() {
+        return this.latitude;
     }
 
-    private final float longitude;
-    public getLongitude(float longitude) {
-        this.longitude = longitude;
+    private final Float longitude;
+
+    /**
+     * Gets the longitude property
+     * @return Float value
+     */
+    public Float getLongitude() {
+        return this.longitude;
     }
 
-    private final float accuracy;
-    public getAccuracy(float accuracy) {
-        this.accuracy = accuracy;
+    private final Float accuracy;
+
+    /**
+     * Gets the accuracy property
+     * @return Float value
+     */
+    public Float getAccuracy() {
+        return this.accuracy;
     }
 
-    private final Unknown altitude;
-    public getAltitude(Unknown altitude) {
-        this.altitude = altitude;
+    private final Object altitude;
+
+    /**
+     * Gets the altitude property
+     * @return Object value
+     */
+    public Object getAltitude() {
+        return this.altitude;
     }
 
-    private final Unknown altitudeAccuracy;
-    public getAltitudeAccuracy(Unknown altitudeAccuracy) {
-        this.altitudeAccuracy = altitudeAccuracy;
+    private final Object altitudeAccuracy;
+
+    /**
+     * Gets the altitudeAccuracy property
+     * @return Object value
+     */
+    public Object getAltitudeAccuracy() {
+        return this.altitudeAccuracy;
     }
 
-    private final Unknown heading;
-    public getHeading(Unknown heading) {
-        this.heading = heading;
+    private final Object heading;
+
+    /**
+     * Gets the heading property
+     * @return Object value
+     */
+    public Object getHeading() {
+        return this.heading;
     }
 
-    private final Unknown speed;
-    public getSpeed(Unknown speed) {
-        this.speed = speed;
+    private final Object speed;
+
+    /**
+     * Gets the speed property
+     * @return Object value
+     */
+    public Object getSpeed() {
+        return this.speed;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("latitude", this.latitude);
+        toReturn.put("longitude", this.longitude);
+        toReturn.put("accuracy", this.accuracy);
+        toReturn.put("altitude", this.altitude);
+        toReturn.put("altitudeAccuracy", this.altitudeAccuracy);
+        toReturn.put("heading", this.heading);
+        toReturn.put("speed", this.speed);
+        return toReturn;
     }
 
 }

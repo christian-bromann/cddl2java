@@ -6,37 +6,82 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.PrintMarginParameters command
+ */
 public class PrintMarginParameters {
 
-    public PrintMarginParameters(float bottom, float left, float right, float top) {
-        this.bottom = float;
-        this.left = float;
-        this.right = float;
-        this.top = float;
+    /**
+     * Creates a new PrintMarginParameters instance
+     */
+    public PrintMarginParameters(Float bottom, Float left, Float right, Float top) {
+        this.bottom = bottom;
+        this.left = left;
+        this.right = right;
+        this.top = top;
         
     }
 
-    private final float bottom;
-    public getBottom(float bottom) {
-        this.bottom = bottom;
+    private final Float bottom;
+
+    /**
+     * Gets the bottom property
+     * @return Float value
+     */
+    public Float getBottom() {
+        return this.bottom;
     }
 
-    private final float left;
-    public getLeft(float left) {
-        this.left = left;
+    private final Float left;
+
+    /**
+     * Gets the left property
+     * @return Float value
+     */
+    public Float getLeft() {
+        return this.left;
     }
 
-    private final float right;
-    public getRight(float right) {
-        this.right = right;
+    private final Float right;
+
+    /**
+     * Gets the right property
+     * @return Float value
+     */
+    public Float getRight() {
+        return this.right;
     }
 
-    private final float top;
-    public getTop(float top) {
-        this.top = top;
+    private final Float top;
+
+    /**
+     * Gets the top property
+     * @return Float value
+     */
+    public Float getTop() {
+        return this.top;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("bottom", this.bottom);
+        toReturn.put("left", this.left);
+        toReturn.put("right", this.right);
+        toReturn.put("top", this.top);
+        return toReturn;
     }
 
 }

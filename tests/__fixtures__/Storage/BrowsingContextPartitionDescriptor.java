@@ -6,24 +6,57 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Storage;
+package org.openqa.selenium.bidirectional.storage;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for storage.BrowsingContextPartitionDescriptor command
+ */
 public class BrowsingContextPartitionDescriptor {
 
+    /**
+     * Creates a new BrowsingContextPartitionDescriptor instance
+     */
     public BrowsingContextPartitionDescriptor(BrowsingContext.BrowsingContext context) {
-        this.context = BrowsingContext.BrowsingContext;
+        this.context = context;
         this.type = "context";
     }
 
     private final context type;
-    public getType(context type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return context value
+     */
+    public context getType() {
+        return this.type;
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("context", this.context);
+        return toReturn;
     }
 
 }

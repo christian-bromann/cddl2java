@@ -6,25 +6,57 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.DedicatedWorkerRealmInfo command
+ */
 public class DedicatedWorkerRealmInfo {
 
-    public DedicatedWorkerRealmInfo() {
-        
+    /**
+     * Creates a new DedicatedWorkerRealmInfo instance
+     */
+    public DedicatedWorkerRealmInfo(List<Unknown> owners) {
+        this.owners = owners;
         this.type = "dedicated-worker";
-        this.owners = "Unknown[]";
     }
 
     private final dedicated-worker type;
-    public getType(dedicated-worker type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return dedicated-worker value
+     */
+    public dedicated-worker getType() {
+        return this.type;
     }
 
-    private final Unknown[] owners;
-    public getOwners(Unknown[] owners) {
-        this.owners = owners;
+    private final List<Unknown> owners;
+
+    /**
+     * Gets the owners property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getOwners() {
+        return this.owners;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("owners", this.owners);
+        return toReturn;
     }
 
 }

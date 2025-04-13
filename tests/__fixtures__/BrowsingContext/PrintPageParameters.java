@@ -6,25 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.PrintPageParameters command
+ */
 public class PrintPageParameters {
 
-    public PrintPageParameters(float height, float width) {
-        this.height = float;
-        this.width = float;
+    /**
+     * Creates a new PrintPageParameters instance
+     */
+    public PrintPageParameters(Float height, Float width) {
+        this.height = height;
+        this.width = width;
         
     }
 
-    private final float height;
-    public getHeight(float height) {
-        this.height = height;
+    private final Float height;
+
+    /**
+     * Gets the height property
+     * @return Float value
+     */
+    public Float getHeight() {
+        return this.height;
     }
 
-    private final float width;
-    public getWidth(float width) {
-        this.width = width;
+    private final Float width;
+
+    /**
+     * Gets the width property
+     * @return Float value
+     */
+    public Float getWidth() {
+        return this.width;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("height", this.height);
+        toReturn.put("width", this.width);
+        return toReturn;
     }
 
 }

@@ -6,25 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.Source command
+ */
 public class Source {
 
+    /**
+     * Creates a new Source instance
+     */
     public Source(Script.Realm realm, BrowsingContext.BrowsingContext context) {
-        this.realm = Script.Realm;
-        this.context = BrowsingContext.BrowsingContext;
+        this.realm = realm;
+        this.context = context;
         
     }
 
     private final Script.Realm realm;
-    public getRealm(Script.Realm realm) {
-        this.realm = realm;
+
+    /**
+     * Gets the realm property
+     * @return Script.Realm value
+     */
+    public Script.Realm getRealm() {
+        return this.realm;
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("realm", this.realm);
+        toReturn.put("context", this.context);
+        return toReturn;
     }
 
 }

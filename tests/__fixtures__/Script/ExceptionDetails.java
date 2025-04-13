@@ -6,43 +6,94 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.ExceptionDetails command
+ */
 public class ExceptionDetails {
 
-    public ExceptionDetails(long columnNumber, Script.RemoteValue exception, long lineNumber, Script.StackTrace stackTrace, String text) {
-        this.columnNumber = long;
-        this.exception = Script.RemoteValue;
-        this.lineNumber = long;
-        this.stackTrace = Script.StackTrace;
-        this.text = String;
+    /**
+     * Creates a new ExceptionDetails instance
+     */
+    public ExceptionDetails(Long columnNumber, Script.RemoteValue exception, Long lineNumber, Script.StackTrace stackTrace, String text) {
+        this.columnNumber = columnNumber;
+        this.exception = exception;
+        this.lineNumber = lineNumber;
+        this.stackTrace = stackTrace;
+        this.text = text;
         
     }
 
-    private final long columnNumber;
-    public getColumnNumber(long columnNumber) {
-        this.columnNumber = columnNumber;
+    private final Long columnNumber;
+
+    /**
+     * Gets the columnNumber property
+     * @return Long value
+     */
+    public Long getColumnNumber() {
+        return this.columnNumber;
     }
 
     private final Script.RemoteValue exception;
-    public getException(Script.RemoteValue exception) {
-        this.exception = exception;
+
+    /**
+     * Gets the exception property
+     * @return Script.RemoteValue value
+     */
+    public Script.RemoteValue getException() {
+        return this.exception;
     }
 
-    private final long lineNumber;
-    public getLineNumber(long lineNumber) {
-        this.lineNumber = lineNumber;
+    private final Long lineNumber;
+
+    /**
+     * Gets the lineNumber property
+     * @return Long value
+     */
+    public Long getLineNumber() {
+        return this.lineNumber;
     }
 
     private final Script.StackTrace stackTrace;
-    public getStackTrace(Script.StackTrace stackTrace) {
-        this.stackTrace = stackTrace;
+
+    /**
+     * Gets the stackTrace property
+     * @return Script.StackTrace value
+     */
+    public Script.StackTrace getStackTrace() {
+        return this.stackTrace;
     }
 
     private final String text;
-    public getText(String text) {
-        this.text = text;
+
+    /**
+     * Gets the text property
+     * @return String value
+     */
+    public String getText() {
+        return this.text;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("columnNumber", this.columnNumber);
+        toReturn.put("exception", this.exception);
+        toReturn.put("lineNumber", this.lineNumber);
+        toReturn.put("stackTrace", this.stackTrace);
+        toReturn.put("text", this.text);
+        return toReturn;
     }
 
 }

@@ -6,55 +6,118 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.Info command
+ */
 public class Info {
 
-    public Info(Unknown children, Browser.ClientWindow clientWindow, BrowsingContext.BrowsingContext context, Unknown originalOpener, String url, Browser.UserContext userContext, Unknown parent) {
-        this.children = Unknown;
-        this.clientWindow = Browser.ClientWindow;
-        this.context = BrowsingContext.BrowsingContext;
-        this.originalOpener = Unknown;
-        this.url = String;
-        this.userContext = Browser.UserContext;
-        this.parent = Unknown;
+    /**
+     * Creates a new Info instance
+     */
+    public Info(Object children, Browser.ClientWindow clientWindow, BrowsingContext.BrowsingContext context, Object originalOpener, String url, Browser.UserContext userContext, Object parent) {
+        this.children = children;
+        this.clientWindow = clientWindow;
+        this.context = context;
+        this.originalOpener = originalOpener;
+        this.url = url;
+        this.userContext = userContext;
+        this.parent = parent;
         
     }
 
-    private final Unknown children;
-    public getChildren(Unknown children) {
-        this.children = children;
+    private final Object children;
+
+    /**
+     * Gets the children property
+     * @return Object value
+     */
+    public Object getChildren() {
+        return this.children;
     }
 
     private final Browser.ClientWindow clientWindow;
-    public getClientWindow(Browser.ClientWindow clientWindow) {
-        this.clientWindow = clientWindow;
+
+    /**
+     * Gets the clientWindow property
+     * @return Browser.ClientWindow value
+     */
+    public Browser.ClientWindow getClientWindow() {
+        return this.clientWindow;
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
     }
 
-    private final Unknown originalOpener;
-    public getOriginalOpener(Unknown originalOpener) {
-        this.originalOpener = originalOpener;
+    private final Object originalOpener;
+
+    /**
+     * Gets the originalOpener property
+     * @return Object value
+     */
+    public Object getOriginalOpener() {
+        return this.originalOpener;
     }
 
     private final String url;
-    public getUrl(String url) {
-        this.url = url;
+
+    /**
+     * Gets the url property
+     * @return String value
+     */
+    public String getUrl() {
+        return this.url;
     }
 
     private final Browser.UserContext userContext;
-    public getUserContext(Browser.UserContext userContext) {
-        this.userContext = userContext;
+
+    /**
+     * Gets the userContext property
+     * @return Browser.UserContext value
+     */
+    public Browser.UserContext getUserContext() {
+        return this.userContext;
     }
 
-    private final Unknown parent;
-    public getParent(Unknown parent) {
-        this.parent = parent;
+    private final Object parent;
+
+    /**
+     * Gets the parent property
+     * @return Object value
+     */
+    public Object getParent() {
+        return this.parent;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("children", this.children);
+        toReturn.put("clientWindow", this.clientWindow);
+        toReturn.put("context", this.context);
+        toReturn.put("originalOpener", this.originalOpener);
+        toReturn.put("url", this.url);
+        toReturn.put("userContext", this.userContext);
+        toReturn.put("parent", this.parent);
+        return toReturn;
     }
 
 }

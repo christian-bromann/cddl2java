@@ -6,19 +6,46 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Network;
+package org.openqa.selenium.bidirectional.network;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for network.ResponseContent command
+ */
 public class ResponseContent {
 
-    public ResponseContent(long size) {
-        this.size = long;
+    /**
+     * Creates a new ResponseContent instance
+     */
+    public ResponseContent(Long size) {
+        this.size = size;
         
     }
 
-    private final long size;
-    public getSize(long size) {
-        this.size = size;
+    private final Long size;
+
+    /**
+     * Gets the size property
+     * @return Long value
+     */
+    public Long getSize() {
+        return this.size;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("size", this.size);
+        return toReturn;
     }
 
 }

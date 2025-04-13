@@ -6,19 +6,46 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Network;
+package org.openqa.selenium.bidirectional.network;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for network.FailRequestParameters command
+ */
 public class FailRequestParameters {
 
+    /**
+     * Creates a new FailRequestParameters instance
+     */
     public FailRequestParameters(Network.Request request) {
-        this.request = Network.Request;
+        this.request = request;
         
     }
 
     private final Network.Request request;
-    public getRequest(Network.Request request) {
-        this.request = request;
+
+    /**
+     * Gets the request property
+     * @return Network.Request value
+     */
+    public Network.Request getRequest() {
+        return this.request;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("request", this.request);
+        return toReturn;
     }
 
 }

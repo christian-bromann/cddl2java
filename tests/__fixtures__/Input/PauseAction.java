@@ -6,24 +6,57 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Input;
+package org.openqa.selenium.bidirectional.input;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for input.PauseAction command
+ */
 public class PauseAction {
 
-    public PauseAction(long duration) {
-        this.duration = long;
+    /**
+     * Creates a new PauseAction instance
+     */
+    public PauseAction(Long duration) {
+        this.duration = duration;
         this.type = "pause";
     }
 
     private final pause type;
-    public getType(pause type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return pause value
+     */
+    public pause getType() {
+        return this.type;
     }
 
-    private final long duration;
-    public getDuration(long duration) {
-        this.duration = duration;
+    private final Long duration;
+
+    /**
+     * Gets the duration property
+     * @return Long value
+     */
+    public Long getDuration() {
+        return this.duration;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("duration", this.duration);
+        return toReturn;
     }
 
 }

@@ -6,25 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Session;
+package org.openqa.selenium.bidirectional.session;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for session.StatusResult command
+ */
 public class StatusResult {
 
-    public StatusResult(boolean ready, String message) {
-        this.ready = boolean;
-        this.message = String;
+    /**
+     * Creates a new StatusResult instance
+     */
+    public StatusResult(Boolean ready, String message) {
+        this.ready = ready;
+        this.message = message;
         
     }
 
-    private final boolean ready;
-    public getReady(boolean ready) {
-        this.ready = ready;
+    private final Boolean ready;
+
+    /**
+     * Gets the ready property
+     * @return Boolean value
+     */
+    public Boolean getReady() {
+        return this.ready;
     }
 
     private final String message;
-    public getMessage(String message) {
-        this.message = message;
+
+    /**
+     * Gets the message property
+     * @return String value
+     */
+    public String getMessage() {
+        return this.message;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("ready", this.ready);
+        toReturn.put("message", this.message);
+        return toReturn;
     }
 
 }

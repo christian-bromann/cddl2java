@@ -6,19 +6,46 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.DownloadWillBeginParams command
+ */
 public class DownloadWillBeginParams {
 
+    /**
+     * Creates a new DownloadWillBeginParams instance
+     */
     public DownloadWillBeginParams(String suggestedFilename) {
-        this.suggestedFilename = String;
+        this.suggestedFilename = suggestedFilename;
         
     }
 
     private final String suggestedFilename;
-    public getSuggestedFilename(String suggestedFilename) {
-        this.suggestedFilename = suggestedFilename;
+
+    /**
+     * Gets the suggestedFilename property
+     * @return String value
+     */
+    public String getSuggestedFilename() {
+        return this.suggestedFilename;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("suggestedFilename", this.suggestedFilename);
+        return toReturn;
     }
 
 }

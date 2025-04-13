@@ -6,60 +6,130 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.PrintParameters command
+ */
 public class PrintParameters {
 
-    public PrintParameters(BrowsingContext.BrowsingContext context, Unknown background, BrowsingContext.PrintMarginParameters margin, Unknown orientation, BrowsingContext.PrintPageParameters page, Unknown scale, Unknown shrinkToFit) {
-        this.context = BrowsingContext.BrowsingContext;
-        this.background = Unknown;
-        this.margin = BrowsingContext.PrintMarginParameters;
-        this.orientation = Unknown;
-        this.page = BrowsingContext.PrintPageParameters;
-        this.scale = Unknown;
-        this.shrinkToFit = Unknown;
-        this.pageRanges = "Unknown[]";
+    /**
+     * Creates a new PrintParameters instance
+     */
+    public PrintParameters(BrowsingContext.BrowsingContext context, Unknown background, BrowsingContext.PrintMarginParameters margin, Object orientation, BrowsingContext.PrintPageParameters page, List<Unknown> pageRanges, Unknown scale, Unknown shrinkToFit) {
+        this.context = context;
+        this.background = background;
+        this.margin = margin;
+        this.orientation = orientation;
+        this.page = page;
+        this.pageRanges = pageRanges;
+        this.scale = scale;
+        this.shrinkToFit = shrinkToFit;
+        
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
     }
 
     private final Unknown background;
-    public getBackground(Unknown background) {
-        this.background = background;
+
+    /**
+     * Gets the background property
+     * @return Unknown value
+     */
+    public Unknown getBackground() {
+        return this.background;
     }
 
     private final BrowsingContext.PrintMarginParameters margin;
-    public getMargin(BrowsingContext.PrintMarginParameters margin) {
-        this.margin = margin;
+
+    /**
+     * Gets the margin property
+     * @return BrowsingContext.PrintMarginParameters value
+     */
+    public BrowsingContext.PrintMarginParameters getMargin() {
+        return this.margin;
     }
 
-    private final Unknown orientation;
-    public getOrientation(Unknown orientation) {
-        this.orientation = orientation;
+    private final Object orientation;
+
+    /**
+     * Gets the orientation property
+     * @return Object value
+     */
+    public Object getOrientation() {
+        return this.orientation;
     }
 
     private final BrowsingContext.PrintPageParameters page;
-    public getPage(BrowsingContext.PrintPageParameters page) {
-        this.page = page;
+
+    /**
+     * Gets the page property
+     * @return BrowsingContext.PrintPageParameters value
+     */
+    public BrowsingContext.PrintPageParameters getPage() {
+        return this.page;
     }
 
-    private final Unknown[] pageRanges;
-    public getPageRanges(Unknown[] pageRanges) {
-        this.pageRanges = pageRanges;
+    private final List<Unknown> pageRanges;
+
+    /**
+     * Gets the pageRanges property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getPageRanges() {
+        return this.pageRanges;
     }
 
     private final Unknown scale;
-    public getScale(Unknown scale) {
-        this.scale = scale;
+
+    /**
+     * Gets the scale property
+     * @return Unknown value
+     */
+    public Unknown getScale() {
+        return this.scale;
     }
 
     private final Unknown shrinkToFit;
-    public getShrinkToFit(Unknown shrinkToFit) {
-        this.shrinkToFit = shrinkToFit;
+
+    /**
+     * Gets the shrinkToFit property
+     * @return Unknown value
+     */
+    public Unknown getShrinkToFit() {
+        return this.shrinkToFit;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("context", this.context);
+        toReturn.put("background", this.background);
+        toReturn.put("margin", this.margin);
+        toReturn.put("orientation", this.orientation);
+        toReturn.put("page", this.page);
+        toReturn.put("pageRanges", this.pageRanges);
+        toReturn.put("scale", this.scale);
+        toReturn.put("shrinkToFit", this.shrinkToFit);
+        return toReturn;
     }
 
 }

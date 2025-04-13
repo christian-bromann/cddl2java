@@ -6,30 +6,69 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.ProxyRemoteValue command
+ */
 public class ProxyRemoteValue {
 
+    /**
+     * Creates a new ProxyRemoteValue instance
+     */
     public ProxyRemoteValue(Script.Handle handle, Script.InternalId internalId) {
-        this.handle = Script.Handle;
-        this.internalId = Script.InternalId;
+        this.handle = handle;
+        this.internalId = internalId;
         this.type = "proxy";
     }
 
     private final proxy type;
-    public getType(proxy type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return proxy value
+     */
+    public proxy getType() {
+        return this.type;
     }
 
     private final Script.Handle handle;
-    public getHandle(Script.Handle handle) {
-        this.handle = handle;
+
+    /**
+     * Gets the handle property
+     * @return Script.Handle value
+     */
+    public Script.Handle getHandle() {
+        return this.handle;
     }
 
     private final Script.InternalId internalId;
-    public getInternalId(Script.InternalId internalId) {
-        this.internalId = internalId;
+
+    /**
+     * Gets the internalId property
+     * @return Script.InternalId value
+     */
+    public Script.InternalId getInternalId() {
+        return this.internalId;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("handle", this.handle);
+        toReturn.put("internalId", this.internalId);
+        return toReturn;
     }
 
 }

@@ -6,25 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.ContextTarget command
+ */
 public class ContextTarget {
 
+    /**
+     * Creates a new ContextTarget instance
+     */
     public ContextTarget(BrowsingContext.BrowsingContext context, String sandbox) {
-        this.context = BrowsingContext.BrowsingContext;
-        this.sandbox = String;
+        this.context = context;
+        this.sandbox = sandbox;
         
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
     }
 
     private final String sandbox;
-    public getSandbox(String sandbox) {
-        this.sandbox = sandbox;
+
+    /**
+     * Gets the sandbox property
+     * @return String value
+     */
+    public String getSandbox() {
+        return this.sandbox;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("context", this.context);
+        toReturn.put("sandbox", this.sandbox);
+        return toReturn;
     }
 
 }

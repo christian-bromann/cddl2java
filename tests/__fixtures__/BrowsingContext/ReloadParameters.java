@@ -6,31 +6,70 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.ReloadParameters command
+ */
 public class ReloadParameters {
 
-    public ReloadParameters(BrowsingContext.BrowsingContext context, boolean ignoreCache, BrowsingContext.ReadinessState wait) {
-        this.context = BrowsingContext.BrowsingContext;
-        this.ignoreCache = boolean;
-        this.wait = BrowsingContext.ReadinessState;
+    /**
+     * Creates a new ReloadParameters instance
+     */
+    public ReloadParameters(BrowsingContext.BrowsingContext context, Boolean ignoreCache, BrowsingContext.ReadinessState wait) {
+        this.context = context;
+        this.ignoreCache = ignoreCache;
+        this.wait = wait;
         
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
     }
 
-    private final boolean ignoreCache;
-    public getIgnoreCache(boolean ignoreCache) {
-        this.ignoreCache = ignoreCache;
+    private final Boolean ignoreCache;
+
+    /**
+     * Gets the ignoreCache property
+     * @return Boolean value
+     */
+    public Boolean getIgnoreCache() {
+        return this.ignoreCache;
     }
 
     private final BrowsingContext.ReadinessState wait;
-    public getWait(BrowsingContext.ReadinessState wait) {
-        this.wait = wait;
+
+    /**
+     * Gets the wait property
+     * @return BrowsingContext.ReadinessState value
+     */
+    public BrowsingContext.ReadinessState getWait() {
+        return this.wait;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("context", this.context);
+        toReturn.put("ignoreCache", this.ignoreCache);
+        toReturn.put("wait", this.wait);
+        return toReturn;
     }
 
 }

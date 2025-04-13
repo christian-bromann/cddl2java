@@ -6,19 +6,46 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.GetRealmsResult command
+ */
 public class GetRealmsResult {
 
-    public GetRealmsResult() {
+    /**
+     * Creates a new GetRealmsResult instance
+     */
+    public GetRealmsResult(List<Unknown> realms) {
+        this.realms = realms;
         
-        this.realms = "Unknown[]";
     }
 
-    private final Unknown[] realms;
-    public getRealms(Unknown[] realms) {
-        this.realms = realms;
+    private final List<Unknown> realms;
+
+    /**
+     * Gets the realms property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getRealms() {
+        return this.realms;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("realms", this.realms);
+        return toReturn;
     }
 
 }

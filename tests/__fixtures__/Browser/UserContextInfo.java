@@ -6,19 +6,46 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Browser;
+package org.openqa.selenium.bidirectional.browser;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browser.UserContextInfo command
+ */
 public class UserContextInfo {
 
+    /**
+     * Creates a new UserContextInfo instance
+     */
     public UserContextInfo(Browser.UserContext userContext) {
-        this.userContext = Browser.UserContext;
+        this.userContext = userContext;
         
     }
 
     private final Browser.UserContext userContext;
-    public getUserContext(Browser.UserContext userContext) {
-        this.userContext = userContext;
+
+    /**
+     * Gets the userContext property
+     * @return Browser.UserContext value
+     */
+    public Browser.UserContext getUserContext() {
+        return this.userContext;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("userContext", this.userContext);
+        return toReturn;
     }
 
 }

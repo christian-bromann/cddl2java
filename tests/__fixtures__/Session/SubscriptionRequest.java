@@ -6,31 +6,70 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Session;
+package org.openqa.selenium.bidirectional.session;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for session.SubscriptionRequest command
+ */
 public class SubscriptionRequest {
 
-    public SubscriptionRequest() {
-        
-        this.events = "Unknown[]";
-        this.contexts = "Unknown[]";
-        this.userContexts = "Unknown[]";
-    }
-
-    private final Unknown[] events;
-    public getEvents(Unknown[] events) {
+    /**
+     * Creates a new SubscriptionRequest instance
+     */
+    public SubscriptionRequest(List<Unknown> events, List<Unknown> contexts, List<Unknown> userContexts) {
         this.events = events;
-    }
-
-    private final Unknown[] contexts;
-    public getContexts(Unknown[] contexts) {
         this.contexts = contexts;
+        this.userContexts = userContexts;
+        
     }
 
-    private final Unknown[] userContexts;
-    public getUserContexts(Unknown[] userContexts) {
-        this.userContexts = userContexts;
+    private final List<Unknown> events;
+
+    /**
+     * Gets the events property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getEvents() {
+        return this.events;
+    }
+
+    private final List<Unknown> contexts;
+
+    /**
+     * Gets the contexts property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getContexts() {
+        return this.contexts;
+    }
+
+    private final List<Unknown> userContexts;
+
+    /**
+     * Gets the userContexts property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getUserContexts() {
+        return this.userContexts;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("events", this.events);
+        toReturn.put("contexts", this.contexts);
+        toReturn.put("userContexts", this.userContexts);
+        return toReturn;
     }
 
 }

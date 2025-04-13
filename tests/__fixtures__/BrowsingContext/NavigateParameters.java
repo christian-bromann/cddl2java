@@ -6,31 +6,70 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.NavigateParameters command
+ */
 public class NavigateParameters {
 
+    /**
+     * Creates a new NavigateParameters instance
+     */
     public NavigateParameters(BrowsingContext.BrowsingContext context, String url, BrowsingContext.ReadinessState wait) {
-        this.context = BrowsingContext.BrowsingContext;
-        this.url = String;
-        this.wait = BrowsingContext.ReadinessState;
+        this.context = context;
+        this.url = url;
+        this.wait = wait;
         
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
     }
 
     private final String url;
-    public getUrl(String url) {
-        this.url = url;
+
+    /**
+     * Gets the url property
+     * @return String value
+     */
+    public String getUrl() {
+        return this.url;
     }
 
     private final BrowsingContext.ReadinessState wait;
-    public getWait(BrowsingContext.ReadinessState wait) {
-        this.wait = wait;
+
+    /**
+     * Gets the wait property
+     * @return BrowsingContext.ReadinessState value
+     */
+    public BrowsingContext.ReadinessState getWait() {
+        return this.wait;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("context", this.context);
+        toReturn.put("url", this.url);
+        toReturn.put("wait", this.wait);
+        return toReturn;
     }
 
 }

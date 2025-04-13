@@ -6,42 +6,94 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.AddPreloadScriptParameters command
+ */
 public class AddPreloadScriptParameters {
 
-    public AddPreloadScriptParameters(String functionDeclaration, String sandbox) {
-        this.functionDeclaration = String;
-        this.sandbox = String;
-        this.arguments = "Unknown[]";
-        this.contexts = "Unknown[]";
-        this.userContexts = "Unknown[]";
+    /**
+     * Creates a new AddPreloadScriptParameters instance
+     */
+    public AddPreloadScriptParameters(String functionDeclaration, List<Unknown> arguments, List<Unknown> contexts, List<Unknown> userContexts, String sandbox) {
+        this.functionDeclaration = functionDeclaration;
+        this.arguments = arguments;
+        this.contexts = contexts;
+        this.userContexts = userContexts;
+        this.sandbox = sandbox;
+        
     }
 
     private final String functionDeclaration;
-    public getFunctionDeclaration(String functionDeclaration) {
-        this.functionDeclaration = functionDeclaration;
+
+    /**
+     * Gets the functionDeclaration property
+     * @return String value
+     */
+    public String getFunctionDeclaration() {
+        return this.functionDeclaration;
     }
 
-    private final Unknown[] arguments;
-    public getArguments(Unknown[] arguments) {
-        this.arguments = arguments;
+    private final List<Unknown> arguments;
+
+    /**
+     * Gets the arguments property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getArguments() {
+        return this.arguments;
     }
 
-    private final Unknown[] contexts;
-    public getContexts(Unknown[] contexts) {
-        this.contexts = contexts;
+    private final List<Unknown> contexts;
+
+    /**
+     * Gets the contexts property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getContexts() {
+        return this.contexts;
     }
 
-    private final Unknown[] userContexts;
-    public getUserContexts(Unknown[] userContexts) {
-        this.userContexts = userContexts;
+    private final List<Unknown> userContexts;
+
+    /**
+     * Gets the userContexts property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getUserContexts() {
+        return this.userContexts;
     }
 
     private final String sandbox;
-    public getSandbox(String sandbox) {
-        this.sandbox = sandbox;
+
+    /**
+     * Gets the sandbox property
+     * @return String value
+     */
+    public String getSandbox() {
+        return this.sandbox;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("functionDeclaration", this.functionDeclaration);
+        toReturn.put("arguments", this.arguments);
+        toReturn.put("contexts", this.contexts);
+        toReturn.put("userContexts", this.userContexts);
+        toReturn.put("sandbox", this.sandbox);
+        return toReturn;
     }
 
 }

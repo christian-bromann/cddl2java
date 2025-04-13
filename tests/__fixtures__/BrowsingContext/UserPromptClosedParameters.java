@@ -6,37 +6,82 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.UserPromptClosedParameters command
+ */
 public class UserPromptClosedParameters {
 
-    public UserPromptClosedParameters(BrowsingContext.BrowsingContext context, boolean accepted, BrowsingContext.UserPromptType type, String userText) {
-        this.context = BrowsingContext.BrowsingContext;
-        this.accepted = boolean;
-        this.type = BrowsingContext.UserPromptType;
-        this.userText = String;
+    /**
+     * Creates a new UserPromptClosedParameters instance
+     */
+    public UserPromptClosedParameters(BrowsingContext.BrowsingContext context, Boolean accepted, BrowsingContext.UserPromptType type, String userText) {
+        this.context = context;
+        this.accepted = accepted;
+        this.type = type;
+        this.userText = userText;
         
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
     }
 
-    private final boolean accepted;
-    public getAccepted(boolean accepted) {
-        this.accepted = accepted;
+    private final Boolean accepted;
+
+    /**
+     * Gets the accepted property
+     * @return Boolean value
+     */
+    public Boolean getAccepted() {
+        return this.accepted;
     }
 
     private final BrowsingContext.UserPromptType type;
-    public getType(BrowsingContext.UserPromptType type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return BrowsingContext.UserPromptType value
+     */
+    public BrowsingContext.UserPromptType getType() {
+        return this.type;
     }
 
     private final String userText;
-    public getUserText(String userText) {
-        this.userText = userText;
+
+    /**
+     * Gets the userText property
+     * @return String value
+     */
+    public String getUserText() {
+        return this.userText;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("context", this.context);
+        toReturn.put("accepted", this.accepted);
+        toReturn.put("type", this.type);
+        toReturn.put("userText", this.userText);
+        return toReturn;
     }
 
 }

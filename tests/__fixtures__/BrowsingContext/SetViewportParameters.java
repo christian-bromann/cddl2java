@@ -6,36 +6,82 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.SetViewportParameters command
+ */
 public class SetViewportParameters {
 
-    public SetViewportParameters(BrowsingContext.BrowsingContext context, Unknown viewport, Unknown devicePixelRatio) {
-        this.context = BrowsingContext.BrowsingContext;
-        this.viewport = Unknown;
-        this.devicePixelRatio = Unknown;
-        this.userContexts = "Unknown[]";
+    /**
+     * Creates a new SetViewportParameters instance
+     */
+    public SetViewportParameters(BrowsingContext.BrowsingContext context, Object viewport, Object devicePixelRatio, List<Unknown> userContexts) {
+        this.context = context;
+        this.viewport = viewport;
+        this.devicePixelRatio = devicePixelRatio;
+        this.userContexts = userContexts;
+        
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
     }
 
-    private final Unknown viewport;
-    public getViewport(Unknown viewport) {
-        this.viewport = viewport;
+    private final Object viewport;
+
+    /**
+     * Gets the viewport property
+     * @return Object value
+     */
+    public Object getViewport() {
+        return this.viewport;
     }
 
-    private final Unknown devicePixelRatio;
-    public getDevicePixelRatio(Unknown devicePixelRatio) {
-        this.devicePixelRatio = devicePixelRatio;
+    private final Object devicePixelRatio;
+
+    /**
+     * Gets the devicePixelRatio property
+     * @return Object value
+     */
+    public Object getDevicePixelRatio() {
+        return this.devicePixelRatio;
     }
 
-    private final Unknown[] userContexts;
-    public getUserContexts(Unknown[] userContexts) {
-        this.userContexts = userContexts;
+    private final List<Unknown> userContexts;
+
+    /**
+     * Gets the userContexts property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getUserContexts() {
+        return this.userContexts;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("context", this.context);
+        toReturn.put("viewport", this.viewport);
+        toReturn.put("devicePixelRatio", this.devicePixelRatio);
+        toReturn.put("userContexts", this.userContexts);
+        return toReturn;
     }
 
 }

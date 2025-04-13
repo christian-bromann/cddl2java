@@ -6,24 +6,57 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Input;
+package org.openqa.selenium.bidirectional.input;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for input.PointerUpAction command
+ */
 public class PointerUpAction {
 
-    public PointerUpAction(long button) {
-        this.button = long;
+    /**
+     * Creates a new PointerUpAction instance
+     */
+    public PointerUpAction(Long button) {
+        this.button = button;
         this.type = "pointerUp";
     }
 
     private final pointerUp type;
-    public getType(pointerUp type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return pointerUp value
+     */
+    public pointerUp getType() {
+        return this.type;
     }
 
-    private final long button;
-    public getButton(long button) {
-        this.button = button;
+    private final Long button;
+
+    /**
+     * Gets the button property
+     * @return Long value
+     */
+    public Long getButton() {
+        return this.button;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("button", this.button);
+        return toReturn;
     }
 
 }

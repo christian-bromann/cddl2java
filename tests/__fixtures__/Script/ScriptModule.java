@@ -8,23 +8,27 @@
 
 package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
 import org.openqa.selenium.bidi.Command;
+import org.openqa.selenium.bidirectional.EmptyResult;
 
 /**
- * Auto generated class for running Bidi commands in Java
+ * Auto generated class for running WebDriver BiDi script commands in Java
  */
 public class ScriptModule {
 
     /**
      * WebDriver Bidi command to send command method "script.removePreloadScript" with parameters.
      * @url https://w3c.github.io/webdriver-bidi/#command-script-removePreloadScript
-     * @param params `ScriptRemovePreloadScriptParameters` {@link https://w3c.github.io/webdriver-bidi/#command-script-removePreloadScript | command parameter}
+     * @param parameters `RemovePreloadScriptParameters` {@link https://w3c.github.io/webdriver-bidi/#command-script-removePreloadScript | command parameter}
+     * @return Command object with result type for script.removePreloadScript
      */
-    public Command<EmptyResult> RemovePreloadScript (RemovePreloadScriptParameters parameters) {
+    public Command<org.openqa.selenium.bidirectional.EmptyResult> RemovePreloadScript (RemovePreloadScriptParameters parameters) {
         return new Command<>(
             "script.removePreloadScript",
             parameters.asMap(),
-            EmptyResult.class
+            org.openqa.selenium.bidirectional.EmptyResult.class
         );
     }
 }

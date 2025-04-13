@@ -6,25 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.NavigateResult command
+ */
 public class NavigateResult {
 
-    public NavigateResult(Unknown navigation, String url) {
-        this.navigation = Unknown;
-        this.url = String;
+    /**
+     * Creates a new NavigateResult instance
+     */
+    public NavigateResult(Object navigation, String url) {
+        this.navigation = navigation;
+        this.url = url;
         
     }
 
-    private final Unknown navigation;
-    public getNavigation(Unknown navigation) {
-        this.navigation = navigation;
+    private final Object navigation;
+
+    /**
+     * Gets the navigation property
+     * @return Object value
+     */
+    public Object getNavigation() {
+        return this.navigation;
     }
 
     private final String url;
-    public getUrl(String url) {
-        this.url = url;
+
+    /**
+     * Gets the url property
+     * @return String value
+     */
+    public String getUrl() {
+        return this.url;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("navigation", this.navigation);
+        toReturn.put("url", this.url);
+        return toReturn;
     }
 
 }

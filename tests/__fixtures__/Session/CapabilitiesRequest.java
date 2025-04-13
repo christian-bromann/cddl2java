@@ -6,24 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Session;
+package org.openqa.selenium.bidirectional.session;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for session.CapabilitiesRequest command
+ */
 public class CapabilitiesRequest {
 
-    public CapabilitiesRequest(Session.CapabilityRequest alwaysMatch) {
-        this.alwaysMatch = Session.CapabilityRequest;
-        this.firstMatch = "Unknown[]";
+    /**
+     * Creates a new CapabilitiesRequest instance
+     */
+    public CapabilitiesRequest(Session.CapabilityRequest alwaysMatch, List<Unknown> firstMatch) {
+        this.alwaysMatch = alwaysMatch;
+        this.firstMatch = firstMatch;
+        
     }
 
     private final Session.CapabilityRequest alwaysMatch;
-    public getAlwaysMatch(Session.CapabilityRequest alwaysMatch) {
-        this.alwaysMatch = alwaysMatch;
+
+    /**
+     * Gets the alwaysMatch property
+     * @return Session.CapabilityRequest value
+     */
+    public Session.CapabilityRequest getAlwaysMatch() {
+        return this.alwaysMatch;
     }
 
-    private final Unknown[] firstMatch;
-    public getFirstMatch(Unknown[] firstMatch) {
-        this.firstMatch = firstMatch;
+    private final List<Unknown> firstMatch;
+
+    /**
+     * Gets the firstMatch property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getFirstMatch() {
+        return this.firstMatch;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("alwaysMatch", this.alwaysMatch);
+        toReturn.put("firstMatch", this.firstMatch);
+        return toReturn;
     }
 
 }

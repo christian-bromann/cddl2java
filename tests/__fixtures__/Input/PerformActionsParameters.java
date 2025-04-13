@@ -6,24 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Input;
+package org.openqa.selenium.bidirectional.input;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for input.PerformActionsParameters command
+ */
 public class PerformActionsParameters {
 
-    public PerformActionsParameters(BrowsingContext.BrowsingContext context) {
-        this.context = BrowsingContext.BrowsingContext;
-        this.actions = "Unknown[]";
+    /**
+     * Creates a new PerformActionsParameters instance
+     */
+    public PerformActionsParameters(BrowsingContext.BrowsingContext context, List<Unknown> actions) {
+        this.context = context;
+        this.actions = actions;
+        
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
     }
 
-    private final Unknown[] actions;
-    public getActions(Unknown[] actions) {
-        this.actions = actions;
+    private final List<Unknown> actions;
+
+    /**
+     * Gets the actions property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getActions() {
+        return this.actions;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("context", this.context);
+        toReturn.put("actions", this.actions);
+        return toReturn;
     }
 
 }

@@ -6,19 +6,46 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.StackTrace command
+ */
 public class StackTrace {
 
-    public StackTrace() {
+    /**
+     * Creates a new StackTrace instance
+     */
+    public StackTrace(List<Unknown> callFrames) {
+        this.callFrames = callFrames;
         
-        this.callFrames = "Unknown[]";
     }
 
-    private final Unknown[] callFrames;
-    public getCallFrames(Unknown[] callFrames) {
-        this.callFrames = callFrames;
+    private final List<Unknown> callFrames;
+
+    /**
+     * Gets the callFrames property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getCallFrames() {
+        return this.callFrames;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("callFrames", this.callFrames);
+        return toReturn;
     }
 
 }

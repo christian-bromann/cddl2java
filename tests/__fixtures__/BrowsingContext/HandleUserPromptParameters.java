@@ -6,31 +6,70 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.HandleUserPromptParameters command
+ */
 public class HandleUserPromptParameters {
 
-    public HandleUserPromptParameters(BrowsingContext.BrowsingContext context, boolean accept, String userText) {
-        this.context = BrowsingContext.BrowsingContext;
-        this.accept = boolean;
-        this.userText = String;
+    /**
+     * Creates a new HandleUserPromptParameters instance
+     */
+    public HandleUserPromptParameters(BrowsingContext.BrowsingContext context, Boolean accept, String userText) {
+        this.context = context;
+        this.accept = accept;
+        this.userText = userText;
         
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
     }
 
-    private final boolean accept;
-    public getAccept(boolean accept) {
-        this.accept = accept;
+    private final Boolean accept;
+
+    /**
+     * Gets the accept property
+     * @return Boolean value
+     */
+    public Boolean getAccept() {
+        return this.accept;
     }
 
     private final String userText;
-    public getUserText(String userText) {
-        this.userText = userText;
+
+    /**
+     * Gets the userText property
+     * @return String value
+     */
+    public String getUserText() {
+        return this.userText;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("context", this.context);
+        toReturn.put("accept", this.accept);
+        toReturn.put("userText", this.userText);
+        return toReturn;
     }
 
 }

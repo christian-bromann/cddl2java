@@ -6,55 +6,118 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Browser;
+package org.openqa.selenium.bidirectional.browser;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browser.ClientWindowInfo command
+ */
 public class ClientWindowInfo {
 
-    public ClientWindowInfo(boolean active, Browser.ClientWindow clientWindow, long height, Unknown state, long width, int x, int y) {
-        this.active = boolean;
-        this.clientWindow = Browser.ClientWindow;
-        this.height = long;
-        this.state = Unknown;
-        this.width = long;
-        this.x = int;
-        this.y = int;
+    /**
+     * Creates a new ClientWindowInfo instance
+     */
+    public ClientWindowInfo(Boolean active, Browser.ClientWindow clientWindow, Long height, Object state, Long width, Integer x, Integer y) {
+        this.active = active;
+        this.clientWindow = clientWindow;
+        this.height = height;
+        this.state = state;
+        this.width = width;
+        this.x = x;
+        this.y = y;
         
     }
 
-    private final boolean active;
-    public getActive(boolean active) {
-        this.active = active;
+    private final Boolean active;
+
+    /**
+     * Gets the active property
+     * @return Boolean value
+     */
+    public Boolean getActive() {
+        return this.active;
     }
 
     private final Browser.ClientWindow clientWindow;
-    public getClientWindow(Browser.ClientWindow clientWindow) {
-        this.clientWindow = clientWindow;
+
+    /**
+     * Gets the clientWindow property
+     * @return Browser.ClientWindow value
+     */
+    public Browser.ClientWindow getClientWindow() {
+        return this.clientWindow;
     }
 
-    private final long height;
-    public getHeight(long height) {
-        this.height = height;
+    private final Long height;
+
+    /**
+     * Gets the height property
+     * @return Long value
+     */
+    public Long getHeight() {
+        return this.height;
     }
 
-    private final Unknown state;
-    public getState(Unknown state) {
-        this.state = state;
+    private final Object state;
+
+    /**
+     * Gets the state property
+     * @return Object value
+     */
+    public Object getState() {
+        return this.state;
     }
 
-    private final long width;
-    public getWidth(long width) {
-        this.width = width;
+    private final Long width;
+
+    /**
+     * Gets the width property
+     * @return Long value
+     */
+    public Long getWidth() {
+        return this.width;
     }
 
-    private final int x;
-    public getX(int x) {
-        this.x = x;
+    private final Integer x;
+
+    /**
+     * Gets the x property
+     * @return Integer value
+     */
+    public Integer getX() {
+        return this.x;
     }
 
-    private final int y;
-    public getY(int y) {
-        this.y = y;
+    private final Integer y;
+
+    /**
+     * Gets the y property
+     * @return Integer value
+     */
+    public Integer getY() {
+        return this.y;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("active", this.active);
+        toReturn.put("clientWindow", this.clientWindow);
+        toReturn.put("height", this.height);
+        toReturn.put("state", this.state);
+        toReturn.put("width", this.width);
+        toReturn.put("x", this.x);
+        toReturn.put("y", this.y);
+        return toReturn;
     }
 
 }

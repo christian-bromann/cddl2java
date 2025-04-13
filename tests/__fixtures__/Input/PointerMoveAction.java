@@ -6,42 +6,93 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Input;
+package org.openqa.selenium.bidirectional.input;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for input.PointerMoveAction command
+ */
 public class PointerMoveAction {
 
-    public PointerMoveAction(float x, float y, long duration, Input.Origin origin) {
-        this.x = float;
-        this.y = float;
-        this.duration = long;
-        this.origin = Input.Origin;
+    /**
+     * Creates a new PointerMoveAction instance
+     */
+    public PointerMoveAction(Float x, Float y, Long duration, Input.Origin origin) {
+        this.x = x;
+        this.y = y;
+        this.duration = duration;
+        this.origin = origin;
         this.type = "pointerMove";
     }
 
     private final pointerMove type;
-    public getType(pointerMove type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return pointerMove value
+     */
+    public pointerMove getType() {
+        return this.type;
     }
 
-    private final float x;
-    public getX(float x) {
-        this.x = x;
+    private final Float x;
+
+    /**
+     * Gets the x property
+     * @return Float value
+     */
+    public Float getX() {
+        return this.x;
     }
 
-    private final float y;
-    public getY(float y) {
-        this.y = y;
+    private final Float y;
+
+    /**
+     * Gets the y property
+     * @return Float value
+     */
+    public Float getY() {
+        return this.y;
     }
 
-    private final long duration;
-    public getDuration(long duration) {
-        this.duration = duration;
+    private final Long duration;
+
+    /**
+     * Gets the duration property
+     * @return Long value
+     */
+    public Long getDuration() {
+        return this.duration;
     }
 
     private final Input.Origin origin;
-    public getOrigin(Input.Origin origin) {
-        this.origin = origin;
+
+    /**
+     * Gets the origin property
+     * @return Input.Origin value
+     */
+    public Input.Origin getOrigin() {
+        return this.origin;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("x", this.x);
+        toReturn.put("y", this.y);
+        toReturn.put("duration", this.duration);
+        toReturn.put("origin", this.origin);
+        return toReturn;
     }
 
 }

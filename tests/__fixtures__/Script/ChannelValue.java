@@ -6,24 +6,57 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.ChannelValue command
+ */
 public class ChannelValue {
 
+    /**
+     * Creates a new ChannelValue instance
+     */
     public ChannelValue(Script.ChannelProperties value) {
-        this.value = Script.ChannelProperties;
+        this.value = value;
         this.type = "channel";
     }
 
     private final channel type;
-    public getType(channel type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return channel value
+     */
+    public channel getType() {
+        return this.type;
     }
 
     private final Script.ChannelProperties value;
-    public getValue(Script.ChannelProperties value) {
-        this.value = value;
+
+    /**
+     * Gets the value property
+     * @return Script.ChannelProperties value
+     */
+    public Script.ChannelProperties getValue() {
+        return this.value;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("value", this.value);
+        return toReturn;
     }
 
 }

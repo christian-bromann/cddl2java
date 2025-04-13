@@ -6,24 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.DisownParameters command
+ */
 public class DisownParameters {
 
-    public DisownParameters(Script.Target target) {
-        this.target = Script.Target;
-        this.handles = "Unknown[]";
+    /**
+     * Creates a new DisownParameters instance
+     */
+    public DisownParameters(List<Unknown> handles, Script.Target target) {
+        this.handles = handles;
+        this.target = target;
+        
     }
 
-    private final Unknown[] handles;
-    public getHandles(Unknown[] handles) {
-        this.handles = handles;
+    private final List<Unknown> handles;
+
+    /**
+     * Gets the handles property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getHandles() {
+        return this.handles;
     }
 
     private final Script.Target target;
-    public getTarget(Script.Target target) {
-        this.target = target;
+
+    /**
+     * Gets the target property
+     * @return Script.Target value
+     */
+    public Script.Target getTarget() {
+        return this.target;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("handles", this.handles);
+        toReturn.put("target", this.target);
+        return toReturn;
     }
 
 }

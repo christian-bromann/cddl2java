@@ -6,19 +6,46 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.SharedWorkerRealmInfo command
+ */
 public class SharedWorkerRealmInfo {
 
+    /**
+     * Creates a new SharedWorkerRealmInfo instance
+     */
     public SharedWorkerRealmInfo() {
         
         this.type = "shared-worker";
     }
 
     private final shared-worker type;
-    public getType(shared-worker type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return shared-worker value
+     */
+    public shared-worker getType() {
+        return this.type;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        return toReturn;
     }
 
 }

@@ -6,49 +6,106 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.EvaluateParameters command
+ */
 public class EvaluateParameters {
 
-    public EvaluateParameters(String expression, Script.Target target, boolean awaitPromise, Script.ResultOwnership resultOwnership, Script.SerializationOptions serializationOptions, Unknown userActivation) {
-        this.expression = String;
-        this.target = Script.Target;
-        this.awaitPromise = boolean;
-        this.resultOwnership = Script.ResultOwnership;
-        this.serializationOptions = Script.SerializationOptions;
-        this.userActivation = Unknown;
+    /**
+     * Creates a new EvaluateParameters instance
+     */
+    public EvaluateParameters(String expression, Script.Target target, Boolean awaitPromise, Script.ResultOwnership resultOwnership, Script.SerializationOptions serializationOptions, Unknown userActivation) {
+        this.expression = expression;
+        this.target = target;
+        this.awaitPromise = awaitPromise;
+        this.resultOwnership = resultOwnership;
+        this.serializationOptions = serializationOptions;
+        this.userActivation = userActivation;
         
     }
 
     private final String expression;
-    public getExpression(String expression) {
-        this.expression = expression;
+
+    /**
+     * Gets the expression property
+     * @return String value
+     */
+    public String getExpression() {
+        return this.expression;
     }
 
     private final Script.Target target;
-    public getTarget(Script.Target target) {
-        this.target = target;
+
+    /**
+     * Gets the target property
+     * @return Script.Target value
+     */
+    public Script.Target getTarget() {
+        return this.target;
     }
 
-    private final boolean awaitPromise;
-    public getAwaitPromise(boolean awaitPromise) {
-        this.awaitPromise = awaitPromise;
+    private final Boolean awaitPromise;
+
+    /**
+     * Gets the awaitPromise property
+     * @return Boolean value
+     */
+    public Boolean getAwaitPromise() {
+        return this.awaitPromise;
     }
 
     private final Script.ResultOwnership resultOwnership;
-    public getResultOwnership(Script.ResultOwnership resultOwnership) {
-        this.resultOwnership = resultOwnership;
+
+    /**
+     * Gets the resultOwnership property
+     * @return Script.ResultOwnership value
+     */
+    public Script.ResultOwnership getResultOwnership() {
+        return this.resultOwnership;
     }
 
     private final Script.SerializationOptions serializationOptions;
-    public getSerializationOptions(Script.SerializationOptions serializationOptions) {
-        this.serializationOptions = serializationOptions;
+
+    /**
+     * Gets the serializationOptions property
+     * @return Script.SerializationOptions value
+     */
+    public Script.SerializationOptions getSerializationOptions() {
+        return this.serializationOptions;
     }
 
     private final Unknown userActivation;
-    public getUserActivation(Unknown userActivation) {
-        this.userActivation = userActivation;
+
+    /**
+     * Gets the userActivation property
+     * @return Unknown value
+     */
+    public Unknown getUserActivation() {
+        return this.userActivation;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("expression", this.expression);
+        toReturn.put("target", this.target);
+        toReturn.put("awaitPromise", this.awaitPromise);
+        toReturn.put("resultOwnership", this.resultOwnership);
+        toReturn.put("serializationOptions", this.serializationOptions);
+        toReturn.put("userActivation", this.userActivation);
+        return toReturn;
     }
 
 }

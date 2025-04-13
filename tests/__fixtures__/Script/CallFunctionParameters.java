@@ -6,60 +6,130 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.CallFunctionParameters command
+ */
 public class CallFunctionParameters {
 
-    public CallFunctionParameters(String functionDeclaration, boolean awaitPromise, Script.Target target, Script.ResultOwnership resultOwnership, Script.SerializationOptions serializationOptions, Script.LocalValue this, Unknown userActivation) {
-        this.functionDeclaration = String;
-        this.awaitPromise = boolean;
-        this.target = Script.Target;
-        this.resultOwnership = Script.ResultOwnership;
-        this.serializationOptions = Script.SerializationOptions;
-        this.this = Script.LocalValue;
-        this.userActivation = Unknown;
-        this.arguments = "Unknown[]";
+    /**
+     * Creates a new CallFunctionParameters instance
+     */
+    public CallFunctionParameters(String functionDeclaration, Boolean awaitPromise, Script.Target target, List<Unknown> arguments, Script.ResultOwnership resultOwnership, Script.SerializationOptions serializationOptions, Script.LocalValue this, Unknown userActivation) {
+        this.functionDeclaration = functionDeclaration;
+        this.awaitPromise = awaitPromise;
+        this.target = target;
+        this.arguments = arguments;
+        this.resultOwnership = resultOwnership;
+        this.serializationOptions = serializationOptions;
+        this.this = this;
+        this.userActivation = userActivation;
+        
     }
 
     private final String functionDeclaration;
-    public getFunctionDeclaration(String functionDeclaration) {
-        this.functionDeclaration = functionDeclaration;
+
+    /**
+     * Gets the functionDeclaration property
+     * @return String value
+     */
+    public String getFunctionDeclaration() {
+        return this.functionDeclaration;
     }
 
-    private final boolean awaitPromise;
-    public getAwaitPromise(boolean awaitPromise) {
-        this.awaitPromise = awaitPromise;
+    private final Boolean awaitPromise;
+
+    /**
+     * Gets the awaitPromise property
+     * @return Boolean value
+     */
+    public Boolean getAwaitPromise() {
+        return this.awaitPromise;
     }
 
     private final Script.Target target;
-    public getTarget(Script.Target target) {
-        this.target = target;
+
+    /**
+     * Gets the target property
+     * @return Script.Target value
+     */
+    public Script.Target getTarget() {
+        return this.target;
     }
 
-    private final Unknown[] arguments;
-    public getArguments(Unknown[] arguments) {
-        this.arguments = arguments;
+    private final List<Unknown> arguments;
+
+    /**
+     * Gets the arguments property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getArguments() {
+        return this.arguments;
     }
 
     private final Script.ResultOwnership resultOwnership;
-    public getResultOwnership(Script.ResultOwnership resultOwnership) {
-        this.resultOwnership = resultOwnership;
+
+    /**
+     * Gets the resultOwnership property
+     * @return Script.ResultOwnership value
+     */
+    public Script.ResultOwnership getResultOwnership() {
+        return this.resultOwnership;
     }
 
     private final Script.SerializationOptions serializationOptions;
-    public getSerializationOptions(Script.SerializationOptions serializationOptions) {
-        this.serializationOptions = serializationOptions;
+
+    /**
+     * Gets the serializationOptions property
+     * @return Script.SerializationOptions value
+     */
+    public Script.SerializationOptions getSerializationOptions() {
+        return this.serializationOptions;
     }
 
     private final Script.LocalValue this;
-    public getThis(Script.LocalValue this) {
-        this.this = this;
+
+    /**
+     * Gets the this property
+     * @return Script.LocalValue value
+     */
+    public Script.LocalValue getThis() {
+        return this.this;
     }
 
     private final Unknown userActivation;
-    public getUserActivation(Unknown userActivation) {
-        this.userActivation = userActivation;
+
+    /**
+     * Gets the userActivation property
+     * @return Unknown value
+     */
+    public Unknown getUserActivation() {
+        return this.userActivation;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("functionDeclaration", this.functionDeclaration);
+        toReturn.put("awaitPromise", this.awaitPromise);
+        toReturn.put("target", this.target);
+        toReturn.put("arguments", this.arguments);
+        toReturn.put("resultOwnership", this.resultOwnership);
+        toReturn.put("serializationOptions", this.serializationOptions);
+        toReturn.put("this", this.this);
+        toReturn.put("userActivation", this.userActivation);
+        return toReturn;
     }
 
 }

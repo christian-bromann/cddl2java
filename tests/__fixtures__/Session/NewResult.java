@@ -6,25 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Session;
+package org.openqa.selenium.bidirectional.session;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for session.NewResult command
+ */
 public class NewResult {
 
+    /**
+     * Creates a new NewResult instance
+     */
     public NewResult(String sessionId, Unknown capabilities) {
-        this.sessionId = String;
-        this.capabilities = Unknown;
+        this.sessionId = sessionId;
+        this.capabilities = capabilities;
         
     }
 
     private final String sessionId;
-    public getSessionId(String sessionId) {
-        this.sessionId = sessionId;
+
+    /**
+     * Gets the sessionId property
+     * @return String value
+     */
+    public String getSessionId() {
+        return this.sessionId;
     }
 
     private final Unknown capabilities;
-    public getCapabilities(Unknown capabilities) {
-        this.capabilities = capabilities;
+
+    /**
+     * Gets the capabilities property
+     * @return Unknown value
+     */
+    public Unknown getCapabilities() {
+        return this.capabilities;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("sessionId", this.sessionId);
+        toReturn.put("capabilities", this.capabilities);
+        return toReturn;
     }
 
 }

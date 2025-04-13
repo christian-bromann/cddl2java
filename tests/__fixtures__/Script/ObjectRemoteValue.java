@@ -6,36 +6,81 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.ObjectRemoteValue command
+ */
 public class ObjectRemoteValue {
 
+    /**
+     * Creates a new ObjectRemoteValue instance
+     */
     public ObjectRemoteValue(Script.Handle handle, Script.InternalId internalId, Script.MappingRemoteValue value) {
-        this.handle = Script.Handle;
-        this.internalId = Script.InternalId;
-        this.value = Script.MappingRemoteValue;
+        this.handle = handle;
+        this.internalId = internalId;
+        this.value = value;
         this.type = "object";
     }
 
     private final object type;
-    public getType(object type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return object value
+     */
+    public object getType() {
+        return this.type;
     }
 
     private final Script.Handle handle;
-    public getHandle(Script.Handle handle) {
-        this.handle = handle;
+
+    /**
+     * Gets the handle property
+     * @return Script.Handle value
+     */
+    public Script.Handle getHandle() {
+        return this.handle;
     }
 
     private final Script.InternalId internalId;
-    public getInternalId(Script.InternalId internalId) {
-        this.internalId = internalId;
+
+    /**
+     * Gets the internalId property
+     * @return Script.InternalId value
+     */
+    public Script.InternalId getInternalId() {
+        return this.internalId;
     }
 
     private final Script.MappingRemoteValue value;
-    public getValue(Script.MappingRemoteValue value) {
-        this.value = value;
+
+    /**
+     * Gets the value property
+     * @return Script.MappingRemoteValue value
+     */
+    public Script.MappingRemoteValue getValue() {
+        return this.value;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("handle", this.handle);
+        toReturn.put("internalId", this.internalId);
+        toReturn.put("value", this.value);
+        return toReturn;
     }
 
 }

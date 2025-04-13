@@ -6,19 +6,46 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Browser;
+package org.openqa.selenium.bidirectional.browser;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browser.SetClientWindowStateParameters command
+ */
 public class SetClientWindowStateParameters {
 
+    /**
+     * Creates a new SetClientWindowStateParameters instance
+     */
     public SetClientWindowStateParameters(Browser.ClientWindow clientWindow) {
-        this.clientWindow = Browser.ClientWindow;
+        this.clientWindow = clientWindow;
         
     }
 
     private final Browser.ClientWindow clientWindow;
-    public getClientWindow(Browser.ClientWindow clientWindow) {
-        this.clientWindow = clientWindow;
+
+    /**
+     * Gets the clientWindow property
+     * @return Browser.ClientWindow value
+     */
+    public Browser.ClientWindow getClientWindow() {
+        return this.clientWindow;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("clientWindow", this.clientWindow);
+        return toReturn;
     }
 
 }

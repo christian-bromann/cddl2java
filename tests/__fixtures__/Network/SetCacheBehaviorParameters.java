@@ -6,24 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Network;
+package org.openqa.selenium.bidirectional.network;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for network.SetCacheBehaviorParameters command
+ */
 public class SetCacheBehaviorParameters {
 
-    public SetCacheBehaviorParameters(Unknown cacheBehavior) {
-        this.cacheBehavior = Unknown;
-        this.contexts = "Unknown[]";
-    }
-
-    private final Unknown cacheBehavior;
-    public getCacheBehavior(Unknown cacheBehavior) {
+    /**
+     * Creates a new SetCacheBehaviorParameters instance
+     */
+    public SetCacheBehaviorParameters(Object cacheBehavior, List<Unknown> contexts) {
         this.cacheBehavior = cacheBehavior;
+        this.contexts = contexts;
+        
     }
 
-    private final Unknown[] contexts;
-    public getContexts(Unknown[] contexts) {
-        this.contexts = contexts;
+    private final Object cacheBehavior;
+
+    /**
+     * Gets the cacheBehavior property
+     * @return Object value
+     */
+    public Object getCacheBehavior() {
+        return this.cacheBehavior;
+    }
+
+    private final List<Unknown> contexts;
+
+    /**
+     * Gets the contexts property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getContexts() {
+        return this.contexts;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("cacheBehavior", this.cacheBehavior);
+        toReturn.put("contexts", this.contexts);
+        return toReturn;
     }
 
 }

@@ -6,49 +6,106 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Session;
+package org.openqa.selenium.bidirectional.session;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for session.CapabilityRequest command
+ */
 public class CapabilityRequest {
 
-    public CapabilityRequest(boolean acceptInsecureCerts, String browserName, String browserVersion, String platformName, Session.ProxyConfiguration proxy, Session.UserPromptHandler unhandledPromptBehavior) {
-        this.acceptInsecureCerts = boolean;
-        this.browserName = String;
-        this.browserVersion = String;
-        this.platformName = String;
-        this.proxy = Session.ProxyConfiguration;
-        this.unhandledPromptBehavior = Session.UserPromptHandler;
+    /**
+     * Creates a new CapabilityRequest instance
+     */
+    public CapabilityRequest(Boolean acceptInsecureCerts, String browserName, String browserVersion, String platformName, Session.ProxyConfiguration proxy, Session.UserPromptHandler unhandledPromptBehavior) {
+        this.acceptInsecureCerts = acceptInsecureCerts;
+        this.browserName = browserName;
+        this.browserVersion = browserVersion;
+        this.platformName = platformName;
+        this.proxy = proxy;
+        this.unhandledPromptBehavior = unhandledPromptBehavior;
         
     }
 
-    private final boolean acceptInsecureCerts;
-    public getAcceptInsecureCerts(boolean acceptInsecureCerts) {
-        this.acceptInsecureCerts = acceptInsecureCerts;
+    private final Boolean acceptInsecureCerts;
+
+    /**
+     * Gets the acceptInsecureCerts property
+     * @return Boolean value
+     */
+    public Boolean getAcceptInsecureCerts() {
+        return this.acceptInsecureCerts;
     }
 
     private final String browserName;
-    public getBrowserName(String browserName) {
-        this.browserName = browserName;
+
+    /**
+     * Gets the browserName property
+     * @return String value
+     */
+    public String getBrowserName() {
+        return this.browserName;
     }
 
     private final String browserVersion;
-    public getBrowserVersion(String browserVersion) {
-        this.browserVersion = browserVersion;
+
+    /**
+     * Gets the browserVersion property
+     * @return String value
+     */
+    public String getBrowserVersion() {
+        return this.browserVersion;
     }
 
     private final String platformName;
-    public getPlatformName(String platformName) {
-        this.platformName = platformName;
+
+    /**
+     * Gets the platformName property
+     * @return String value
+     */
+    public String getPlatformName() {
+        return this.platformName;
     }
 
     private final Session.ProxyConfiguration proxy;
-    public getProxy(Session.ProxyConfiguration proxy) {
-        this.proxy = proxy;
+
+    /**
+     * Gets the proxy property
+     * @return Session.ProxyConfiguration value
+     */
+    public Session.ProxyConfiguration getProxy() {
+        return this.proxy;
     }
 
     private final Session.UserPromptHandler unhandledPromptBehavior;
-    public getUnhandledPromptBehavior(Session.UserPromptHandler unhandledPromptBehavior) {
-        this.unhandledPromptBehavior = unhandledPromptBehavior;
+
+    /**
+     * Gets the unhandledPromptBehavior property
+     * @return Session.UserPromptHandler value
+     */
+    public Session.UserPromptHandler getUnhandledPromptBehavior() {
+        return this.unhandledPromptBehavior;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("acceptInsecureCerts", this.acceptInsecureCerts);
+        toReturn.put("browserName", this.browserName);
+        toReturn.put("browserVersion", this.browserVersion);
+        toReturn.put("platformName", this.platformName);
+        toReturn.put("proxy", this.proxy);
+        toReturn.put("unhandledPromptBehavior", this.unhandledPromptBehavior);
+        return toReturn;
     }
 
 }

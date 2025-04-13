@@ -6,42 +6,93 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.NodeRemoteValue command
+ */
 public class NodeRemoteValue {
 
+    /**
+     * Creates a new NodeRemoteValue instance
+     */
     public NodeRemoteValue(Script.SharedId sharedId, Script.Handle handle, Script.InternalId internalId, Script.NodeProperties value) {
-        this.sharedId = Script.SharedId;
-        this.handle = Script.Handle;
-        this.internalId = Script.InternalId;
-        this.value = Script.NodeProperties;
+        this.sharedId = sharedId;
+        this.handle = handle;
+        this.internalId = internalId;
+        this.value = value;
         this.type = "node";
     }
 
     private final node type;
-    public getType(node type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return node value
+     */
+    public node getType() {
+        return this.type;
     }
 
     private final Script.SharedId sharedId;
-    public getSharedId(Script.SharedId sharedId) {
-        this.sharedId = sharedId;
+
+    /**
+     * Gets the sharedId property
+     * @return Script.SharedId value
+     */
+    public Script.SharedId getSharedId() {
+        return this.sharedId;
     }
 
     private final Script.Handle handle;
-    public getHandle(Script.Handle handle) {
-        this.handle = handle;
+
+    /**
+     * Gets the handle property
+     * @return Script.Handle value
+     */
+    public Script.Handle getHandle() {
+        return this.handle;
     }
 
     private final Script.InternalId internalId;
-    public getInternalId(Script.InternalId internalId) {
-        this.internalId = internalId;
+
+    /**
+     * Gets the internalId property
+     * @return Script.InternalId value
+     */
+    public Script.InternalId getInternalId() {
+        return this.internalId;
     }
 
     private final Script.NodeProperties value;
-    public getValue(Script.NodeProperties value) {
-        this.value = value;
+
+    /**
+     * Gets the value property
+     * @return Script.NodeProperties value
+     */
+    public Script.NodeProperties getValue() {
+        return this.value;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("sharedId", this.sharedId);
+        toReturn.put("handle", this.handle);
+        toReturn.put("internalId", this.internalId);
+        toReturn.put("value", this.value);
+        return toReturn;
     }
 
 }

@@ -6,24 +6,57 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.ContextLocator command
+ */
 public class ContextLocator {
 
+    /**
+     * Creates a new ContextLocator instance
+     */
     public ContextLocator(Unknown value) {
-        this.value = Unknown;
+        this.value = value;
         this.type = "context";
     }
 
     private final context type;
-    public getType(context type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return context value
+     */
+    public context getType() {
+        return this.type;
     }
 
     private final Unknown value;
-    public getValue(Unknown value) {
-        this.value = value;
+
+    /**
+     * Gets the value property
+     * @return Unknown value
+     */
+    public Unknown getValue() {
+        return this.value;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("value", this.value);
+        return toReturn;
     }
 
 }

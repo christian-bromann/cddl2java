@@ -6,24 +6,57 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.BooleanValue command
+ */
 public class BooleanValue {
 
-    public BooleanValue(boolean value) {
-        this.value = boolean;
+    /**
+     * Creates a new BooleanValue instance
+     */
+    public BooleanValue(Boolean value) {
+        this.value = value;
         this.type = "boolean";
     }
 
     private final boolean type;
-    public getType(boolean type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return boolean value
+     */
+    public boolean getType() {
+        return this.type;
     }
 
-    private final boolean value;
-    public getValue(boolean value) {
-        this.value = value;
+    private final Boolean value;
+
+    /**
+     * Gets the value property
+     * @return Boolean value
+     */
+    public Boolean getValue() {
+        return this.value;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("value", this.value);
+        return toReturn;
     }
 
 }

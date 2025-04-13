@@ -6,43 +6,94 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.UserPromptOpenedParameters command
+ */
 public class UserPromptOpenedParameters {
 
+    /**
+     * Creates a new UserPromptOpenedParameters instance
+     */
     public UserPromptOpenedParameters(BrowsingContext.BrowsingContext context, Session.UserPromptHandlerType handler, String message, BrowsingContext.UserPromptType type, String defaultValue) {
-        this.context = BrowsingContext.BrowsingContext;
-        this.handler = Session.UserPromptHandlerType;
-        this.message = String;
-        this.type = BrowsingContext.UserPromptType;
-        this.defaultValue = String;
+        this.context = context;
+        this.handler = handler;
+        this.message = message;
+        this.type = type;
+        this.defaultValue = defaultValue;
         
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
     }
 
     private final Session.UserPromptHandlerType handler;
-    public getHandler(Session.UserPromptHandlerType handler) {
-        this.handler = handler;
+
+    /**
+     * Gets the handler property
+     * @return Session.UserPromptHandlerType value
+     */
+    public Session.UserPromptHandlerType getHandler() {
+        return this.handler;
     }
 
     private final String message;
-    public getMessage(String message) {
-        this.message = message;
+
+    /**
+     * Gets the message property
+     * @return String value
+     */
+    public String getMessage() {
+        return this.message;
     }
 
     private final BrowsingContext.UserPromptType type;
-    public getType(BrowsingContext.UserPromptType type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return BrowsingContext.UserPromptType value
+     */
+    public BrowsingContext.UserPromptType getType() {
+        return this.type;
     }
 
     private final String defaultValue;
-    public getDefaultValue(String defaultValue) {
-        this.defaultValue = defaultValue;
+
+    /**
+     * Gets the defaultValue property
+     * @return String value
+     */
+    public String getDefaultValue() {
+        return this.defaultValue;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("context", this.context);
+        toReturn.put("handler", this.handler);
+        toReturn.put("message", this.message);
+        toReturn.put("type", this.type);
+        toReturn.put("defaultValue", this.defaultValue);
+        return toReturn;
     }
 
 }

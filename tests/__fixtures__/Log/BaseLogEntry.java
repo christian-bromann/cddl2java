@@ -6,43 +6,94 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Log;
+package org.openqa.selenium.bidirectional.log;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for log.BaseLogEntry command
+ */
 public class BaseLogEntry {
 
-    public BaseLogEntry(Log.Level level, Script.Source source, Unknown text, long timestamp, Script.StackTrace stackTrace) {
-        this.level = Log.Level;
-        this.source = Script.Source;
-        this.text = Unknown;
-        this.timestamp = long;
-        this.stackTrace = Script.StackTrace;
+    /**
+     * Creates a new BaseLogEntry instance
+     */
+    public BaseLogEntry(Log.Level level, Script.Source source, Object text, Long timestamp, Script.StackTrace stackTrace) {
+        this.level = level;
+        this.source = source;
+        this.text = text;
+        this.timestamp = timestamp;
+        this.stackTrace = stackTrace;
         
     }
 
     private final Log.Level level;
-    public getLevel(Log.Level level) {
-        this.level = level;
+
+    /**
+     * Gets the level property
+     * @return Log.Level value
+     */
+    public Log.Level getLevel() {
+        return this.level;
     }
 
     private final Script.Source source;
-    public getSource(Script.Source source) {
-        this.source = source;
+
+    /**
+     * Gets the source property
+     * @return Script.Source value
+     */
+    public Script.Source getSource() {
+        return this.source;
     }
 
-    private final Unknown text;
-    public getText(Unknown text) {
-        this.text = text;
+    private final Object text;
+
+    /**
+     * Gets the text property
+     * @return Object value
+     */
+    public Object getText() {
+        return this.text;
     }
 
-    private final long timestamp;
-    public getTimestamp(long timestamp) {
-        this.timestamp = timestamp;
+    private final Long timestamp;
+
+    /**
+     * Gets the timestamp property
+     * @return Long value
+     */
+    public Long getTimestamp() {
+        return this.timestamp;
     }
 
     private final Script.StackTrace stackTrace;
-    public getStackTrace(Script.StackTrace stackTrace) {
-        this.stackTrace = stackTrace;
+
+    /**
+     * Gets the stackTrace property
+     * @return Script.StackTrace value
+     */
+    public Script.StackTrace getStackTrace() {
+        return this.stackTrace;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("level", this.level);
+        toReturn.put("source", this.source);
+        toReturn.put("text", this.text);
+        toReturn.put("timestamp", this.timestamp);
+        toReturn.put("stackTrace", this.stackTrace);
+        return toReturn;
     }
 
 }

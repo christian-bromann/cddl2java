@@ -6,37 +6,82 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.StackFrame command
+ */
 public class StackFrame {
 
-    public StackFrame(long columnNumber, String functionName, long lineNumber, String url) {
-        this.columnNumber = long;
-        this.functionName = String;
-        this.lineNumber = long;
-        this.url = String;
+    /**
+     * Creates a new StackFrame instance
+     */
+    public StackFrame(Long columnNumber, String functionName, Long lineNumber, String url) {
+        this.columnNumber = columnNumber;
+        this.functionName = functionName;
+        this.lineNumber = lineNumber;
+        this.url = url;
         
     }
 
-    private final long columnNumber;
-    public getColumnNumber(long columnNumber) {
-        this.columnNumber = columnNumber;
+    private final Long columnNumber;
+
+    /**
+     * Gets the columnNumber property
+     * @return Long value
+     */
+    public Long getColumnNumber() {
+        return this.columnNumber;
     }
 
     private final String functionName;
-    public getFunctionName(String functionName) {
-        this.functionName = functionName;
+
+    /**
+     * Gets the functionName property
+     * @return String value
+     */
+    public String getFunctionName() {
+        return this.functionName;
     }
 
-    private final long lineNumber;
-    public getLineNumber(long lineNumber) {
-        this.lineNumber = lineNumber;
+    private final Long lineNumber;
+
+    /**
+     * Gets the lineNumber property
+     * @return Long value
+     */
+    public Long getLineNumber() {
+        return this.lineNumber;
     }
 
     private final String url;
-    public getUrl(String url) {
-        this.url = url;
+
+    /**
+     * Gets the url property
+     * @return String value
+     */
+    public String getUrl() {
+        return this.url;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("columnNumber", this.columnNumber);
+        toReturn.put("functionName", this.functionName);
+        toReturn.put("lineNumber", this.lineNumber);
+        toReturn.put("url", this.url);
+        return toReturn;
     }
 
 }

@@ -6,19 +6,46 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Session;
+package org.openqa.selenium.bidirectional.session;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for session.UnsubscribeByIDRequest command
+ */
 public class UnsubscribeByIDRequest {
 
-    public UnsubscribeByIDRequest() {
+    /**
+     * Creates a new UnsubscribeByIDRequest instance
+     */
+    public UnsubscribeByIDRequest(List<Unknown> subscriptions) {
+        this.subscriptions = subscriptions;
         
-        this.subscriptions = "Unknown[]";
     }
 
-    private final Unknown[] subscriptions;
-    public getSubscriptions(Unknown[] subscriptions) {
-        this.subscriptions = subscriptions;
+    private final List<Unknown> subscriptions;
+
+    /**
+     * Gets the subscriptions property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getSubscriptions() {
+        return this.subscriptions;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("subscriptions", this.subscriptions);
+        return toReturn;
     }
 
 }

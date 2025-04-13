@@ -6,30 +6,70 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Input;
+package org.openqa.selenium.bidirectional.input;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for input.SetFilesParameters command
+ */
 public class SetFilesParameters {
 
-    public SetFilesParameters(BrowsingContext.BrowsingContext context, Script.SharedReference element) {
-        this.context = BrowsingContext.BrowsingContext;
-        this.element = Script.SharedReference;
-        this.files = "Unknown[]";
+    /**
+     * Creates a new SetFilesParameters instance
+     */
+    public SetFilesParameters(BrowsingContext.BrowsingContext context, Script.SharedReference element, List<Unknown> files) {
+        this.context = context;
+        this.element = element;
+        this.files = files;
+        
     }
 
     private final BrowsingContext.BrowsingContext context;
-    public getContext(BrowsingContext.BrowsingContext context) {
-        this.context = context;
+
+    /**
+     * Gets the context property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getContext() {
+        return this.context;
     }
 
     private final Script.SharedReference element;
-    public getElement(Script.SharedReference element) {
-        this.element = element;
+
+    /**
+     * Gets the element property
+     * @return Script.SharedReference value
+     */
+    public Script.SharedReference getElement() {
+        return this.element;
     }
 
-    private final Unknown[] files;
-    public getFiles(Unknown[] files) {
-        this.files = files;
+    private final List<Unknown> files;
+
+    /**
+     * Gets the files property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getFiles() {
+        return this.files;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("context", this.context);
+        toReturn.put("element", this.element);
+        toReturn.put("files", this.files);
+        return toReturn;
     }
 
 }

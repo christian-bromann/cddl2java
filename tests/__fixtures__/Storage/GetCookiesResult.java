@@ -6,24 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Storage;
+package org.openqa.selenium.bidirectional.storage;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for storage.GetCookiesResult command
+ */
 public class GetCookiesResult {
 
-    public GetCookiesResult(Storage.PartitionKey partitionKey) {
-        this.partitionKey = Storage.PartitionKey;
-        this.cookies = "Unknown[]";
+    /**
+     * Creates a new GetCookiesResult instance
+     */
+    public GetCookiesResult(List<Unknown> cookies, Storage.PartitionKey partitionKey) {
+        this.cookies = cookies;
+        this.partitionKey = partitionKey;
+        
     }
 
-    private final Unknown[] cookies;
-    public getCookies(Unknown[] cookies) {
-        this.cookies = cookies;
+    private final List<Unknown> cookies;
+
+    /**
+     * Gets the cookies property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getCookies() {
+        return this.cookies;
     }
 
     private final Storage.PartitionKey partitionKey;
-    public getPartitionKey(Storage.PartitionKey partitionKey) {
-        this.partitionKey = partitionKey;
+
+    /**
+     * Gets the partitionKey property
+     * @return Storage.PartitionKey value
+     */
+    public Storage.PartitionKey getPartitionKey() {
+        return this.partitionKey;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("cookies", this.cookies);
+        toReturn.put("partitionKey", this.partitionKey);
+        return toReturn;
     }
 
 }

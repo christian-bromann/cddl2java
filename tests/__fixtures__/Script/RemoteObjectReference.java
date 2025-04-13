@@ -6,25 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.RemoteObjectReference command
+ */
 public class RemoteObjectReference {
 
+    /**
+     * Creates a new RemoteObjectReference instance
+     */
     public RemoteObjectReference(Script.Handle handle, Script.SharedId sharedId) {
-        this.handle = Script.Handle;
-        this.sharedId = Script.SharedId;
+        this.handle = handle;
+        this.sharedId = sharedId;
         
     }
 
     private final Script.Handle handle;
-    public getHandle(Script.Handle handle) {
-        this.handle = handle;
+
+    /**
+     * Gets the handle property
+     * @return Script.Handle value
+     */
+    public Script.Handle getHandle() {
+        return this.handle;
     }
 
     private final Script.SharedId sharedId;
-    public getSharedId(Script.SharedId sharedId) {
-        this.sharedId = sharedId;
+
+    /**
+     * Gets the sharedId property
+     * @return Script.SharedId value
+     */
+    public Script.SharedId getSharedId() {
+        return this.sharedId;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("handle", this.handle);
+        toReturn.put("sharedId", this.sharedId);
+        return toReturn;
     }
 
 }

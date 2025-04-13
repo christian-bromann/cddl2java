@@ -6,91 +6,190 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Network;
+package org.openqa.selenium.bidirectional.network;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for network.FetchTimingInfo command
+ */
 public class FetchTimingInfo {
 
-    public FetchTimingInfo(float timeOrigin, float requestTime, float redirectStart, float redirectEnd, float fetchStart, float dnsStart, float dnsEnd, float connectStart, float connectEnd, float tlsStart, float requestStart, float responseStart, float responseEnd) {
-        this.timeOrigin = float;
-        this.requestTime = float;
-        this.redirectStart = float;
-        this.redirectEnd = float;
-        this.fetchStart = float;
-        this.dnsStart = float;
-        this.dnsEnd = float;
-        this.connectStart = float;
-        this.connectEnd = float;
-        this.tlsStart = float;
-        this.requestStart = float;
-        this.responseStart = float;
-        this.responseEnd = float;
+    /**
+     * Creates a new FetchTimingInfo instance
+     */
+    public FetchTimingInfo(Float timeOrigin, Float requestTime, Float redirectStart, Float redirectEnd, Float fetchStart, Float dnsStart, Float dnsEnd, Float connectStart, Float connectEnd, Float tlsStart, Float requestStart, Float responseStart, Float responseEnd) {
+        this.timeOrigin = timeOrigin;
+        this.requestTime = requestTime;
+        this.redirectStart = redirectStart;
+        this.redirectEnd = redirectEnd;
+        this.fetchStart = fetchStart;
+        this.dnsStart = dnsStart;
+        this.dnsEnd = dnsEnd;
+        this.connectStart = connectStart;
+        this.connectEnd = connectEnd;
+        this.tlsStart = tlsStart;
+        this.requestStart = requestStart;
+        this.responseStart = responseStart;
+        this.responseEnd = responseEnd;
         
     }
 
-    private final float timeOrigin;
-    public getTimeOrigin(float timeOrigin) {
-        this.timeOrigin = timeOrigin;
+    private final Float timeOrigin;
+
+    /**
+     * Gets the timeOrigin property
+     * @return Float value
+     */
+    public Float getTimeOrigin() {
+        return this.timeOrigin;
     }
 
-    private final float requestTime;
-    public getRequestTime(float requestTime) {
-        this.requestTime = requestTime;
+    private final Float requestTime;
+
+    /**
+     * Gets the requestTime property
+     * @return Float value
+     */
+    public Float getRequestTime() {
+        return this.requestTime;
     }
 
-    private final float redirectStart;
-    public getRedirectStart(float redirectStart) {
-        this.redirectStart = redirectStart;
+    private final Float redirectStart;
+
+    /**
+     * Gets the redirectStart property
+     * @return Float value
+     */
+    public Float getRedirectStart() {
+        return this.redirectStart;
     }
 
-    private final float redirectEnd;
-    public getRedirectEnd(float redirectEnd) {
-        this.redirectEnd = redirectEnd;
+    private final Float redirectEnd;
+
+    /**
+     * Gets the redirectEnd property
+     * @return Float value
+     */
+    public Float getRedirectEnd() {
+        return this.redirectEnd;
     }
 
-    private final float fetchStart;
-    public getFetchStart(float fetchStart) {
-        this.fetchStart = fetchStart;
+    private final Float fetchStart;
+
+    /**
+     * Gets the fetchStart property
+     * @return Float value
+     */
+    public Float getFetchStart() {
+        return this.fetchStart;
     }
 
-    private final float dnsStart;
-    public getDnsStart(float dnsStart) {
-        this.dnsStart = dnsStart;
+    private final Float dnsStart;
+
+    /**
+     * Gets the dnsStart property
+     * @return Float value
+     */
+    public Float getDnsStart() {
+        return this.dnsStart;
     }
 
-    private final float dnsEnd;
-    public getDnsEnd(float dnsEnd) {
-        this.dnsEnd = dnsEnd;
+    private final Float dnsEnd;
+
+    /**
+     * Gets the dnsEnd property
+     * @return Float value
+     */
+    public Float getDnsEnd() {
+        return this.dnsEnd;
     }
 
-    private final float connectStart;
-    public getConnectStart(float connectStart) {
-        this.connectStart = connectStart;
+    private final Float connectStart;
+
+    /**
+     * Gets the connectStart property
+     * @return Float value
+     */
+    public Float getConnectStart() {
+        return this.connectStart;
     }
 
-    private final float connectEnd;
-    public getConnectEnd(float connectEnd) {
-        this.connectEnd = connectEnd;
+    private final Float connectEnd;
+
+    /**
+     * Gets the connectEnd property
+     * @return Float value
+     */
+    public Float getConnectEnd() {
+        return this.connectEnd;
     }
 
-    private final float tlsStart;
-    public getTlsStart(float tlsStart) {
-        this.tlsStart = tlsStart;
+    private final Float tlsStart;
+
+    /**
+     * Gets the tlsStart property
+     * @return Float value
+     */
+    public Float getTlsStart() {
+        return this.tlsStart;
     }
 
-    private final float requestStart;
-    public getRequestStart(float requestStart) {
-        this.requestStart = requestStart;
+    private final Float requestStart;
+
+    /**
+     * Gets the requestStart property
+     * @return Float value
+     */
+    public Float getRequestStart() {
+        return this.requestStart;
     }
 
-    private final float responseStart;
-    public getResponseStart(float responseStart) {
-        this.responseStart = responseStart;
+    private final Float responseStart;
+
+    /**
+     * Gets the responseStart property
+     * @return Float value
+     */
+    public Float getResponseStart() {
+        return this.responseStart;
     }
 
-    private final float responseEnd;
-    public getResponseEnd(float responseEnd) {
-        this.responseEnd = responseEnd;
+    private final Float responseEnd;
+
+    /**
+     * Gets the responseEnd property
+     * @return Float value
+     */
+    public Float getResponseEnd() {
+        return this.responseEnd;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("timeOrigin", this.timeOrigin);
+        toReturn.put("requestTime", this.requestTime);
+        toReturn.put("redirectStart", this.redirectStart);
+        toReturn.put("redirectEnd", this.redirectEnd);
+        toReturn.put("fetchStart", this.fetchStart);
+        toReturn.put("dnsStart", this.dnsStart);
+        toReturn.put("dnsEnd", this.dnsEnd);
+        toReturn.put("connectStart", this.connectStart);
+        toReturn.put("connectEnd", this.connectEnd);
+        toReturn.put("tlsStart", this.tlsStart);
+        toReturn.put("requestStart", this.requestStart);
+        toReturn.put("responseStart", this.responseStart);
+        toReturn.put("responseEnd", this.responseEnd);
+        return toReturn;
     }
 
 }

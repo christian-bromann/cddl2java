@@ -6,31 +6,70 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.SerializationOptions command
+ */
 public class SerializationOptions {
 
-    public SerializationOptions(Unknown maxDomDepth, Unknown maxObjectDepth, Unknown includeShadowTree) {
-        this.maxDomDepth = Unknown;
-        this.maxObjectDepth = Unknown;
-        this.includeShadowTree = Unknown;
+    /**
+     * Creates a new SerializationOptions instance
+     */
+    public SerializationOptions(Object maxDomDepth, Object maxObjectDepth, Object includeShadowTree) {
+        this.maxDomDepth = maxDomDepth;
+        this.maxObjectDepth = maxObjectDepth;
+        this.includeShadowTree = includeShadowTree;
         
     }
 
-    private final Unknown maxDomDepth;
-    public getMaxDomDepth(Unknown maxDomDepth) {
-        this.maxDomDepth = maxDomDepth;
+    private final Object maxDomDepth;
+
+    /**
+     * Gets the maxDomDepth property
+     * @return Object value
+     */
+    public Object getMaxDomDepth() {
+        return this.maxDomDepth;
     }
 
-    private final Unknown maxObjectDepth;
-    public getMaxObjectDepth(Unknown maxObjectDepth) {
-        this.maxObjectDepth = maxObjectDepth;
+    private final Object maxObjectDepth;
+
+    /**
+     * Gets the maxObjectDepth property
+     * @return Object value
+     */
+    public Object getMaxObjectDepth() {
+        return this.maxObjectDepth;
     }
 
-    private final Unknown includeShadowTree;
-    public getIncludeShadowTree(Unknown includeShadowTree) {
-        this.includeShadowTree = includeShadowTree;
+    private final Object includeShadowTree;
+
+    /**
+     * Gets the includeShadowTree property
+     * @return Object value
+     */
+    public Object getIncludeShadowTree() {
+        return this.includeShadowTree;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("maxDomDepth", this.maxDomDepth);
+        toReturn.put("maxObjectDepth", this.maxObjectDepth);
+        toReturn.put("includeShadowTree", this.includeShadowTree);
+        return toReturn;
     }
 
 }

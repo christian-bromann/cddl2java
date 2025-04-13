@@ -6,30 +6,70 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Emulation;
+package org.openqa.selenium.bidirectional.emulation;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for emulation.SetGeolocationOverrideParameters command
+ */
 public class SetGeolocationOverrideParameters {
 
-    public SetGeolocationOverrideParameters(Unknown coordinates) {
-        this.coordinates = Unknown;
-        this.contexts = "Unknown[]";
-        this.userContexts = "Unknown[]";
-    }
-
-    private final Unknown coordinates;
-    public getCoordinates(Unknown coordinates) {
+    /**
+     * Creates a new SetGeolocationOverrideParameters instance
+     */
+    public SetGeolocationOverrideParameters(Object coordinates, List<Unknown> contexts, List<Unknown> userContexts) {
         this.coordinates = coordinates;
-    }
-
-    private final Unknown[] contexts;
-    public getContexts(Unknown[] contexts) {
         this.contexts = contexts;
+        this.userContexts = userContexts;
+        
     }
 
-    private final Unknown[] userContexts;
-    public getUserContexts(Unknown[] userContexts) {
-        this.userContexts = userContexts;
+    private final Object coordinates;
+
+    /**
+     * Gets the coordinates property
+     * @return Object value
+     */
+    public Object getCoordinates() {
+        return this.coordinates;
+    }
+
+    private final List<Unknown> contexts;
+
+    /**
+     * Gets the contexts property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getContexts() {
+        return this.contexts;
+    }
+
+    private final List<Unknown> userContexts;
+
+    /**
+     * Gets the userContexts property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getUserContexts() {
+        return this.userContexts;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("coordinates", this.coordinates);
+        toReturn.put("contexts", this.contexts);
+        toReturn.put("userContexts", this.userContexts);
+        return toReturn;
     }
 
 }

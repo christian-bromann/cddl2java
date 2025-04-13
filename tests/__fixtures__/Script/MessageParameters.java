@@ -6,31 +6,70 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Script;
+package org.openqa.selenium.bidirectional.script;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for script.MessageParameters command
+ */
 public class MessageParameters {
 
+    /**
+     * Creates a new MessageParameters instance
+     */
     public MessageParameters(Script.Channel channel, Script.RemoteValue data, Script.Source source) {
-        this.channel = Script.Channel;
-        this.data = Script.RemoteValue;
-        this.source = Script.Source;
+        this.channel = channel;
+        this.data = data;
+        this.source = source;
         
     }
 
     private final Script.Channel channel;
-    public getChannel(Script.Channel channel) {
-        this.channel = channel;
+
+    /**
+     * Gets the channel property
+     * @return Script.Channel value
+     */
+    public Script.Channel getChannel() {
+        return this.channel;
     }
 
     private final Script.RemoteValue data;
-    public getData(Script.RemoteValue data) {
-        this.data = data;
+
+    /**
+     * Gets the data property
+     * @return Script.RemoteValue value
+     */
+    public Script.RemoteValue getData() {
+        return this.data;
     }
 
     private final Script.Source source;
-    public getSource(Script.Source source) {
-        this.source = source;
+
+    /**
+     * Gets the source property
+     * @return Script.Source value
+     */
+    public Script.Source getSource() {
+        return this.source;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("channel", this.channel);
+        toReturn.put("data", this.data);
+        toReturn.put("source", this.source);
+        return toReturn;
     }
 
 }

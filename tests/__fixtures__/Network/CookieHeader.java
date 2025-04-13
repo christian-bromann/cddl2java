@@ -6,25 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Network;
+package org.openqa.selenium.bidirectional.network;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for network.CookieHeader command
+ */
 public class CookieHeader {
 
+    /**
+     * Creates a new CookieHeader instance
+     */
     public CookieHeader(String name, Network.BytesValue value) {
-        this.name = String;
-        this.value = Network.BytesValue;
+        this.name = name;
+        this.value = value;
         
     }
 
     private final String name;
-    public getName(String name) {
-        this.name = name;
+
+    /**
+     * Gets the name property
+     * @return String value
+     */
+    public String getName() {
+        return this.name;
     }
 
     private final Network.BytesValue value;
-    public getValue(Network.BytesValue value) {
-        this.value = value;
+
+    /**
+     * Gets the value property
+     * @return Network.BytesValue value
+     */
+    public Network.BytesValue getValue() {
+        return this.value;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("name", this.name);
+        toReturn.put("value", this.value);
+        return toReturn;
     }
 
 }

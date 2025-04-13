@@ -6,84 +6,178 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Network;
+package org.openqa.selenium.bidirectional.network;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for network.ResponseData command
+ */
 public class ResponseData {
 
-    public ResponseData(String url, String protocol, long status, String statusText, boolean fromCache, String mimeType, long bytesReceived, Unknown headersSize, Unknown bodySize, Network.ResponseContent content) {
-        this.url = String;
-        this.protocol = String;
-        this.status = long;
-        this.statusText = String;
-        this.fromCache = boolean;
-        this.mimeType = String;
-        this.bytesReceived = long;
-        this.headersSize = Unknown;
-        this.bodySize = Unknown;
-        this.content = Network.ResponseContent;
-        this.headers = "Unknown[]";
-        this.authChallenges = "Unknown[]";
+    /**
+     * Creates a new ResponseData instance
+     */
+    public ResponseData(String url, String protocol, Long status, String statusText, Boolean fromCache, List<Unknown> headers, String mimeType, Long bytesReceived, Object headersSize, Object bodySize, Network.ResponseContent content, List<Unknown> authChallenges) {
+        this.url = url;
+        this.protocol = protocol;
+        this.status = status;
+        this.statusText = statusText;
+        this.fromCache = fromCache;
+        this.headers = headers;
+        this.mimeType = mimeType;
+        this.bytesReceived = bytesReceived;
+        this.headersSize = headersSize;
+        this.bodySize = bodySize;
+        this.content = content;
+        this.authChallenges = authChallenges;
+        
     }
 
     private final String url;
-    public getUrl(String url) {
-        this.url = url;
+
+    /**
+     * Gets the url property
+     * @return String value
+     */
+    public String getUrl() {
+        return this.url;
     }
 
     private final String protocol;
-    public getProtocol(String protocol) {
-        this.protocol = protocol;
+
+    /**
+     * Gets the protocol property
+     * @return String value
+     */
+    public String getProtocol() {
+        return this.protocol;
     }
 
-    private final long status;
-    public getStatus(long status) {
-        this.status = status;
+    private final Long status;
+
+    /**
+     * Gets the status property
+     * @return Long value
+     */
+    public Long getStatus() {
+        return this.status;
     }
 
     private final String statusText;
-    public getStatusText(String statusText) {
-        this.statusText = statusText;
+
+    /**
+     * Gets the statusText property
+     * @return String value
+     */
+    public String getStatusText() {
+        return this.statusText;
     }
 
-    private final boolean fromCache;
-    public getFromCache(boolean fromCache) {
-        this.fromCache = fromCache;
+    private final Boolean fromCache;
+
+    /**
+     * Gets the fromCache property
+     * @return Boolean value
+     */
+    public Boolean getFromCache() {
+        return this.fromCache;
     }
 
-    private final Unknown[] headers;
-    public getHeaders(Unknown[] headers) {
-        this.headers = headers;
+    private final List<Unknown> headers;
+
+    /**
+     * Gets the headers property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getHeaders() {
+        return this.headers;
     }
 
     private final String mimeType;
-    public getMimeType(String mimeType) {
-        this.mimeType = mimeType;
+
+    /**
+     * Gets the mimeType property
+     * @return String value
+     */
+    public String getMimeType() {
+        return this.mimeType;
     }
 
-    private final long bytesReceived;
-    public getBytesReceived(long bytesReceived) {
-        this.bytesReceived = bytesReceived;
+    private final Long bytesReceived;
+
+    /**
+     * Gets the bytesReceived property
+     * @return Long value
+     */
+    public Long getBytesReceived() {
+        return this.bytesReceived;
     }
 
-    private final Unknown headersSize;
-    public getHeadersSize(Unknown headersSize) {
-        this.headersSize = headersSize;
+    private final Object headersSize;
+
+    /**
+     * Gets the headersSize property
+     * @return Object value
+     */
+    public Object getHeadersSize() {
+        return this.headersSize;
     }
 
-    private final Unknown bodySize;
-    public getBodySize(Unknown bodySize) {
-        this.bodySize = bodySize;
+    private final Object bodySize;
+
+    /**
+     * Gets the bodySize property
+     * @return Object value
+     */
+    public Object getBodySize() {
+        return this.bodySize;
     }
 
     private final Network.ResponseContent content;
-    public getContent(Network.ResponseContent content) {
-        this.content = content;
+
+    /**
+     * Gets the content property
+     * @return Network.ResponseContent value
+     */
+    public Network.ResponseContent getContent() {
+        return this.content;
     }
 
-    private final Unknown[] authChallenges;
-    public getAuthChallenges(Unknown[] authChallenges) {
-        this.authChallenges = authChallenges;
+    private final List<Unknown> authChallenges;
+
+    /**
+     * Gets the authChallenges property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getAuthChallenges() {
+        return this.authChallenges;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("url", this.url);
+        toReturn.put("protocol", this.protocol);
+        toReturn.put("status", this.status);
+        toReturn.put("statusText", this.statusText);
+        toReturn.put("fromCache", this.fromCache);
+        toReturn.put("headers", this.headers);
+        toReturn.put("mimeType", this.mimeType);
+        toReturn.put("bytesReceived", this.bytesReceived);
+        toReturn.put("headersSize", this.headersSize);
+        toReturn.put("bodySize", this.bodySize);
+        toReturn.put("content", this.content);
+        toReturn.put("authChallenges", this.authChallenges);
+        return toReturn;
     }
 
 }

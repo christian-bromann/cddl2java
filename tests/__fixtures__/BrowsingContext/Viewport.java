@@ -6,25 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.Viewport command
+ */
 public class Viewport {
 
-    public Viewport(long width, long height) {
-        this.width = long;
-        this.height = long;
+    /**
+     * Creates a new Viewport instance
+     */
+    public Viewport(Long width, Long height) {
+        this.width = width;
+        this.height = height;
         
     }
 
-    private final long width;
-    public getWidth(long width) {
-        this.width = width;
+    private final Long width;
+
+    /**
+     * Gets the width property
+     * @return Long value
+     */
+    public Long getWidth() {
+        return this.width;
     }
 
-    private final long height;
-    public getHeight(long height) {
-        this.height = height;
+    private final Long height;
+
+    /**
+     * Gets the height property
+     * @return Long value
+     */
+    public Long getHeight() {
+        return this.height;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("width", this.width);
+        toReturn.put("height", this.height);
+        return toReturn;
     }
 
 }

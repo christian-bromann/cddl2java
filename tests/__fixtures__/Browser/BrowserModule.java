@@ -8,23 +8,27 @@
 
 package org.openqa.selenium.bidirectional.browser;
 
+import java.util.Map;
+import java.util.HashMap;
 import org.openqa.selenium.bidi.Command;
+import org.openqa.selenium.bidirectional.EmptyResult;
 
 /**
- * Auto generated class for running Bidi commands in Java
+ * Auto generated class for running WebDriver BiDi browser commands in Java
  */
 public class BrowserModule {
 
     /**
      * WebDriver Bidi command to send command method "browser.setClientWindowState" with parameters.
      * @url https://w3c.github.io/webdriver-bidi/#command-browser-setClientWindowState
-     * @param params `BrowserSetClientWindowStateParameters` {@link https://w3c.github.io/webdriver-bidi/#command-browser-setClientWindowState | command parameter}
+     * @param parameters `SetClientWindowStateParameters` {@link https://w3c.github.io/webdriver-bidi/#command-browser-setClientWindowState | command parameter}
+     * @return Command object with result type for browser.setClientWindowState
      */
-    public Command<EmptyResult> SetClientWindowState (SetClientWindowStateParameters parameters) {
+    public Command<org.openqa.selenium.bidirectional.EmptyResult> SetClientWindowState (SetClientWindowStateParameters parameters) {
         return new Command<>(
             "browser.setClientWindowState",
             parameters.asMap(),
-            EmptyResult.class
+            org.openqa.selenium.bidirectional.EmptyResult.class
         );
     }
 }

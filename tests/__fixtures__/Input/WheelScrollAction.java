@@ -6,54 +6,117 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Input;
+package org.openqa.selenium.bidirectional.input;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for input.WheelScrollAction command
+ */
 public class WheelScrollAction {
 
-    public WheelScrollAction(int x, int y, int deltaX, int deltaY, long duration, Unknown origin) {
-        this.x = int;
-        this.y = int;
-        this.deltaX = int;
-        this.deltaY = int;
-        this.duration = long;
-        this.origin = Unknown;
+    /**
+     * Creates a new WheelScrollAction instance
+     */
+    public WheelScrollAction(Integer x, Integer y, Integer deltaX, Integer deltaY, Long duration, Unknown origin) {
+        this.x = x;
+        this.y = y;
+        this.deltaX = deltaX;
+        this.deltaY = deltaY;
+        this.duration = duration;
+        this.origin = origin;
         this.type = "scroll";
     }
 
     private final scroll type;
-    public getType(scroll type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return scroll value
+     */
+    public scroll getType() {
+        return this.type;
     }
 
-    private final int x;
-    public getX(int x) {
-        this.x = x;
+    private final Integer x;
+
+    /**
+     * Gets the x property
+     * @return Integer value
+     */
+    public Integer getX() {
+        return this.x;
     }
 
-    private final int y;
-    public getY(int y) {
-        this.y = y;
+    private final Integer y;
+
+    /**
+     * Gets the y property
+     * @return Integer value
+     */
+    public Integer getY() {
+        return this.y;
     }
 
-    private final int deltaX;
-    public getDeltaX(int deltaX) {
-        this.deltaX = deltaX;
+    private final Integer deltaX;
+
+    /**
+     * Gets the deltaX property
+     * @return Integer value
+     */
+    public Integer getDeltaX() {
+        return this.deltaX;
     }
 
-    private final int deltaY;
-    public getDeltaY(int deltaY) {
-        this.deltaY = deltaY;
+    private final Integer deltaY;
+
+    /**
+     * Gets the deltaY property
+     * @return Integer value
+     */
+    public Integer getDeltaY() {
+        return this.deltaY;
     }
 
-    private final long duration;
-    public getDuration(long duration) {
-        this.duration = duration;
+    private final Long duration;
+
+    /**
+     * Gets the duration property
+     * @return Long value
+     */
+    public Long getDuration() {
+        return this.duration;
     }
 
     private final Unknown origin;
-    public getOrigin(Unknown origin) {
-        this.origin = origin;
+
+    /**
+     * Gets the origin property
+     * @return Unknown value
+     */
+    public Unknown getOrigin() {
+        return this.origin;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("x", this.x);
+        toReturn.put("y", this.y);
+        toReturn.put("deltaX", this.deltaX);
+        toReturn.put("deltaY", this.deltaY);
+        toReturn.put("duration", this.duration);
+        toReturn.put("origin", this.origin);
+        return toReturn;
     }
 
 }

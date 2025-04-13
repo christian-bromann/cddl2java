@@ -6,24 +6,57 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.WebExtension;
+package org.openqa.selenium.bidirectional.webextension;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for webExtension.ExtensionPath command
+ */
 public class ExtensionPath {
 
+    /**
+     * Creates a new ExtensionPath instance
+     */
     public ExtensionPath(String path) {
-        this.path = String;
+        this.path = path;
         this.type = "path";
     }
 
     private final path type;
-    public getType(path type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return path value
+     */
+    public path getType() {
+        return this.type;
     }
 
     private final String path;
-    public getPath(String path) {
-        this.path = path;
+
+    /**
+     * Gets the path property
+     * @return String value
+     */
+    public String getPath() {
+        return this.path;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("path", this.path);
+        return toReturn;
     }
 
 }

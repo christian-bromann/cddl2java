@@ -6,25 +6,58 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.ImageFormat command
+ */
 public class ImageFormat {
 
-    public ImageFormat(String type, Unknown quality) {
-        this.type = String;
-        this.quality = Unknown;
+    /**
+     * Creates a new ImageFormat instance
+     */
+    public ImageFormat(String type, Integer quality) {
+        this.type = type;
+        this.quality = quality;
         
     }
 
     private final String type;
-    public getType(String type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return String value
+     */
+    public String getType() {
+        return this.type;
     }
 
-    private final Unknown quality;
-    public getQuality(Unknown quality) {
-        this.quality = quality;
+    private final Integer quality;
+
+    /**
+     * Gets the quality property
+     * @return Integer value
+     */
+    public Integer getQuality() {
+        return this.quality;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("quality", this.quality);
+        return toReturn;
     }
 
 }

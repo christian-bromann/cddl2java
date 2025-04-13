@@ -6,19 +6,46 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.CaptureScreenshotResult command
+ */
 public class CaptureScreenshotResult {
 
+    /**
+     * Creates a new CaptureScreenshotResult instance
+     */
     public CaptureScreenshotResult(String data) {
-        this.data = String;
+        this.data = data;
         
     }
 
     private final String data;
-    public getData(String data) {
-        this.data = data;
+
+    /**
+     * Gets the data property
+     * @return String value
+     */
+    public String getData() {
+        return this.data;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("data", this.data);
+        return toReturn;
     }
 
 }

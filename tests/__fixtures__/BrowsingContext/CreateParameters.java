@@ -6,37 +6,82 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.BrowsingContext;
+package org.openqa.selenium.bidirectional.browsingcontext;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for browsingContext.CreateParameters command
+ */
 public class CreateParameters {
 
+    /**
+     * Creates a new CreateParameters instance
+     */
     public CreateParameters(BrowsingContext.CreateType type, BrowsingContext.BrowsingContext referenceContext, Unknown background, Browser.UserContext userContext) {
-        this.type = BrowsingContext.CreateType;
-        this.referenceContext = BrowsingContext.BrowsingContext;
-        this.background = Unknown;
-        this.userContext = Browser.UserContext;
+        this.type = type;
+        this.referenceContext = referenceContext;
+        this.background = background;
+        this.userContext = userContext;
         
     }
 
     private final BrowsingContext.CreateType type;
-    public getType(BrowsingContext.CreateType type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return BrowsingContext.CreateType value
+     */
+    public BrowsingContext.CreateType getType() {
+        return this.type;
     }
 
     private final BrowsingContext.BrowsingContext referenceContext;
-    public getReferenceContext(BrowsingContext.BrowsingContext referenceContext) {
-        this.referenceContext = referenceContext;
+
+    /**
+     * Gets the referenceContext property
+     * @return BrowsingContext.BrowsingContext value
+     */
+    public BrowsingContext.BrowsingContext getReferenceContext() {
+        return this.referenceContext;
     }
 
     private final Unknown background;
-    public getBackground(Unknown background) {
-        this.background = background;
+
+    /**
+     * Gets the background property
+     * @return Unknown value
+     */
+    public Unknown getBackground() {
+        return this.background;
     }
 
     private final Browser.UserContext userContext;
-    public getUserContext(Browser.UserContext userContext) {
-        this.userContext = userContext;
+
+    /**
+     * Gets the userContext property
+     * @return Browser.UserContext value
+     */
+    public Browser.UserContext getUserContext() {
+        return this.userContext;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("referenceContext", this.referenceContext);
+        toReturn.put("background", this.background);
+        toReturn.put("userContext", this.userContext);
+        return toReturn;
     }
 
 }

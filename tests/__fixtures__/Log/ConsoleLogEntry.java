@@ -6,30 +6,69 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.Log;
+package org.openqa.selenium.bidirectional.log;
 
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.*;
 
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents parameters for log.ConsoleLogEntry command
+ */
 public class ConsoleLogEntry {
 
-    public ConsoleLogEntry(String method) {
-        this.method = String;
+    /**
+     * Creates a new ConsoleLogEntry instance
+     */
+    public ConsoleLogEntry(String method, List<Unknown> args) {
+        this.method = method;
+        this.args = args;
         this.type = "console";
-        this.args = "Unknown[]";
     }
 
     private final console type;
-    public getType(console type) {
-        this.type = type;
+
+    /**
+     * Gets the type property
+     * @return console value
+     */
+    public console getType() {
+        return this.type;
     }
 
     private final String method;
-    public getMethod(String method) {
-        this.method = method;
+
+    /**
+     * Gets the method property
+     * @return String value
+     */
+    public String getMethod() {
+        return this.method;
     }
 
-    private final Unknown[] args;
-    public getArgs(Unknown[] args) {
-        this.args = args;
+    private final List<Unknown> args;
+
+    /**
+     * Gets the args property
+     * @return List<Unknown> value
+     */
+    public List<Unknown> getArgs() {
+        return this.args;
+    }
+
+    /**
+     * Converts this object to a map for use with BiDi protocol
+     * @return Map representation of this object
+     */
+    public Map<String, Object> asMap() {
+        Map<String, Object> toReturn = new HashMap<>();
+        toReturn.put("type", this.type);
+        toReturn.put("method", this.method);
+        toReturn.put("args", this.args);
+        return toReturn;
     }
 
 }
