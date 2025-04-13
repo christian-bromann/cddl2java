@@ -23,7 +23,7 @@ public class DedicatedWorkerRealmInfo {
     /**
      * Creates a new DedicatedWorkerRealmInfo instance
      */
-    public DedicatedWorkerRealmInfo(List<Script.Realm> owners) {
+    public DedicatedWorkerRealmInfo(List<String> owners) {
         this.owners = owners;
         this.type = "dedicated-worker";
     }
@@ -38,13 +38,13 @@ public class DedicatedWorkerRealmInfo {
         return this.type;
     }
 
-    private final List<Script.Realm> owners;
+    private final List<String> owners;
 
     /**
      * Gets the owners property
-     * @return List<Script.Realm> value
+     * @return List<String> value
      */
-    public List<Script.Realm> getOwners() {
+    public List<String> getOwners() {
         return this.owners;
     }
 

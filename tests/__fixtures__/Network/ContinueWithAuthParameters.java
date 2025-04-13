@@ -23,17 +23,17 @@ public class ContinueWithAuthParameters {
     /**
      * Creates a new ContinueWithAuthParameters instance
      */
-    public ContinueWithAuthParameters(Network.Request request) {
+    public ContinueWithAuthParameters(String request) {
         this.request = request;
     }
 
-    private final Network.Request request;
+    private final String request;
 
     /**
      * Gets the request property
-     * @return Network.Request value
+     * @return String value
      */
-    public Network.Request getRequest() {
+    public String getRequest() {
         return this.request;
     }
 

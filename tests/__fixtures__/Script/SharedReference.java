@@ -23,28 +23,28 @@ public class SharedReference {
     /**
      * Creates a new SharedReference instance
      */
-    public SharedReference(Script.SharedId sharedId, Script.Handle handle) {
+    public SharedReference(String sharedId, String handle) {
         this.sharedId = sharedId;
         this.handle = handle;
     }
 
-    private final Script.SharedId sharedId;
+    private final String sharedId;
 
     /**
      * Gets the sharedId property
-     * @return Script.SharedId value
+     * @return String value
      */
-    public Script.SharedId getSharedId() {
+    public String getSharedId() {
         return this.sharedId;
     }
 
-    private final Script.Handle handle;
+    private final String handle;
 
     /**
      * Gets the handle property
-     * @return Script.Handle value
+     * @return String value
      */
-    public Script.Handle getHandle() {
+    public String getHandle() {
         return this.handle;
     }
 

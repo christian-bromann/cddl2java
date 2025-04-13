@@ -23,17 +23,17 @@ public class AddPreloadScriptResult {
     /**
      * Creates a new AddPreloadScriptResult instance
      */
-    public AddPreloadScriptResult(Script.PreloadScript script) {
+    public AddPreloadScriptResult(String script) {
         this.script = script;
     }
 
-    private final Script.PreloadScript script;
+    private final String script;
 
     /**
      * Gets the script property
-     * @return Script.PreloadScript value
+     * @return String value
      */
-    public Script.PreloadScript getScript() {
+    public String getScript() {
         return this.script;
     }
 

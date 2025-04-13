@@ -23,7 +23,7 @@ public class WindowProxyRemoteValue {
     /**
      * Creates a new WindowProxyRemoteValue instance
      */
-    public WindowProxyRemoteValue(Script.WindowProxyProperties value, Script.Handle handle, Script.InternalId internalId) {
+    public WindowProxyRemoteValue(Script.WindowProxyProperties value, String handle, String internalId) {
         this.value = value;
         this.handle = handle;
         this.internalId = internalId;
@@ -50,23 +50,23 @@ public class WindowProxyRemoteValue {
         return this.value;
     }
 
-    private final Script.Handle handle;
+    private final String handle;
 
     /**
      * Gets the handle property
-     * @return Script.Handle value
+     * @return String value
      */
-    public Script.Handle getHandle() {
+    public String getHandle() {
         return this.handle;
     }
 
-    private final Script.InternalId internalId;
+    private final String internalId;
 
     /**
      * Gets the internalId property
-     * @return Script.InternalId value
+     * @return String value
      */
-    public Script.InternalId getInternalId() {
+    public String getInternalId() {
         return this.internalId;
     }
 

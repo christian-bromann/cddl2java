@@ -23,17 +23,17 @@ public class FailRequestParameters {
     /**
      * Creates a new FailRequestParameters instance
      */
-    public FailRequestParameters(Network.Request request) {
+    public FailRequestParameters(String request) {
         this.request = request;
     }
 
-    private final Network.Request request;
+    private final String request;
 
     /**
      * Gets the request property
-     * @return Network.Request value
+     * @return String value
      */
-    public Network.Request getRequest() {
+    public String getRequest() {
         return this.request;
     }
 

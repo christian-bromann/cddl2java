@@ -23,7 +23,7 @@ public class WeakMapRemoteValue {
     /**
      * Creates a new WeakMapRemoteValue instance
      */
-    public WeakMapRemoteValue(Script.Handle handle, Script.InternalId internalId) {
+    public WeakMapRemoteValue(String handle, String internalId) {
         this.handle = handle;
         this.internalId = internalId;
         this.type = "weakmap";
@@ -39,23 +39,23 @@ public class WeakMapRemoteValue {
         return this.type;
     }
 
-    private final Script.Handle handle;
+    private final String handle;
 
     /**
      * Gets the handle property
-     * @return Script.Handle value
+     * @return String value
      */
-    public Script.Handle getHandle() {
+    public String getHandle() {
         return this.handle;
     }
 
-    private final Script.InternalId internalId;
+    private final String internalId;
 
     /**
      * Gets the internalId property
-     * @return Script.InternalId value
+     * @return String value
      */
-    public Script.InternalId getInternalId() {
+    public String getInternalId() {
         return this.internalId;
     }
 

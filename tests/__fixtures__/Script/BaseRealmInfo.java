@@ -23,18 +23,18 @@ public class BaseRealmInfo {
     /**
      * Creates a new BaseRealmInfo instance
      */
-    public BaseRealmInfo(Script.Realm realm, String origin) {
+    public BaseRealmInfo(String realm, String origin) {
         this.realm = realm;
         this.origin = origin;
     }
 
-    private final Script.Realm realm;
+    private final String realm;
 
     /**
      * Gets the realm property
-     * @return Script.Realm value
+     * @return String value
      */
-    public Script.Realm getRealm() {
+    public String getRealm() {
         return this.realm;
     }
 

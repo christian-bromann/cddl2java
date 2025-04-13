@@ -23,7 +23,7 @@ public class MapRemoteValue {
     /**
      * Creates a new MapRemoteValue instance
      */
-    public MapRemoteValue(Script.Handle handle, Script.InternalId internalId, Script.MappingRemoteValue value) {
+    public MapRemoteValue(String handle, String internalId, Script.MappingRemoteValue value) {
         this.handle = handle;
         this.internalId = internalId;
         this.value = value;
@@ -40,23 +40,23 @@ public class MapRemoteValue {
         return this.type;
     }
 
-    private final Script.Handle handle;
+    private final String handle;
 
     /**
      * Gets the handle property
-     * @return Script.Handle value
+     * @return String value
      */
-    public Script.Handle getHandle() {
+    public String getHandle() {
         return this.handle;
     }
 
-    private final Script.InternalId internalId;
+    private final String internalId;
 
     /**
      * Gets the internalId property
-     * @return Script.InternalId value
+     * @return String value
      */
-    public Script.InternalId getInternalId() {
+    public String getInternalId() {
         return this.internalId;
     }
 

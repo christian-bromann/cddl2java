@@ -23,17 +23,17 @@ public class RemovePreloadScriptParameters {
     /**
      * Creates a new RemovePreloadScriptParameters instance
      */
-    public RemovePreloadScriptParameters(Script.PreloadScript script) {
+    public RemovePreloadScriptParameters(String script) {
         this.script = script;
     }
 
-    private final Script.PreloadScript script;
+    private final String script;
 
     /**
      * Gets the script property
-     * @return Script.PreloadScript value
+     * @return String value
      */
-    public Script.PreloadScript getScript() {
+    public String getScript() {
         return this.script;
     }
 

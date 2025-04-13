@@ -23,7 +23,7 @@ public class RequestData {
     /**
      * Creates a new RequestData instance
      */
-    public RequestData(Network.Request request, String url, String method, List<Network.Header> headers, List<Network.Cookie> cookies, Long headersSize, Object bodySize, String destination, Object initiatorType, Network.FetchTimingInfo timings) {
+    public RequestData(String request, String url, String method, List<Network.Header> headers, List<Network.Cookie> cookies, Long headersSize, Object bodySize, String destination, Object initiatorType, Network.FetchTimingInfo timings) {
         this.request = request;
         this.url = url;
         this.method = method;
@@ -36,13 +36,13 @@ public class RequestData {
         this.timings = timings;
     }
 
-    private final Network.Request request;
+    private final String request;
 
     /**
      * Gets the request property
-     * @return Network.Request value
+     * @return String value
      */
-    public Network.Request getRequest() {
+    public String getRequest() {
         return this.request;
     }
 

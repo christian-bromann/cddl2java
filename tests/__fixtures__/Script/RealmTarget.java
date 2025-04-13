@@ -23,17 +23,17 @@ public class RealmTarget {
     /**
      * Creates a new RealmTarget instance
      */
-    public RealmTarget(Script.Realm realm) {
+    public RealmTarget(String realm) {
         this.realm = realm;
     }
 
-    private final Script.Realm realm;
+    private final String realm;
 
     /**
      * Gets the realm property
-     * @return Script.Realm value
+     * @return String value
      */
-    public Script.Realm getRealm() {
+    public String getRealm() {
         return this.realm;
     }
 

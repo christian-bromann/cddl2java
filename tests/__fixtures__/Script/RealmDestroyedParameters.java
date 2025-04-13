@@ -23,17 +23,17 @@ public class RealmDestroyedParameters {
     /**
      * Creates a new RealmDestroyedParameters instance
      */
-    public RealmDestroyedParameters(Script.Realm realm) {
+    public RealmDestroyedParameters(String realm) {
         this.realm = realm;
     }
 
-    private final Script.Realm realm;
+    private final String realm;
 
     /**
      * Gets the realm property
-     * @return Script.Realm value
+     * @return String value
      */
-    public Script.Realm getRealm() {
+    public String getRealm() {
         return this.realm;
     }
 

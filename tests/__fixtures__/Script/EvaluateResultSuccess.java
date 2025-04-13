@@ -23,7 +23,7 @@ public class EvaluateResultSuccess {
     /**
      * Creates a new EvaluateResultSuccess instance
      */
-    public EvaluateResultSuccess(Script.RemoteValue result, Script.Realm realm) {
+    public EvaluateResultSuccess(Script.RemoteValue result, String realm) {
         this.result = result;
         this.realm = realm;
         this.type = "success";
@@ -49,13 +49,13 @@ public class EvaluateResultSuccess {
         return this.result;
     }
 
-    private final Script.Realm realm;
+    private final String realm;
 
     /**
      * Gets the realm property
-     * @return Script.Realm value
+     * @return String value
      */
-    public Script.Realm getRealm() {
+    public String getRealm() {
         return this.realm;
     }
 

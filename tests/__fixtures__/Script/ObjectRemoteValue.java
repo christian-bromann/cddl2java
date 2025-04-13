@@ -23,7 +23,7 @@ public class ObjectRemoteValue {
     /**
      * Creates a new ObjectRemoteValue instance
      */
-    public ObjectRemoteValue(Script.Handle handle, Script.InternalId internalId, Script.MappingRemoteValue value) {
+    public ObjectRemoteValue(String handle, String internalId, Script.MappingRemoteValue value) {
         this.handle = handle;
         this.internalId = internalId;
         this.value = value;
@@ -40,23 +40,23 @@ public class ObjectRemoteValue {
         return this.type;
     }
 
-    private final Script.Handle handle;
+    private final String handle;
 
     /**
      * Gets the handle property
-     * @return Script.Handle value
+     * @return String value
      */
-    public Script.Handle getHandle() {
+    public String getHandle() {
         return this.handle;
     }
 
-    private final Script.InternalId internalId;
+    private final String internalId;
 
     /**
      * Gets the internalId property
-     * @return Script.InternalId value
+     * @return String value
      */
-    public Script.InternalId getInternalId() {
+    public String getInternalId() {
         return this.internalId;
     }
 

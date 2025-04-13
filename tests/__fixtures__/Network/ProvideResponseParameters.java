@@ -23,7 +23,7 @@ public class ProvideResponseParameters {
     /**
      * Creates a new ProvideResponseParameters instance
      */
-    public ProvideResponseParameters(Network.Request request, Network.BytesValue body, List<Network.SetCookieHeader> cookies, List<Network.Header> headers, String reasonPhrase, Long statusCode) {
+    public ProvideResponseParameters(String request, Network.BytesValue body, List<Network.SetCookieHeader> cookies, List<Network.Header> headers, String reasonPhrase, Long statusCode) {
         this.request = request;
         this.body = body;
         this.cookies = cookies;
@@ -32,13 +32,13 @@ public class ProvideResponseParameters {
         this.statusCode = statusCode;
     }
 
-    private final Network.Request request;
+    private final String request;
 
     /**
      * Gets the request property
-     * @return Network.Request value
+     * @return String value
      */
-    public Network.Request getRequest() {
+    public String getRequest() {
         return this.request;
     }
 

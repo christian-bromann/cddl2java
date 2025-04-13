@@ -23,7 +23,7 @@ public class Initiator {
     /**
      * Creates a new Initiator instance
      */
-    public Initiator(Long columnNumber, Long lineNumber, Network.Request request, Script.StackTrace stackTrace, Object type) {
+    public Initiator(Long columnNumber, Long lineNumber, String request, Script.StackTrace stackTrace, Object type) {
         this.columnNumber = columnNumber;
         this.lineNumber = lineNumber;
         this.request = request;
@@ -51,13 +51,13 @@ public class Initiator {
         return this.lineNumber;
     }
 
-    private final Network.Request request;
+    private final String request;
 
     /**
      * Gets the request property
-     * @return Network.Request value
+     * @return String value
      */
-    public Network.Request getRequest() {
+    public String getRequest() {
         return this.request;
     }
 

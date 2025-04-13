@@ -23,7 +23,7 @@ public class NodeRemoteValue {
     /**
      * Creates a new NodeRemoteValue instance
      */
-    public NodeRemoteValue(Script.SharedId sharedId, Script.Handle handle, Script.InternalId internalId, Script.NodeProperties value) {
+    public NodeRemoteValue(String sharedId, String handle, String internalId, Script.NodeProperties value) {
         this.sharedId = sharedId;
         this.handle = handle;
         this.internalId = internalId;
@@ -41,33 +41,33 @@ public class NodeRemoteValue {
         return this.type;
     }
 
-    private final Script.SharedId sharedId;
+    private final String sharedId;
 
     /**
      * Gets the sharedId property
-     * @return Script.SharedId value
+     * @return String value
      */
-    public Script.SharedId getSharedId() {
+    public String getSharedId() {
         return this.sharedId;
     }
 
-    private final Script.Handle handle;
+    private final String handle;
 
     /**
      * Gets the handle property
-     * @return Script.Handle value
+     * @return String value
      */
-    public Script.Handle getHandle() {
+    public String getHandle() {
         return this.handle;
     }
 
-    private final Script.InternalId internalId;
+    private final String internalId;
 
     /**
      * Gets the internalId property
-     * @return Script.InternalId value
+     * @return String value
      */
-    public Script.InternalId getInternalId() {
+    public String getInternalId() {
         return this.internalId;
     }
 

@@ -23,19 +23,19 @@ public class MessageParameters {
     /**
      * Creates a new MessageParameters instance
      */
-    public MessageParameters(Script.Channel channel, Script.RemoteValue data, Script.Source source) {
+    public MessageParameters(String channel, Script.RemoteValue data, Script.Source source) {
         this.channel = channel;
         this.data = data;
         this.source = source;
     }
 
-    private final Script.Channel channel;
+    private final String channel;
 
     /**
      * Gets the channel property
-     * @return Script.Channel value
+     * @return String value
      */
-    public Script.Channel getChannel() {
+    public String getChannel() {
         return this.channel;
     }
 

@@ -23,18 +23,18 @@ public class Source {
     /**
      * Creates a new Source instance
      */
-    public Source(Script.Realm realm, String context) {
+    public Source(String realm, String context) {
         this.realm = realm;
         this.context = context;
     }
 
-    private final Script.Realm realm;
+    private final String realm;
 
     /**
      * Gets the realm property
-     * @return Script.Realm value
+     * @return String value
      */
-    public Script.Realm getRealm() {
+    public String getRealm() {
         return this.realm;
     }
 

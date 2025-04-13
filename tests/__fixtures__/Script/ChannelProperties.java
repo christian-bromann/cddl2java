@@ -23,19 +23,19 @@ public class ChannelProperties {
     /**
      * Creates a new ChannelProperties instance
      */
-    public ChannelProperties(Script.Channel channel, Script.SerializationOptions serializationOptions, Script.ResultOwnership ownership) {
+    public ChannelProperties(String channel, Script.SerializationOptions serializationOptions, Script.ResultOwnership ownership) {
         this.channel = channel;
         this.serializationOptions = serializationOptions;
         this.ownership = ownership;
     }
 
-    private final Script.Channel channel;
+    private final String channel;
 
     /**
      * Gets the channel property
-     * @return Script.Channel value
+     * @return String value
      */
-    public Script.Channel getChannel() {
+    public String getChannel() {
         return this.channel;
     }
 

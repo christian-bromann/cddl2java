@@ -78,6 +78,31 @@ const scriptLocalValueClasses = [
     'RegExpLocalValue',
     'SetLocalValue'
 ]
+const stringTypes = [
+    'script.InternalId',
+    'browser.ClientWindow',
+    'browser.UserContext',
+    'browsingContext.BrowsingContext',
+    'browsingContext.Navigation',
+    'network.Request',
+    'script.Channel',
+    'script.Handle',
+    'script.InternalId',
+    'script.PreloadScript',
+    'script.Realm',
+    'script.SharedId',
+    'browser.ClientWindow',
+    'browser.UserContext',
+    'browsingContext.BrowsingContext',
+    'browsingContext.Navigation',
+    'network.Request',
+    'script.Channel',
+    'script.Handle',
+    'script.InternalId',
+    'script.PreloadScript',
+    'script.Realm',
+    'script.SharedId'
+]
 
 async function createModules (assignments: Assignment[]) {
     const javaFiles = new Map<MapKey, string>()
@@ -123,7 +148,6 @@ async function createModules (assignments: Assignment[]) {
             ? resultTypeJava
             : 'org.openqa.selenium.bidirectional.EmptyResult'
 
-        const paramKey = 'params'
         const specUrl = `https://w3c.github.io/webdriver-bidi/#command-${methodId.replace('.', '-')}`
         const description = `WebDriver Bidi command to send command method "${methodId}" with parameters.`
         const c = [
@@ -429,6 +453,10 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
 
                         if (value in knownTypes) {
                             return { type: knownTypes[value], isLiteral: false };
+                        }
+
+                        if (stringTypes.includes(value)) {
+                            return { type: 'String', isLiteral: false };
                         }
 
                         // Reference to another type - keep proper casing

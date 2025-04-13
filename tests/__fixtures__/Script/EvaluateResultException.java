@@ -23,7 +23,7 @@ public class EvaluateResultException {
     /**
      * Creates a new EvaluateResultException instance
      */
-    public EvaluateResultException(Script.ExceptionDetails exceptionDetails, Script.Realm realm) {
+    public EvaluateResultException(Script.ExceptionDetails exceptionDetails, String realm) {
         this.exceptionDetails = exceptionDetails;
         this.realm = realm;
         this.type = "exception";
@@ -49,13 +49,13 @@ public class EvaluateResultException {
         return this.exceptionDetails;
     }
 
-    private final Script.Realm realm;
+    private final String realm;
 
     /**
      * Gets the realm property
-     * @return Script.Realm value
+     * @return String value
      */
-    public Script.Realm getRealm() {
+    public String getRealm() {
         return this.realm;
     }
 

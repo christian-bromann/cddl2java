@@ -23,28 +23,28 @@ public class RemoteObjectReference {
     /**
      * Creates a new RemoteObjectReference instance
      */
-    public RemoteObjectReference(Script.Handle handle, Script.SharedId sharedId) {
+    public RemoteObjectReference(String handle, String sharedId) {
         this.handle = handle;
         this.sharedId = sharedId;
     }
 
-    private final Script.Handle handle;
+    private final String handle;
 
     /**
      * Gets the handle property
-     * @return Script.Handle value
+     * @return String value
      */
-    public Script.Handle getHandle() {
+    public String getHandle() {
         return this.handle;
     }
 
-    private final Script.SharedId sharedId;
+    private final String sharedId;
 
     /**
      * Gets the sharedId property
-     * @return Script.SharedId value
+     * @return String value
      */
-    public Script.SharedId getSharedId() {
+    public String getSharedId() {
         return this.sharedId;
     }
 

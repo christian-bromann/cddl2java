@@ -23,18 +23,18 @@ public class DisownParameters {
     /**
      * Creates a new DisownParameters instance
      */
-    public DisownParameters(List<Script.Handle> handles, Script.Target target) {
+    public DisownParameters(List<String> handles, Script.Target target) {
         this.handles = handles;
         this.target = target;
     }
 
-    private final List<Script.Handle> handles;
+    private final List<String> handles;
 
     /**
      * Gets the handles property
-     * @return List<Script.Handle> value
+     * @return List<String> value
      */
-    public List<Script.Handle> getHandles() {
+    public List<String> getHandles() {
         return this.handles;
     }
 
