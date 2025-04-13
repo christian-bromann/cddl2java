@@ -266,7 +266,7 @@ async function createPropertyClasses (assignments: Assignment[]) {
                     }
                 }
 
-                props.set(property.Name, { type: finalType, isLiteral })
+                props.set(parsePropertyName(property.Name), { type: finalType, isLiteral })
             }
 
             if (props.size > 0) {
@@ -312,7 +312,8 @@ public class ${propClassName} {
 `
                 // Add properties and getters
                 for (const [prop, { type, isLiteral }] of props.entries()) {
-                    const propNameCamelCase = prop[0].toUpperCase() + prop.slice(1)
+                    const propName = parsePropertyName(prop)
+                    const propNameCamelCase = propName[0].toUpperCase() + propName.slice(1)
                     // Use String type for literals
                     const javaType = isLiteral ? 'String' : type
                     code += `
@@ -337,7 +338,7 @@ public class ${propClassName} {
     public Map<String, Object> asMap() {
         Map<String, Object> toReturn = new HashMap<>();
         ${Array.from(props.entries()).map(([prop]) =>
-          `toReturn.put("${prop}", this.${prop});`
+          `toReturn.put("${parsePropertyName(prop)}", this.${prop});`
         ).join(`
         `)}
         return toReturn;
@@ -349,6 +350,19 @@ public class ${propClassName} {
     }
 
     return javaPropFiles
+}
+
+function parsePropertyName (name: string): string {
+    /**
+     * avoid having assignments with reserved words
+     */
+    if (name === 'this') {
+        return 'self'
+    }
+    if (name === 'self') {
+        return 'this'
+    }
+    return name
 }
 
 function parseType (specType: any): { type: string, isLiteral: boolean } {
@@ -520,7 +534,7 @@ async function createResultClasses (assignments: Assignment[]) {
         if ('Properties' in assignment && assignment.Properties) {
             for (const property of assignment.Properties as Property[]) {
                 const { type, isLiteral } = parseType(property.Type)
-                props.set(property.Name, { type, isLiteral })
+                props.set(parsePropertyName(property.Name), { type, isLiteral })
             }
         }
 

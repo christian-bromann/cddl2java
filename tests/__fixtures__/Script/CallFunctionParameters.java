@@ -23,14 +23,14 @@ public class CallFunctionParameters {
     /**
      * Creates a new CallFunctionParameters instance
      */
-    public CallFunctionParameters(String functionDeclaration, Boolean awaitPromise, Script.Target target, List<Script.LocalValue> arguments, Script.ResultOwnership resultOwnership, Script.SerializationOptions serializationOptions, Script.LocalValue this, Boolean userActivation) {
+    public CallFunctionParameters(String functionDeclaration, Boolean awaitPromise, Script.Target target, List<Script.LocalValue> arguments, Script.ResultOwnership resultOwnership, Script.SerializationOptions serializationOptions, Script.LocalValue self, Boolean userActivation) {
         this.functionDeclaration = functionDeclaration;
         this.awaitPromise = awaitPromise;
         this.target = target;
         this.arguments = arguments;
         this.resultOwnership = resultOwnership;
         this.serializationOptions = serializationOptions;
-        this.this = this;
+        this.self = self;
         this.userActivation = userActivation;
     }
 
@@ -94,14 +94,14 @@ public class CallFunctionParameters {
         return this.serializationOptions;
     }
 
-    private final Script.LocalValue this;
+    private final Script.LocalValue self;
 
     /**
-     * Gets the this property
+     * Gets the self property
      * @return Script.LocalValue value
      */
     public Script.LocalValue getThis() {
-        return this.this;
+        return this.self;
     }
 
     private final Boolean userActivation;
@@ -126,7 +126,7 @@ public class CallFunctionParameters {
         toReturn.put("arguments", this.arguments);
         toReturn.put("resultOwnership", this.resultOwnership);
         toReturn.put("serializationOptions", this.serializationOptions);
-        toReturn.put("this", this.this);
+        toReturn.put("this", this.self);
         toReturn.put("userActivation", this.userActivation);
         return toReturn;
     }
