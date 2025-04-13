@@ -6,25 +6,30 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.script;
-
-import java.util.Map;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import org.openqa.selenium.bidirectional.EmptyResult;
-
 /**
- * Auto-generated class for WebDriver BiDi protocol
- * Represents response for script.ResultOwnership command
+ * Represents ResultOwnership in WebDriver BiDi protocol
+ * as enum of "root" / "none"
  */
 public class ResultOwnership {
+    ROOT("root");
+    NONE("none");
 
-    /**
-     * Creates a new ResultOwnership instance
-     */
-    public ResultOwnership() {
-        // No properties to initialize
+    private final String value;
+
+    ResultOwnership(String value) {
+        this.value = value;
     }
 
+    public String getValue() {
+        return value;
+    }
+
+    public static ResultOwnership fromString(String text) {
+        for (ResultOwnership resultownership : ResultOwnership.values()) {
+            if (resultownership.value.equalsIgnoreCase(text)) {
+                return resultownership;
+            }
+        }
+        throw new IllegalArgumentException("No ResultOwnership with value: " + text);
+    }
 }

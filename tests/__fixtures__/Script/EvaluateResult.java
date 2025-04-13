@@ -26,5 +26,3 @@ public class EvaluateResult {
     public EvaluateResult() {
         // No properties to initialize
     }
-
-}

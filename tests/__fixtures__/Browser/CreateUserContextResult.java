@@ -26,5 +26,3 @@ public class CreateUserContextResult {
     public CreateUserContextResult() {
         // No properties to initialize
     }
-
-}

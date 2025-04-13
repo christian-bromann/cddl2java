@@ -12,9 +12,9 @@
  */
 public class SpecialNumber {
     NAN("NaN");
-    -0("-0");
+    NEGATIVE_0("-0");
     INFINITY("Infinity");
-    -INFINITY("-Infinity");
+    NEGATIVE_INFINITY("-Infinity");
 
     private final String value;
 

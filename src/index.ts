@@ -211,7 +211,8 @@ public class ${moduleScope}Module {
             parameters.asMap(),
             ${resultTypeJavaEmbed}.class
         );
-    }`
+    }
+}`
         javaFiles.set(mapKey, code)
     }
 
@@ -425,8 +426,32 @@ public class ${propClassName}${implementsExtension} {
         `)}
         return toReturn;
     }
-`
+
+}`
                 javaPropFiles.set(mapKey, code)
+            }
+        } else if (assignment.Type === 'variable') {
+            const propType = assignment.PropertyType as PropertyType[]
+            /**
+             * handle enums like
+             * {
+             *   Type: 'variable',
+             *   Name: 'input.PointerType',
+             *   IsChoiceAddition: false,
+             *   PropertyType: [
+             *       { Type: 'literal', Value: 'mouse', Unwrapped: false },
+             *       { Type: 'literal', Value: 'pen', Unwrapped: false },
+             *       { Type: 'literal', Value: 'touch', Unwrapped: false }
+             *   ],
+             *   Comments: []
+             * }
+             */
+            if (propType.every((p) => (p as PropertyReference).Type === 'literal')) {
+                const [module, prop] = assignment.Name.split('.')
+                const enumValues = propType.map((p) => (p as PropertyReference).Value) as string[]
+                const code = getEnumTemplate(prop, enumValues)
+                console.log(12, code)
+                javaPropFiles.set([module, prop], code)
             }
         }
     }
@@ -501,8 +526,6 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
                         if (stringTypes.includes(value)) {
                             return { type: 'String', isLiteral: false };
                         }
-
-                        console.log(value);
 
                         if (aliasTypes[value as keyof typeof aliasTypes]) {
                             return { type: aliasTypes[value as keyof typeof aliasTypes], isLiteral: false };
@@ -582,7 +605,7 @@ async function createJavaFiles (javaFiles: Map<MapKey, string>, outputDir: strin
         const rootDir = path.join(outputDir, moduleScope)
 
         await fs.mkdirSync(rootDir, { recursive: true })
-        await writeFile(path.resolve(rootDir, `${moduleName}.java`), code + '\n}')
+        await writeFile(path.resolve(rootDir, `${moduleName}.java`), code)
     }
 }
 
@@ -701,27 +724,6 @@ async function createEmptyResultClass(outputDir: string) {
 async function createHelperClasses( outputDir: string) {
     // Create directories and write files
     await fs.mkdirSync(path.join(outputDir, 'Input'), { recursive: true });
-    await writeFile(path.resolve(outputDir, 'Input/Origin.java'), getEnumTemplate('Origin', ['viewport', 'pointer', 'element'], 'input'));
-    await writeFile(path.resolve(outputDir, 'Input/PointerType.java'), getEnumTemplate('PointerType', ['mouse', 'pen', 'touch'], 'input'));
-
-    await fs.mkdirSync(path.join(outputDir, 'Session'), { recursive: true });
-    await writeFile(path.resolve(outputDir, 'Session/UserPromptHandlerType.java'), getEnumTemplate('UserPromptHandlerType', ['accept', 'dismiss', 'ignore'], 'session'));
-    await fs.mkdirSync(path.join(outputDir, 'BrowsingContext'), { recursive: true });
-    await writeFile(path.resolve(outputDir, 'BrowsingContext/ReadinessState.java'), getEnumTemplate('ReadinessState', ['none', 'interactive', 'complete'], 'browsingContext'));
-    await writeFile(path.resolve(outputDir, 'BrowsingContext/UserPromptType.java'), getEnumTemplate('UserPromptType', ['alert', 'beforeunload', 'confirm', 'prompt'], 'browsingContext'));
-    await writeFile(path.resolve(outputDir, 'BrowsingContext/CreateType.java'), getEnumTemplate('CreateType', ['tab', 'window'], 'browsingContext'));
-
-    await fs.mkdirSync(path.join(outputDir, 'Network'), { recursive: true });
-    await writeFile(path.resolve(outputDir, 'Network/SameSite.java'), getEnumTemplate('SameSite', ['strict', 'lax', 'none'], 'network'));
-    await writeFile(path.resolve(outputDir, 'Network/InterceptPhase.java'), getEnumTemplate('InterceptPhase', ['beforeRequestSent', 'responseStarted', 'authRequired'], 'network'));
-
-    await fs.mkdirSync(path.join(outputDir, 'Script'), { recursive: true });
-    await writeFile(path.resolve(outputDir, 'Script/SpecialNumber.java'), getEnumTemplate('SpecialNumber', ['NaN', '-0', 'Infinity', '-Infinity'], 'script'));
-    await writeFile(path.resolve(outputDir, 'Script/RealmType.java'), getEnumTemplate('RealmType', ['window', 'dedicated-worker', 'shared-worker', 'service-worker', 'worker', 'paint-worklet', 'audio-worklet', 'worklet'], 'script'));
-    await writeFile(path.resolve(outputDir, 'Script/ResultOwnership.java'), getEnumTemplate('ResultOwnership', ['root', 'none'], 'script'));
-    await fs.mkdirSync(path.join(outputDir, 'Log'), { recursive: true });
-    await writeFile(path.resolve(outputDir, 'Log/Level.java'), getEnumTemplate('Level', ['debug', 'info', 'warn', 'error'], 'log'));
-
     await writeFile(path.resolve(outputDir, 'Input/SourceActions.java'), sourceActions);
     await writeFile(path.resolve(outputDir, 'Script/ScriptLocalValue.java'), scriptLocalValue);
     await writeFile(path.resolve(outputDir, 'ContextValue.java'), contextValueTemplate);

@@ -129,13 +129,18 @@ public class AccessibilityValue {
     }
 }`;
 
-export const getEnumTemplate = (name: string, enums: string[], module: string) => {
+export const getEnumTemplate = (name: string, enums: string[]) => {
     return `/**
  * Represents ${name} in WebDriver BiDi protocol
  * as enum of "${enums.join('" / "')}"
  */
 public class ${name} {
-    ${enums.map((e) => `${e.toUpperCase()}("${e}");`).join('\n    ')}
+    ${enums.map((e) => {
+        if (e.startsWith('-')) {
+            return `NEGATIVE_${e.slice(1).toUpperCase()}("${e}");`
+        }
+        return `${e.toUpperCase()}("${e}");`
+    }).join('\n    ')}
 
     private final String value;
 

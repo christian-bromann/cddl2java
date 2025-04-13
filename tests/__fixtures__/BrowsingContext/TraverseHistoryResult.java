@@ -26,5 +26,3 @@ public class TraverseHistoryResult {
     public TraverseHistoryResult() {
         // No properties to initialize
     }
-
-}
