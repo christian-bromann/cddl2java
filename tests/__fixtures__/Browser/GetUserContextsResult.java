@@ -23,18 +23,18 @@ public class GetUserContextsResult {
     /**
      * Creates a new GetUserContextsResult instance
      */
-    public GetUserContextsResult(List<Unknown> userContexts) {
+    public GetUserContextsResult(List<Object> userContexts) {
         this.userContexts = userContexts;
         
     }
 
-    private final List<Unknown> userContexts;
+    private final List<Object> userContexts;
 
     /**
      * Gets the userContexts property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getUserContexts() {
+    public List<Object> getUserContexts() {
         return this.userContexts;
     }
 

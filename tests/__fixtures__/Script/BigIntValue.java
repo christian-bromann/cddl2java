@@ -28,13 +28,13 @@ public class BigIntValue {
         this.type = "bigint";
     }
 
-    private final bigint type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return bigint value
+     * @return String value
      */
-    public bigint getType() {
+    public String getType() {
         return this.type;
     }
 

@@ -29,13 +29,13 @@ public class GeneratorRemoteValue {
         this.type = "generator";
     }
 
-    private final generator type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return generator value
+     * @return String value
      */
-    public generator getType() {
+    public String getType() {
         return this.type;
     }
 

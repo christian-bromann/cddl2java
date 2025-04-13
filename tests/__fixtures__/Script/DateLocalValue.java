@@ -28,13 +28,13 @@ public class DateLocalValue {
         this.type = "date";
     }
 
-    private final date type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return date value
+     * @return String value
      */
-    public date getType() {
+    public String getType() {
         return this.type;
     }
 

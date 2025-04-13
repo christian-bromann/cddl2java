@@ -30,13 +30,13 @@ public class ObjectRemoteValue {
         this.type = "object";
     }
 
-    private final object type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return object value
+     * @return String value
      */
-    public object getType() {
+    public String getType() {
         return this.type;
     }
 

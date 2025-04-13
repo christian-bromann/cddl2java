@@ -28,13 +28,13 @@ public class AudioWorkletRealmInfo {
         this.type = "audio-worklet";
     }
 
-    private final audio-worklet type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return audio-worklet value
+     * @return String value
      */
-    public audio-worklet getType() {
+    public String getType() {
         return this.type;
     }
 

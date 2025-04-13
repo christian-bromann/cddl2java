@@ -28,13 +28,13 @@ public class ExtensionArchivePath {
         this.type = "archivePath";
     }
 
-    private final archivePath type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return archivePath value
+     * @return String value
      */
-    public archivePath getType() {
+    public String getType() {
         return this.type;
     }
 

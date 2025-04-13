@@ -23,28 +23,28 @@ public class AccessibilityLocator {
     /**
      * Creates a new AccessibilityLocator instance
      */
-    public AccessibilityLocator(Unknown value) {
+    public AccessibilityLocator(AccessibilityValue value) {
         this.value = value;
         this.type = "accessibility";
     }
 
-    private final accessibility type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return accessibility value
+     * @return String value
      */
-    public accessibility getType() {
+    public String getType() {
         return this.type;
     }
 
-    private final Unknown value;
+    private final AccessibilityValue value;
 
     /**
      * Gets the value property
-     * @return Unknown value
+     * @return AccessibilityValue value
      */
-    public Unknown getValue() {
+    public AccessibilityValue getValue() {
         return this.value;
     }
 

@@ -23,19 +23,19 @@ public class ContextTarget {
     /**
      * Creates a new ContextTarget instance
      */
-    public ContextTarget(BrowsingContext.BrowsingContext context, String sandbox) {
+    public ContextTarget(String context, String sandbox) {
         this.context = context;
         this.sandbox = sandbox;
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

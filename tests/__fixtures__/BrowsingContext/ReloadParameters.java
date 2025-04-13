@@ -23,20 +23,20 @@ public class ReloadParameters {
     /**
      * Creates a new ReloadParameters instance
      */
-    public ReloadParameters(BrowsingContext.BrowsingContext context, Boolean ignoreCache, BrowsingContext.ReadinessState wait) {
+    public ReloadParameters(String context, Boolean ignoreCache, BrowsingContext.ReadinessState wait) {
         this.context = context;
         this.ignoreCache = ignoreCache;
         this.wait = wait;
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

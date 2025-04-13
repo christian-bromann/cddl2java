@@ -28,13 +28,13 @@ public class BooleanValue {
         this.type = "boolean";
     }
 
-    private final boolean type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return boolean value
+     * @return String value
      */
-    public boolean getType() {
+    public String getType() {
         return this.type;
     }
 

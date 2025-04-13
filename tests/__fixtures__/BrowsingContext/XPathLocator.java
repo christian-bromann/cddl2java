@@ -28,13 +28,13 @@ public class XPathLocator {
         this.type = "xpath";
     }
 
-    private final xpath type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return xpath value
+     * @return String value
      */
-    public xpath getType() {
+    public String getType() {
         return this.type;
     }
 

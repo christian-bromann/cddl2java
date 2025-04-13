@@ -23,18 +23,18 @@ public class UnsubscribeByIDRequest {
     /**
      * Creates a new UnsubscribeByIDRequest instance
      */
-    public UnsubscribeByIDRequest(List<Unknown> subscriptions) {
+    public UnsubscribeByIDRequest(List<Object> subscriptions) {
         this.subscriptions = subscriptions;
         
     }
 
-    private final List<Unknown> subscriptions;
+    private final List<Object> subscriptions;
 
     /**
      * Gets the subscriptions property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getSubscriptions() {
+    public List<Object> getSubscriptions() {
         return this.subscriptions;
     }
 

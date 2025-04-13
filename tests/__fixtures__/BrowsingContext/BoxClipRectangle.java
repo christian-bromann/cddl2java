@@ -31,13 +31,13 @@ public class BoxClipRectangle {
         this.type = "box";
     }
 
-    private final box type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return box value
+     * @return String value
      */
-    public box getType() {
+    public String getType() {
         return this.type;
     }
 

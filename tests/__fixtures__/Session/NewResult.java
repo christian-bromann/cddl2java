@@ -23,7 +23,7 @@ public class NewResult {
     /**
      * Creates a new NewResult instance
      */
-    public NewResult(String sessionId, Unknown capabilities) {
+    public NewResult(String sessionId, Capabilities capabilities) {
         this.sessionId = sessionId;
         this.capabilities = capabilities;
         
@@ -39,13 +39,13 @@ public class NewResult {
         return this.sessionId;
     }
 
-    private final Unknown capabilities;
+    private final Capabilities capabilities;
 
     /**
      * Gets the capabilities property
-     * @return Unknown value
+     * @return Capabilities value
      */
-    public Unknown getCapabilities() {
+    public Capabilities getCapabilities() {
         return this.capabilities;
     }
 

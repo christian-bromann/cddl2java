@@ -28,13 +28,13 @@ public class ExtensionPath {
         this.type = "path";
     }
 
-    private final path type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return path value
+     * @return String value
      */
-    public path getType() {
+    public String getType() {
         return this.type;
     }
 

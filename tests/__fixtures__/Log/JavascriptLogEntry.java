@@ -28,13 +28,13 @@ public class JavascriptLogEntry {
         this.type = "javascript";
     }
 
-    private final javascript type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return javascript value
+     * @return String value
      */
-    public javascript getType() {
+    public String getType() {
         return this.type;
     }
 

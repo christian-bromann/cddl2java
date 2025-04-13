@@ -28,13 +28,13 @@ public class NumberValue {
         this.type = "number";
     }
 
-    private final number type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return number value
+     * @return String value
      */
-    public number getType() {
+    public String getType() {
         return this.type;
     }
 

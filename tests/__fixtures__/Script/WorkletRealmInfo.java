@@ -28,13 +28,13 @@ public class WorkletRealmInfo {
         this.type = "worklet";
     }
 
-    private final worklet type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return worklet value
+     * @return String value
      */
-    public worklet getType() {
+    public String getType() {
         return this.type;
     }
 

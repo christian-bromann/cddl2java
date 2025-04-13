@@ -23,18 +23,18 @@ public class GetClientWindowsResult {
     /**
      * Creates a new GetClientWindowsResult instance
      */
-    public GetClientWindowsResult(List<Unknown> clientWindows) {
+    public GetClientWindowsResult(List<Object> clientWindows) {
         this.clientWindows = clientWindows;
         
     }
 
-    private final List<Unknown> clientWindows;
+    private final List<Object> clientWindows;
 
     /**
      * Gets the clientWindows property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getClientWindows() {
+    public List<Object> getClientWindows() {
         return this.clientWindows;
     }
 

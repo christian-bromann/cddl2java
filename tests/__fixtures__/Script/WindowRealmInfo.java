@@ -23,29 +23,29 @@ public class WindowRealmInfo {
     /**
      * Creates a new WindowRealmInfo instance
      */
-    public WindowRealmInfo(BrowsingContext.BrowsingContext context, String sandbox) {
+    public WindowRealmInfo(String context, String sandbox) {
         this.context = context;
         this.sandbox = sandbox;
         this.type = "window";
     }
 
-    private final window type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return window value
+     * @return String value
      */
-    public window getType() {
+    public String getType() {
         return this.type;
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

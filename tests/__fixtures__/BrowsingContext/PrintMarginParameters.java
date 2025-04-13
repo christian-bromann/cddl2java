@@ -23,7 +23,7 @@ public class PrintMarginParameters {
     /**
      * Creates a new PrintMarginParameters instance
      */
-    public PrintMarginParameters(Object bottom, Object left, Object right, Object top) {
+    public PrintMarginParameters(Float bottom, Float left, Float right, Float top) {
         this.bottom = bottom;
         this.left = left;
         this.right = right;
@@ -31,43 +31,43 @@ public class PrintMarginParameters {
         
     }
 
-    private final Object bottom;
+    private final Float bottom;
 
     /**
      * Gets the bottom property
-     * @return Object value
+     * @return Float value
      */
-    public Object getBottom() {
+    public Float getBottom() {
         return this.bottom;
     }
 
-    private final Object left;
+    private final Float left;
 
     /**
      * Gets the left property
-     * @return Object value
+     * @return Float value
      */
-    public Object getLeft() {
+    public Float getLeft() {
         return this.left;
     }
 
-    private final Object right;
+    private final Float right;
 
     /**
      * Gets the right property
-     * @return Object value
+     * @return Float value
      */
-    public Object getRight() {
+    public Float getRight() {
         return this.right;
     }
 
-    private final Object top;
+    private final Float top;
 
     /**
      * Gets the top property
-     * @return Object value
+     * @return Float value
      */
-    public Object getTop() {
+    public Float getTop() {
         return this.top;
     }
 

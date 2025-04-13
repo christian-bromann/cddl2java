@@ -31,13 +31,13 @@ public class ClientWindowRectState {
         this.state = "normal";
     }
 
-    private final normal state;
+    private final String state;
 
     /**
      * Gets the state property
-     * @return normal value
+     * @return String value
      */
-    public normal getState() {
+    public String getState() {
         return this.state;
     }
 

@@ -29,13 +29,13 @@ public class TypedArrayRemoteValue {
         this.type = "typedarray";
     }
 
-    private final typedarray type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return typedarray value
+     * @return String value
      */
-    public typedarray getType() {
+    public String getType() {
         return this.type;
     }
 

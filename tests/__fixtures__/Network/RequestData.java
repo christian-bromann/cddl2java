@@ -23,7 +23,7 @@ public class RequestData {
     /**
      * Creates a new RequestData instance
      */
-    public RequestData(Network.Request request, String url, String method, List<Unknown> headers, List<Unknown> cookies, Long headersSize, Object bodySize, String destination, Object initiatorType, Network.FetchTimingInfo timings) {
+    public RequestData(Network.Request request, String url, String method, List<Object> headers, List<Object> cookies, Long headersSize, Object bodySize, String destination, Object initiatorType, Network.FetchTimingInfo timings) {
         this.request = request;
         this.url = url;
         this.method = method;
@@ -67,23 +67,23 @@ public class RequestData {
         return this.method;
     }
 
-    private final List<Unknown> headers;
+    private final List<Object> headers;
 
     /**
      * Gets the headers property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getHeaders() {
+    public List<Object> getHeaders() {
         return this.headers;
     }
 
-    private final List<Unknown> cookies;
+    private final List<Object> cookies;
 
     /**
      * Gets the cookies property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getCookies() {
+    public List<Object> getCookies() {
         return this.cookies;
     }
 

@@ -29,13 +29,13 @@ public class ErrorRemoteValue {
         this.type = "error";
     }
 
-    private final error type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return error value
+     * @return String value
      */
-    public error getType() {
+    public String getType() {
         return this.type;
     }
 

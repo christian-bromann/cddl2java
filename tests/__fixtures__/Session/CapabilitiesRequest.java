@@ -23,7 +23,7 @@ public class CapabilitiesRequest {
     /**
      * Creates a new CapabilitiesRequest instance
      */
-    public CapabilitiesRequest(Session.CapabilityRequest alwaysMatch, List<Unknown> firstMatch) {
+    public CapabilitiesRequest(Session.CapabilityRequest alwaysMatch, List<Object> firstMatch) {
         this.alwaysMatch = alwaysMatch;
         this.firstMatch = firstMatch;
         
@@ -39,13 +39,13 @@ public class CapabilitiesRequest {
         return this.alwaysMatch;
     }
 
-    private final List<Unknown> firstMatch;
+    private final List<Object> firstMatch;
 
     /**
      * Gets the firstMatch property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getFirstMatch() {
+    public List<Object> getFirstMatch() {
         return this.firstMatch;
     }
 

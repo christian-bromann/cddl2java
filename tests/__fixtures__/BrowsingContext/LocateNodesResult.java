@@ -23,18 +23,18 @@ public class LocateNodesResult {
     /**
      * Creates a new LocateNodesResult instance
      */
-    public LocateNodesResult(List<Unknown> nodes) {
+    public LocateNodesResult(List<Object> nodes) {
         this.nodes = nodes;
         
     }
 
-    private final List<Unknown> nodes;
+    private final List<Object> nodes;
 
     /**
      * Gets the nodes property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getNodes() {
+    public List<Object> getNodes() {
         return this.nodes;
     }
 

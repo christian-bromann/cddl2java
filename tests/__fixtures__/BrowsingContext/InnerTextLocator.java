@@ -31,13 +31,13 @@ public class InnerTextLocator {
         this.type = "innerText";
     }
 
-    private final innerText type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return innerText value
+     * @return String value
      */
-    public innerText getType() {
+    public String getType() {
         return this.type;
     }
 

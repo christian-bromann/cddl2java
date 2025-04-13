@@ -23,20 +23,20 @@ public class SetFilesParameters {
     /**
      * Creates a new SetFilesParameters instance
      */
-    public SetFilesParameters(BrowsingContext.BrowsingContext context, Script.SharedReference element, List<Unknown> files) {
+    public SetFilesParameters(String context, Script.SharedReference element, List<Object> files) {
         this.context = context;
         this.element = element;
         this.files = files;
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 
@@ -50,13 +50,13 @@ public class SetFilesParameters {
         return this.element;
     }
 
-    private final List<Unknown> files;
+    private final List<Object> files;
 
     /**
      * Gets the files property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getFiles() {
+    public List<Object> getFiles() {
         return this.files;
     }
 

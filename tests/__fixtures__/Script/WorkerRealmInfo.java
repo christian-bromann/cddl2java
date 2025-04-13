@@ -28,13 +28,13 @@ public class WorkerRealmInfo {
         this.type = "worker";
     }
 
-    private final worker type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return worker value
+     * @return String value
      */
-    public worker getType() {
+    public String getType() {
         return this.type;
     }
 

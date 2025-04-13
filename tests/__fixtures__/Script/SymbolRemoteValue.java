@@ -29,13 +29,13 @@ public class SymbolRemoteValue {
         this.type = "symbol";
     }
 
-    private final symbol type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return symbol value
+     * @return String value
      */
-    public symbol getType() {
+    public String getType() {
         return this.type;
     }
 

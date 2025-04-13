@@ -23,7 +23,7 @@ public class CreateParameters {
     /**
      * Creates a new CreateParameters instance
      */
-    public CreateParameters(BrowsingContext.CreateType type, BrowsingContext.BrowsingContext referenceContext, Boolean background, Browser.UserContext userContext) {
+    public CreateParameters(BrowsingContext.CreateType type, String referenceContext, Boolean background, String userContext) {
         this.type = type;
         this.referenceContext = referenceContext;
         this.background = background;
@@ -41,13 +41,13 @@ public class CreateParameters {
         return this.type;
     }
 
-    private final BrowsingContext.BrowsingContext referenceContext;
+    private final String referenceContext;
 
     /**
      * Gets the referenceContext property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getReferenceContext() {
+    public String getReferenceContext() {
         return this.referenceContext;
     }
 
@@ -61,13 +61,13 @@ public class CreateParameters {
         return this.background;
     }
 
-    private final Browser.UserContext userContext;
+    private final String userContext;
 
     /**
      * Gets the userContext property
-     * @return Browser.UserContext value
+     * @return String value
      */
-    public Browser.UserContext getUserContext() {
+    public String getUserContext() {
         return this.userContext;
     }
 

@@ -23,7 +23,7 @@ public class ClientWindowInfo {
     /**
      * Creates a new ClientWindowInfo instance
      */
-    public ClientWindowInfo(Boolean active, Browser.ClientWindow clientWindow, Long height, Object state, Long width, Integer x, Integer y) {
+    public ClientWindowInfo(Boolean active, String clientWindow, Long height, Object state, Long width, Integer x, Integer y) {
         this.active = active;
         this.clientWindow = clientWindow;
         this.height = height;
@@ -44,13 +44,13 @@ public class ClientWindowInfo {
         return this.active;
     }
 
-    private final Browser.ClientWindow clientWindow;
+    private final String clientWindow;
 
     /**
      * Gets the clientWindow property
-     * @return Browser.ClientWindow value
+     * @return String value
      */
-    public Browser.ClientWindow getClientWindow() {
+    public String getClientWindow() {
         return this.clientWindow;
     }
 

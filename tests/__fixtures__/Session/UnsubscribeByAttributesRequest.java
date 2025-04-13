@@ -23,29 +23,29 @@ public class UnsubscribeByAttributesRequest {
     /**
      * Creates a new UnsubscribeByAttributesRequest instance
      */
-    public UnsubscribeByAttributesRequest(List<Unknown> events, List<Unknown> contexts) {
+    public UnsubscribeByAttributesRequest(List<Object> events, List<Object> contexts) {
         this.events = events;
         this.contexts = contexts;
         
     }
 
-    private final List<Unknown> events;
+    private final List<Object> events;
 
     /**
      * Gets the events property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getEvents() {
+    public List<Object> getEvents() {
         return this.events;
     }
 
-    private final List<Unknown> contexts;
+    private final List<Object> contexts;
 
     /**
      * Gets the contexts property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getContexts() {
+    public List<Object> getContexts() {
         return this.contexts;
     }
 

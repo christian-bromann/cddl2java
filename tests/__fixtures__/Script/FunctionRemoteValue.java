@@ -29,13 +29,13 @@ public class FunctionRemoteValue {
         this.type = "function";
     }
 
-    private final function type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return function value
+     * @return String value
      */
-    public function getType() {
+    public String getType() {
         return this.type;
     }
 

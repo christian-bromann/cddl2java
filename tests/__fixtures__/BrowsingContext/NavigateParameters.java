@@ -23,20 +23,20 @@ public class NavigateParameters {
     /**
      * Creates a new NavigateParameters instance
      */
-    public NavigateParameters(BrowsingContext.BrowsingContext context, String url, BrowsingContext.ReadinessState wait) {
+    public NavigateParameters(String context, String url, BrowsingContext.ReadinessState wait) {
         this.context = context;
         this.url = url;
         this.wait = wait;
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

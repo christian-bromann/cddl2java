@@ -23,29 +23,29 @@ public class PrintPageParameters {
     /**
      * Creates a new PrintPageParameters instance
      */
-    public PrintPageParameters(Object height, Object width) {
+    public PrintPageParameters(Float height, Float width) {
         this.height = height;
         this.width = width;
         
     }
 
-    private final Object height;
+    private final Float height;
 
     /**
      * Gets the height property
-     * @return Object value
+     * @return Float value
      */
-    public Object getHeight() {
+    public Float getHeight() {
         return this.height;
     }
 
-    private final Object width;
+    private final Float width;
 
     /**
      * Gets the width property
-     * @return Object value
+     * @return Float value
      */
-    public Object getWidth() {
+    public Float getWidth() {
         return this.width;
     }
 

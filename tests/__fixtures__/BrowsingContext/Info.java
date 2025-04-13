@@ -23,7 +23,7 @@ public class Info {
     /**
      * Creates a new Info instance
      */
-    public Info(Object children, Browser.ClientWindow clientWindow, BrowsingContext.BrowsingContext context, Object originalOpener, String url, Browser.UserContext userContext, Object parent) {
+    public Info(Object children, String clientWindow, String context, Object originalOpener, String url, String userContext, Object parent) {
         this.children = children;
         this.clientWindow = clientWindow;
         this.context = context;
@@ -44,23 +44,23 @@ public class Info {
         return this.children;
     }
 
-    private final Browser.ClientWindow clientWindow;
+    private final String clientWindow;
 
     /**
      * Gets the clientWindow property
-     * @return Browser.ClientWindow value
+     * @return String value
      */
-    public Browser.ClientWindow getClientWindow() {
+    public String getClientWindow() {
         return this.clientWindow;
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 
@@ -84,13 +84,13 @@ public class Info {
         return this.url;
     }
 
-    private final Browser.UserContext userContext;
+    private final String userContext;
 
     /**
      * Gets the userContext property
-     * @return Browser.UserContext value
+     * @return String value
      */
-    public Browser.UserContext getUserContext() {
+    public String getUserContext() {
         return this.userContext;
     }
 

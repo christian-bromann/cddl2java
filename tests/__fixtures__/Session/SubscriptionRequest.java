@@ -23,40 +23,40 @@ public class SubscriptionRequest {
     /**
      * Creates a new SubscriptionRequest instance
      */
-    public SubscriptionRequest(List<Unknown> events, List<Unknown> contexts, List<Unknown> userContexts) {
+    public SubscriptionRequest(List<Object> events, List<Object> contexts, List<Object> userContexts) {
         this.events = events;
         this.contexts = contexts;
         this.userContexts = userContexts;
         
     }
 
-    private final List<Unknown> events;
+    private final List<Object> events;
 
     /**
      * Gets the events property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getEvents() {
+    public List<Object> getEvents() {
         return this.events;
     }
 
-    private final List<Unknown> contexts;
+    private final List<Object> contexts;
 
     /**
      * Gets the contexts property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getContexts() {
+    public List<Object> getContexts() {
         return this.contexts;
     }
 
-    private final List<Unknown> userContexts;
+    private final List<Object> userContexts;
 
     /**
      * Gets the userContexts property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getUserContexts() {
+    public List<Object> getUserContexts() {
         return this.userContexts;
     }
 

@@ -23,18 +23,18 @@ public class StackTrace {
     /**
      * Creates a new StackTrace instance
      */
-    public StackTrace(List<Unknown> callFrames) {
+    public StackTrace(List<Object> callFrames) {
         this.callFrames = callFrames;
         
     }
 
-    private final List<Unknown> callFrames;
+    private final List<Object> callFrames;
 
     /**
      * Gets the callFrames property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getCallFrames() {
+    public List<Object> getCallFrames() {
         return this.callFrames;
     }
 

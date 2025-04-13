@@ -28,13 +28,13 @@ public class PointerUpAction {
         this.type = "pointerUp";
     }
 
-    private final pointerUp type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return pointerUp value
+     * @return String value
      */
-    public pointerUp getType() {
+    public String getType() {
         return this.type;
     }
 

@@ -28,13 +28,13 @@ public class ElementOrigin {
         this.type = "element";
     }
 
-    private final element type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return element value
+     * @return String value
      */
-    public element getType() {
+    public String getType() {
         return this.type;
     }
 

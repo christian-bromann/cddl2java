@@ -29,13 +29,13 @@ public class WeakSetRemoteValue {
         this.type = "weakset";
     }
 
-    private final weakset type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return weakset value
+     * @return String value
      */
-    public weakset getType() {
+    public String getType() {
         return this.type;
     }
 

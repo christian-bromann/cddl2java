@@ -23,7 +23,7 @@ public class CallFunctionParameters {
     /**
      * Creates a new CallFunctionParameters instance
      */
-    public CallFunctionParameters(String functionDeclaration, Boolean awaitPromise, Script.Target target, List<Unknown> arguments, Script.ResultOwnership resultOwnership, Script.SerializationOptions serializationOptions, Script.LocalValue this, Boolean userActivation) {
+    public CallFunctionParameters(String functionDeclaration, Boolean awaitPromise, Script.Target target, List<Object> arguments, Script.ResultOwnership resultOwnership, Script.SerializationOptions serializationOptions, Script.LocalValue this, Boolean userActivation) {
         this.functionDeclaration = functionDeclaration;
         this.awaitPromise = awaitPromise;
         this.target = target;
@@ -65,13 +65,13 @@ public class CallFunctionParameters {
         return this.target;
     }
 
-    private final List<Unknown> arguments;
+    private final List<Object> arguments;
 
     /**
      * Gets the arguments property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getArguments() {
+    public List<Object> getArguments() {
         return this.arguments;
     }
 

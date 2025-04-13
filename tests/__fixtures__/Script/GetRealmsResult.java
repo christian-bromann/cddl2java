@@ -23,18 +23,18 @@ public class GetRealmsResult {
     /**
      * Creates a new GetRealmsResult instance
      */
-    public GetRealmsResult(List<Unknown> realms) {
+    public GetRealmsResult(List<Object> realms) {
         this.realms = realms;
         
     }
 
-    private final List<Unknown> realms;
+    private final List<Object> realms;
 
     /**
      * Gets the realms property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getRealms() {
+    public List<Object> getRealms() {
         return this.realms;
     }
 

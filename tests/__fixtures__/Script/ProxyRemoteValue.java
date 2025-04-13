@@ -29,13 +29,13 @@ public class ProxyRemoteValue {
         this.type = "proxy";
     }
 
-    private final proxy type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return proxy value
+     * @return String value
      */
-    public proxy getType() {
+    public String getType() {
         return this.type;
     }
 

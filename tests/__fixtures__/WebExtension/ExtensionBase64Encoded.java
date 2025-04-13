@@ -28,13 +28,13 @@ public class ExtensionBase64Encoded {
         this.type = "base64";
     }
 
-    private final base64 type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return base64 value
+     * @return String value
      */
-    public base64 getType() {
+    public String getType() {
         return this.type;
     }
 

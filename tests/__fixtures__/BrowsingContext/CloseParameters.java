@@ -23,19 +23,19 @@ public class CloseParameters {
     /**
      * Creates a new CloseParameters instance
      */
-    public CloseParameters(BrowsingContext.BrowsingContext context, Boolean promptUnload) {
+    public CloseParameters(String context, Boolean promptUnload) {
         this.context = context;
         this.promptUnload = promptUnload;
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

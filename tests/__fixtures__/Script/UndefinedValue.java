@@ -28,13 +28,13 @@ public class UndefinedValue {
         this.type = "undefined";
     }
 
-    private final undefined type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return undefined value
+     * @return String value
      */
-    public undefined getType() {
+    public String getType() {
         return this.type;
     }
 

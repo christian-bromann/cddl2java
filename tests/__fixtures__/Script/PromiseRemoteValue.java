@@ -29,13 +29,13 @@ public class PromiseRemoteValue {
         this.type = "promise";
     }
 
-    private final promise type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return promise value
+     * @return String value
      */
-    public promise getType() {
+    public String getType() {
         return this.type;
     }
 

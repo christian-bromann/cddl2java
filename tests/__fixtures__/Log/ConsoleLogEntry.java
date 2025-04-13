@@ -23,19 +23,19 @@ public class ConsoleLogEntry {
     /**
      * Creates a new ConsoleLogEntry instance
      */
-    public ConsoleLogEntry(String method, List<Unknown> args) {
+    public ConsoleLogEntry(String method, List<Object> args) {
         this.method = method;
         this.args = args;
         this.type = "console";
     }
 
-    private final console type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return console value
+     * @return String value
      */
-    public console getType() {
+    public String getType() {
         return this.type;
     }
 
@@ -49,13 +49,13 @@ public class ConsoleLogEntry {
         return this.method;
     }
 
-    private final List<Unknown> args;
+    private final List<Object> args;
 
     /**
      * Gets the args property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getArgs() {
+    public List<Object> getArgs() {
         return this.args;
     }
 

@@ -29,13 +29,13 @@ public class StorageKeyPartitionDescriptor {
         this.type = "storageKey";
     }
 
-    private final storageKey type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return storageKey value
+     * @return String value
      */
-    public storageKey getType() {
+    public String getType() {
         return this.type;
     }
 

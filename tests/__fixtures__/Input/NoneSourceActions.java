@@ -23,19 +23,19 @@ public class NoneSourceActions {
     /**
      * Creates a new NoneSourceActions instance
      */
-    public NoneSourceActions(String id, List<Unknown> actions) {
+    public NoneSourceActions(String id, List<Object> actions) {
         this.id = id;
         this.actions = actions;
         this.type = "none";
     }
 
-    private final none type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return none value
+     * @return String value
      */
-    public none getType() {
+    public String getType() {
         return this.type;
     }
 
@@ -49,13 +49,13 @@ public class NoneSourceActions {
         return this.id;
     }
 
-    private final List<Unknown> actions;
+    private final List<Object> actions;
 
     /**
      * Gets the actions property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getActions() {
+    public List<Object> getActions() {
         return this.actions;
     }
 

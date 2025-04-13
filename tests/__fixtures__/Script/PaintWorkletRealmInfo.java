@@ -28,13 +28,13 @@ public class PaintWorkletRealmInfo {
         this.type = "paint-worklet";
     }
 
-    private final paint-worklet type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return paint-worklet value
+     * @return String value
      */
-    public paint-worklet getType() {
+    public String getType() {
         return this.type;
     }
 

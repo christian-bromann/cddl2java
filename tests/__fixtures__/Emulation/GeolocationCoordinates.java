@@ -23,7 +23,7 @@ public class GeolocationCoordinates {
     /**
      * Creates a new GeolocationCoordinates instance
      */
-    public GeolocationCoordinates(Float latitude, Float longitude, Object accuracy, Object altitude, Object altitudeAccuracy, Object heading, Object speed) {
+    public GeolocationCoordinates(Float latitude, Float longitude, Float accuracy, Object altitude, Object altitudeAccuracy, Object heading, Object speed) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.accuracy = accuracy;
@@ -54,13 +54,13 @@ public class GeolocationCoordinates {
         return this.longitude;
     }
 
-    private final Object accuracy;
+    private final Float accuracy;
 
     /**
      * Gets the accuracy property
-     * @return Object value
+     * @return Float value
      */
-    public Object getAccuracy() {
+    public Float getAccuracy() {
         return this.accuracy;
     }
 

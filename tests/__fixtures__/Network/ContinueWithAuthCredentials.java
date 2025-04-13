@@ -28,13 +28,13 @@ public class ContinueWithAuthCredentials {
         this.action = "provideCredentials";
     }
 
-    private final provideCredentials action;
+    private final String action;
 
     /**
      * Gets the action property
-     * @return provideCredentials value
+     * @return String value
      */
-    public provideCredentials getAction() {
+    public String getAction() {
         return this.action;
     }
 

@@ -23,7 +23,7 @@ public class UserPromptOpenedParameters {
     /**
      * Creates a new UserPromptOpenedParameters instance
      */
-    public UserPromptOpenedParameters(BrowsingContext.BrowsingContext context, Session.UserPromptHandlerType handler, String message, BrowsingContext.UserPromptType type, String defaultValue) {
+    public UserPromptOpenedParameters(String context, Session.UserPromptHandlerType handler, String message, BrowsingContext.UserPromptType type, String defaultValue) {
         this.context = context;
         this.handler = handler;
         this.message = message;
@@ -32,13 +32,13 @@ public class UserPromptOpenedParameters {
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

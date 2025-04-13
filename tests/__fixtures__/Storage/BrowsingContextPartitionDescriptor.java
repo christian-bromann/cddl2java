@@ -23,28 +23,28 @@ public class BrowsingContextPartitionDescriptor {
     /**
      * Creates a new BrowsingContextPartitionDescriptor instance
      */
-    public BrowsingContextPartitionDescriptor(BrowsingContext.BrowsingContext context) {
+    public BrowsingContextPartitionDescriptor(String context) {
         this.context = context;
         this.type = "context";
     }
 
-    private final context type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return context value
+     * @return String value
      */
-    public context getType() {
+    public String getType() {
         return this.type;
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

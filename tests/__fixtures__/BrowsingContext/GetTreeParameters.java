@@ -23,7 +23,7 @@ public class GetTreeParameters {
     /**
      * Creates a new GetTreeParameters instance
      */
-    public GetTreeParameters(Long maxDepth, BrowsingContext.BrowsingContext root) {
+    public GetTreeParameters(Long maxDepth, String root) {
         this.maxDepth = maxDepth;
         this.root = root;
         
@@ -39,13 +39,13 @@ public class GetTreeParameters {
         return this.maxDepth;
     }
 
-    private final BrowsingContext.BrowsingContext root;
+    private final String root;
 
     /**
      * Gets the root property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getRoot() {
+    public String getRoot() {
         return this.root;
     }
 

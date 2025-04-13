@@ -23,7 +23,7 @@ public class PointerCommonProperties {
     /**
      * Creates a new PointerCommonProperties instance
      */
-    public PointerCommonProperties(Long width, Long height, Object pressure, Object tangentialPressure, Float twist, Float altitudeAngle, Float azimuthAngle) {
+    public PointerCommonProperties(Long width, Long height, Float pressure, Float tangentialPressure, Float twist, Float altitudeAngle, Float azimuthAngle) {
         this.width = width;
         this.height = height;
         this.pressure = pressure;
@@ -54,23 +54,23 @@ public class PointerCommonProperties {
         return this.height;
     }
 
-    private final Object pressure;
+    private final Float pressure;
 
     /**
      * Gets the pressure property
-     * @return Object value
+     * @return Float value
      */
-    public Object getPressure() {
+    public Float getPressure() {
         return this.pressure;
     }
 
-    private final Object tangentialPressure;
+    private final Float tangentialPressure;
 
     /**
      * Gets the tangentialPressure property
-     * @return Object value
+     * @return Float value
      */
-    public Object getTangentialPressure() {
+    public Float getTangentialPressure() {
         return this.tangentialPressure;
     }
 

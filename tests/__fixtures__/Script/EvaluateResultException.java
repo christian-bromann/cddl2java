@@ -29,13 +29,13 @@ public class EvaluateResultException {
         this.type = "exception";
     }
 
-    private final exception type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return exception value
+     * @return String value
      */
-    public exception getType() {
+    public String getType() {
         return this.type;
     }
 

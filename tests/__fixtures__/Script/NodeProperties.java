@@ -23,7 +23,7 @@ public class NodeProperties {
     /**
      * Creates a new NodeProperties instance
      */
-    public NodeProperties(Long nodeType, Long childNodeCount, Unknown attributes, List<Unknown> children, String localName, Object mode, String namespaceURI, String nodeValue, Object shadowRoot) {
+    public NodeProperties(Long nodeType, Long childNodeCount, Map<String, String> attributes, List<Object> children, String localName, Object mode, String namespaceURI, String nodeValue, Object shadowRoot) {
         this.nodeType = nodeType;
         this.childNodeCount = childNodeCount;
         this.attributes = attributes;
@@ -56,23 +56,23 @@ public class NodeProperties {
         return this.childNodeCount;
     }
 
-    private final Unknown attributes;
+    private final Map<String, String> attributes;
 
     /**
      * Gets the attributes property
-     * @return Unknown value
+     * @return Map<String, String> value
      */
-    public Unknown getAttributes() {
+    public Map<String, String> getAttributes() {
         return this.attributes;
     }
 
-    private final List<Unknown> children;
+    private final List<Object> children;
 
     /**
      * Gets the children property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getChildren() {
+    public List<Object> getChildren() {
         return this.children;
     }
 

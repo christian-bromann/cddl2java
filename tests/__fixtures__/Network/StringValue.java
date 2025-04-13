@@ -28,13 +28,13 @@ public class StringValue {
         this.type = "string";
     }
 
-    private final string type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return string value
+     * @return String value
      */
-    public string getType() {
+    public String getType() {
         return this.type;
     }
 

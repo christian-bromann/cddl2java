@@ -29,13 +29,13 @@ public class AuthCredentials {
         this.type = "password";
     }
 
-    private final password type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return password value
+     * @return String value
      */
-    public password getType() {
+    public String getType() {
         return this.type;
     }
 

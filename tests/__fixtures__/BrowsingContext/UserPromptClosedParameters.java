@@ -23,7 +23,7 @@ public class UserPromptClosedParameters {
     /**
      * Creates a new UserPromptClosedParameters instance
      */
-    public UserPromptClosedParameters(BrowsingContext.BrowsingContext context, Boolean accepted, BrowsingContext.UserPromptType type, String userText) {
+    public UserPromptClosedParameters(String context, Boolean accepted, BrowsingContext.UserPromptType type, String userText) {
         this.context = context;
         this.accepted = accepted;
         this.type = type;
@@ -31,13 +31,13 @@ public class UserPromptClosedParameters {
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

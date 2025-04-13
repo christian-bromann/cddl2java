@@ -23,7 +23,7 @@ public class SetViewportParameters {
     /**
      * Creates a new SetViewportParameters instance
      */
-    public SetViewportParameters(BrowsingContext.BrowsingContext context, Object viewport, Object devicePixelRatio, List<Unknown> userContexts) {
+    public SetViewportParameters(String context, Object viewport, Object devicePixelRatio, List<Object> userContexts) {
         this.context = context;
         this.viewport = viewport;
         this.devicePixelRatio = devicePixelRatio;
@@ -31,13 +31,13 @@ public class SetViewportParameters {
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 
@@ -61,13 +61,13 @@ public class SetViewportParameters {
         return this.devicePixelRatio;
     }
 
-    private final List<Unknown> userContexts;
+    private final List<Object> userContexts;
 
     /**
      * Gets the userContexts property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getUserContexts() {
+    public List<Object> getUserContexts() {
         return this.userContexts;
     }
 

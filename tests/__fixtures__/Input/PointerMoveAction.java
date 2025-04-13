@@ -31,13 +31,13 @@ public class PointerMoveAction {
         this.type = "pointerMove";
     }
 
-    private final pointerMove type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return pointerMove value
+     * @return String value
      */
-    public pointerMove getType() {
+    public String getType() {
         return this.type;
     }
 

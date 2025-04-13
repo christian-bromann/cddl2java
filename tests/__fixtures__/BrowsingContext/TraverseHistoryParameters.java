@@ -23,19 +23,19 @@ public class TraverseHistoryParameters {
     /**
      * Creates a new TraverseHistoryParameters instance
      */
-    public TraverseHistoryParameters(BrowsingContext.BrowsingContext context, Integer delta) {
+    public TraverseHistoryParameters(String context, Integer delta) {
         this.context = context;
         this.delta = delta;
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

@@ -28,13 +28,13 @@ public class PauseAction {
         this.type = "pause";
     }
 
-    private final pause type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return pause value
+     * @return String value
      */
-    public pause getType() {
+    public String getType() {
         return this.type;
     }
 

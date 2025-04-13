@@ -23,7 +23,7 @@ public class BaseNavigationInfo {
     /**
      * Creates a new BaseNavigationInfo instance
      */
-    public BaseNavigationInfo(BrowsingContext.BrowsingContext context, Object navigation, Long timestamp, String url) {
+    public BaseNavigationInfo(String context, Object navigation, Long timestamp, String url) {
         this.context = context;
         this.navigation = navigation;
         this.timestamp = timestamp;
@@ -31,13 +31,13 @@ public class BaseNavigationInfo {
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

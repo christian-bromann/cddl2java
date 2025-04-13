@@ -23,18 +23,18 @@ public class SetClientWindowStateParameters {
     /**
      * Creates a new SetClientWindowStateParameters instance
      */
-    public SetClientWindowStateParameters(Browser.ClientWindow clientWindow) {
+    public SetClientWindowStateParameters(String clientWindow) {
         this.clientWindow = clientWindow;
         
     }
 
-    private final Browser.ClientWindow clientWindow;
+    private final String clientWindow;
 
     /**
      * Gets the clientWindow property
-     * @return Browser.ClientWindow value
+     * @return String value
      */
-    public Browser.ClientWindow getClientWindow() {
+    public String getClientWindow() {
         return this.clientWindow;
     }
 

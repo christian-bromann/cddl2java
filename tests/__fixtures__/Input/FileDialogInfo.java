@@ -23,20 +23,20 @@ public class FileDialogInfo {
     /**
      * Creates a new FileDialogInfo instance
      */
-    public FileDialogInfo(BrowsingContext.BrowsingContext context, Script.SharedReference element, Boolean multiple) {
+    public FileDialogInfo(String context, Script.SharedReference element, Boolean multiple) {
         this.context = context;
         this.element = element;
         this.multiple = multiple;
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

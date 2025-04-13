@@ -28,13 +28,13 @@ public class PointerDownAction {
         this.type = "pointerDown";
     }
 
-    private final pointerDown type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return pointerDown value
+     * @return String value
      */
-    public pointerDown getType() {
+    public String getType() {
         return this.type;
     }
 

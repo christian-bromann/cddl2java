@@ -23,7 +23,7 @@ public class CaptureScreenshotParameters {
     /**
      * Creates a new CaptureScreenshotParameters instance
      */
-    public CaptureScreenshotParameters(BrowsingContext.BrowsingContext context, Object origin, BrowsingContext.ImageFormat format, BrowsingContext.ClipRectangle clip) {
+    public CaptureScreenshotParameters(String context, Object origin, BrowsingContext.ImageFormat format, BrowsingContext.ClipRectangle clip) {
         this.context = context;
         this.origin = origin;
         this.format = format;
@@ -31,13 +31,13 @@ public class CaptureScreenshotParameters {
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

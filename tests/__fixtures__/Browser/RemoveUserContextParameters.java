@@ -23,18 +23,18 @@ public class RemoveUserContextParameters {
     /**
      * Creates a new RemoveUserContextParameters instance
      */
-    public RemoveUserContextParameters(Browser.UserContext userContext) {
+    public RemoveUserContextParameters(String userContext) {
         this.userContext = userContext;
         
     }
 
-    private final Browser.UserContext userContext;
+    private final String userContext;
 
     /**
      * Gets the userContext property
-     * @return Browser.UserContext value
+     * @return String value
      */
-    public Browser.UserContext getUserContext() {
+    public String getUserContext() {
         return this.userContext;
     }
 

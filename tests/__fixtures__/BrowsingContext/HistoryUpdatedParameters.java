@@ -23,19 +23,19 @@ public class HistoryUpdatedParameters {
     /**
      * Creates a new HistoryUpdatedParameters instance
      */
-    public HistoryUpdatedParameters(BrowsingContext.BrowsingContext context, String url) {
+    public HistoryUpdatedParameters(String context, String url) {
         this.context = context;
         this.url = url;
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

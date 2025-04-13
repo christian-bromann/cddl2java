@@ -23,7 +23,7 @@ public class ResponseData {
     /**
      * Creates a new ResponseData instance
      */
-    public ResponseData(String url, String protocol, Long status, String statusText, Boolean fromCache, List<Unknown> headers, String mimeType, Long bytesReceived, Object headersSize, Object bodySize, Network.ResponseContent content, List<Unknown> authChallenges) {
+    public ResponseData(String url, String protocol, Long status, String statusText, Boolean fromCache, List<Object> headers, String mimeType, Long bytesReceived, Object headersSize, Object bodySize, Network.ResponseContent content, List<Object> authChallenges) {
         this.url = url;
         this.protocol = protocol;
         this.status = status;
@@ -89,13 +89,13 @@ public class ResponseData {
         return this.fromCache;
     }
 
-    private final List<Unknown> headers;
+    private final List<Object> headers;
 
     /**
      * Gets the headers property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getHeaders() {
+    public List<Object> getHeaders() {
         return this.headers;
     }
 
@@ -149,13 +149,13 @@ public class ResponseData {
         return this.content;
     }
 
-    private final List<Unknown> authChallenges;
+    private final List<Object> authChallenges;
 
     /**
      * Gets the authChallenges property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getAuthChallenges() {
+    public List<Object> getAuthChallenges() {
         return this.authChallenges;
     }
 

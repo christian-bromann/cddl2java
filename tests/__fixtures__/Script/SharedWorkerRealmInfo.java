@@ -28,13 +28,13 @@ public class SharedWorkerRealmInfo {
         this.type = "shared-worker";
     }
 
-    private final shared-worker type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return shared-worker value
+     * @return String value
      */
-    public shared-worker getType() {
+    public String getType() {
         return this.type;
     }
 

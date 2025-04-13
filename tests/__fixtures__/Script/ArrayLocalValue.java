@@ -28,13 +28,13 @@ public class ArrayLocalValue {
         this.type = "array";
     }
 
-    private final array type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return array value
+     * @return String value
      */
-    public array getType() {
+    public String getType() {
         return this.type;
     }
 

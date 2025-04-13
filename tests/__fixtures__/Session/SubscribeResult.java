@@ -23,18 +23,18 @@ public class SubscribeResult {
     /**
      * Creates a new SubscribeResult instance
      */
-    public SubscribeResult(Session.Subscription subscription) {
+    public SubscribeResult(String subscription) {
         this.subscription = subscription;
         
     }
 
-    private final Session.Subscription subscription;
+    private final String subscription;
 
     /**
      * Gets the subscription property
-     * @return Session.Subscription value
+     * @return String value
      */
-    public Session.Subscription getSubscription() {
+    public String getSubscription() {
         return this.subscription;
     }
 

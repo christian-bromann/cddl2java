@@ -28,13 +28,13 @@ public class MapLocalValue {
         this.type = "map";
     }
 
-    private final map type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return map value
+     * @return String value
      */
-    public map getType() {
+    public String getType() {
         return this.type;
     }
 

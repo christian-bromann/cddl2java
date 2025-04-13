@@ -31,13 +31,13 @@ public class NodeRemoteValue {
         this.type = "node";
     }
 
-    private final node type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return node value
+     * @return String value
      */
-    public node getType() {
+    public String getType() {
         return this.type;
     }
 

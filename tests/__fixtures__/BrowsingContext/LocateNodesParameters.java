@@ -23,7 +23,7 @@ public class LocateNodesParameters {
     /**
      * Creates a new LocateNodesParameters instance
      */
-    public LocateNodesParameters(BrowsingContext.BrowsingContext context, BrowsingContext.Locator locator, Long maxNodeCount, Script.SerializationOptions serializationOptions, List<Unknown> startNodes) {
+    public LocateNodesParameters(String context, BrowsingContext.Locator locator, Long maxNodeCount, Script.SerializationOptions serializationOptions, List<Object> startNodes) {
         this.context = context;
         this.locator = locator;
         this.maxNodeCount = maxNodeCount;
@@ -32,13 +32,13 @@ public class LocateNodesParameters {
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 
@@ -72,13 +72,13 @@ public class LocateNodesParameters {
         return this.serializationOptions;
     }
 
-    private final List<Unknown> startNodes;
+    private final List<Object> startNodes;
 
     /**
      * Gets the startNodes property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getStartNodes() {
+    public List<Object> getStartNodes() {
         return this.startNodes;
     }
 

@@ -23,28 +23,28 @@ public class ContextLocator {
     /**
      * Creates a new ContextLocator instance
      */
-    public ContextLocator(Unknown value) {
+    public ContextLocator(ContextValue value) {
         this.value = value;
         this.type = "context";
     }
 
-    private final context type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return context value
+     * @return String value
      */
-    public context getType() {
+    public String getType() {
         return this.type;
     }
 
-    private final Unknown value;
+    private final ContextValue value;
 
     /**
      * Gets the value property
-     * @return Unknown value
+     * @return ContextValue value
      */
-    public Unknown getValue() {
+    public ContextValue getValue() {
         return this.value;
     }
 

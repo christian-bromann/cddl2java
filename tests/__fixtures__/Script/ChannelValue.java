@@ -28,13 +28,13 @@ public class ChannelValue {
         this.type = "channel";
     }
 
-    private final channel type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return channel value
+     * @return String value
      */
-    public channel getType() {
+    public String getType() {
         return this.type;
     }
 

@@ -29,13 +29,13 @@ public class WeakMapRemoteValue {
         this.type = "weakmap";
     }
 
-    private final weakmap type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return weakmap value
+     * @return String value
      */
-    public weakmap getType() {
+    public String getType() {
         return this.type;
     }
 

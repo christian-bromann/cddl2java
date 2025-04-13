@@ -23,18 +23,18 @@ public class ReleaseActionsParameters {
     /**
      * Creates a new ReleaseActionsParameters instance
      */
-    public ReleaseActionsParameters(BrowsingContext.BrowsingContext context) {
+    public ReleaseActionsParameters(String context) {
         this.context = context;
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

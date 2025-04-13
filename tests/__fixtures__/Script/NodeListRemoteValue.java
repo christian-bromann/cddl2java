@@ -30,13 +30,13 @@ public class NodeListRemoteValue {
         this.type = "nodelist";
     }
 
-    private final nodelist type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return nodelist value
+     * @return String value
      */
-    public nodelist getType() {
+    public String getType() {
         return this.type;
     }
 

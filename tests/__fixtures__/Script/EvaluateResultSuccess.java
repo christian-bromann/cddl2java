@@ -29,13 +29,13 @@ public class EvaluateResultSuccess {
         this.type = "success";
     }
 
-    private final success type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return success value
+     * @return String value
      */
-    public success getType() {
+    public String getType() {
         return this.type;
     }
 

@@ -30,13 +30,13 @@ public class HTMLCollectionRemoteValue {
         this.type = "htmlcollection";
     }
 
-    private final htmlcollection type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return htmlcollection value
+     * @return String value
      */
-    public htmlcollection getType() {
+    public String getType() {
         return this.type;
     }
 

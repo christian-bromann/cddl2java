@@ -23,19 +23,19 @@ public class GetRealmsParameters {
     /**
      * Creates a new GetRealmsParameters instance
      */
-    public GetRealmsParameters(BrowsingContext.BrowsingContext context, Script.RealmType type) {
+    public GetRealmsParameters(String context, Script.RealmType type) {
         this.context = context;
         this.type = type;
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

@@ -28,13 +28,13 @@ public class RegExpLocalValue {
         this.type = "regexp";
     }
 
-    private final regexp type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return regexp value
+     * @return String value
      */
-    public regexp getType() {
+    public String getType() {
         return this.type;
     }
 

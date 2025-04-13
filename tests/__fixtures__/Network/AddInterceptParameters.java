@@ -23,40 +23,40 @@ public class AddInterceptParameters {
     /**
      * Creates a new AddInterceptParameters instance
      */
-    public AddInterceptParameters(List<Unknown> phases, List<Unknown> contexts, List<Unknown> urlPatterns) {
+    public AddInterceptParameters(List<Object> phases, List<Object> contexts, List<Object> urlPatterns) {
         this.phases = phases;
         this.contexts = contexts;
         this.urlPatterns = urlPatterns;
         
     }
 
-    private final List<Unknown> phases;
+    private final List<Object> phases;
 
     /**
      * Gets the phases property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getPhases() {
+    public List<Object> getPhases() {
         return this.phases;
     }
 
-    private final List<Unknown> contexts;
+    private final List<Object> contexts;
 
     /**
      * Gets the contexts property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getContexts() {
+    public List<Object> getContexts() {
         return this.contexts;
     }
 
-    private final List<Unknown> urlPatterns;
+    private final List<Object> urlPatterns;
 
     /**
      * Gets the urlPatterns property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getUrlPatterns() {
+    public List<Object> getUrlPatterns() {
         return this.urlPatterns;
     }
 

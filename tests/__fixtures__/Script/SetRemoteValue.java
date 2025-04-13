@@ -30,13 +30,13 @@ public class SetRemoteValue {
         this.type = "set";
     }
 
-    private final set type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return set value
+     * @return String value
      */
-    public set getType() {
+    public String getType() {
         return this.type;
     }
 

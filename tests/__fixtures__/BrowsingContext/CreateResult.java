@@ -23,18 +23,18 @@ public class CreateResult {
     /**
      * Creates a new CreateResult instance
      */
-    public CreateResult(BrowsingContext.BrowsingContext context) {
+    public CreateResult(String context) {
         this.context = context;
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

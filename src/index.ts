@@ -7,6 +7,16 @@ import { parse as parseCDDL, type PropertyReference, type Property, type Group, 
 
 import { writeFile } from './utils.js'
 import { CDDL_PARSE_ERROR_MESSAGE } from './constants.js'
+import {
+    emptyResultTemplate,
+    contextValueTemplate,
+    accessibilityValueTemplate,
+    pointerTypeTemplate,
+    originTemplate,
+    capabilitiesTemplate,
+    newResultTemplate,
+    capabilitiesClassTemplate
+} from './templates.js'
 
 type Scope = string
 type FileName = string
@@ -16,7 +26,6 @@ function parseCDDLFile (filePath: string) {
     let ast
 
     try {
-        console.log('!!!', filePath)
         ast = parseCDDL(filePath)
     } catch (err) {
         console.log(util.format(CDDL_PARSE_ERROR_MESSAGE, `Failed to parse ${filePath}: ${(err as Error).stack}`))
@@ -188,11 +197,25 @@ async function createPropertyClasses (assignments: Assignment[]) {
                 }
 
                 const { type, isLiteral } = parseType(property.Type)
+                // Override specific unknown types with known implementations
+                let finalType = type;
                 if (type === 'Unknown') {
-                    console.log(`Unknown property type: please adjust "parseType" function to handle ${JSON.stringify(property, null, 2)}`)
+                    // Apply special case overrides for common property names
+                    if (property.Name === 'capabilities') {
+                        finalType = 'Capabilities';
+                    } else if (property.Name === 'value' &&
+                              (assignment.Name.includes('Accessibility') || assignment.Name.includes('Element'))) {
+                        finalType = 'AccessibilityValue';
+                    } else if (property.Name === 'value' && assignment.Name.includes('Context')) {
+                        finalType = 'ContextValue';
+                    } else if (property.Name === 'attributes') {
+                        finalType = 'Map<String, String>';
+                    } else {
+                        finalType = 'Object'; // Default fallback
+                    }
                 }
 
-                props.set(property.Name, { type, isLiteral })
+                props.set(property.Name, { type: finalType, isLiteral })
             }
 
             if (props.size > 0) {
@@ -230,16 +253,18 @@ public class ${propClassName} {
     }
 `
                 // Add properties and getters
-                for (const [prop, { type }] of props.entries()) {
+                for (const [prop, { type, isLiteral }] of props.entries()) {
                     const propNameCamelCase = prop[0].toUpperCase() + prop.slice(1)
+                    // Use String type for literals
+                    const javaType = isLiteral ? 'String' : type
                     code += `
-    private final ${type} ${prop};
+    private final ${javaType} ${prop};
 
     /**
      * Gets the ${prop} property
-     * @return ${type} value
+     * @return ${javaType} value
      */
-    public ${type} get${propNameCamelCase}() {
+    public ${javaType} get${propNameCamelCase}() {
         return this.${prop};
     }
 `
@@ -277,15 +302,44 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
         return { type: 'Object', isLiteral }
     }
 
-    // Special case: Handle complex nested properties directly (e.g., capabilities)
-    if (typeof specType === 'object' && !Array.isArray(specType) &&
-        'Name' in specType && 'Type' in specType && Array.isArray(specType.Type) &&
-        specType.Type.length === 1 && typeof specType.Type[0] === 'object' &&
-        specType.Type[0].Type === 'group' && 'Properties' in specType.Type[0]) {
+    // Handle common property patterns
+    if (typeof specType === 'object' && !Array.isArray(specType) && 'Name' in specType) {
+        const propName = specType.Name;
 
-        // This is a complex nested property object with its own property set
-        // For now, use a generic Map type but we could generate actual model classes for these
-        return { type: 'Map<String, Object>', isLiteral: false }
+        // Handle specific property names
+        if (propName === 'capabilities' && 'Type' in specType && Array.isArray(specType.Type)) {
+            return { type: 'Capabilities', isLiteral: false };
+        }
+
+        // Handle attributes
+        if (propName === 'attributes') {
+            return { type: 'Map<String, String>', isLiteral: false };
+        }
+
+        // Handle value property with context
+        if (propName === 'value' && 'Type' in specType && Array.isArray(specType.Type) &&
+            specType.Type.length > 0 && typeof specType.Type[0] === 'object' &&
+            specType.Type[0].Type === 'group' && 'Properties' in specType.Type[0]) {
+
+            const properties = specType.Type[0].Properties;
+            if (Array.isArray(properties)) {
+                // Check property names to determine specific type
+                const hasNameProp = properties.some((p: any) => !Array.isArray(p) && p.Name === 'name');
+                const hasRoleProp = properties.some((p: any) => !Array.isArray(p) && p.Name === 'role');
+                const hasContextProp = properties.some((p: any) => !Array.isArray(p) && p.Name === 'context');
+
+                if (hasContextProp) {
+                    return { type: 'ContextValue', isLiteral: false };
+                }
+
+                if (hasNameProp || hasRoleProp) {
+                    return { type: 'AccessibilityValue', isLiteral: false };
+                }
+            }
+
+            // Default for value objects
+            return { type: 'Map<String, Object>', isLiteral: false };
+        }
     }
 
     // Handle complex single object with Type field (not in an array)
@@ -310,18 +364,17 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
 
     // Handle single value types
     if (specType.length === 1) {
+        // Handle primitive types
         if (specType[0] === 'bool') {
-            type = 'Boolean'
+            return { type: 'Boolean', isLiteral: false };
         } else if (specType[0] === 'int') {
-            type = 'Integer'
+            return { type: 'Integer', isLiteral: false };
         } else if (specType[0] === 'float') {
-            type = 'Float'
+            return { type: 'Float', isLiteral: false };
         } else if ((specType[0] === 'string' || specType[0] === 'text')) {
-            type = 'String'
-        } else if (specType[0] === 'null') {
-            type = 'Object'  // null is represented as Object in Java
-        } else if (specType[0] === 'any') {
-            type = 'Object'
+            return { type: 'String', isLiteral: false };
+        } else if (specType[0] === 'null' || specType[0] === 'any') {
+            return { type: 'Object', isLiteral: false };  // null/any represented as Object in Java
         } else if (typeof specType[0] === 'object') {
             // Handle various object types
             if ('Type' in specType[0]) {
@@ -334,104 +387,132 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
                             specType[0].Properties.length > 0 &&
                             specType[0].Properties.some((p: any) => p.Name === 'text')) {
                             // Special case for text attributes
-                            type = 'Map<String, String>'
-                        } else {
-                            type = 'Map<String, Object>'
+                            return { type: 'Map<String, String>', isLiteral: false };
                         }
+                        return { type: 'Map<String, Object>', isLiteral: false };
                     } else if ('Value' in specType[0] && typeof specType[0].Value === 'string') {
-                        // Named group reference
-                        if (specType[0].Value === 'js-int') {
-                            type = 'Integer'
-                        } else if (specType[0].Value === 'js-uint') {
-                            type = 'Long'
-                        } else if (specType[0].Value === 'Extensible') {
-                            type = 'Map<String, Object>'
-                        } else {
-                            // Reference to another type - keep proper casing
-                            const parts = specType[0].Value.split('.');
-                            if (parts.length > 1) {
-                                // Handle scoped types (e.g., 'session.Subscription')
-                                const scope = parts[0][0].toUpperCase() + parts[0].slice(1);
-                                const typeName = parts[1][0].toUpperCase() + parts[1].slice(1);
-                                type = `${scope}.${typeName}`;
-                            } else {
-                                // Simple type
-                                type = specType[0].Value[0].toUpperCase() + specType[0].Value.slice(1);
-                            }
+                        // Special types
+                        const value = specType[0].Value;
+
+                        // Numeric types
+                        if (value === 'js-int') {
+                            return { type: 'Integer', isLiteral: false };
+                        } else if (value === 'js-uint') {
+                            return { type: 'Long', isLiteral: false };
+                        } else if (value === 'Extensible') {
+                            return { type: 'Map<String, Object>', isLiteral: false };
                         }
+
+                        // Special case known types
+                        const knownTypes: Record<string, string> = {
+                            'session.Capabilities': 'Capabilities',
+                            'Capabilities': 'Capabilities',
+                            'session.Subscription': 'String',
+                            'browsingContext.BrowsingContext': 'String',
+                            'browser.UserContext': 'String',
+                            'browser.ClientWindow': 'String'
+                        };
+
+                        if (value in knownTypes) {
+                            return { type: knownTypes[value], isLiteral: false };
+                        }
+
+                        // Events are strings
+                        if (value.endsWith('Event')) {
+                            return { type: 'String', isLiteral: false };
+                        }
+
+                        // Reference to another type - keep proper casing
+                        const parts = value.split('.');
+                        if (parts.length > 1) {
+                            // Handle scoped types (e.g., 'session.Subscription')
+                            const scope = parts[0][0].toUpperCase() + parts[0].slice(1);
+                            const typeName = parts[1][0].toUpperCase() + parts[1].slice(1);
+                            return { type: `${scope}.${typeName}`, isLiteral: false };
+                        }
+
+                        // Simple type
+                        return { type: value[0].toUpperCase() + value.slice(1), isLiteral: false };
                     }
                 } else if (objType === 'float') {
-                    type = 'Float'
+                    return { type: 'Float', isLiteral: false };
                 } else if (objType === 'range') {
-                    // For range types, use the appropriate numeric type
-                    if (specType[0].Value && typeof specType[0].Value === 'object') {
-                        if (specType[0].Value.Min && specType[0].Value.Min.Value !== undefined) {
-                            const minVal = specType[0].Value.Min.Value;
-                            if (Number.isInteger(minVal)) {
-                                type = 'Integer';
-                            } else {
-                                type = 'Float';
-                            }
-                        } else {
-                            type = 'Float'; // Default for ranges
-                        }
-                    } else {
-                        type = 'Float'; // Default for ranges
+                    // For range types, determine integer vs float
+                    if (specType[0].Value && typeof specType[0].Value === 'object' &&
+                        specType[0].Value.Min && specType[0].Value.Min.Value !== undefined) {
+                        const minVal = specType[0].Value.Min.Value;
+                        return { type: Number.isInteger(minVal) ? 'Integer' : 'Float', isLiteral: false };
                     }
+                    return { type: 'Float', isLiteral: false }; // Default for ranges
                 } else if (objType === 'literal' && 'Value' in specType[0] && specType[0].Value !== undefined) {
                     isLiteral = true;
                     type = typeof specType[0].Value === 'string' ?
                            specType[0].Value :
                            String(specType[0].Value);
+                    return { type, isLiteral };
                 } else if (objType === 'array' && 'Values' in specType[0]) {
-                    // Handle array types properly
+                    // Handle array types
                     const valueType = parseType(specType[0].Values).type;
-                    type = `List<${valueType}>`;
-                    return { type, isLiteral: false }; // Arrays are not literals
+
+                    // Special handling for arrays of strings
+                    if (valueType === 'Unknown' && Array.isArray(specType[0].Values) && specType[0].Values.length > 0) {
+                        const firstValue = specType[0].Values[0];
+                        if (typeof firstValue === 'object' && firstValue.Type === 'group' && 'Value' in firstValue) {
+                            const referencedType = firstValue.Value;
+                            if (typeof referencedType === 'string') {
+                                if (referencedType === 'session.Subscription' ||
+                                    referencedType === 'browsingContext.BrowsingContext' ||
+                                    referencedType === 'browser.UserContext' ||
+                                    referencedType.endsWith('Event')) {
+                                    return { type: 'List<String>', isLiteral: false };
+                                }
+                            }
+                        }
+                        return { type: 'List<Object>', isLiteral: false };
+                    }
+
+                    return { type: valueType === 'Unknown' ? 'List<Object>' : `List<${valueType}>`, isLiteral: false };
                 } else if (objType === 'map') {
-                    type = 'Map<String, Object>';
+                    return { type: 'Map<String, Object>', isLiteral: false };
                 }
             }
 
             // Handle type with operator (default values)
             if ('Operator' in specType[0] && specType[0].Operator) {
-                // Handle the bool type with default operator
+                // Handle boolean with default
                 if (specType[0].Type === 'bool') {
                     return { type: 'Boolean', isLiteral: false };
                 }
 
-                // Handle range or group type with operator
+                // Handle complex types with operators
                 if (typeof specType[0].Type === 'object' && 'Type' in specType[0].Type) {
                     if (specType[0].Type.Type === 'range') {
-                        // For ranges, determine type based on min/max values
                         return { type: 'Float', isLiteral: false };
-                    } else if (specType[0].Type.Type === 'group') {
-                        // For groups with operators, extract the base type
+                    } else if (specType[0].Type.Type === 'group' && 'Value' in specType[0].Type) {
                         if (specType[0].Type.Value === 'js-uint') {
                             return { type: 'Long', isLiteral: false };
-                        } else {
-                            // For other group references, use the referenced type
-                            const parts = specType[0].Type.Value.split('.');
-                            if (parts.length > 1) {
-                                const scope = parts[0][0].toUpperCase() + parts[0].slice(1);
-                                const typeName = parts[1][0].toUpperCase() + parts[1].slice(1);
-                                return { type: `${scope}.${typeName}`, isLiteral: false };
-                            }
+                        }
+
+                        // For other group references
+                        const parts = specType[0].Type.Value.split('.');
+                        if (parts.length > 1) {
+                            const scope = parts[0][0].toUpperCase() + parts[0].slice(1);
+                            const typeName = parts[1][0].toUpperCase() + parts[1].slice(1);
+                            return { type: `${scope}.${typeName}`, isLiteral: false };
                         }
                     }
                 }
 
                 // Generic fallback for types with operators
-                const baseType: string = typeof specType[0].Type === 'string'
+                const baseType = typeof specType[0].Type === 'string'
                     ? specType[0].Type === 'bool' ? 'Boolean' : 'Object'
                     : parseType([{ Type: specType[0].Type.Type, Value: specType[0].Type.Value }]).type;
                 return { type: baseType, isLiteral };
             }
         }
     } else {
-        // Multiple types represent a union - use most common superclass or interface
-        // For simplicity, we'll use Object for unions
-        type = 'Object';
+        // Multiple types represent a union - use Object for unions
+        return { type: 'Object', isLiteral: false };
     }
 
     return { type, isLiteral }
@@ -477,49 +558,13 @@ async function createResultClasses (assignments: Assignment[]) {
 
         // Special case for session.NewResult - skip and handle separately
         if (assignment.Name === 'session.NewResult') {
-            const newResultCode = `package org.openqa.selenium.bidirectional.session;
+            javaResultFiles.set(mapKey, newResultTemplate);
+            continue;
+        }
 
-import java.util.Map;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import org.openqa.selenium.bidirectional.EmptyResult;
-
-/**
- * Auto-generated class for WebDriver BiDi protocol
- * Represents response for session.NewResult command
- */
-public class NewResult {
-
-    /**
-     * Creates a new NewResult instance
-     */
-    public NewResult(String sessionId, Map<String, Object> capabilitiesMap) {
-        this.sessionId = sessionId;
-        this.capabilities = new Capabilities(capabilitiesMap);
-    }
-
-    private final String sessionId;
-
-    /**
-     * Gets the sessionId property
-     * @return String value
-     */
-    public String getSessionId() {
-        return this.sessionId;
-    }
-
-    private final Capabilities capabilities;
-
-    /**
-     * Gets the capabilities property
-     * @return Capabilities value
-     */
-    public Capabilities getCapabilities() {
-        return this.capabilities;
-    }
-}`;
-            javaResultFiles.set(mapKey, newResultCode);
+        // Special case for Capabilities - skip and handle separately
+        if (assignment.Name === 'Capabilities') {
+            javaResultFiles.set(mapKey, capabilitiesClassTemplate);
             continue;
         }
 
@@ -532,11 +577,26 @@ public class NewResult {
                 }
 
                 const { type, isLiteral } = parseType(property.Type)
+
+                // Override specific unknown types with known implementations
+                let finalType = type;
                 if (type === 'Unknown') {
-                    console.log(`Unknown property type in result class: please adjust "parseType" function to handle ${JSON.stringify(property, null, 2)}`)
+                    // Apply special case overrides for common property names
+                    if (property.Name === 'capabilities') {
+                        finalType = 'Capabilities';
+                    } else if (property.Name === 'value' &&
+                              (assignment.Name.includes('Accessibility') || assignment.Name.includes('Element'))) {
+                        finalType = 'AccessibilityValue';
+                    } else if (property.Name === 'value' && assignment.Name.includes('Context')) {
+                        finalType = 'ContextValue';
+                    } else if (property.Name === 'attributes') {
+                        finalType = 'Map<String, String>';
+                    } else {
+                        finalType = 'Object'; // Default fallback
+                    }
                 }
 
-                props.set(property.Name, { type, isLiteral })
+                props.set(property.Name, { type: finalType, isLiteral })
             }
         }
 
@@ -604,23 +664,8 @@ public class ${resultClassName} {
 }
 
 async function createEmptyResultClass(outputDir: string) {
-    const emptyResultContent = `package org.openqa.selenium.bidirectional;
-
-/**
- * Represents an empty result from a WebDriver BiDi command
- */
-public class EmptyResult {
-    /**
-     * Creates a new EmptyResult instance
-     */
-    public EmptyResult() {
-        // Empty result has no properties
-    }
-}
-`;
-
     await fs.mkdirSync(path.join(outputDir), { recursive: true });
-    await writeFile(path.resolve(outputDir, 'EmptyResult.java'), emptyResultContent);
+    await writeFile(path.resolve(outputDir, 'EmptyResult.java'), emptyResultTemplate);
 }
 
 async function createHelperClasses(assignments: Assignment[], outputDir: string) {
@@ -659,124 +704,16 @@ async function createHelperClasses(assignments: Assignment[], outputDir: string)
         }
     }
 
-    // Create PointerType enum - explicitly defined because it's commonly used
-    const pointerTypeContent = `package org.openqa.selenium.bidirectional.input;
-
-/**
- * Represents pointer types in WebDriver BiDi protocol
- */
-public enum PointerType {
-    MOUSE("mouse"),
-    PEN("pen"),
-    TOUCH("touch");
-
-    private final String value;
-
-    PointerType(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public static PointerType fromString(String text) {
-        for (PointerType type : PointerType.values()) {
-            if (type.value.equalsIgnoreCase(text)) {
-                return type;
-            }
-        }
-        throw new IllegalArgumentException("No PointerType with value: " + text);
-    }
-}`;
-
-    // Create Origin enum - explicitly defined because it's commonly used
-    const originContent = `package org.openqa.selenium.bidirectional.input;
-
-/**
- * Represents coordinate origin in WebDriver BiDi protocol
- */
-public enum Origin {
-    VIEWPORT("viewport"),
-    POINTER("pointer"),
-    ELEMENT("element");
-
-    private final String value;
-
-    Origin(String value) {
-        this.value = value;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public static Origin fromString(String text) {
-        for (Origin origin : Origin.values()) {
-            if (origin.value.equalsIgnoreCase(text)) {
-                return origin;
-            }
-        }
-        throw new IllegalArgumentException("No Origin with value: " + text);
-    }
-}`;
-
     // Create directories and write files
     await fs.mkdirSync(path.join(outputDir, 'Input'), { recursive: true });
-    await writeFile(path.resolve(outputDir, 'Input/PointerType.java'), pointerTypeContent);
-    await writeFile(path.resolve(outputDir, 'Input/Origin.java'), originContent);
+    await writeFile(path.resolve(outputDir, 'Input/PointerType.java'), pointerTypeTemplate);
+    await writeFile(path.resolve(outputDir, 'Input/Origin.java'), originTemplate);
+    await writeFile(path.resolve(outputDir, 'ContextValue.java'), contextValueTemplate);
+    await writeFile(path.resolve(outputDir, 'AccessibilityValue.java'), accessibilityValueTemplate);
 
-    // Generate Capabilities class to represent session capabilities
-    const capabilitiesContent = `package org.openqa.selenium.bidirectional.session;
-
-import java.util.Map;
-import java.util.HashMap;
-
-/**
- * Represents browser capabilities in WebDriver BiDi protocol
- */
-public class Capabilities {
-    private final Map<String, Object> capabilities;
-
-    public Capabilities(Map<String, Object> capabilities) {
-        this.capabilities = capabilities != null ? capabilities : new HashMap<>();
-    }
-
-    public Boolean getAcceptInsecureCerts() {
-        return (Boolean) capabilities.get("acceptInsecureCerts");
-    }
-
-    public String getBrowserName() {
-        return (String) capabilities.get("browserName");
-    }
-
-    public String getBrowserVersion() {
-        return (String) capabilities.get("browserVersion");
-    }
-
-    public String getPlatformName() {
-        return (String) capabilities.get("platformName");
-    }
-
-    public Boolean getSetWindowRect() {
-        return (Boolean) capabilities.get("setWindowRect");
-    }
-
-    public String getUserAgent() {
-        return (String) capabilities.get("userAgent");
-    }
-
-    public String getWebSocketUrl() {
-        return (String) capabilities.get("webSocketUrl");
-    }
-
-    public Map<String, Object> asMap() {
-        return new HashMap<>(capabilities);
-    }
-}`;
-
+    // Generate Capabilities class
     await fs.mkdirSync(path.join(outputDir, 'Session'), { recursive: true });
-    await writeFile(path.resolve(outputDir, 'Session/Capabilities.java'), capabilitiesContent);
+    await writeFile(path.resolve(outputDir, 'Session/Capabilities.java'), capabilitiesTemplate);
 }
 
 export async function transform (cddlFilePath: string, outputDir: string) {

@@ -23,28 +23,28 @@ public class DedicatedWorkerRealmInfo {
     /**
      * Creates a new DedicatedWorkerRealmInfo instance
      */
-    public DedicatedWorkerRealmInfo(List<Unknown> owners) {
+    public DedicatedWorkerRealmInfo(List<Object> owners) {
         this.owners = owners;
         this.type = "dedicated-worker";
     }
 
-    private final dedicated-worker type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return dedicated-worker value
+     * @return String value
      */
-    public dedicated-worker getType() {
+    public String getType() {
         return this.type;
     }
 
-    private final List<Unknown> owners;
+    private final List<Object> owners;
 
     /**
      * Gets the owners property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getOwners() {
+    public List<Object> getOwners() {
         return this.owners;
     }
 

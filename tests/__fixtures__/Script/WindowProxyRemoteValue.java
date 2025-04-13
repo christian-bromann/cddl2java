@@ -30,13 +30,13 @@ public class WindowProxyRemoteValue {
         this.type = "window";
     }
 
-    private final window type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return window value
+     * @return String value
      */
-    public window getType() {
+    public String getType() {
         return this.type;
     }
 

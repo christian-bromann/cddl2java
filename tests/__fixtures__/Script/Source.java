@@ -23,7 +23,7 @@ public class Source {
     /**
      * Creates a new Source instance
      */
-    public Source(Script.Realm realm, BrowsingContext.BrowsingContext context) {
+    public Source(Script.Realm realm, String context) {
         this.realm = realm;
         this.context = context;
         
@@ -39,13 +39,13 @@ public class Source {
         return this.realm;
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 

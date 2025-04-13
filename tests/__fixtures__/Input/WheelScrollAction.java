@@ -33,13 +33,13 @@ public class WheelScrollAction {
         this.type = "scroll";
     }
 
-    private final scroll type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return scroll value
+     * @return String value
      */
-    public scroll getType() {
+    public String getType() {
         return this.type;
     }
 

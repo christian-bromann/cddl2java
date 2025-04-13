@@ -28,13 +28,13 @@ public class KeyDownAction {
         this.type = "keyDown";
     }
 
-    private final keyDown type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return keyDown value
+     * @return String value
      */
-    public keyDown getType() {
+    public String getType() {
         return this.type;
     }
 

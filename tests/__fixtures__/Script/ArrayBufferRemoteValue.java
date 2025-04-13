@@ -29,13 +29,13 @@ public class ArrayBufferRemoteValue {
         this.type = "arraybuffer";
     }
 
-    private final arraybuffer type;
+    private final String type;
 
     /**
      * Gets the type property
-     * @return arraybuffer value
+     * @return String value
      */
-    public arraybuffer getType() {
+    public String getType() {
         return this.type;
     }
 

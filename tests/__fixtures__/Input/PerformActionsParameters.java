@@ -23,29 +23,29 @@ public class PerformActionsParameters {
     /**
      * Creates a new PerformActionsParameters instance
      */
-    public PerformActionsParameters(BrowsingContext.BrowsingContext context, List<Unknown> actions) {
+    public PerformActionsParameters(String context, List<Object> actions) {
         this.context = context;
         this.actions = actions;
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 
-    private final List<Unknown> actions;
+    private final List<Object> actions;
 
     /**
      * Gets the actions property
-     * @return List<Unknown> value
+     * @return List<Object> value
      */
-    public List<Unknown> getActions() {
+    public List<Object> getActions() {
         return this.actions;
     }
 

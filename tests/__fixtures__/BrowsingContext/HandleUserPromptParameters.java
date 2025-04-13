@@ -23,20 +23,20 @@ public class HandleUserPromptParameters {
     /**
      * Creates a new HandleUserPromptParameters instance
      */
-    public HandleUserPromptParameters(BrowsingContext.BrowsingContext context, Boolean accept, String userText) {
+    public HandleUserPromptParameters(String context, Boolean accept, String userText) {
         this.context = context;
         this.accept = accept;
         this.userText = userText;
         
     }
 
-    private final BrowsingContext.BrowsingContext context;
+    private final String context;
 
     /**
      * Gets the context property
-     * @return BrowsingContext.BrowsingContext value
+     * @return String value
      */
-    public BrowsingContext.BrowsingContext getContext() {
+    public String getContext() {
         return this.context;
     }
 
