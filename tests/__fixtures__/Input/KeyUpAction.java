@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for input.KeyUpAction command
  */
-public class KeyUpAction {
+public class KeyUpAction implements KeySourceAction {
 
     /**
      * Creates a new KeyUpAction instance

@@ -85,6 +85,11 @@ const inputSourceActions = [
     'PointerSourceActions',
     'WheelSourceActions'
 ]
+const keySourceActions = [
+    'PauseAction',
+    'KeyDownAction',
+    'KeyUpAction'
+]
 
 const stringTypes = [
     'script.InternalId',
@@ -320,7 +325,9 @@ async function createPropertyClasses (assignments: Assignment[]) {
                         ? ' implements ScriptLocalValue'
                         : inputSourceActions.includes(propClassName)
                             ? ' implements SourceActions'
-                            : ''
+                            : keySourceActions.includes(propClassName)
+                                ? ' implements KeySourceAction'
+                                : ''
                     code += `package org.openqa.selenium.bidirectional.${scopeCamelCase.toLowerCase()};
 
 import java.util.Map;

@@ -291,4 +291,8 @@ export const sourceActions = `package org.openqa.selenium.bidirectional.input;
 public class SourceActions {
 
 }
+
+public class KeySourceAction {
+
+}
 `;
