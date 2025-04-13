@@ -15,7 +15,7 @@ import {
     originTemplate,
     capabilitiesTemplate,
     newResultTemplate,
-    capabilitiesClassTemplate
+    scriptLocalValue
 } from './templates.js'
 
 type Scope = string
@@ -66,6 +66,18 @@ function parseCDDLFile (filePath: string) {
 
     return ast
 }
+
+const scriptLocalValueClasses = [
+    'RemoteReference',
+    'PrimitiveProtocolValue',
+    'ChannelValue',
+    'ArrayLocalValue',
+    'DateLocalValue',
+    'MapLocalValue',
+    'ObjectLocalValue',
+    'RegExpLocalValue',
+    'SetLocalValue'
+]
 
 async function createModules (assignments: Assignment[]) {
     const javaFiles = new Map<MapKey, string>()
@@ -272,6 +284,9 @@ async function createPropertyClasses (assignments: Assignment[]) {
             if (props.size > 0) {
                 let code = ''
                 if (!javaPropFiles.has(mapKey)) {
+                    const implementsExtension = scriptLocalValueClasses.includes(propClassName)
+                        ? ' implements ScriptLocalValue'
+                        : ''
                     code += `package org.openqa.selenium.bidirectional.${scopeCamelCase.toLowerCase()};
 
 import java.util.Map;
@@ -284,7 +299,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for ${assignment.Name} command
  */
-public class ${propClassName} {
+public class ${propClassName}${implementsExtension} {
 `
                 }
 
@@ -611,6 +626,7 @@ async function createHelperClasses(assignments: Assignment[], outputDir: string)
     await fs.mkdirSync(path.join(outputDir, 'Input'), { recursive: true });
     await writeFile(path.resolve(outputDir, 'Input/PointerType.java'), pointerTypeTemplate);
     await writeFile(path.resolve(outputDir, 'Input/Origin.java'), originTemplate);
+    await writeFile(path.resolve(outputDir, 'Input/ScriptLocalValue.java'), scriptLocalValue);
     await writeFile(path.resolve(outputDir, 'ContextValue.java'), contextValueTemplate);
     await writeFile(path.resolve(outputDir, 'AccessibilityValue.java'), accessibilityValueTemplate);
 

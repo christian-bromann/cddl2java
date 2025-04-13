@@ -279,46 +279,9 @@ public class NewResult {
     }
 }`;
 
-export const capabilitiesClassTemplate: string = `package org.openqa.selenium.bidirectional.session;
+export const scriptLocalValue = `package org.openqa.selenium.bidirectional.script;
 
-import java.util.Map;
-import java.util.Collections;
-import java.util.HashMap;
+public class ScriptLocalValue {
 
-/**
- * Represents browser capabilities returned by the remote end.
- * Auto-generated from the CDDL specification.
- */
-public class Capabilities {
-    private final Map<String, Object> capabilities;
-
-    /**
-     * Constructor for Capabilities.
-     *
-     * @param capabilities The capabilities map
-     */
-    public Capabilities(Map<String, Object> capabilities) {
-        this.capabilities = capabilities != null
-            ? new HashMap<>(capabilities)
-            : Collections.emptyMap();
-    }
-
-    /**
-     * Get the capabilities as a map.
-     *
-     * @return The capabilities map
-     */
-    public Map<String, Object> asMap() {
-        return Collections.unmodifiableMap(capabilities);
-    }
-
-    /**
-     * Get a capability value by name.
-     *
-     * @param name The capability name
-     * @return The capability value or null if not present
-     */
-    public Object getCapability(String name) {
-        return capabilities.get(name);
-    }
-}`;
+}
+`;

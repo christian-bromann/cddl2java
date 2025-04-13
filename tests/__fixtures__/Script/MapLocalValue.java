@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.MapLocalValue command
  */
-public class MapLocalValue {
+public class MapLocalValue implements ScriptLocalValue {
 
     /**
      * Creates a new MapLocalValue instance

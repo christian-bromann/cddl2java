@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.ObjectLocalValue command
  */
-public class ObjectLocalValue {
+public class ObjectLocalValue implements ScriptLocalValue {
 
     /**
      * Creates a new ObjectLocalValue instance

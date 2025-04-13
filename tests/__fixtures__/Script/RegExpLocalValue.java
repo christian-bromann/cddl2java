@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.RegExpLocalValue command
  */
-public class RegExpLocalValue {
+public class RegExpLocalValue implements ScriptLocalValue {
 
     /**
      * Creates a new RegExpLocalValue instance
