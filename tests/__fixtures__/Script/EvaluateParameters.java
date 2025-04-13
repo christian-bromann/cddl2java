@@ -23,7 +23,7 @@ public class EvaluateParameters {
     /**
      * Creates a new EvaluateParameters instance
      */
-    public EvaluateParameters(String expression, Script.Target target, Boolean awaitPromise, Script.ResultOwnership resultOwnership, Script.SerializationOptions serializationOptions, Unknown userActivation) {
+    public EvaluateParameters(String expression, Script.Target target, Boolean awaitPromise, Script.ResultOwnership resultOwnership, Script.SerializationOptions serializationOptions, Boolean userActivation) {
         this.expression = expression;
         this.target = target;
         this.awaitPromise = awaitPromise;
@@ -83,13 +83,13 @@ public class EvaluateParameters {
         return this.serializationOptions;
     }
 
-    private final Unknown userActivation;
+    private final Boolean userActivation;
 
     /**
      * Gets the userActivation property
-     * @return Unknown value
+     * @return Boolean value
      */
-    public Unknown getUserActivation() {
+    public Boolean getUserActivation() {
         return this.userActivation;
     }
 

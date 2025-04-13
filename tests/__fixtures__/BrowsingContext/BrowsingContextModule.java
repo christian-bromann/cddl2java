@@ -24,11 +24,11 @@ public class BrowsingContextModule {
      * @param parameters `TraverseHistoryParameters` {@link https://w3c.github.io/webdriver-bidi/#command-browsingContext-traverseHistory | command parameter}
      * @return Command object with result type for browsingContext.traverseHistory
      */
-    public Command<BrowsingContextTraverseHistoryResult> TraverseHistory (TraverseHistoryParameters parameters) {
+    public Command<TraverseHistoryResult> TraverseHistory (TraverseHistoryParameters parameters) {
         return new Command<>(
             "browsingContext.traverseHistory",
             parameters.asMap(),
-            BrowsingContextTraverseHistoryResult.class
+            TraverseHistoryResult.class
         );
     }
 }

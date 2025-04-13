@@ -23,18 +23,18 @@ public class PointerParameters {
     /**
      * Creates a new PointerParameters instance
      */
-    public PointerParameters(Unknown pointerType) {
+    public PointerParameters(Input.PointerType pointerType) {
         this.pointerType = pointerType;
         
     }
 
-    private final Unknown pointerType;
+    private final Input.PointerType pointerType;
 
     /**
      * Gets the pointerType property
-     * @return Unknown value
+     * @return Input.PointerType value
      */
-    public Unknown getPointerType() {
+    public Input.PointerType getPointerType() {
         return this.pointerType;
     }
 

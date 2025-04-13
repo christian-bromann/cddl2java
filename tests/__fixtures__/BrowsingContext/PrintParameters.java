@@ -23,7 +23,7 @@ public class PrintParameters {
     /**
      * Creates a new PrintParameters instance
      */
-    public PrintParameters(BrowsingContext.BrowsingContext context, Unknown background, BrowsingContext.PrintMarginParameters margin, Object orientation, BrowsingContext.PrintPageParameters page, List<Unknown> pageRanges, Unknown scale, Unknown shrinkToFit) {
+    public PrintParameters(BrowsingContext.BrowsingContext context, Boolean background, BrowsingContext.PrintMarginParameters margin, Object orientation, BrowsingContext.PrintPageParameters page, List<Unknown> pageRanges, Float scale, Boolean shrinkToFit) {
         this.context = context;
         this.background = background;
         this.margin = margin;
@@ -45,13 +45,13 @@ public class PrintParameters {
         return this.context;
     }
 
-    private final Unknown background;
+    private final Boolean background;
 
     /**
      * Gets the background property
-     * @return Unknown value
+     * @return Boolean value
      */
-    public Unknown getBackground() {
+    public Boolean getBackground() {
         return this.background;
     }
 
@@ -95,23 +95,23 @@ public class PrintParameters {
         return this.pageRanges;
     }
 
-    private final Unknown scale;
+    private final Float scale;
 
     /**
      * Gets the scale property
-     * @return Unknown value
+     * @return Float value
      */
-    public Unknown getScale() {
+    public Float getScale() {
         return this.scale;
     }
 
-    private final Unknown shrinkToFit;
+    private final Boolean shrinkToFit;
 
     /**
      * Gets the shrinkToFit property
-     * @return Unknown value
+     * @return Boolean value
      */
-    public Unknown getShrinkToFit() {
+    public Boolean getShrinkToFit() {
         return this.shrinkToFit;
     }
 

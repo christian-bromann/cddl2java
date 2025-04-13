@@ -93,7 +93,9 @@ async function createModules (assignments: Assignment[]) {
         const paramType = `${paramClass}`
 
         // Handle return type - should be in same package
-        const resultTypeJava = responseType ? camelcase(responseType.Name, { pascalCase: true }) : 'EmptyResult'
+        const resultTypeJava = responseType
+            ? resultName(responseType.Name)
+            : 'EmptyResult'
 
         // Adjust result type to proper package reference if it's EmptyResult
         const resultTypeJavaEmbed = responseType
@@ -143,6 +145,16 @@ public class ${moduleScope}Module {
     }
 
     return javaFiles
+}
+
+// Helper function to get correct class name for result types
+function resultName(name: string): string {
+    if (!name.includes('.')) {
+        return name[0].toUpperCase() + name.slice(1);
+    }
+
+    const [scope, resultName] = name.split('.');
+    return resultName[0].toUpperCase() + resultName.slice(1);
 }
 
 async function createPropertyClasses (assignments: Assignment[]) {
@@ -265,6 +277,17 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
         return { type: 'Object', isLiteral }
     }
 
+    // Special case: Handle complex nested properties directly (e.g., capabilities)
+    if (typeof specType === 'object' && !Array.isArray(specType) &&
+        'Name' in specType && 'Type' in specType && Array.isArray(specType.Type) &&
+        specType.Type.length === 1 && typeof specType.Type[0] === 'object' &&
+        specType.Type[0].Type === 'group' && 'Properties' in specType.Type[0]) {
+
+        // This is a complex nested property object with its own property set
+        // For now, use a generic Map type but we could generate actual model classes for these
+        return { type: 'Map<String, Object>', isLiteral: false }
+    }
+
     // Handle complex single object with Type field (not in an array)
     if (!Array.isArray(specType) && typeof specType === 'object' && 'Type' in specType) {
         // Handle nested group with properties
@@ -306,8 +329,15 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
 
                 if (objType === 'group') {
                     if ('Name' in specType[0] && specType[0].Name && 'Properties' in specType[0]) {
-                        // Group with properties - map to a custom class
-                        type = 'Map<String, Object>'
+                        // Group with properties - map to a custom class or Map
+                        if (specType[0].Properties && Array.isArray(specType[0].Properties) &&
+                            specType[0].Properties.length > 0 &&
+                            specType[0].Properties.some((p: any) => p.Name === 'text')) {
+                            // Special case for text attributes
+                            type = 'Map<String, String>'
+                        } else {
+                            type = 'Map<String, Object>'
+                        }
                     } else if ('Value' in specType[0] && typeof specType[0].Value === 'string') {
                         // Named group reference
                         if (specType[0].Value === 'js-int') {
@@ -364,8 +394,37 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
             }
 
             // Handle type with operator (default values)
-            if ('Operator' in specType[0] && specType[0].Operator && 'Type' in specType[0]) {
-                const baseType: string = parseType([{ Type: specType[0].Type }]).type;
+            if ('Operator' in specType[0] && specType[0].Operator) {
+                // Handle the bool type with default operator
+                if (specType[0].Type === 'bool') {
+                    return { type: 'Boolean', isLiteral: false };
+                }
+
+                // Handle range or group type with operator
+                if (typeof specType[0].Type === 'object' && 'Type' in specType[0].Type) {
+                    if (specType[0].Type.Type === 'range') {
+                        // For ranges, determine type based on min/max values
+                        return { type: 'Float', isLiteral: false };
+                    } else if (specType[0].Type.Type === 'group') {
+                        // For groups with operators, extract the base type
+                        if (specType[0].Type.Value === 'js-uint') {
+                            return { type: 'Long', isLiteral: false };
+                        } else {
+                            // For other group references, use the referenced type
+                            const parts = specType[0].Type.Value.split('.');
+                            if (parts.length > 1) {
+                                const scope = parts[0][0].toUpperCase() + parts[0].slice(1);
+                                const typeName = parts[1][0].toUpperCase() + parts[1].slice(1);
+                                return { type: `${scope}.${typeName}`, isLiteral: false };
+                            }
+                        }
+                    }
+                }
+
+                // Generic fallback for types with operators
+                const baseType: string = typeof specType[0].Type === 'string'
+                    ? specType[0].Type === 'bool' ? 'Boolean' : 'Object'
+                    : parseType([{ Type: specType[0].Type.Type, Value: specType[0].Type.Value }]).type;
                 return { type: baseType, isLiteral };
             }
         }
@@ -415,6 +474,54 @@ async function createResultClasses (assignments: Assignment[]) {
         const scopeCamelCase = scope[0].toUpperCase() + scope.slice(1)
         const resultClassName = resultName[0].toUpperCase() + resultName.slice(1)
         const mapKey: MapKey = [scopeCamelCase, resultClassName]
+
+        // Special case for session.NewResult - skip and handle separately
+        if (assignment.Name === 'session.NewResult') {
+            const newResultCode = `package org.openqa.selenium.bidirectional.session;
+
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import org.openqa.selenium.bidirectional.EmptyResult;
+
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents response for session.NewResult command
+ */
+public class NewResult {
+
+    /**
+     * Creates a new NewResult instance
+     */
+    public NewResult(String sessionId, Map<String, Object> capabilitiesMap) {
+        this.sessionId = sessionId;
+        this.capabilities = new Capabilities(capabilitiesMap);
+    }
+
+    private final String sessionId;
+
+    /**
+     * Gets the sessionId property
+     * @return String value
+     */
+    public String getSessionId() {
+        return this.sessionId;
+    }
+
+    private final Capabilities capabilities;
+
+    /**
+     * Gets the capabilities property
+     * @return Capabilities value
+     */
+    public Capabilities getCapabilities() {
+        return this.capabilities;
+    }
+}`;
+            javaResultFiles.set(mapKey, newResultCode);
+            continue;
+        }
 
         const props = new Map<string, { type: string, isLiteral: boolean }>()
 
@@ -516,6 +623,162 @@ public class EmptyResult {
     await writeFile(path.resolve(outputDir, 'EmptyResult.java'), emptyResultContent);
 }
 
+async function createHelperClasses(assignments: Assignment[], outputDir: string) {
+    // Create enum classes for common types used with specific values
+    const enumDefinitions = new Map<string, string[]>();
+
+    // Find enum-like types in the CDDL that could be represented as Java enums
+    for (const assignment of assignments) {
+        if (assignment.Type === 'group' && assignment.Name.includes('.') &&
+            assignment.Name.endsWith('Type')) {
+            // This is likely an enum type
+            const [scope, typeName] = assignment.Name.split('.');
+            const scopePascal = scope[0].toUpperCase() + scope.slice(1);
+            const typeNamePascal = typeName[0].toUpperCase() + typeName.slice(1);
+
+            // Check if we can extract enum values
+            if (Array.isArray(assignment.Properties) && assignment.Properties.length > 0) {
+                // Skip enums that are already handled as standard types
+                if (['PointerType', 'Origin'].includes(typeName)) {
+                    const enumValues: string[] = [];
+
+                    // Look for literal values that define the enum
+                    for (const prop of assignment.Properties) {
+                        if (!Array.isArray(prop) && 'Type' in prop &&
+                            Array.isArray(prop.Type) && prop.Type.length === 1 &&
+                            typeof prop.Type[0] === 'object' && prop.Type[0].Type === 'literal') {
+                            enumValues.push(prop.Type[0].Value as string);
+                        }
+                    }
+
+                    if (enumValues.length > 0) {
+                        enumDefinitions.set(`${scopePascal}.${typeNamePascal}`, enumValues);
+                    }
+                }
+            }
+        }
+    }
+
+    // Create PointerType enum - explicitly defined because it's commonly used
+    const pointerTypeContent = `package org.openqa.selenium.bidirectional.input;
+
+/**
+ * Represents pointer types in WebDriver BiDi protocol
+ */
+public enum PointerType {
+    MOUSE("mouse"),
+    PEN("pen"),
+    TOUCH("touch");
+
+    private final String value;
+
+    PointerType(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public static PointerType fromString(String text) {
+        for (PointerType type : PointerType.values()) {
+            if (type.value.equalsIgnoreCase(text)) {
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("No PointerType with value: " + text);
+    }
+}`;
+
+    // Create Origin enum - explicitly defined because it's commonly used
+    const originContent = `package org.openqa.selenium.bidirectional.input;
+
+/**
+ * Represents coordinate origin in WebDriver BiDi protocol
+ */
+public enum Origin {
+    VIEWPORT("viewport"),
+    POINTER("pointer"),
+    ELEMENT("element");
+
+    private final String value;
+
+    Origin(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public static Origin fromString(String text) {
+        for (Origin origin : Origin.values()) {
+            if (origin.value.equalsIgnoreCase(text)) {
+                return origin;
+            }
+        }
+        throw new IllegalArgumentException("No Origin with value: " + text);
+    }
+}`;
+
+    // Create directories and write files
+    await fs.mkdirSync(path.join(outputDir, 'Input'), { recursive: true });
+    await writeFile(path.resolve(outputDir, 'Input/PointerType.java'), pointerTypeContent);
+    await writeFile(path.resolve(outputDir, 'Input/Origin.java'), originContent);
+
+    // Generate Capabilities class to represent session capabilities
+    const capabilitiesContent = `package org.openqa.selenium.bidirectional.session;
+
+import java.util.Map;
+import java.util.HashMap;
+
+/**
+ * Represents browser capabilities in WebDriver BiDi protocol
+ */
+public class Capabilities {
+    private final Map<String, Object> capabilities;
+
+    public Capabilities(Map<String, Object> capabilities) {
+        this.capabilities = capabilities != null ? capabilities : new HashMap<>();
+    }
+
+    public Boolean getAcceptInsecureCerts() {
+        return (Boolean) capabilities.get("acceptInsecureCerts");
+    }
+
+    public String getBrowserName() {
+        return (String) capabilities.get("browserName");
+    }
+
+    public String getBrowserVersion() {
+        return (String) capabilities.get("browserVersion");
+    }
+
+    public String getPlatformName() {
+        return (String) capabilities.get("platformName");
+    }
+
+    public Boolean getSetWindowRect() {
+        return (Boolean) capabilities.get("setWindowRect");
+    }
+
+    public String getUserAgent() {
+        return (String) capabilities.get("userAgent");
+    }
+
+    public String getWebSocketUrl() {
+        return (String) capabilities.get("webSocketUrl");
+    }
+
+    public Map<String, Object> asMap() {
+        return new HashMap<>(capabilities);
+    }
+}`;
+
+    await fs.mkdirSync(path.join(outputDir, 'Session'), { recursive: true });
+    await writeFile(path.resolve(outputDir, 'Session/Capabilities.java'), capabilitiesContent);
+}
+
 export async function transform (cddlFilePath: string, outputDir: string) {
     const ast = parseCDDLFile(cddlFilePath)
     const [moduleCode, propertyCode, resultCode] = await Promise.all([
@@ -529,6 +792,7 @@ export async function transform (cddlFilePath: string, outputDir: string) {
         createJavaFiles(moduleCode, outputDir),
         createJavaFiles(propertyCode, outputDir),
         createJavaFiles(resultCode, outputDir),
-        createEmptyResultClass(outputDir)
+        createEmptyResultClass(outputDir),
+        createHelperClasses(ast, outputDir)
     ])
 }

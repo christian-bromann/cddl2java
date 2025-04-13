@@ -23,7 +23,7 @@ public class CreateParameters {
     /**
      * Creates a new CreateParameters instance
      */
-    public CreateParameters(BrowsingContext.CreateType type, BrowsingContext.BrowsingContext referenceContext, Unknown background, Browser.UserContext userContext) {
+    public CreateParameters(BrowsingContext.CreateType type, BrowsingContext.BrowsingContext referenceContext, Boolean background, Browser.UserContext userContext) {
         this.type = type;
         this.referenceContext = referenceContext;
         this.background = background;
@@ -51,13 +51,13 @@ public class CreateParameters {
         return this.referenceContext;
     }
 
-    private final Unknown background;
+    private final Boolean background;
 
     /**
      * Gets the background property
-     * @return Unknown value
+     * @return Boolean value
      */
-    public Unknown getBackground() {
+    public Boolean getBackground() {
         return this.background;
     }
 

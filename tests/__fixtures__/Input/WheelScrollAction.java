@@ -23,7 +23,7 @@ public class WheelScrollAction {
     /**
      * Creates a new WheelScrollAction instance
      */
-    public WheelScrollAction(Integer x, Integer y, Integer deltaX, Integer deltaY, Long duration, Unknown origin) {
+    public WheelScrollAction(Integer x, Integer y, Integer deltaX, Integer deltaY, Long duration, Input.Origin origin) {
         this.x = x;
         this.y = y;
         this.deltaX = deltaX;
@@ -93,13 +93,13 @@ public class WheelScrollAction {
         return this.duration;
     }
 
-    private final Unknown origin;
+    private final Input.Origin origin;
 
     /**
      * Gets the origin property
-     * @return Unknown value
+     * @return Input.Origin value
      */
-    public Unknown getOrigin() {
+    public Input.Origin getOrigin() {
         return this.origin;
     }
 

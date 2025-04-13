@@ -23,7 +23,7 @@ public class CallFunctionParameters {
     /**
      * Creates a new CallFunctionParameters instance
      */
-    public CallFunctionParameters(String functionDeclaration, Boolean awaitPromise, Script.Target target, List<Unknown> arguments, Script.ResultOwnership resultOwnership, Script.SerializationOptions serializationOptions, Script.LocalValue this, Unknown userActivation) {
+    public CallFunctionParameters(String functionDeclaration, Boolean awaitPromise, Script.Target target, List<Unknown> arguments, Script.ResultOwnership resultOwnership, Script.SerializationOptions serializationOptions, Script.LocalValue this, Boolean userActivation) {
         this.functionDeclaration = functionDeclaration;
         this.awaitPromise = awaitPromise;
         this.target = target;
@@ -105,13 +105,13 @@ public class CallFunctionParameters {
         return this.this;
     }
 
-    private final Unknown userActivation;
+    private final Boolean userActivation;
 
     /**
      * Gets the userActivation property
-     * @return Unknown value
+     * @return Boolean value
      */
-    public Unknown getUserActivation() {
+    public Boolean getUserActivation() {
         return this.userActivation;
     }
 

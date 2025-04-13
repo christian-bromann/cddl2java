@@ -23,7 +23,7 @@ public class CloseParameters {
     /**
      * Creates a new CloseParameters instance
      */
-    public CloseParameters(BrowsingContext.BrowsingContext context, Unknown promptUnload) {
+    public CloseParameters(BrowsingContext.BrowsingContext context, Boolean promptUnload) {
         this.context = context;
         this.promptUnload = promptUnload;
         
@@ -39,13 +39,13 @@ public class CloseParameters {
         return this.context;
     }
 
-    private final Unknown promptUnload;
+    private final Boolean promptUnload;
 
     /**
      * Gets the promptUnload property
-     * @return Unknown value
+     * @return Boolean value
      */
-    public Unknown getPromptUnload() {
+    public Boolean getPromptUnload() {
         return this.promptUnload;
     }
 

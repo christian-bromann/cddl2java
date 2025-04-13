@@ -23,7 +23,7 @@ public class PointerCommonProperties {
     /**
      * Creates a new PointerCommonProperties instance
      */
-    public PointerCommonProperties(Unknown width, Unknown height, Float pressure, Float tangentialPressure, Unknown twist, Unknown altitudeAngle, Unknown azimuthAngle) {
+    public PointerCommonProperties(Long width, Long height, Object pressure, Object tangentialPressure, Float twist, Float altitudeAngle, Float azimuthAngle) {
         this.width = width;
         this.height = height;
         this.pressure = pressure;
@@ -34,73 +34,73 @@ public class PointerCommonProperties {
         
     }
 
-    private final Unknown width;
+    private final Long width;
 
     /**
      * Gets the width property
-     * @return Unknown value
+     * @return Long value
      */
-    public Unknown getWidth() {
+    public Long getWidth() {
         return this.width;
     }
 
-    private final Unknown height;
+    private final Long height;
 
     /**
      * Gets the height property
-     * @return Unknown value
+     * @return Long value
      */
-    public Unknown getHeight() {
+    public Long getHeight() {
         return this.height;
     }
 
-    private final Float pressure;
+    private final Object pressure;
 
     /**
      * Gets the pressure property
-     * @return Float value
+     * @return Object value
      */
-    public Float getPressure() {
+    public Object getPressure() {
         return this.pressure;
     }
 
-    private final Float tangentialPressure;
+    private final Object tangentialPressure;
 
     /**
      * Gets the tangentialPressure property
-     * @return Float value
+     * @return Object value
      */
-    public Float getTangentialPressure() {
+    public Object getTangentialPressure() {
         return this.tangentialPressure;
     }
 
-    private final Unknown twist;
+    private final Float twist;
 
     /**
      * Gets the twist property
-     * @return Unknown value
+     * @return Float value
      */
-    public Unknown getTwist() {
+    public Float getTwist() {
         return this.twist;
     }
 
-    private final Unknown altitudeAngle;
+    private final Float altitudeAngle;
 
     /**
      * Gets the altitudeAngle property
-     * @return Unknown value
+     * @return Float value
      */
-    public Unknown getAltitudeAngle() {
+    public Float getAltitudeAngle() {
         return this.altitudeAngle;
     }
 
-    private final Unknown azimuthAngle;
+    private final Float azimuthAngle;
 
     /**
      * Gets the azimuthAngle property
-     * @return Unknown value
+     * @return Float value
      */
-    public Unknown getAzimuthAngle() {
+    public Float getAzimuthAngle() {
         return this.azimuthAngle;
     }
 

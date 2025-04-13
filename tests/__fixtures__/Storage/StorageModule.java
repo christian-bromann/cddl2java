@@ -24,11 +24,11 @@ public class StorageModule {
      * @param parameters `DeleteCookiesParameters` {@link https://w3c.github.io/webdriver-bidi/#command-storage-deleteCookies | command parameter}
      * @return Command object with result type for storage.deleteCookies
      */
-    public Command<StorageDeleteCookiesResult> DeleteCookies (DeleteCookiesParameters parameters) {
+    public Command<DeleteCookiesResult> DeleteCookies (DeleteCookiesParameters parameters) {
         return new Command<>(
             "storage.deleteCookies",
             parameters.asMap(),
-            StorageDeleteCookiesResult.class
+            DeleteCookiesResult.class
         );
     }
 }
