@@ -285,3 +285,10 @@ public class ScriptLocalValue {
 
 }
 `;
+
+export const sourceActions = `package org.openqa.selenium.bidirectional.input;
+
+public class SourceActions {
+
+}
+`;

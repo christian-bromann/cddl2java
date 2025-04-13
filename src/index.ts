@@ -15,7 +15,8 @@ import {
     originTemplate,
     capabilitiesTemplate,
     newResultTemplate,
-    scriptLocalValue
+    scriptLocalValue,
+    sourceActions
 } from './templates.js'
 
 type Scope = string
@@ -78,6 +79,13 @@ const scriptLocalValueClasses = [
     'RegExpLocalValue',
     'SetLocalValue'
 ]
+const inputSourceActions = [
+    'NoneSourceActions',
+    'KeySourceActions',
+    'PointerSourceActions',
+    'WheelSourceActions'
+]
+
 const stringTypes = [
     'script.InternalId',
     'browser.ClientWindow',
@@ -310,7 +318,9 @@ async function createPropertyClasses (assignments: Assignment[]) {
                 if (!javaPropFiles.has(mapKey)) {
                     const implementsExtension = scriptLocalValueClasses.includes(propClassName)
                         ? ' implements ScriptLocalValue'
-                        : ''
+                        : inputSourceActions.includes(propClassName)
+                            ? ' implements SourceActions'
+                            : ''
                     code += `package org.openqa.selenium.bidirectional.${scopeCamelCase.toLowerCase()};
 
 import java.util.Map;
@@ -654,6 +664,7 @@ async function createHelperClasses( outputDir: string) {
     await fs.mkdirSync(path.join(outputDir, 'Input'), { recursive: true });
     await writeFile(path.resolve(outputDir, 'Input/PointerType.java'), pointerTypeTemplate);
     await writeFile(path.resolve(outputDir, 'Input/Origin.java'), originTemplate);
+    await writeFile(path.resolve(outputDir, 'Input/SourceActions.java'), sourceActions);
     await fs.mkdirSync(path.join(outputDir, 'Script'), { recursive: true });
     await writeFile(path.resolve(outputDir, 'Script/ScriptLocalValue.java'), scriptLocalValue);
     await writeFile(path.resolve(outputDir, 'ContextValue.java'), contextValueTemplate);

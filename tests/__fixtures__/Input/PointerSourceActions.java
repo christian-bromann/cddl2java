@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for input.PointerSourceActions command
  */
-public class PointerSourceActions {
+public class PointerSourceActions implements SourceActions {
 
     /**
      * Creates a new PointerSourceActions instance

@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for input.WheelSourceActions command
  */
-public class WheelSourceActions {
+public class WheelSourceActions implements SourceActions {
 
     /**
      * Creates a new WheelSourceActions instance

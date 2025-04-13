@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for input.NoneSourceActions command
  */
-public class NoneSourceActions {
+public class NoneSourceActions implements SourceActions {
 
     /**
      * Creates a new NoneSourceActions instance
