@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for storage.DeleteCookiesResult command
  */
-public class DeleteCookiesResult {
+public class DeleteCookiesResult implements StorageResult {
 
     /**
      * Creates a new DeleteCookiesResult instance

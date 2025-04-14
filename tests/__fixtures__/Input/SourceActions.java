@@ -6,20 +6,14 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.input;
-
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents enum for input.SourceActions which can be either of these classes:
+ *   - input.NoneSourceActions
+ *   - input.KeySourceActions
+ *   - input.PointerSourceActions
+ *   - input.WheelSourceActions
+ */
 public class SourceActions {
-
-}
-
-public class KeySourceAction {
-
-}
-
-public class PointerSourceAction {
-
-}
-
-public class WheelSourceAction {
 
 }

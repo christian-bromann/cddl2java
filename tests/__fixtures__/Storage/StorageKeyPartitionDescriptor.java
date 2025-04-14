@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for storage.StorageKeyPartitionDescriptor command
  */
-public class StorageKeyPartitionDescriptor {
+public class StorageKeyPartitionDescriptor implements PartitionDescriptor {
 
     /**
      * Creates a new StorageKeyPartitionDescriptor instance

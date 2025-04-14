@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for network.Base64Value command
  */
-public class Base64Value {
+public class Base64Value implements BytesValue {
 
     /**
      * Creates a new Base64Value instance

@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.ArrayLocalValue command
  */
-public class ArrayLocalValue implements ScriptLocalValue {
+public class ArrayLocalValue implements LocalValue {
 
     /**
      * Creates a new ArrayLocalValue instance

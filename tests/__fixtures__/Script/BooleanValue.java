@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.BooleanValue command
  */
-public class BooleanValue {
+public class BooleanValue implements PrimitiveProtocolValue {
 
     /**
      * Creates a new BooleanValue instance

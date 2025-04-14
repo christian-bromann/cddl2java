@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for session.StatusResult command
  */
-public class StatusResult {
+public class StatusResult implements SessionResult {
 
     /**
      * Creates a new StatusResult instance

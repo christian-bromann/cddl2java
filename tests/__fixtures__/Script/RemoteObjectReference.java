@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.RemoteObjectReference command
  */
-public class RemoteObjectReference {
+public class RemoteObjectReference implements RemoteReference {
 
     /**
      * Creates a new RemoteObjectReference instance

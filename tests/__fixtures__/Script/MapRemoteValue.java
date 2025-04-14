@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.MapRemoteValue command
  */
-public class MapRemoteValue {
+public class MapRemoteValue implements RemoteValue {
 
     /**
      * Creates a new MapRemoteValue instance

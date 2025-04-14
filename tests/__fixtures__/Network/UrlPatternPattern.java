@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for network.UrlPatternPattern command
  */
-public class UrlPatternPattern {
+public class UrlPatternPattern implements UrlPattern {
 
     /**
      * Creates a new UrlPatternPattern instance

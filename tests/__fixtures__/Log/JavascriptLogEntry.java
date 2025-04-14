@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for log.JavascriptLogEntry command
  */
-public class JavascriptLogEntry {
+public class JavascriptLogEntry implements Entry {
 
     /**
      * Creates a new JavascriptLogEntry instance

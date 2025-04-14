@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for browser.UserContextInfo command
  */
-public class UserContextInfo {
+public class UserContextInfo implements CreateUserContextResult {
 
     /**
      * Creates a new UserContextInfo instance

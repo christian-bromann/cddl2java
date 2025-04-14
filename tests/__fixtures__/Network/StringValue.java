@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for network.StringValue command
  */
-public class StringValue {
+public class StringValue implements BytesValue {
 
     /**
      * Creates a new StringValue instance

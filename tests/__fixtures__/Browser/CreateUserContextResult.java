@@ -6,23 +6,11 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.browser;
-
-import java.util.Map;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import org.openqa.selenium.bidirectional.EmptyResult;
-
 /**
  * Auto-generated class for WebDriver BiDi protocol
- * Represents response for browser.CreateUserContextResult command
+ * Represents enum for browser.CreateUserContextResult which can be either of these classes:
+ *   - browser.UserContextInfo
  */
 public class CreateUserContextResult {
 
-    /**
-     * Creates a new CreateUserContextResult instance
-     */
-    public CreateUserContextResult() {
-        // No properties to initialize
-    }
+}

@@ -6,23 +6,12 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.script;
-
-import java.util.Map;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import org.openqa.selenium.bidirectional.EmptyResult;
-
 /**
  * Auto-generated class for WebDriver BiDi protocol
- * Represents response for script.EvaluateResult command
+ * Represents enum for script.EvaluateResult which can be either of these classes:
+ *   - script.EvaluateResultSuccess
+ *   - script.EvaluateResultException
  */
 public class EvaluateResult {
 
-    /**
-     * Creates a new EvaluateResult instance
-     */
-    public EvaluateResult() {
-        // No properties to initialize
-    }
+}

@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.PaintWorkletRealmInfo command
  */
-public class PaintWorkletRealmInfo {
+public class PaintWorkletRealmInfo implements RealmInfo {
 
     /**
      * Creates a new PaintWorkletRealmInfo instance

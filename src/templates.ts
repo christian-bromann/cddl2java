@@ -256,29 +256,3 @@ public class NewResult {
         return capabilities;
     }
 }`;
-
-export const scriptLocalValue = `package org.openqa.selenium.bidirectional.script;
-
-public class ScriptLocalValue {
-
-}
-`;
-
-export const sourceActions = `package org.openqa.selenium.bidirectional.input;
-
-public class SourceActions {
-
-}
-
-public class KeySourceAction {
-
-}
-
-public class PointerSourceAction {
-
-}
-
-public class WheelSourceAction {
-
-}
-`;

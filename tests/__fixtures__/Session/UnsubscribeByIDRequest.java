@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for session.UnsubscribeByIDRequest command
  */
-public class UnsubscribeByIDRequest {
+public class UnsubscribeByIDRequest implements UnsubscribeParameters {
 
     /**
      * Creates a new UnsubscribeByIDRequest instance

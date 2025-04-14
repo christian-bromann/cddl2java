@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for storage.BrowsingContextPartitionDescriptor command
  */
-public class BrowsingContextPartitionDescriptor {
+public class BrowsingContextPartitionDescriptor implements PartitionDescriptor {
 
     /**
      * Creates a new BrowsingContextPartitionDescriptor instance

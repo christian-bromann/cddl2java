@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.DedicatedWorkerRealmInfo command
  */
-public class DedicatedWorkerRealmInfo {
+public class DedicatedWorkerRealmInfo implements RealmInfo {
 
     /**
      * Creates a new DedicatedWorkerRealmInfo instance

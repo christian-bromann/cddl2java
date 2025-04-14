@@ -6,8 +6,12 @@
  * file need to come from the specification.
  */
 
-package org.openqa.selenium.bidirectional.script;
-
-public class ScriptLocalValue {
+/**
+ * Auto-generated class for WebDriver BiDi protocol
+ * Represents enum for network.UrlPattern which can be either of these classes:
+ *   - network.UrlPatternPattern
+ *   - network.UrlPatternString
+ */
+public class UrlPattern {
 
 }

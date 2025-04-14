@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.EvaluateResultSuccess command
  */
-public class EvaluateResultSuccess {
+public class EvaluateResultSuccess implements EvaluateResult {
 
     /**
      * Creates a new EvaluateResultSuccess instance

@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.RealmTarget command
  */
-public class RealmTarget {
+public class RealmTarget implements Target {
 
     /**
      * Creates a new RealmTarget instance

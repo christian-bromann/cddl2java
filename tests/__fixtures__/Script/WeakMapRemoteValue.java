@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.WeakMapRemoteValue command
  */
-public class WeakMapRemoteValue {
+public class WeakMapRemoteValue implements RemoteValue {
 
     /**
      * Creates a new WeakMapRemoteValue instance

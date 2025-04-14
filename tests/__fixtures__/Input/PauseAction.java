@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for input.PauseAction command
  */
-public class PauseAction implements KeySourceAction {
+public class PauseAction implements NoneSourceAction {
 
     /**
      * Creates a new PauseAction instance

@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for storage.GetCookiesResult command
  */
-public class GetCookiesResult {
+public class GetCookiesResult implements StorageResult {
 
     /**
      * Creates a new GetCookiesResult instance

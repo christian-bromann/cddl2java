@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.TypedArrayRemoteValue command
  */
-public class TypedArrayRemoteValue {
+public class TypedArrayRemoteValue implements RemoteValue {
 
     /**
      * Creates a new TypedArrayRemoteValue instance

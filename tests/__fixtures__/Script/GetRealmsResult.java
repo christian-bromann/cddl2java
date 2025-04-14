@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.GetRealmsResult command
  */
-public class GetRealmsResult {
+public class GetRealmsResult implements ScriptResult {
 
     /**
      * Creates a new GetRealmsResult instance

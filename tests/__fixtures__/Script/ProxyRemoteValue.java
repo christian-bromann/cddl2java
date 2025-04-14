@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.ProxyRemoteValue command
  */
-public class ProxyRemoteValue {
+public class ProxyRemoteValue implements RemoteValue {
 
     /**
      * Creates a new ProxyRemoteValue instance

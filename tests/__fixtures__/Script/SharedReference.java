@@ -18,7 +18,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for script.SharedReference command
  */
-public class SharedReference {
+public class SharedReference implements RemoteReference {
 
     /**
      * Creates a new SharedReference instance

@@ -3,7 +3,7 @@ import path from 'node:path'
 import util from 'node:util'
 
 import camelcase from 'camelcase'
-import { parse as parseCDDL, type PropertyReference, type Property, type Group, type Array, type Assignment, type PropertyType } from 'cddl'
+import { parse as parseCDDL, type PropertyReference, type Property, type Group, type Array, type Variable, type Assignment, type PropertyType } from 'cddl'
 
 import { writeFile } from './utils.js'
 import { CDDL_PARSE_ERROR_MESSAGE } from './constants.js'
@@ -14,8 +14,6 @@ import {
     getEnumTemplate,
     capabilitiesTemplate,
     newResultTemplate,
-    scriptLocalValue,
-    sourceActions
 } from './templates.js'
 
 type Scope = string
@@ -67,39 +65,6 @@ function parseCDDLFile (filePath: string) {
     return ast
 }
 
-const scriptLocalValueClasses = [
-    'RemoteReference',
-    'PrimitiveProtocolValue',
-    'ChannelValue',
-    'ArrayLocalValue',
-    'DateLocalValue',
-    'MapLocalValue',
-    'ObjectLocalValue',
-    'RegExpLocalValue',
-    'SetLocalValue'
-]
-const inputSourceActions = [
-    'NoneSourceActions',
-    'KeySourceActions',
-    'PointerSourceActions',
-    'WheelSourceActions'
-]
-const keySourceActions = [
-    'PauseAction',
-    'KeyDownAction',
-    'KeyUpAction'
-]
-const pointerSourceActions = [
-    'PointerMoveAction',
-    'PointerDownAction',
-    'PointerUpAction',
-    'PointerCancelAction'
-]
-const wheelSourceActions = [
-    'PauseAction',
-    'WheelScrollAction'
-]
-
 const stringTypes = [
     'script.InternalId',
     'browser.ClientWindow',
@@ -125,10 +90,6 @@ const stringTypes = [
     'script.Realm',
     'script.SharedId'
 ]
-
-const aliasTypes = {
-    'browser.CreateUserContextResult': 'Browser.UserContextInfo'
-}
 
 async function createModules (assignments: Assignment[]) {
     const javaFiles = new Map<MapKey, string>()
@@ -225,27 +186,22 @@ function resultName(name: string): string {
     return resultName[0].toUpperCase() + resultName.slice(1);
 }
 
-function getImplementsExtension(propClassName: string): string {
-    if (scriptLocalValueClasses.includes(propClassName)) {
-        return ' implements ScriptLocalValue'
-    }
-    if (inputSourceActions.includes(propClassName)) {
-        return ' implements SourceActions'
-    }
-    if (keySourceActions.includes(propClassName)) {
-        return ' implements KeySourceAction'
-    }
-    if (pointerSourceActions.includes(propClassName)) {
-        return ' implements PointerSourceAction'
-    }
-    if (wheelSourceActions.includes(propClassName)) {
-        return ' implements WheelSourceAction'
-    }
-    return ''
-}
-
 async function createPropertyClasses (assignments: Assignment[]) {
     const javaPropFiles = new Map<MapKey, string>()
+    const allGroupEnums = assignments
+        .filter((a) => (
+            a.Type === 'variable' &&
+            Array.isArray(a.PropertyType) &&
+            a.PropertyType.every((p) => (p as PropertyReference).Type === 'group'))
+        )
+        .map((a) => {
+            const prop = ((a as Variable).PropertyType as PropertyReference[])
+            return {
+                name: (a as Variable).Name,
+                enums: prop.map((p) => p.Value as string)
+            }
+        })
+
     for (const assignment of assignments) {
         /**
          * only create methods for groups that have a method property and therefor are commands that
@@ -354,7 +310,7 @@ async function createPropertyClasses (assignments: Assignment[]) {
             if (props.size > 0) {
                 let code = ''
                 if (!javaPropFiles.has(mapKey)) {
-                    const implementsExtension = getImplementsExtension(propClassName)
+                    const implementsExtension = allGroupEnums.find(({ name, enums }) => name && enums.includes(`${scopeCamelCase.toLowerCase()}.${propClassName}`))
                     code += `package org.openqa.selenium.bidirectional.${scopeCamelCase.toLowerCase()};
 
 import java.util.Map;
@@ -367,7 +323,7 @@ import org.openqa.selenium.bidirectional.*;
  * Auto-generated class for WebDriver BiDi protocol
  * Represents parameters for ${assignment.Name} command
  */
-public class ${propClassName}${implementsExtension} {
+public class ${propClassName}${implementsExtension ? ` implements ${implementsExtension.name.includes('.') ? implementsExtension.name.split('.')[1] : implementsExtension.name}` : ''} {
 `
                 }
 
@@ -433,11 +389,34 @@ public class ${propClassName}${implementsExtension} {
         } else if (assignment.Type === 'variable') {
             const propType = assignment.PropertyType as PropertyType[]
 
+            /**
+             * handle group enums like
+             * {
+             *   Type: 'variable',
+             *   Name: 'input.WheelSourceAction',
+             *   IsChoiceAddition: false,
+             *   PropertyType: [
+             *     { Type: 'group', Value: 'input.PauseAction', Unwrapped: false },
+             *     { Type: 'group', Value: 'input.WheelScrollAction', Unwrapped: false }
+             *   ],
+             *   Comments: []
+             * }
+             */
             if (propType.every((p) => (p as PropertyReference).Type === 'group')) {
-                // todo
+                const enumClasses = propType.map((p) => (p as PropertyReference).Value as string)
+                const [module, prop] = assignment.Name.split('.')
+                let code = (
+                    '/**\n' +
+                    ` * Auto-generated class for WebDriver BiDi protocol\n` +
+                    ` * Represents enum for ${assignment.Name} which can be either of these classes:\n` +
+                    ` *   - ${enumClasses.join('\n *   - ')}\n` +
+                    ` */\n` +
+                    `public class ${prop} {\n\n}`
+                )
+                javaPropFiles.set([module.slice(0, 1).toUpperCase() + module.slice(1), prop], code)
             } else
             /**
-             * handle enums like
+             * handle literal enums like
              * {
              *   Type: 'variable',
              *   Name: 'input.PointerType',
@@ -460,7 +439,6 @@ public class ${propClassName}${implementsExtension} {
                     return (p as PropertyReference).Value
                 }) as string[]
                 const code = getEnumTemplate(prop, enumValues)
-                console.log(propType)
                 javaPropFiles.set([module, prop], code)
             }
         }
@@ -535,10 +513,6 @@ function parseType (specType: any): { type: string, isLiteral: boolean } {
 
                         if (stringTypes.includes(value)) {
                             return { type: 'String', isLiteral: false };
-                        }
-
-                        if (aliasTypes[value as keyof typeof aliasTypes]) {
-                            return { type: aliasTypes[value as keyof typeof aliasTypes], isLiteral: false };
                         }
 
                         // Reference to another type - keep proper casing
@@ -733,13 +707,8 @@ async function createEmptyResultClass(outputDir: string) {
 
 async function createHelperClasses( outputDir: string) {
     // Create directories and write files
-    await fs.mkdirSync(path.join(outputDir, 'Input'), { recursive: true });
-    await writeFile(path.resolve(outputDir, 'Input/SourceActions.java'), sourceActions);
-    await writeFile(path.resolve(outputDir, 'Script/ScriptLocalValue.java'), scriptLocalValue);
     await writeFile(path.resolve(outputDir, 'ContextValue.java'), contextValueTemplate);
     await writeFile(path.resolve(outputDir, 'AccessibilityValue.java'), accessibilityValueTemplate);
-
-    // Generate Capabilities class
     await fs.mkdirSync(path.join(outputDir, 'Session'), { recursive: true });
     await writeFile(path.resolve(outputDir, 'Session/Capabilities.java'), capabilitiesTemplate);
 }
